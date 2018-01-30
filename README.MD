@@ -15,3 +15,25 @@ multiple sessions can be run at the same time. Simple authentication would also 
 
 Being able to embed quiz slide material with other HTML material would be useful. Using an existing
 editing component to generate the HTML might be a sensible approach.
+
+# Design (draft)
+## Server side
+- [Node.js Express](https://expressjs.com/) web development framework will be used on the
+back end to handle clients' interactions.
+
+## Client side
+There will be 2 types of clients:
+- One **Lecturer**
+- Zero to Many **Students**
+
+### Lecturer client side
+- [Angular 4](https://angular.io/) will be used to create a web client for the lecturer. It should
+allow the lecturer to authenticate with the app and create lecture sessions and broadcast them later on.
+
+### Student client side
+There are 3 attainable options:
+- Native Android development, and lack of support for iOS
+- React Native, which compiles down to both iOS and Android but with the additional burden
+of picking up an extra framework
+- Angular to create a website, works both on iOS, Android and beyond, with the advantage of
+reusing the same framework for both the lecturer and student clients
