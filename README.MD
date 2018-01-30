@@ -20,11 +20,12 @@ editing component to generate the HTML might be a sensible approach.
 ## Server side
 - [Node.js Express](https://expressjs.com/) web development framework will be used on the
 back end to handle clients' interactions.
+- Some sort of NoSQL JSON storage database will be used for data persistance
 
 ## Client side
 There will be 2 types of clients:
-- One **Lecturer**
-- Zero to Many **Students**
+- **Lecturer**
+- **Student**
 
 ### Lecturer client side
 - [Angular 4](https://angular.io/) will be used to create a web client for the lecturer. It should
@@ -37,3 +38,66 @@ There are 3 attainable options:
 of picking up an extra framework
 - Angular to create a website, works both on iOS, Android and beyond, with the advantage of
 reusing the same framework for both the lecturer and student clients
+
+## Build
+- [CircleCI](https://circleci.com/) will be used to continuosly checkout, build, test and deploy
+the system.
+
+## Environments
+There should be at least 3 environments:
+- Development
+- Testing
+- Production
+
+Each environment will have its own database.
+
+## Docker
+Both the server side express app and the lecturer client will need to be containarised using Docker.
+These containers will then run under docker-compose/kubernetes container orchestration tool. The
+student client, depending on the technology chosen will either have to be installed natively on
+student's phone, or in case of a web app run in a docker swarm as a Docker container.
+
+## Development
+- Code will be stored on GitHub
+- ZenHub will be used as a Kanban board to manage work items and to monitor progress
+- Work could be split into multiple iterations
+- Code will need to be tested
+- New features will be added using a feature-branch working model
+- Each issue will have a corresponding feature-branch
+- Once the feature is complete, the feature-branch has to be merged into the development branch
+by opening a pull request
+- Direct push to master/develop will be forbidden
+- Each pull request will trigger a CircleCI build agent which will run all tests before allowing
+the code to be merged
+
+## Business Logic
+- The server side app listens to incoming calls
+- The Lecturer client logs in using his credentials, possibly LDAP authentication using
+the uni network (we'll see)
+- Lectuer presented with a clean interface enabling him to upload PDF slides
+- This creates a new *Lecture* in the system
+- Multiple lectures can exist
+- Lecturer can open a lecture and add quiz questions between slides as necessary
+- Lecturer can then start the lecture by clicking "broadcast"
+- Lecturer presented with a session code which he can share with the class
+- Each student uses the session key to access the lecture
+- Ideally, multiple lecturers can run multiple sessions at the same times
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
