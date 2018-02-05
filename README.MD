@@ -20,7 +20,7 @@ editing component to generate the HTML might be a sensible approach.
 ## Server side
 - [Node.js Express](https://expressjs.com/) web development framework will be used on the
 back end to handle clients' interactions.
-- Some sort of NoSQL JSON storage database will be used for data persistance
+- [MongoDB](https://www.mongodb.com/) JSON storage database will be used for data persistance.
 
 ## Client side
 There will be 2 types of clients:
@@ -33,15 +33,15 @@ allow the lecturer to authenticate with the app and create lecture sessions and 
 
 ### Student client side
 There are 3 attainable options:
-- Native Android development, and lack of support for iOS
-- React Native, which compiles down to both iOS and Android but with the additional burden
-of picking up an extra framework
-- Angular to create a website, works both on iOS, Android and beyond, with the advantage of
+- Angular 4 to create a website, works both on iOS, Android and beyond, with the advantage of
 reusing the same framework for both the lecturer and student clients
 
 ## Build
 - [CircleCI](https://circleci.com/) will be used to continuosly checkout, build, test and deploy
 the system.
+
+## Deployment
+- The app will be deployed to Docker container engine on [AWS](https://aws.amazon.com/)
 
 ## Environments
 There should be at least 3 environments:
@@ -51,11 +51,9 @@ There should be at least 3 environments:
 
 Each environment will have its own database.
 
-## Docker
-Both the server side express app and the lecturer client will need to be containarised using Docker.
-These containers will then run under docker-compose/kubernetes container orchestration tool. The
-student client, depending on the technology chosen will either have to be installed natively on
-student's phone, or in case of a web app run in a docker swarm as a Docker container.
+## Docker & docker-compose
+The server side express app, the lecturer client and the database will need to be containarised using Docker.
+These containers will then run under docker-compose container orchestration tool on AWS.
 
 ## Development
 - Code will be stored on GitHub
@@ -82,7 +80,9 @@ the uni network (we'll see)
 - Lecturer presented with a session code which he can share with the class
 - Each student uses the session key to access the lecture
 - Ideally, multiple lecturers can run multiple sessions at the same times
-
+- The responses can be viewed in real time by *Lecturer* and showed to students once
+the polling is complete
+- The results can be then exported as JSON for later analysis/persistence
 
 
 
