@@ -1,0 +1,2 @@
+- What reading should I be referencing in a software development project?
+- References / Annotated bibliography? -. each reference should have a comment
