@@ -42,7 +42,6 @@
 
 \setcounter{tocdepth}{3} %set required number of level in table of contents
 
-
 %==============================================================================
 \section{Project description}
 %==============================================================================
@@ -72,29 +71,55 @@ one of the options and submit their answer. Once a lecturer is happy with their
 \textit{Lecture}, he can broadcast it and receive a session key which can be
 shared with students. Lecture slides will be shown to all students and the
 lecture can be delivered in a traditional fashion up to the moment a quiz
-has been embedded beteen two slides. Students will then be able to answer
+has been embedded between two slides. Students will then be able to answer
 the question and polling results will be presented in real time to a lecturer.
 It will be also possible to export the quiz answers as JSON for future analysis.
 
 The tool will be composed of the back-end with an associated database, and two
-front ends. One for lecturers and one for students. Finally, the tool will be
+front-ends. One for lecturers and one for students. Finally, the tool will be
 developed using an agile methodology, adjusted for a single person project.
 
 %==============================================================================
 \section{Proposed tasks}
 %==============================================================================
-1. Running within the aber intranet or not
-2. External cloud provider vs local debian container
-3. Authentication concerns -> how to access LDAP from the outside of the university network
-4. Technology used
-5. Angular 4 investigation
-6. Real time nature of the project
-7. Continuos delivery
-8. Setting up the version control with suitable safe-guards
-9. Agile methodology
-10. Use of Docker
-11. docker-compose vs kubernetes
-12. Persistence and backups of the MongoDB container
+The following tasks will be performed on this project:
+
+\begin{enumerate}
+  \item \textbf{Choice of the development methodology}: an appropriate methodology has to be
+    chosen for a single person project. A variation of SCRUM could be used, with weekly sprints
+    and sprint planning/retrospectives shorten to the absolute minimum. This would provide the
+    benefits of being able to track the velocity of the project, be able to plan ahead and stay on
+    track easier, without completely "hacking" things together on day to day basis.
+  \item \textbf{Technology considerations}: the MEAN stack will be used to develop the tool. MEAN
+    stack consist of JavaScript based technologies (\textbf{M}ongoDB database, \textbf{E}xpress minimalistic JavaScript web
+    development framework, \textbf{A}ngular 4 front-end framework and \textbf{N}odeJS a JavaScript engine).
+    Some prototyping will be necessary to gain familiarity with the tools mentioned above. Furthermore,
+    each part of the app will be containerised using Docker and containers will run together in the same fashion
+    on the developer's machine, the build tool and in production using docker-compose container orchestration tool.
+  \item \textbf{On-site vs external hosting}: it would be beneficial to keep the web application running
+    within the university intranet. This however, proved impossible with the LXC debian containers available
+    to students for their final year projects. The continuous integration and container deployments mentioned
+    in this document will require more customisation and therfore external cloud provider has to be
+    chosen to allow suitable deployment.
+  \item \textbf{Setting up version control and suitable safe-guards}: the code will be stored in a private
+    GitHub repository. There will be a \texttt{master} production branch, and a \texttt{development} branch.
+    The feature-branch git workflow will be used and each branch will need to have an associated issue (story)
+    on GitHub. Then a pull request will be opened between the \texttt{feature-branch} and the \texttt{development}
+    and once all tests pass the merge will be allowed. Direct push to both \texttt{master} and \texttt{development}
+    will be forbidden.
+  \item \textbf{Setting up a continuous integraion build agent}: a suitable CI tool needs to be chosen. Travis, Circle CI
+    and Jenkins are all appropriate for the task at hand. The build agent will checkout the code from the version control,
+    build the Quiz Tool, run all the tests and deploy the tool to production if the branch being built is \texttt{master}.
+  \item \textbf{Development}: as previously mentioned, an interative development approach will be used. Development will start
+    with prototyping, followed by the development of "first pass" implementations of all services to get something
+    working as soon as possible. Then the tool can be polished to deliver the final product. It is important to quickly
+    address the most technically difficult parts of the system to avoid problems later on in the process. Special
+    attention needs to be focused on the real time nature of the system and how this should be implemented. Another
+    interesting problem will be the persistance of the MongoDB running in a Docker container, as Docker does not
+    preserve data by design when containers are destroyed.
+  \item \textbf{Project Meetings}: weekly meetings with the supervisor will provide immediate feedback on work done
+    and allow re-adjustment of the approach of necessary to stay on track and delivering the software before the deadline.
+\end{enumerate}
 
 %==============================================================================
 \section{Project deliverables}
@@ -102,6 +127,9 @@ developed using an agile methodology, adjusted for a single person project.
 1. Containerised back-end consisting of an Express app with a MongoDB persistence layer
 2. Containerised front-end in Angular 4 for lecturers and students
 3. Final project
+4. Mid-project presentation
+5. Tests
+6. Deployment scripts
 
 % the following line is included so that the bibliography is also shown in the table of contents. There is the possibility that this is added to the previous page for the bibliography. To address this, a newline is added so that it appears on the first page for the bibliography.
 \newpage
