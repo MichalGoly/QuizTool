@@ -124,13 +124,31 @@ The following tasks will be performed on this project:
 %==============================================================================
 \section{Project deliverables}
 %==============================================================================
-1. Containerised back-end consisting of an Express app with a MongoDB persistence layer
-2. Containerised front-end in Angular 4 for lecturers and students
-3. Final project
-4. Mid-project presentation
-5. Tests
-6. Deployment scripts
+The following project deliverables are expected.
+\begin{enumerate}
+  \item \textbf{Stories and burndown charts}: a backlog of issues grouped into epics and milestones will be
+    visible on GitHub, together with burndown charts and a Kanban board provided by ZenHub. A summary of these
+    will be included in the appendix of the Final Report.
+  \item \textbf{Build definition}: a build script will be produced to configure the continuous integration agent.
+    Depending on the CI tool used, the configuration file will be stored in the version control.
+  \item \textbf{Back-end software}: a Docker containerised web application written in Express, and a MongoDB database
+    persistance layer will be developed. The code will be stored in version control, and submitted for assessment
+    together with the Final Report.
+  \item \textbf{Front-end software}: a Docker containerised Angular 4 front-end will be developed to allow both
+    lecturers and students to use the tool. The code will be stored in version control, and submitted for assessment
+    together with the Final Report.
+  \item \textbf{Development and production environments}: code will run in a similar fashion both locally on the developer's
+    machine, and in the production environment provided by a cloud provider. This will be possible due to the docker-compose
+    container orchestration tool.
+  \item \textbf{Tests}: a set of tests will be added as software will be developed. These will be stored in version
+    control alongside the rest of the code.
+  \item \textbf{Mid-Project Demonstration PDF presentation}: a PDF presentation will be produced to guide the
+    mid-project demonstration.
+  \item \textbf{Final Report}: this document will be the report and associated appendices. In addition to
+    discussing the work, there will be acknowledgement for any 3rd party libraries, frameworks
+    and tools that are used on the project.
 
+\end{enumerate}
 % the following line is included so that the bibliography is also shown in the table of contents. There is the possibility that this is added to the previous page for the bibliography. To address this, a newline is added so that it appears on the first page for the bibliography.
 \newpage
 \addcontentsline{toc}{section}{Initial Annotated Bibliography}
