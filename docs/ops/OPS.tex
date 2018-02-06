@@ -47,7 +47,7 @@
 %==============================================================================
 Student engagement and live knowledge monitoring are vital in the provision of good quality
 lecture content in 2018. It is important to make sure audience understands concepts presented,
-and quizes can help lecturers judge students' understanding in real time.
+and quizzes can help lecturers judge students' understanding in real time.
 
 Aberystwyth University currently uses Qwizdom\cite{1} live polling tool during the provision
 of some lectures and practical sessions. The university operates under a single license
@@ -65,7 +65,7 @@ and development.
 The Quiz Tool will allow lecturers to login with their university credentials and
 they will be authenticated using the university LDAP. Lecturers will then
 be able to upload their PDF lecture slides and create \textit{Lectures} in the system.
-Each \textit{Lecture} can be then edited and quizes can be added between slides.
+Each \textit{Lecture} can be then edited and quizzes can be added between slides.
 An example of a quiz would be an "ABC style" question where a student can select
 one of the options and submit their answer. Once a lecturer is happy with their
 \textit{Lecture}, he can broadcast it and receive a session key which can be
@@ -107,15 +107,15 @@ The following tasks will be performed on this project:
     on GitHub. Then a pull request will be opened between the \texttt{feature-branch} and the \texttt{development}
     and once all tests pass the merge will be allowed. Direct push to both \texttt{master} and \texttt{development}
     will be forbidden.
-  \item \textbf{Setting up a continuous integraion build agent}: a suitable CI tool needs to be chosen. Travis\cite{8}, Circle CI\cite{9}
+  \item \textbf{Setting up a continuous integration build agent}: a suitable CI tool needs to be chosen. Travis\cite{8}, Circle CI\cite{9}
     and Jenkins\cite{10} are all appropriate for the task at hand. The build agent will checkout the code from the version control,
     build the Quiz Tool, run all the tests and deploy the tool to production if the branch being built is \texttt{master}.
-  \item \textbf{Development}: as previously mentioned, an interative development approach will be used. Development will start
+  \item \textbf{Development}: as previously mentioned, an iterative development approach will be used. Development will start
     with prototyping, followed by the development of "first pass" implementations of all services to get something
     working as soon as possible. Then the tool can be polished to deliver the final product. It is important to quickly
     address the most technically difficult parts of the system to avoid problems later on in the process. Special
     attention needs to be focused on the real time nature of the system and how this should be implemented. Another
-    interesting problem will be the persistance of the MongoDB running in a Docker container, as Docker does not
+    interesting problem will be the persistence of the MongoDB running in a Docker container, as Docker does not
     preserve data by design when containers are destroyed.
   \item \textbf{Project Meetings}: weekly meetings with the supervisor will provide immediate feedback on work done
     and allow re-adjustment of the approach if necessary to stay on track and deliver the software before the deadline.
@@ -132,7 +132,7 @@ The following project deliverables are expected.
   \item \textbf{Build definition}: a build script will be produced to configure the continuous integration agent.
     Depending on the CI tool used, the configuration file will be stored in the version control.
   \item \textbf{Back-end software}: a Docker containerised web application written in Express, and a MongoDB database
-    persistance layer will be developed. The code will be stored in version control, and submitted for assessment
+    persistence layer will be developed. The code will be stored in version control, and submitted for assessment
     together with the Final Report.
   \item \textbf{Front-end software}: a Docker containerised Angular 4 front-end will be developed to allow both
     lecturers and students to use the tool. The code will be stored in version control, and submitted for assessment
@@ -188,7 +188,7 @@ The following project deliverables are expected.
 
 \bibitem{8} Travis, "Travis homepage", [Online] Available: https://travis-ci.org/, [Accessed: Feb. 6, 2018].
 
-  Travis is a popular continuos integraion tool hosted typically on an external cloud. Free to use for open source
+  Travis is a popular continuos integration tool hosted typically on an external cloud. Free to use for open source
   projects.
 
 \bibitem{9} Circle CI, "Circle CI  homepage", [Online] Available: https://circleci.com/, [Accessed: Feb. 6, 2018].
