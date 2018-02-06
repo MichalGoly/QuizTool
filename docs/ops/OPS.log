@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  6 FEB 2018 11:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  6 FEB 2018 12:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -449,37 +449,61 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
                    \relax 
 l.110   \item \textbf
                      {Setting up a continuous integraion build agent}: a sui...
-[1] [2] [3]
-No file OPS.bbl.
+[1] [2]
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ú in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ù in font pplr7t!
 
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
+[]\OT1/ppl/m/n/10.95 docker-compose, "docker-compose home-page", [On-line] Avai
+l-able:
+ []
+
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ú in font pplr7t!
+Missing character: There is no ‚ in font pplr7t!
+Missing character: There is no Ä in font pplr7t!
+Missing character: There is no ù in font pplr7t!
+
+Overfull \hbox (65.1155pt too wide) in paragraph at lines 183--184
+[]\OT1/ppl/m/n/10.95 Git Fea-ture Branch Work-flow, [On-line] Avail-able: https
+://www.atlassian.com/git/tutorials/comparing-
+ []
+
+[3] 
 AED: lastpage setting LastPage
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 163.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 163.
-(./OPS.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 163.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 163.
+[4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 221.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 221.
+ (./OPS.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 221.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 221.
 Package rerunfilecheck Info: File `OPS.out' has not changed.
 (rerunfilecheck)             Checksum: 469422A98C206ED001986C9C65F11232;158.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 163.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 221.
  ) 
 Here is how much of TeX's memory you used:
- 6888 strings out of 493029
- 98247 string characters out of 6136234
- 194344 words of memory out of 5000000
- 10296 multiletter control sequences out of 15000+600000
+ 6911 strings out of 493029
+ 98362 string characters out of 6136234
+ 194601 words of memory out of 5000000
+ 10307 multiletter control sequences out of 15000+600000
  17809 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,10n,43p,313b,415s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,10n,43p,315b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino
 /uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb
 >
-Output written on OPS.pdf (4 pages, 71926 bytes).
+Output written on OPS.pdf (5 pages, 75687 bytes).
 PDF statistics:
- 80 PDF objects out of 1000 (max. 8388607)
- 68 compressed objects within 1 object stream
- 22 named destinations out of 1000 (max. 500000)
+ 110 PDF objects out of 1000 (max. 8388607)
+ 97 compressed objects within 1 object stream
+ 35 named destinations out of 1000 (max. 500000)
  25 words of extra memory for PDF output out of 10000 (max. 10000000)
 

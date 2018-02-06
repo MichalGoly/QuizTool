@@ -49,7 +49,7 @@ Student engagement and live knowledge monitoring are vital in the provision of g
 lecture content in 2018. It is important to make sure audience understands concepts presented,
 and quizes can help lecturers judge students' understanding in real time.
 
-Aberystwyth University currently uses Qwizdom live polling tool during the provision
+Aberystwyth University currently uses Qwizdom\cite{1} live polling tool during the provision
 of some lectures and practical sessions. The university operates under a single license
 forcing lecturers to book sessions before they can use the tool. Due to human nature,
 session hijacking occasionally occurs to the bemusement of both students and lecturers.
@@ -90,25 +90,25 @@ The following tasks will be performed on this project:
     and sprint planning/retrospectives shorten to the absolute minimum. This would provide the
     benefits of being able to track the velocity of the project, be able to plan ahead and stay on
     track easier, without completely "hacking" things together on day to day basis.
-  \item \textbf{Technology considerations}: the MEAN stack will be used to develop the tool. MEAN
+  \item \textbf{Technology considerations}: the MEAN stack\cite{2} will be used to develop the tool. MEAN
     stack consist of JavaScript based technologies (\textbf{M}ongoDB database, \textbf{E}xpress minimalistic JavaScript web
     development framework, \textbf{A}ngular 4 front-end framework and \textbf{N}odeJS a JavaScript engine).
     Some prototyping will be necessary to gain familiarity with the tools mentioned above. Furthermore,
-    each part of the app will be containerised using Docker and containers will run together in the same fashion
-    on the developer's machine, the build tool, and in production using docker-compose container orchestration tool.
+    each part of the app will be containerised using Docker\cite{3} and containers will run together in the same fashion
+    on the developer's machine, the build tool, and in production using docker-compose\cite{4} container orchestration tool.
   \item \textbf{On-site vs external hosting}: it would be beneficial to keep the web application running
-    within the university intranet. This however, proved impossible with the LXC debian containers available
+    within the university intranet. This however, proved impossible with the LXC debian containers\cite{5} available
     to students for their final year projects. The continuous integration and container deployments mentioned
     in this document will require more customisation and therefore external cloud provider has to be
     chosen to allow suitable deployment.
   \item \textbf{Setting up version control and suitable safeguards}: the code will be stored in a private
-    GitHub repository. There will be a \texttt{master} production branch, and a \texttt{development} branch.
-    The feature-branch git workflow will be used and each branch will need to have an associated issue (story)
+    GitHub\cite{6} repository. There will be a \texttt{master} production branch, and a \texttt{development} branch.
+    The feature-branch git workflow \cite{7} will be used and each branch will need to have an associated issue (story)
     on GitHub. Then a pull request will be opened between the \texttt{feature-branch} and the \texttt{development}
     and once all tests pass the merge will be allowed. Direct push to both \texttt{master} and \texttt{development}
     will be forbidden.
-  \item \textbf{Setting up a continuous integraion build agent}: a suitable CI tool needs to be chosen. Travis, Circle CI
-    and Jenkins are all appropriate for the task at hand. The build agent will checkout the code from the version control,
+  \item \textbf{Setting up a continuous integraion build agent}: a suitable CI tool needs to be chosen. Travis\cite{8}, Circle CI\cite{9}
+    and Jenkins\cite{10} are all appropriate for the task at hand. The build agent will checkout the code from the version control,
     build the Quiz Tool, run all the tests and deploy the tool to production if the branch being built is \texttt{master}.
   \item \textbf{Development}: as previously mentioned, an interative development approach will be used. Development will start
     with prototyping, followed by the development of "first pass" implementations of all services to get something
@@ -127,7 +127,7 @@ The following tasks will be performed on this project:
 The following project deliverables are expected.
 \begin{enumerate}
   \item \textbf{Stories and burndown charts}: a backlog of issues grouped into epics and milestones will be
-    visible on GitHub, together with burndown charts and a Kanban board provided by ZenHub. A summary of these
+    visible on GitHub, together with burndown charts and a Kanban board provided by ZenHub\cite{11}. A summary of these
     will be included in the appendix of the Final Report.
   \item \textbf{Build definition}: a build script will be produced to configure the continuous integration agent.
     Depending on the CI tool used, the configuration file will be stored in the version control.
@@ -150,14 +150,72 @@ The following project deliverables are expected.
 
 \end{enumerate}
 % the following line is included so that the bibliography is also shown in the table of contents. There is the possibility that this is added to the previous page for the bibliography. To address this, a newline is added so that it appears on the first page for the bibliography.
-\newpage
-\addcontentsline{toc}{section}{Initial Annotated Bibliography}
+% \addcontentsline{toc}{section}{Initial Annotated Bibliography}
 
+\begin{thebibliography}{1}
+
+\bibitem{1} Qwizdom, “Qwizdom homepage,” 2018. [Online] Available: https://qwizdom.com/, [Accessed: Feb. 6, 2018].
+
+  Qwizdom is the tool currently used by the univeristy and will be replaced with this project.
+
+\bibitem{2} MEAN stack, [Online] Available: https://github.com/linnovate/mean, [Accessed: Feb. 6, 2018].
+
+  The MEAN stack uses Mongo, Express, Angular(4) and Node for simple and scalable fullstack js applications.
+
+\bibitem{3} Docker, "Docker homepage", [Online] Available: https://www.docker.com/, [Accessed: Feb. 6, 2018].
+
+  Docker allows app to be containerised and run on multiple hosts in the same fashion.
+
+\bibitem{4} docker-compose, "docker-compose homepage", [Online] Available: https://docs.docker.com/compose/, [Accessed: Feb. 6, 2018].
+
+  Compose is a tool for defining and running multi-container Docker applications.
+
+\bibitem{5} LXC, "LXC", [Online] Available: https://wiki.debian.org/LXC, [Accessed: Feb. 6, 2018].
+
+  Linux Containers (LXC) provide a Free Software virtualization system for computers running GNU/Linux. They are inappropriate
+  for the task at hand, as they do not allow running docker-compose due to the lack of system permissions.
+
+\bibitem{6} GitHub, Inc., “GitHub homepage,” 2018, [Online] Available: http://github.com/, [Accessed: Feb. 6, 2018].
+
+  A popular version control tool offering private repositories to students. Code will be stored there and checkout by CI for
+  testing and deployment.
+
+\bibitem{7} Git Feature Branch Workflow, [Online] Available: https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow, [Accessed: Feb. 6, 2018].
+
+  Each issue has an associated feature branch, and code necessary to develop the issue is commited to the appropriate feature branch.
+  Then a pull request is made between the feature branch and development/master, and once all tests pass the feature branch can
+  be merged to development/master.
+
+\bibitem{8} Travis, "Travis homepage", [Online] Available: https://travis-ci.org/, [Accessed: Feb. 6, 2018].
+
+  Travis is a popular continuos integraion tool hosted typically on an external cloud. Free to use for open source
+  projects.
+
+\bibitem{9} Circle CI, "Circle CI  homepage", [Online] Available: https://circleci.com/, [Accessed: Feb. 6, 2018].
+
+  Circle CI is very similar to Travis, but it allows a certain amount of free build hours per month for private
+  repositories.
+
+\bibitem{10} Jenkins, "Jenkins homepage", [Online] Available: https://jenkins.io/, [Accessed: Feb. 6, 2018].
+
+  Jenkins is an industry proven automation tool more powerful than both Travis and Circle CI. It is typically deployed
+  on premises as a Java web application and gives developers more control over the build agents compared to its
+  competitors.
+
+\bibitem{11} ZenHub, "ZenHub homepage", [Online] Available: https://www.zenhub.com/, [Accessed: Feb. 6, 2018].
+
+    ZenHub is an agile project management chrome extension for GitHub. It provides the ability to assign points
+    to issues, create epics, provides velocity tracing burndown charts for milestones, and a Kanban board to
+    better manage work at hand.
+
+\end{thebibliography}
+
+% %
+% % example of including an annotated bibliography. The current style is an author date one. If you want to change, comment out the line and uncomment the subsequent line. You should also modify the packages included at the top (see the notes earlier in the file) and then trash your aux files and re-run.
+% %\bibliographystyle{authordate2annot}
+% \bibliographystyle{IEEEannotU}
+% \renewcommand{\refname}{Annotated Bibliography}  % if you put text into the final {} on this line, you will get an extra title, e.g. References. This isn't necessary for the outline project specification.
 %
-% example of including an annotated bibliography. The current style is an author date one. If you want to change, comment out the line and uncomment the subsequent line. You should also modify the packages included at the top (see the notes earlier in the file) and then trash your aux files and re-run.
-%\bibliographystyle{authordate2annot}
-\bibliographystyle{IEEEannotU}
-\renewcommand{\refname}{Annotated Bibliography}  % if you put text into the final {} on this line, you will get an extra title, e.g. References. This isn't necessary for the outline project specification.
-\bibliography{mmp} % References file
+% \bibliography{mmp} % References file
 
 \end{document}
