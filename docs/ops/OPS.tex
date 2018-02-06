@@ -72,7 +72,7 @@ one of the options and submit their answer. Once a lecturer is happy with their
 shared with students. Lecture slides will be shown to all students and the
 lecture can be delivered in a traditional fashion up to the moment a quiz
 has been embedded between two slides. Students will then be able to answer
-the question and polling results will be presented in real time to a lecturer.
+the question and polling results will be presented in real time to the lecturer.
 It will be also possible to export the quiz answers as JSON for future analysis.
 
 The tool will be composed of the back-end with an associated database, and two
@@ -95,13 +95,13 @@ The following tasks will be performed on this project:
     development framework, \textbf{A}ngular 4 front-end framework and \textbf{N}odeJS a JavaScript engine).
     Some prototyping will be necessary to gain familiarity with the tools mentioned above. Furthermore,
     each part of the app will be containerised using Docker and containers will run together in the same fashion
-    on the developer's machine, the build tool and in production using docker-compose container orchestration tool.
+    on the developer's machine, the build tool, and in production using docker-compose container orchestration tool.
   \item \textbf{On-site vs external hosting}: it would be beneficial to keep the web application running
     within the university intranet. This however, proved impossible with the LXC debian containers available
     to students for their final year projects. The continuous integration and container deployments mentioned
-    in this document will require more customisation and therfore external cloud provider has to be
+    in this document will require more customisation and therefore external cloud provider has to be
     chosen to allow suitable deployment.
-  \item \textbf{Setting up version control and suitable safe-guards}: the code will be stored in a private
+  \item \textbf{Setting up version control and suitable safeguards}: the code will be stored in a private
     GitHub repository. There will be a \texttt{master} production branch, and a \texttt{development} branch.
     The feature-branch git workflow will be used and each branch will need to have an associated issue (story)
     on GitHub. Then a pull request will be opened between the \texttt{feature-branch} and the \texttt{development}
@@ -118,7 +118,7 @@ The following tasks will be performed on this project:
     interesting problem will be the persistance of the MongoDB running in a Docker container, as Docker does not
     preserve data by design when containers are destroyed.
   \item \textbf{Project Meetings}: weekly meetings with the supervisor will provide immediate feedback on work done
-    and allow re-adjustment of the approach if necessary to stay on track and delivering the software before the deadline.
+    and allow re-adjustment of the approach if necessary to stay on track and deliver the software before the deadline.
 \end{enumerate}
 
 %==============================================================================
