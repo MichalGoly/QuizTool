@@ -1,4 +1,8 @@
 # CS39440 Major Project - Quiz Tool
+## Outline Project Specification
+The draft of the outline project specification is available [here](docs/ops/mwg2_OutlineProjectSpecification.pdf).
+
+## Chris's Project Description
 I am looking for an Android based quiz system. The system should allow instructors to
 create quizzes online for multiple choice, multiple selection, number ranges, true/false,
 yes/no, text answers and perhaps others. During a quiz session the instructor displays (on

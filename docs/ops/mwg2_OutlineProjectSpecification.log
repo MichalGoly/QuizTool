@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  7 FEB 2018 09:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  7 FEB 2018 10:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**OPS.tex
-(./OPS.tex
+**mwg2_OutlineProjectSpecification.tex
+(./mwg2_OutlineProjectSpecification.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -37,10 +37,10 @@ File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
 )
 \@indexfile=\write3
-\openout3 = `OPS.idx'.
+\openout3 = `mwg2_OutlineProjectSpecification.idx'.
 
 
-Writing index file OPS.idx
+Writing index file mwg2_OutlineProjectSpecification.idx
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/palatino.sty
 Package: palatino 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
@@ -307,8 +307,9 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
-) (./OPS.aux)
-\openout1 = `OPS.aux'.
+)
+(./mwg2_OutlineProjectSpecification.aux)
+\openout1 = `mwg2_OutlineProjectSpecification.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
@@ -410,9 +411,10 @@ LaTeX Info: Redefining \ref on input line 23.
 LaTeX Info: Redefining \pageref on input line 23.
 LaTeX Info: Redefining \nameref on input line 23.
 
-(./OPS.out) (./OPS.out)
+(./mwg2_OutlineProjectSpecification.out)
+(./mwg2_OutlineProjectSpecification.out)
 \@outlinefile=\write4
-\openout4 = `OPS.out'.
+\openout4 = `mwg2_OutlineProjectSpecification.out'.
 
 LaTeX Font Info:    Try loading font information for OT1+phv on input line 41.
 
@@ -479,28 +481,29 @@ AED: lastpage setting LastPage
 [4]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
- (./OPS.aux)
+ (./mwg2_OutlineProjectSpecification.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
-Package rerunfilecheck Info: File `OPS.out' has not changed.
+Package rerunfilecheck Info: File `mwg2_OutlineProjectSpecification.out' has no
+t changed.
 (rerunfilecheck)             Checksum: 469422A98C206ED001986C9C65F11232;158.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 220.
  ) 
 Here is how much of TeX's memory you used:
  6911 strings out of 493029
- 98362 string characters out of 6136234
+ 98739 string characters out of 6136234
  194601 words of memory out of 5000000
  10307 multiletter control sequences out of 15000+600000
  17809 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,10n,43p,315b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,10n,43p,344b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino
 /uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb
 >
-Output written on OPS.pdf (5 pages, 75655 bytes).
+Output written on mwg2_OutlineProjectSpecification.pdf (5 pages, 75655 bytes).
 PDF statistics:
  110 PDF objects out of 1000 (max. 8388607)
  97 compressed objects within 1 object stream
