@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  6 FEB 2018 14:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  7 FEB 2018 09:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -457,7 +457,7 @@ Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no  in font pplr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
+Underfull \hbox (badness 10000) in paragraph at lines 168--169
 []\OT1/ppl/m/n/10.95 docker-compose, "docker-compose home-page", [On-line] Avai
 l-able:
  []
@@ -469,7 +469,7 @@ Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no  in font pplr7t!
 
-Overfull \hbox (65.1155pt too wide) in paragraph at lines 183--184
+Overfull \hbox (65.1155pt too wide) in paragraph at lines 182--183
 []\OT1/ppl/m/n/10.95 Git Fea-ture Branch Work-flow, [On-line] Avail-able: https
 ://www.atlassian.com/git/tutorials/comparing-
  []
@@ -477,14 +477,14 @@ Overfull \hbox (65.1155pt too wide) in paragraph at lines 183--184
 [3] 
 AED: lastpage setting LastPage
 [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 221.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 221.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
  (./OPS.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 221.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 221.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
 Package rerunfilecheck Info: File `OPS.out' has not changed.
 (rerunfilecheck)             Checksum: 469422A98C206ED001986C9C65F11232;158.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 221.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 220.
  ) 
 Here is how much of TeX's memory you used:
  6911 strings out of 493029
@@ -500,7 +500,7 @@ fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino
 /uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb
 >
-Output written on OPS.pdf (5 pages, 75669 bytes).
+Output written on OPS.pdf (5 pages, 75655 bytes).
 PDF statistics:
  110 PDF objects out of 1000 (max. 8388607)
  97 compressed objects within 1 object stream
