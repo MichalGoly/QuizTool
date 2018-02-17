@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  12 FEB 2018 08:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  17 FEB 2018 10:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -459,7 +459,7 @@ Missing character: There is no ‚ in font pplr7t!
 Missing character: There is no Ä in font pplr7t!
 Missing character: There is no ù in font pplr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--169
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
 []\OT1/ppl/m/n/10.95 docker-compose, "docker-compose home-page", [On-line] Avai
 l-able:
  []
@@ -471,7 +471,7 @@ Missing character: There is no ‚ in font pplr7t!
 Missing character: There is no Ä in font pplr7t!
 Missing character: There is no ù in font pplr7t!
 
-Overfull \hbox (65.1155pt too wide) in paragraph at lines 182--183
+Overfull \hbox (65.1155pt too wide) in paragraph at lines 186--187
 []\OT1/ppl/m/n/10.95 Git Fea-ture Branch Work-flow, [On-line] Avail-able: https
 ://www.atlassian.com/git/tutorials/comparing-
  []
@@ -479,34 +479,34 @@ Overfull \hbox (65.1155pt too wide) in paragraph at lines 182--183
 [3] 
 AED: lastpage setting LastPage
 [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 224.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 224.
  (./mwg2_OutlineProjectSpecification.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 224.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 224.
 Package rerunfilecheck Info: File `mwg2_OutlineProjectSpecification.out' has no
 t changed.
 (rerunfilecheck)             Checksum: 469422A98C206ED001986C9C65F11232;158.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 220.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 224.
  ) 
 Here is how much of TeX's memory you used:
- 6911 strings out of 493029
- 98739 string characters out of 6136234
+ 6913 strings out of 493029
+ 98753 string characters out of 6136234
  194601 words of memory out of 5000000
  10307 multiletter control sequences out of 15000+600000
  17809 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,10n,43p,344b,436s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,11n,43p,344b,434s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino
 /uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb
 >
-Output written on mwg2_OutlineProjectSpecification.pdf (5 pages, 75664 bytes).
+Output written on mwg2_OutlineProjectSpecification.pdf (5 pages, 76174 bytes).
 PDF statistics:
- 110 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
- 35 named destinations out of 1000 (max. 500000)
+ 116 PDF objects out of 1000 (max. 8388607)
+ 102 compressed objects within 2 object streams
+ 37 named destinations out of 1000 (max. 500000)
  25 words of extra memory for PDF output out of 10000 (max. 10000000)
 
