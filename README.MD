@@ -2,23 +2,43 @@
 ## Outline Project Specification
 The draft of the outline project specification is available [here](docs/ops/mwg2_OutlineProjectSpecification.pdf).
 
-## Chris's Project Description
-I am looking for an Android based quiz system. The system should allow instructors to
-create quizzes online for multiple choice, multiple selection, number ranges, true/false,
-yes/no, text answers and perhaps others. During a quiz session the instructor displays (on
-his teaching machine) the quiz "slides" which the students will see displayed in sync via
-an Android app on their mobile device (smartphone, tablet). Students will see appropriate input
-controls on app depending on the kind of slide presented. The answers are submitted with an
-indicator on the instructor machine showing the percentage of respondents that have submitted.
-The instructor should be able to then display the results as an appropriate bar graph and be able
-to store the results in a csv or XML file for later analysis. It should be possible to recreate
-the slides with results based on this file.
+## Timesheet
+[Google sheets timesheet](https://docs.google.com/spreadsheets/d/1V1cxn0A4oLpygT2_huqFQaV2wz1W9XVqJLWeiHpg0qw/edit?usp=sharing)
 
-The system would be server based, and so some kind of session identifier would be required so that
-multiple sessions can be run at the same time. Simple authentication would also be useful.
+## Project Description
+Student engagement and live knowledge monitoring are vital in the provision of good quality
+lecture content in 2018. It is important to make sure audience understands concepts presented,
+and quizzes can help lecturers judge students' understanding in real time.
 
-Being able to embed quiz slide material with other HTML material would be useful. Using an existing
-editing component to generate the HTML might be a sensible approach.
+Aberystwyth University currently uses Qwizdom live polling tool during the provision
+of some lectures and practical sessions. The university operates under a single license
+forcing lecturers to book sessions before they can use the tool. Due to human nature,
+session hijacking occasionally occurs to the bemusement of both students and lecturers.
+For example, students could be shown biology slides half way through their geography
+lecture.
+
+This project will focus on the design and development of an in-house built Quiz Tool,
+enabling multiple lecturers to use it at the same time and potentially making Qwizdom
+redundant in the future. This ambition can only be achieved if the project is of
+high quality and its future maintainability is considered at all stages of the design
+and development.
+
+The Quiz Tool will allow lecturers to login with their university credentials and
+they will be authenticated using the university LDAP. Lecturers will then
+be able to upload their PDF lecture slides and create *Lectures* in the system.
+Each *Lecture* can be then edited and quizzes can be added between slides.
+An example of a quiz would be an "ABC style" question where a student can select
+one of the options and submit their answer. Once a lecturer is happy with their
+*Lecture*, he can broadcast it and receive a session key which can be
+shared with students. Lecture slides will be shown to all students and the
+lecture can be delivered in a traditional fashion up to the moment a quiz
+has been embedded between two slides. Students will then be able to answer
+the question and polling results will be presented in real time to the lecturer.
+It will be also possible to export the quiz answers as JSON for future analysis.
+
+The tool will be composed of the back-end with an associated database, and two
+front-ends. One for lecturers and one for students. Finally, the tool will be
+developed using an agile methodology, adjusted for a single person project.
 
 # Design (draft)
 ## Server side
