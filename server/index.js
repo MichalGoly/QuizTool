@@ -1,7 +1,6 @@
 var express = require('express');
 var http = require('http');
 var io = require('socket.io');
-var routes = require('./routes/index');
 
 var app = express();
 
@@ -42,8 +41,6 @@ io.on('connection', (socket) => {
     });
   });
 });
-
-// app.use('/', routes);
 
 app.get('/hello', (req, res) => {
   res.send('<h2>Hello from Express</h2>');

@@ -1,0 +1,16 @@
+version: '3.0'
+services:
+  client:
+    build: client
+    ports:
+      - "80:80"
+    links:
+      - server_node
+  server_node:
+    build: server
+    links:
+      - database
+  database:
+    image: mongo
+    ports:
+      - "27017:27017"
