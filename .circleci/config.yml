@@ -1,0 +1,45 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    machine: true
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run:
+          name: install docker-compose
+          command: |
+            set -x
+            sudo chown -R $(whoami) /usr/local/bin
+            curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+            chmod +x /usr/local/bin/docker-compose
+
+      - run:
+          name: docker compose build image
+          command: |
+            set -x
+            docker-compose build
+            docker-compose up
+
+      - run:
+          name: unit tests
+          command: |
+            curl localhost
+
+      # deploy only master and develop branch
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              chmod +x scripts/deploy.sh
+              ./scripts/deploy.sh
+            fi
+            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              chmod +x scripts/deploy_stage.sh
+              ./scripts/deploy_stage.sh
+            fi
