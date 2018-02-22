@@ -1,0 +1,41 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-client:latest",
+            "memory": 128,
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": [
+                "server_node"
+            ]
+        },
+        {
+            "name": "server_node",
+            "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-server:latest",
+            "memory": 128,
+            "essential": true,
+            "links": [
+              "database"
+            ]
+        },
+        {
+          "name": "database",
+          "image": "mongo",
+          "memory": 128,
+          "essential": true,
+          "portMappings": [
+              {
+                  "hostPort": 27017,
+                  "containerPort": 27017
+              }
+          ]
+        }
+    ]
+}
