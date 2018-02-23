@@ -1,5 +1,5 @@
 # CS39440 Major Project - Quiz Tool
-[![CircleCI](https://circleci.com/gh/MichalGoly/FinalProject/tree/master.svg?style=svg)](https://circleci.com/gh/MichalGoly/FinalProject/tree/master)
+[![CircleCI](https://circleci.com/gh/MichalGoly/FinalProject/tree/master.svg?style=svg&circle-token=7595e3f66df7f118a3566b0a64f1772a631be0d5)](https://circleci.com/gh/MichalGoly/FinalProject/tree/master)
 ## Outline Project Specification
 The draft of the outline project specification is available [here](docs/ops/mwg2_OutlineProjectSpecification.pdf).
 
