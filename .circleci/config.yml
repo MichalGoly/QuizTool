@@ -15,7 +15,8 @@ jobs:
       - run:
           name: AWS integration
           command: |
-            sudo apt update && sudo apt install awscli, python-pip
+            sudo apt-get install python-pip -y
+            sudo pip install awscli
             eb --version
 
       - run:
