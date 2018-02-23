@@ -15,8 +15,7 @@ jobs:
       - run:
           name: AWS integration
           command: |
-            sudo apt-get update && apt-get install -y python-pip libpython-dev
-            sudo -H pip install awsebcli --upgrade --ignore-installed
+            sudo -H pip install awsebcli==1.11.18
             echo "eb version:"
             eb --version
 
