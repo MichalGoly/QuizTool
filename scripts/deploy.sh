@@ -27,6 +27,8 @@ echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> $AWS_CONFIG_FILE
 
 $(aws ecr get-login --no-include-email --region eu-west-2)
 
+docker ps -a
+
 docker tag finalproject_client:latest 993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-client:latest
 docker tag finalproject_server_node:latest 993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-server:latest
 
