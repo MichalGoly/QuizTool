@@ -19,7 +19,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.messages = new Array();
-    this.title = "Coffee is life";
+    this.title = "Java > Python";
 
     this.socket.on('message-received', (msg: any) => {
       this.messages.push(msg.text);
