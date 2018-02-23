@@ -13,6 +13,13 @@ jobs:
       - checkout
 
       - run:
+          name: AWS integration
+          command: |
+            sudo -H pip install awsebcli --upgrade --ignore-installed
+            echo "eb version:"
+            eb --version
+
+      - run:
           name: install docker-compose
           command: |
             set -x
@@ -38,8 +45,4 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               chmod +x scripts/deploy.sh
               ./scripts/deploy.sh
-            fi
-            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
-              chmod +x scripts/deploy_stage.sh
-              ./scripts/deploy_stage.sh
             fi
