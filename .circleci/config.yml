@@ -15,11 +15,7 @@ jobs:
       - run:
           name: AWS integration
           command: |
-            sudo apt-get install python3.4
-            sudo apt-get update && sudo apt-get install -y python-pip libpython-dev python-dev
-            sudo -H pip install awscli --upgrade --ignore-installed
-            echo "eb version:"
-            export PATH=~/.local/bin:$PATH
+            sudo apt update && apt install awscli, python-pip
             eb --version
 
       - run:
