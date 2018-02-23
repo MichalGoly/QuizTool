@@ -15,7 +15,11 @@ jobs:
       - run:
           name: AWS integration
           command: |
-            sudo -H pip install awsebcli==1.11.18
+            sudo apt-get -y -qq update
+            sudo apt-get -y -qq install python3.4-dev
+            curl -O https://bootstrap.pypa.io/get-pip.py
+            python3.4 get-pip.py --user
+            sudo -H pip install awsebcli --upgrade --ignore-installed
             echo "eb version:"
             eb --version
 
