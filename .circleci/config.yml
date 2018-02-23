@@ -17,7 +17,7 @@ jobs:
           command: |
             sudo apt-get install python3.4
             sudo apt-get update && sudo apt-get install -y python-pip libpython-dev python-dev
-            sudo pip install awscli --upgrade
+            pip install awscli --upgrade --user
             echo "eb version:"
             eb --version
 
