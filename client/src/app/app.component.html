@@ -5,7 +5,7 @@
   <label>Message:</label>
   <input [(ngModel)]="messageText" placeholder="Type in your message">
 </div>
-<button (click)="sendMessage()">Send</button>
+<button (click)="sendMessage()" mz-button>Send</button>
 <ul>
   <li *ngFor="let message of messages">{{message}}</li>
 </ul>
