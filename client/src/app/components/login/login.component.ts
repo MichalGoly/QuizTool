@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  submitCode(): void {
+  joinSession(): void {
     window.alert("Woop");
   }
 
