@@ -46,6 +46,15 @@ app.get('/hello', (req, res) => {
   res.send('<h2>Hello from Express</h2>');
 });
 
+// mongoose -> nice and dirty in a single file...
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://database/quiz_db');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connectione error:'));
+db.once('open', () => {
+  console.log("[INFO] we are connected!");
+});
+
 server.listen('3000', () => {
   var host = server.address().address;
   var port = server.address().port;
