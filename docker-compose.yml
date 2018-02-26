@@ -8,6 +8,8 @@ services:
       - server_node
   server_node:
     build: server
+    env_file:
+      - .env
     links:
       - database
   database:

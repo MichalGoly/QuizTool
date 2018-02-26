@@ -4,3 +4,6 @@
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 !.elasticbeanstalk/config.yml
+
+# ignore the enironment variables stored on the dev machine
+.env

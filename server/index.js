@@ -94,6 +94,32 @@ app.get('/lecturers', (req, res) => {
   });
 });
 
+// passport google authentication
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: process.env.GOOGLE_CALLBACK_URL
+}, (accessToken, refreshToken, profile, done) => {
+  console.log(profile);
+  done();
+}));
+
+app.get('/auth/google',
+  passport.authenticate('google', {
+    scope: ['email profile']
+  }));
+
+app.get('/auth/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: '/login'
+  }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
 server.listen('3000', () => {
   var host = server.address().address;
   var port = server.address().port;
