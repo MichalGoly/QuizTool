@@ -103,8 +103,29 @@ passport.use(new GoogleStrategy({
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL: process.env.GOOGLE_CALLBACK_URL
 }, (accessToken, refreshToken, profile, done) => {
-  console.log(profile);
-  done();
+  Lecturer.findOne({
+    googleId: profile.id
+  }, (err, lecturer) => {
+    if (lecturer === null) {
+      var l = new Lecturer({
+        googleId: profile.id,
+        name: profile.displayName
+      });
+      l.save((err, l) => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log("[INFO] New user stored in the databse");
+          // start session and redirect to dashboard
+        }
+        done();
+      });
+    } else {
+      console.log("[WARN] User with id " + profile.id + " already exists, logging in...");
+      // start session and redirect to the dashboard
+      done();
+    }
+  })
 }));
 
 app.get('/auth/google',
