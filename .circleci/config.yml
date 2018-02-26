@@ -31,6 +31,7 @@ jobs:
       - run:
           name: docker compose build image
           command: |
+            touch .env
             set -x
             docker-compose build
             docker-compose up -d
