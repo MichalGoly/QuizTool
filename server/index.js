@@ -55,6 +55,45 @@ db.once('open', () => {
   console.log("[INFO] we are connected!");
 });
 
+var lecturerSchema = mongoose.Schema({
+  googleId: Number,
+  name: String
+});
+var Lecturer = mongoose.model('Lecturer', lecturerSchema);
+
+var chris = new Lecturer({
+  googleId: 1234,
+  name: "Chris"
+});
+chris.save((err, chris) => {
+  if (err) {
+    return console.error(err);
+  } else {
+    return console.log("[INFO] Chris stored in the databse");
+  }
+});
+var mike = new Lecturer({
+  googleId: 1235,
+  name: "Michal"
+});
+mike.save((err, mike) => {
+  if (err) {
+    return console.error(err);
+  } else {
+    return console.log("[INFO] Mike stored in the databse");
+  }
+});
+
+app.get('/lecturers', (req, res) => {
+  Lecturer.find((err, lecturers) => {
+    if (err) {
+      res.send("Error: " + err);
+    } else {
+      res.send(lecturers);
+    }
+  });
+});
+
 server.listen('3000', () => {
   var host = server.address().address;
   var port = server.address().port;
