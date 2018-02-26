@@ -1,0 +1,30 @@
+<div class="row">
+  <h1 class="center-align">Quiz Tool</h1>
+</div>
+<div class="row">
+  <div class="col s6 offset-s3">
+    <mz-tab [fixedTabWidth]="'true'">
+      <mz-tab-item [active]="'true'" [label]="'Student'">
+        <mz-card>
+          <mz-card-title>Enter your session code below</mz-card-title>
+          <mz-card-content>
+            <mz-input-container>
+              <input mz-input type="text" length="10" id="session-input" [label]="'Code'">
+              <button (click)="joinSession()" mz-button>Join</button>
+            </mz-input-container>
+          </mz-card-content>
+        </mz-card>
+      </mz-tab-item>
+      <mz-tab-item [label]="'Lecturer'">
+        <mz-card>
+          <mz-card-title>Start by logging in below</mz-card-title>
+          <mz-card-content>
+            <mz-input-container>
+              <a mz-button center-align class="red" href="/express/auth/google"><i class="fa fa-google"></i> &nbsp;&nbsp;Sign in using your Google account</a>
+            </mz-input-container>
+          </mz-card-content>
+        </mz-card>
+      </mz-tab-item>
+    </mz-tab>
+  </div>
+</div>

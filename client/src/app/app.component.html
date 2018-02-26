@@ -1,11 +1,4 @@
-<h1>
-  {{title}}
-</h1>
-<div>
-  <label>Message:</label>
-  <input [(ngModel)]="messageText" placeholder="Type in your message">
+<div class="container">
+  <app-navbar *ngIf="false"></app-navbar>
+  <app-login></app-login>
 </div>
-<button (click)="sendMessage()" mz-button>Send</button>
-<ul>
-  <li *ngFor="let message of messages">{{message}}</li>
-</ul>

@@ -46,6 +46,101 @@ app.get('/hello', (req, res) => {
   res.send('<h2>Hello from Express</h2>');
 });
 
+// mongoose -> nice and dirty in a single file...
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://database/quiz_db');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connectione error:'));
+db.once('open', () => {
+  console.log("[INFO] we are connected!");
+});
+
+var lecturerSchema = mongoose.Schema({
+  googleId: Number,
+  name: String
+});
+var Lecturer = mongoose.model('Lecturer', lecturerSchema);
+
+var chris = new Lecturer({
+  googleId: 1234,
+  name: "Chris"
+});
+chris.save((err, chris) => {
+  if (err) {
+    return console.error(err);
+  } else {
+    return console.log("[INFO] Chris stored in the databse");
+  }
+});
+var mike = new Lecturer({
+  googleId: 1235,
+  name: "Michal"
+});
+mike.save((err, mike) => {
+  if (err) {
+    return console.error(err);
+  } else {
+    return console.log("[INFO] Mike stored in the databse");
+  }
+});
+
+app.get('/lecturers', (req, res) => {
+  Lecturer.find((err, lecturers) => {
+    if (err) {
+      res.send("Error: " + err);
+    } else {
+      res.send(lecturers);
+    }
+  });
+});
+
+// passport google authentication
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: process.env.GOOGLE_CALLBACK_URL
+}, (accessToken, refreshToken, profile, done) => {
+  Lecturer.findOne({
+    googleId: profile.id
+  }, (err, lecturer) => {
+    if (lecturer === null) {
+      var l = new Lecturer({
+        googleId: profile.id,
+        name: profile.displayName
+      });
+      l.save((err, l) => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log("[INFO] New user stored in the databse");
+          // start session and redirect to dashboard
+        }
+        done();
+      });
+    } else {
+      console.log("[WARN] User with id " + profile.id + " already exists, logging in...");
+      // start session and redirect to the dashboard
+      done();
+    }
+  })
+}));
+
+app.get('/auth/google',
+  passport.authenticate('google', {
+    scope: ['email profile']
+  }));
+
+app.get('/auth/google/callback',
+  passport.authenticate('google', {
+    failureRedirect: '/login'
+  }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
 server.listen('3000', () => {
   var host = server.address().address;
   var port = server.address().port;
