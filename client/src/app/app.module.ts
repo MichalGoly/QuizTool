@@ -18,6 +18,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AuthService } from './services/auth.service';
   ],
   providers: [
     CookieService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
