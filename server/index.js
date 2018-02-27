@@ -55,11 +55,7 @@ db.once('open', () => {
   console.log("[INFO] we are connected!");
 });
 
-var lecturerSchema = mongoose.Schema({
-  googleId: Number,
-  name: String
-});
-var Lecturer = mongoose.model('Lecturer', lecturerSchema);
+var Lecturer = require('./models/lecturer');
 
 var chris = new Lecturer({
   googleId: 1234,
@@ -81,6 +77,25 @@ mike.save((err, mike) => {
     return console.error(err);
   } else {
     return console.log("[INFO] Mike stored in the databse");
+  }
+});
+
+app.get('/lecturer', (req, res) => {
+  if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+    var jwtToken = req.headers.authorization.split(' ')[1];
+    Lecturer.findOne({
+      token: jwtToken
+    }, function(err, lecturer) {
+      if (err)
+        res.send(500);
+      var lect = JSON.parse(JSON.stringify(lecturer));
+      delete lect.token;
+      // console.log("[INFO] sending back:");
+      // console.log(lect);
+      res.json(lect);
+    });
+  } else {
+    res.send(401);
   }
 });
 
@@ -107,23 +122,21 @@ passport.use(new GoogleStrategy({
     googleId: profile.id
   }, (err, lecturer) => {
     if (lecturer === null) {
-      var l = new Lecturer({
+      var newLecturer = new Lecturer({
         googleId: profile.id,
-        name: profile.displayName
+        name: profile.displayName,
+        token: accessToken
       });
-      l.save((err, l) => {
-        if (err) {
-          console.error(err);
-        } else {
-          console.log("[INFO] New user stored in the databse");
-          // start session and redirect to dashboard
-        }
-        done();
+      newLecturer.save((err, newLecturer) => {
+        if (err)
+          throw err;
+        // start session and redirect to the dashboard
+        done(null, newLecturer);
       });
     } else {
       console.log("[WARN] User with id " + profile.id + " already exists, logging in...");
       // start session and redirect to the dashboard
-      done();
+      done(null, lecturer);
     }
   })
 }));
@@ -135,9 +148,10 @@ app.get('/auth/google',
 
 app.get('/auth/google/callback',
   passport.authenticate('google', {
-    failureRedirect: '/login'
-  }),
-  function(req, res) {
+    session: false,
+    failureRedirect: '/'
+  }), (req, res) => {
+    res.cookie('auth', req.user.token);
     res.redirect('/');
   });
 

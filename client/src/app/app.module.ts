@@ -1,35 +1,57 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Routing } from './app.routing';
+import { JwtInterceptor } from './utils/jwt.interceptor';
 
 import { MzButtonModule } from 'ng2-materialize'
 import { MzCardModule } from 'ng2-materialize'
 import { MzTabModule } from 'ng2-materialize'
 import { MzInputModule } from 'ng2-materialize'
+import { MzNavbarModule } from 'ng2-materialize'
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
+import { LecturerService } from './services/lecturer.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
+    Routing,
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MzButtonModule,
     MzCardModule,
     MzTabModule,
-    MzInputModule
+    MzInputModule,
+    MzNavbarModule
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    AuthService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+    LecturerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
