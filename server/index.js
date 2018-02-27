@@ -103,23 +103,20 @@ passport.use(new GoogleStrategy({
     googleId: profile.id
   }, (err, lecturer) => {
     if (lecturer === null) {
-      var l = new Lecturer({
+      var newLecturer = new Lecturer({
         googleId: profile.id,
-        name: profile.displayName
+        name: profile.displayName,
+        token: accessToken
       });
-      l.save((err, l) => {
-        if (err) {
-          console.error(err);
-        } else {
-          console.log("[INFO] New user stored in the databse");
-          // start session and redirect to dashboard
-        }
-        done();
+      newLecturer.save((err, newLecturer) => {
+        if (err)
+          throw err;
+        done(null, newLecturer);
       });
     } else {
       console.log("[WARN] User with id " + profile.id + " already exists, logging in...");
       // start session and redirect to the dashboard
-      done();
+      done(null, lecturer);
     }
   })
 }));
@@ -131,9 +128,11 @@ app.get('/auth/google',
 
 app.get('/auth/google/callback',
   passport.authenticate('google', {
-    failureRedirect: '/login'
-  }),
-  function(req, res) {
+    session: false,
+    failureRedirect: '/'
+  }), (req, res) => {
+    res.cookie('auth', req.user.token);
+    console.log("[INFO] res.cookie.auth set to " + req.user.token);
     res.redirect('/');
   });
 

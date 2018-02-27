@@ -16,6 +16,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
+import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MzInputModule,
     MzNavbarModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

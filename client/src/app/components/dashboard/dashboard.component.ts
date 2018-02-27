@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  isCookie: boolean;
+  authCookie: string;
+
+  constructor(private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.isCookie = this.cookieService.check("auth");
+    this.authCookie = this.cookieService.get("auth");
   }
 
 }
