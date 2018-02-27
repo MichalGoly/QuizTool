@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Routing } from './app.routing';
 
 import { MzButtonModule } from 'ng2-materialize'
 import { MzCardModule } from 'ng2-materialize'
@@ -22,6 +23,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     DashboardComponent
   ],
   imports: [
+    Routing,
     BrowserModule,
     FormsModule,
     HttpModule,
