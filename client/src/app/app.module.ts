@@ -9,6 +9,7 @@ import { MzButtonModule } from 'ng2-materialize'
 import { MzCardModule } from 'ng2-materialize'
 import { MzTabModule } from 'ng2-materialize'
 import { MzInputModule } from 'ng2-materialize'
+import { MzNavbarModule } from 'ng2-materialize'
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -31,7 +32,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MzButtonModule,
     MzCardModule,
     MzTabModule,
-    MzInputModule
+    MzInputModule,
+    MzNavbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
