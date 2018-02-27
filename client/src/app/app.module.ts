@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routing } from './app.routing';
+import { JwtInterceptor } from './utils/jwt.interceptor';
 
 import { MzButtonModule } from 'ng2-materialize'
 import { MzCardModule } from 'ng2-materialize'
@@ -31,7 +32,7 @@ import { AuthGuard } from './guards/auth.guard';
     Routing,
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MzButtonModule,
     MzCardModule,
@@ -42,7 +43,12 @@ import { AuthGuard } from './guards/auth.guard';
   providers: [
     CookieService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

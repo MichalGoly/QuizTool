@@ -111,6 +111,7 @@ passport.use(new GoogleStrategy({
       newLecturer.save((err, newLecturer) => {
         if (err)
           throw err;
+        // start session and redirect to the dashboard
         done(null, newLecturer);
       });
     } else {
@@ -132,7 +133,6 @@ app.get('/auth/google/callback',
     failureRedirect: '/'
   }), (req, res) => {
     res.cookie('auth', req.user.token);
-    console.log("[INFO] res.cookie.auth set to " + req.user.token);
     res.redirect('/');
   });
 

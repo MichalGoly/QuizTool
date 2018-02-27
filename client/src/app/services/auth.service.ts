@@ -19,4 +19,12 @@ export class AuthService {
       this.router.navigate(['login']);
     }
   }
+
+  getToken(): string {
+    if (this.isLoggedIn()) {
+      return this.cookieService.get(COOKIE_KEY);
+    } else {
+      throw new Error('Current user does not appear to be logged in! (session cookie does not exist)');
+    }
+  }
 }
