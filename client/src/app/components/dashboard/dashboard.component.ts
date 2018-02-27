@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+
+import { LecturerService } from '../../services/lecturer.service';
+import { Lecturer } from '../../models/lecturer';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,14 +10,17 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class DashboardComponent implements OnInit {
 
-  isCookie: boolean;
-  authCookie: string;
+  // isCookie: boolean;
+  // authCookie: string;
 
-  constructor(private cookieService: CookieService) { }
+  lecturer: Lecturer;
+
+  constructor(private lecturerService: LecturerService) { }
 
   ngOnInit() {
-    this.isCookie = this.cookieService.check("auth");
-    this.authCookie = this.cookieService.get("auth");
+    // this.isCookie = this.cookieService.check("auth");
+    // this.authCookie = this.cookieService.get("auth");
+    this.lecturerService.getCurrentLecturer().subscribe(lecturer => this.lecturer = lecturer);
   }
 
 }

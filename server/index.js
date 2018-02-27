@@ -80,6 +80,25 @@ mike.save((err, mike) => {
   }
 });
 
+app.get('/lecturer', (req, res) => {
+  if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+    var jwtToken = req.headers.authorization.split(' ')[1];
+    Lecturer.findOne({
+      token: jwtToken
+    }, function(err, lecturer) {
+      if (err)
+        res.send(500);
+      var lect = JSON.parse(JSON.stringify(lecturer));
+      delete lect.token;
+      // console.log("[INFO] sending back:");
+      // console.log(lect);
+      res.json(lect);
+    });
+  } else {
+    res.send(401);
+  }
+});
+
 app.get('/lecturers', (req, res) => {
   Lecturer.find((err, lecturers) => {
     if (err) {

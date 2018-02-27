@@ -20,6 +20,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { LecturerService } from './services/lecturer.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { AuthGuard } from './guards/auth.guard';
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true
-    }
+    },
+    LecturerService
   ],
   bootstrap: [AppComponent]
 })
