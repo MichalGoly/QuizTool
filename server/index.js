@@ -55,11 +55,7 @@ db.once('open', () => {
   console.log("[INFO] we are connected!");
 });
 
-var lecturerSchema = mongoose.Schema({
-  googleId: Number,
-  name: String
-});
-var Lecturer = mongoose.model('Lecturer', lecturerSchema);
+var Lecturer = require('./models/lecturer');
 
 var chris = new Lecturer({
   googleId: 1234,
