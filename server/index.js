@@ -8,6 +8,7 @@ var app = express();
  * Create HTTP server.
  */
 var server = http.createServer(app);
+var rp = require('request-promise');
 
 /* setup socket.io */
 io = io(server);
@@ -57,39 +58,44 @@ db.once('open', () => {
 
 var Lecturer = require('./models/lecturer');
 
-var chris = new Lecturer({
-  googleId: 1234,
-  name: "Chris"
-});
-chris.save((err, chris) => {
-  if (err) {
-    return console.error(err);
-  } else {
-    return console.log("[INFO] Chris stored in the databse");
-  }
-});
-var mike = new Lecturer({
-  googleId: 1235,
-  name: "Michal"
-});
-mike.save((err, mike) => {
-  if (err) {
-    return console.error(err);
-  } else {
-    return console.log("[INFO] Mike stored in the databse");
-  }
-});
+//
+// var chris = new Lecturer({
+//   googleId: 1234,
+//   name: "Chris"
+// });
+// chris.save((err, chris) => {
+//   if (err) {
+//     return console.error(err);
+//   } else {
+//     return console.log("[INFO] Chris stored in the databse");
+//   }
+// });
+// var mike = new Lecturer({
+//   googleId: 1235,
+//   name: "Michal"
+// });
+// mike.save((err, mike) => {
+//   if (err) {
+//     return console.error(err);
+//   } else {
+//     return console.log("[INFO] Mike stored in the databse");
+//   }
+// });
 
+// TODO REFACTOR THIS MESS -> SPAGHETTI ANYONE?
 app.get('/lecturer', (req, res) => {
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
     var jwtToken = req.headers.authorization.split(' ')[1];
-    console.log("[INFO] jwtToken: " + jwtToken);
+    // console.log("[INFO] jwtToken: " + jwtToken);
+    if (jwtToken === null)
+      res.send(401);
+
     Lecturer.findOne({
       token: jwtToken
     }, function(err, lecturer) {
       if (err)
         res.send(500);
-      console.log("[INFO] lecturer: " + lecturer);
+      // console.log("[INFO] lecturer: " + lecturer);
       if (lecturer === null) {
         /*
          * 1. Use google's endpoint to check if token valid and not expired
@@ -97,12 +103,43 @@ app.get('/lecturer', (req, res) => {
          * 3. Yes -> Update the token in the databsae
          * 4. No -> Unauthorized
          */
-        res.send(401);
+        var options = {
+          uri: 'https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=' + jwtToken,
+          headers: {
+            'User-Agent': 'Request-Promise'
+          },
+          json: true // Automatically parses the JSON string in the response
+        };
+        rp(options)
+          .then((res) => {
+            if ("issued_to" in res && "user_id" in res &&
+              res.issued_to === "564650356041-pe6cejm0gpl4qqrd9o084mmk456nt4pn.apps.googleusercontent.com") {
+              Lecturer.findOne({
+                googleId: res.user_id
+              }, (err, lec) => {
+                if (!err && lec !== null) {
+                  // 3
+                  lec.token = jwtToken;
+                  lec.save((err, updatedLecturer) => {
+                    if (!err) {
+                      var clonedLecturer = JSON.parse(JSON.stringify(updatedLecturer));
+                      delete clonedLecturer.token;
+                      res.json(clonedLecturer);
+                    }
+                  });
+                } else {
+                  // 4
+                  console.log("[WARN] User provided a valid token, but does not exist in db. Should only be possible in dev.");
+                }
+              });
+            }
+            res.send(401);
+          }).catch((err) => {
+            res.send(401);
+          });
       } else {
         var lect = JSON.parse(JSON.stringify(lecturer));
         delete lect.token;
-        // console.log("[INFO] sending back:");
-        // console.log(lect);
         res.json(lect);
       }
     });

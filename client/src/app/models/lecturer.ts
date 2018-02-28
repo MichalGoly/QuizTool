@@ -1,5 +1,5 @@
 export class Lecturer {
   _id: string;
-  googleId: number;
+  googleId: string;
   name: string;
 }
