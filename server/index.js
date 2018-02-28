@@ -58,30 +58,6 @@ db.once('open', () => {
 
 var Lecturer = require('./models/lecturer');
 
-//
-// var chris = new Lecturer({
-//   googleId: 1234,
-//   name: "Chris"
-// });
-// chris.save((err, chris) => {
-//   if (err) {
-//     return console.error(err);
-//   } else {
-//     return console.log("[INFO] Chris stored in the databse");
-//   }
-// });
-// var mike = new Lecturer({
-//   googleId: 1235,
-//   name: "Michal"
-// });
-// mike.save((err, mike) => {
-//   if (err) {
-//     return console.error(err);
-//   } else {
-//     return console.log("[INFO] Mike stored in the databse");
-//   }
-// });
-
 // TODO REFACTOR THIS MESS -> SPAGHETTI ANYONE?
 app.get('/lecturer', (req, res) => {
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
