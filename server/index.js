@@ -5,9 +5,10 @@ var io = require('socket.io');
 var app = express();
 var server = http.createServer(app);
 
-var authHelper = require('./helpers/auth-helper');
 var db = require('./db/db');
 var Lecturer = require('./models/lecturer');
+
+app.use('/lecturers', require('./controllers/lecturers.controller'));
 
 /* setup socket.io */
 io = io(server);
@@ -39,28 +40,6 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('message-received', {
       text: message.text
     });
-  });
-});
-
-// Returns the currently logged in lecturer, without the token
-app.get('/lecturer', (req, res) => {
-  authHelper.check(req, res).then((data) => {
-    var lecturer = JSON.parse(JSON.stringify(data));
-    delete lecturer.token;
-    return res.json(lecturer);
-  }).catch((err) => {
-    console.error(err);
-    return res.send(401);
-  });
-});
-
-app.get('/lecturers', (req, res) => {
-  Lecturer.find((err, lecturers) => {
-    if (err) {
-      res.send("Error: " + err);
-    } else {
-      res.send(lecturers);
-    }
   });
 });
 
