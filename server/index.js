@@ -3,12 +3,11 @@ var http = require('http');
 var io = require('socket.io');
 
 var app = express();
-
-/**
- * Create HTTP server.
- */
 var server = http.createServer(app);
-var rp = require('request-promise');
+
+var authHelper = require('./helpers/auth-helper');
+var db = require('./db/db');
+var Lecturer = require('./models/lecturer');
 
 /* setup socket.io */
 io = io(server);
@@ -43,85 +42,16 @@ io.on('connection', (socket) => {
   });
 });
 
-app.get('/hello', (req, res) => {
-  res.send('<h2>Hello from Express</h2>');
-});
-
-// mongoose -> nice and dirty in a single file...
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://database/quiz_db');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connectione error:'));
-db.once('open', () => {
-  console.log("[INFO] we are connected!");
-});
-
-var Lecturer = require('./models/lecturer');
-
-// TODO REFACTOR THIS MESS -> SPAGHETTI ANYONE?
+// Returns the currently logged in lecturer, without the token
 app.get('/lecturer', (req, res) => {
-  if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
-    var jwtToken = req.headers.authorization.split(' ')[1];
-    // console.log("[INFO] jwtToken: " + jwtToken);
-    if (jwtToken === null)
-      res.send(401);
-
-    Lecturer.findOne({
-      token: jwtToken
-    }, function(err, lecturer) {
-      if (err)
-        res.send(500);
-      // console.log("[INFO] lecturer: " + lecturer);
-      if (lecturer === null) {
-        /*
-         * 1. Use google's endpoint to check if token valid and not expired
-         * 2. If so, check if user with the google id already in db
-         * 3. Yes -> Update the token in the databsae
-         * 4. No -> Unauthorized
-         */
-        var options = {
-          uri: 'https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=' + jwtToken,
-          headers: {
-            'User-Agent': 'Request-Promise'
-          },
-          json: true // Automatically parses the JSON string in the response
-        };
-        rp(options)
-          .then((res) => {
-            if ("issued_to" in res && "user_id" in res &&
-              res.issued_to === "564650356041-pe6cejm0gpl4qqrd9o084mmk456nt4pn.apps.googleusercontent.com") {
-              Lecturer.findOne({
-                googleId: res.user_id
-              }, (err, lec) => {
-                if (!err && lec !== null) {
-                  // 3
-                  lec.token = jwtToken;
-                  lec.save((err, updatedLecturer) => {
-                    if (!err) {
-                      var clonedLecturer = JSON.parse(JSON.stringify(updatedLecturer));
-                      delete clonedLecturer.token;
-                      res.json(clonedLecturer);
-                    }
-                  });
-                } else {
-                  // 4
-                  console.log("[WARN] User provided a valid token, but does not exist in db. Should only be possible in dev.");
-                }
-              });
-            }
-            res.send(401);
-          }).catch((err) => {
-            res.send(401);
-          });
-      } else {
-        var lect = JSON.parse(JSON.stringify(lecturer));
-        delete lect.token;
-        res.json(lect);
-      }
-    });
-  } else {
-    res.send(401);
-  }
+  authHelper.check(req, res).then((data) => {
+    var lecturer = JSON.parse(JSON.stringify(data));
+    delete lecturer.token;
+    return res.json(lecturer);
+  }).catch((err) => {
+    console.error(err);
+    return res.send(401);
+  });
 });
 
 app.get('/lecturers', (req, res) => {
