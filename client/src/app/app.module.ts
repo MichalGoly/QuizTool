@@ -11,6 +11,7 @@ import { MzCardModule } from 'ng2-materialize'
 import { MzTabModule } from 'ng2-materialize'
 import { MzInputModule } from 'ng2-materialize'
 import { MzNavbarModule } from 'ng2-materialize'
+import { MzSpinnerModule } from 'ng2-materialize'
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';

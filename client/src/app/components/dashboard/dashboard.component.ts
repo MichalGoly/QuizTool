@@ -33,6 +33,15 @@ export class DashboardComponent implements OnInit {
       "Eighth",
       "Ninth"
     ]
+    // this.lectures = [];
+    this.openDiscovery();
   }
 
+  openDiscovery(): void {
+    $('.tap-target').tapTarget('open');
+  }
+
+  closeDiscovery(): void {
+    $('.tap-target').tapTarget('close');
+  }
 }
