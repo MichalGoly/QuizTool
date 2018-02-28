@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var lecturerSchema = mongoose.Schema({
-  googleId: Number,
+  googleId: String,
   name: String,
   token: String
 });

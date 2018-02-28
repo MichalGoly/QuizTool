@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { LecturerService } from '../../services/lecturer.service';
 import { Lecturer } from '../../models/lecturer';
@@ -10,17 +11,37 @@ import { Lecturer } from '../../models/lecturer';
 })
 export class DashboardComponent implements OnInit {
 
-  // isCookie: boolean;
-  // authCookie: string;
-
   lecturer: Lecturer;
+  lectures: string[];
 
-  constructor(private lecturerService: LecturerService) { }
+  constructor(private lecturerService: LecturerService, private router: Router) { }
 
   ngOnInit() {
-    // this.isCookie = this.cookieService.check("auth");
-    // this.authCookie = this.cookieService.get("auth");
-    this.lecturerService.getCurrentLecturer().subscribe(lecturer => this.lecturer = lecturer);
+    this.lecturerService.getCurrentLecturer().subscribe(lecturer => this.lecturer = lecturer,
+      err => {
+        console.error(err);
+        this.router.navigate(['login']);
+      });
+    this.lectures = [
+      "First",
+      "Second",
+      "Third",
+      "Fourth",
+      "Fifth",
+      "Sixth",
+      "Seventh",
+      "Eighth",
+      "Ninth"
+    ]
+    // this.lectures = [];
+    this.openDiscovery();
   }
 
+  openDiscovery(): void {
+    $('.tap-target').tapTarget('open');
+  }
+
+  closeDiscovery(): void {
+    $('.tap-target').tapTarget('close');
+  }
 }
