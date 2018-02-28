@@ -3,7 +3,7 @@ var http = require('http');
 var io = require('socket.io');
 var app = express();
 var server = http.createServer(app);
-var passport = require('./helpers/passport-helper');
+var passport = require('./helpers/passport.helper');
 var db = require('./db/db');
 
 app.use('/lecturers', require('./controllers/lecturers.controller'));

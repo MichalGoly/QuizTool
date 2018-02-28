@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var authHelper = require('../helpers/auth-helper');
+var authHelper = require('../helpers/auth.helper');
 var Lecturer = require('../models/lecturer');
 
 router.get('/logged-in', getLoggedIn);
