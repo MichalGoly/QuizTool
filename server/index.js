@@ -83,16 +83,28 @@ mike.save((err, mike) => {
 app.get('/lecturer', (req, res) => {
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
     var jwtToken = req.headers.authorization.split(' ')[1];
+    console.log("[INFO] jwtToken: " + jwtToken);
     Lecturer.findOne({
       token: jwtToken
     }, function(err, lecturer) {
       if (err)
         res.send(500);
-      var lect = JSON.parse(JSON.stringify(lecturer));
-      delete lect.token;
-      // console.log("[INFO] sending back:");
-      // console.log(lect);
-      res.json(lect);
+      console.log("[INFO] lecturer: " + lecturer);
+      if (lecturer === null) {
+        /*
+         * 1. Use google's endpoint to check if token valid and not expired
+         * 2. If so, check if user with the google id already in db
+         * 3. Yes -> Update the token in the databsae
+         * 4. No -> Unauthorized
+         */
+        res.send(401);
+      } else {
+        var lect = JSON.parse(JSON.stringify(lecturer));
+        delete lect.token;
+        // console.log("[INFO] sending back:");
+        // console.log(lect);
+        res.json(lect);
+      }
     });
   } else {
     res.send(401);
