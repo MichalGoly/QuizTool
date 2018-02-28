@@ -3,12 +3,12 @@ var http = require('http');
 var io = require('socket.io');
 
 var app = express();
-
-/**
- * Create HTTP server.
- */
 var server = http.createServer(app);
+
 var rp = require('request-promise');
+var authHelper = require('./helpers/auth-helper');
+var db = require('./db/db');
+var Lecturer = require('./models/lecturer');
 
 /* setup socket.io */
 io = io(server);
@@ -42,21 +42,6 @@ io.on('connection', (socket) => {
     });
   });
 });
-
-app.get('/hello', (req, res) => {
-  res.send('<h2>Hello from Express</h2>');
-});
-
-// mongoose -> nice and dirty in a single file...
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://database/quiz_db');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connectione error:'));
-db.once('open', () => {
-  console.log("[INFO] we are connected!");
-});
-
-var Lecturer = require('./models/lecturer');
 
 // TODO REFACTOR THIS MESS -> SPAGHETTI ANYONE?
 app.get('/lecturer', (req, res) => {
