@@ -25,7 +25,6 @@ export class DashboardComponent implements OnInit {
   constructor(private lecturerService: LecturerService, private lectureService: LectureService,
     private router: Router, private authService: AuthService) {
     this.uploader = new FileUploader({ url: UPLOAD_ENDPOINT });
-
   }
 
   ngOnInit() {
@@ -47,7 +46,7 @@ export class DashboardComponent implements OnInit {
 
     // override uploader listeners
     this.uploader.onAfterAddingFile = (file) => {
-      this.uploader.uploadAll();
+      this.uploader.uploadItem(file);
     };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       console.log("PdfUpload:uploaded:", item, status, response);

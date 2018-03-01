@@ -2,12 +2,17 @@ var express = require('express');
 var router = express.Router();
 var authHelper = require('../helpers/auth.helper');
 var lecturesDb = require('../db/lectures.db');
+var multer = require('multer');
+var storage = multer.memoryStorage();
+var upload = multer({
+  storage: storage
+});
 
 router.get('/', getLectures);
 router.get('/:_id', getLecture);
 router.get('/:_id/file', getFile);
 router.delete('/:_id', deleteLecture);
-router.post('/', newLecture);
+router.post('/', upload.single('presentation'), newLecture);
 
 module.exports = router;
 
@@ -62,8 +67,12 @@ function deleteLecture(req, res) {
 }
 
 function newLecture(req, res) {
+  console.log("I love money and bitches");
   authHelper.check(req, res).then((lecturer) => {
-
+    console.log("We're in");
+    console.log(req);
+    console.log(req.file);
+    console.log(req.body);
   }).catch((err) => {
     res.send(401);
   });
