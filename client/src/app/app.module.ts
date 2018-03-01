@@ -22,6 +22,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { LecturerService } from './services/lecturer.service';
+import { LectureService } from './services/lecture.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { LecturerService } from './services/lecturer.service';
       useClass: JwtInterceptor,
       multi: true
     },
-    LecturerService
+    LecturerService,
+    LectureService
   ],
   bootstrap: [AppComponent]
 })

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LecturerService } from '../../services/lecturer.service';
+import { LectureService } from '../../services/lecture.service';
 import { Lecturer } from '../../models/lecturer';
+import { Lecture } from '../../models/lecture';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,9 +14,10 @@ import { Lecturer } from '../../models/lecturer';
 export class DashboardComponent implements OnInit {
 
   lecturer: Lecturer;
-  lectures: string[];
+  lectures: Lecture[];
 
-  constructor(private lecturerService: LecturerService, private router: Router) { }
+  constructor(private lecturerService: LecturerService, private lectureService: LectureService,
+    private router: Router) { }
 
   ngOnInit() {
     this.lecturerService.getCurrentLecturer().subscribe(lecturer => this.lecturer = lecturer,
@@ -22,18 +25,10 @@ export class DashboardComponent implements OnInit {
         console.error(err);
         this.router.navigate(['login']);
       });
-    this.lectures = [
-      "First",
-      "Second",
-      "Third",
-      "Fourth",
-      "Fifth",
-      "Sixth",
-      "Seventh",
-      "Eighth",
-      "Ninth"
-    ]
-    // this.lectures = [];
+    this.lectureService.getAll().subscribe(lectures => this.lectures = lectures,
+      err => {
+        console.error(err);
+      });
     this.openDiscovery();
   }
 

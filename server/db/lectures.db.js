@@ -1,4 +1,4 @@
-var Lecture = require('../models/lectures');
+var Lecture = require('../models/lecture');
 
 var database = {}
 
