@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FileUploader } from 'ng2-file-upload';
+import { FileUploader, FileUploaderOptions } from 'ng2-file-upload';
 
 import { LecturerService } from '../../services/lecturer.service';
 import { LectureService } from '../../services/lecture.service';
+import { AuthService } from '../../services/auth.service';
+
 import { Lecturer } from '../../models/lecturer';
 import { Lecture } from '../../models/lecture';
 
@@ -21,8 +23,9 @@ export class DashboardComponent implements OnInit {
   lectures: Lecture[];
 
   constructor(private lecturerService: LecturerService, private lectureService: LectureService,
-    private router: Router) {
+    private router: Router, private authService: AuthService) {
     this.uploader = new FileUploader({ url: UPLOAD_ENDPOINT });
+
   }
 
   ngOnInit() {
@@ -40,6 +43,15 @@ export class DashboardComponent implements OnInit {
       err => {
         console.error(err);
       });
+    this.authorizeUploader();
+
+    // override uploader listeners
+    this.uploader.onAfterAddingFile = (file) => {
+      this.uploader.uploadAll();
+    };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      console.log("PdfUpload:uploaded:", item, status, response);
+    };
   }
 
   openDiscovery(): void {
@@ -48,5 +60,17 @@ export class DashboardComponent implements OnInit {
 
   closeDiscovery(): void {
     $('.tap-target').tapTarget('close');
+  }
+
+  // Appends the Authorization: Bearer <JWT_TOKEN> to the uploader's requests
+  // https://github.com/valor-software/ng2-file-upload/issues/317
+  private authorizeUploader(): void {
+    const authHeader: Array<{
+      name: string;
+      value: string;
+    }> = [];
+    authHeader.push({ name: 'Authorization', value: 'Bearer ' + this.authService.getToken() });
+    const uploadOptions = <FileUploaderOptions>{ headers: authHeader };
+    this.uploader.setOptions(uploadOptions);
   }
 }
