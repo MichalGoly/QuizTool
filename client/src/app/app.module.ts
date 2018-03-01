@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routing } from './app.routing';
 import { JwtInterceptor } from './utils/jwt.interceptor';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { MzButtonModule } from 'ng2-materialize'
 import { MzCardModule } from 'ng2-materialize'
@@ -41,7 +42,8 @@ import { LectureService } from './services/lecture.service';
     MzCardModule,
     MzTabModule,
     MzInputModule,
-    MzNavbarModule
+    MzNavbarModule,
+    FileUploadModule
   ],
   providers: [
     CookieService,

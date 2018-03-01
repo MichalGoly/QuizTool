@@ -7,6 +7,7 @@ router.get('/', getLectures);
 router.get('/:_id', getLecture);
 router.get('/:_id/file', getFile);
 router.delete('/:_id', deleteLecture);
+router.post('/', newLecture);
 
 module.exports = router;
 
@@ -16,6 +17,13 @@ function getLectures(req, res) {
   authHelper.check(req, res).then((lecturer) => {
     lecturesDb.getAll(lecturer._id).then((lectures) => {
       console.log(lectures);
+      var out = [];
+      for (var i = 0; i < lectures.length; i++) {
+        var temp = lectures[i];
+        delete temp.file;
+        out.push(temp);
+      }
+      res.send(out);
     }).catch((err) => {
       console.error(err);
       res.send(500);
@@ -46,6 +54,14 @@ function getFile(req, res) {
 
 // Deletes a specific lecture based on the _id provided
 function deleteLecture(req, res) {
+  authHelper.check(req, res).then((lecturer) => {
+
+  }).catch((err) => {
+    res.send(401);
+  });
+}
+
+function newLecture(req, res) {
   authHelper.check(req, res).then((lecturer) => {
 
   }).catch((err) => {

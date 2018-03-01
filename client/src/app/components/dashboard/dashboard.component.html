@@ -22,9 +22,7 @@
   </div>
   <!-- Fixed action button -->
   <div class="fixed-action-btn">
-    <a id="btn-upload" class="btn-floating btn-large waves-effect waves-light">
-      <i class="large material-icons">add</i>
-    </a>
+    <input type="file" ng2FileSelect [uploader]="uploader" />
   </div>
   <!-- Button's feature discovery tooltip -->
   <div class="tap-target" data-activates="btn-upload">
