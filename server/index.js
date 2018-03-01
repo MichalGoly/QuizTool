@@ -7,6 +7,7 @@ var passport = require('./helpers/passport.helper');
 var db = require('./db/db');
 
 app.use('/lecturers', require('./controllers/lecturers.controller'));
+app.use('/lectures', require('./controllers/lectures.controller'));
 
 app.get('/auth/google',
   passport.authenticate('google', {

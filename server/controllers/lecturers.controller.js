@@ -20,6 +20,7 @@ function getLoggedIn(req, res) {
   });
 };
 
+// TODO remove once no longer needed 
 function getLecturers(req, res) {
   Lecturer.find((err, lecturers) => {
     if (err) {
