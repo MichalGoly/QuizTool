@@ -1,0 +1,21 @@
+
+1. Lecturer uploads the pdf
+2. PDF stored in Lecture as a blob
+3. PDF sliced into Slides (id, l_id, img, text, isQuiz)
+4. Dashboard renders all Lectures (with blobs removed) and first page by calling lecture.first_slide.img
+5. Lecturer clicks on a Lecture
+6. An array of slides pulled from the DB for the Lecture
+7. Angular renders images one under the other
+8. Lectuer can tap slides which should be converted to quizes. This is possible by looking
+   at the slide.text and looking for bullet points
+9. Lecturer saves, which updates all slides in the db
+10. Broadcast
+-- Student joins session --
+11. Lectuer keeps the current slide in memory and pushes the img via socket.io
+(potentially pushing the whole Slide model and decoding it on the other side, thus enabling
+quiz rendering)
+12. Students tap on A/B/C in real time
+13. Socket.io used to Student -> Server -> Lecturer
+14. Lecturer continues to the next slide
+15. Results saved in memory for later
+16. Results stored as PDF once lecture ends
