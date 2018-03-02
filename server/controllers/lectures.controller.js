@@ -67,12 +67,13 @@ function deleteLecture(req, res) {
 }
 
 function newLecture(req, res) {
-  console.log("I love money and bitches");
   authHelper.check(req, res).then((lecturer) => {
-    console.log("We're in");
-    console.log(req);
-    console.log(req.file);
-    console.log(req.body);
+    lecturesDb.create(req, lecturer._id).then(() => {
+      res.send(201);
+    }).catch((err) => {
+      console.error(err);
+      res.send(500);
+    });
   }).catch((err) => {
     res.send(401);
   });

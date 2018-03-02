@@ -1,3 +1,4 @@
+var slidesDb = require('./slides.db');
 var Lecture = require('../models/lecture');
 
 var database = {}
@@ -5,7 +6,7 @@ var database = {}
 database.getAll = getAll;
 database.getOne = getOne;
 database.getFile = getFile;
-// database.create = create; these seem redundant but will keep commented out for now
+database.create = create;
 // database.update = update;
 // database._delete = _delete;
 
@@ -39,15 +40,41 @@ function getFile(_id) {
   });
 }
 
-// function create(lecture) {
-//   return new Promise((resolve, reject) => {
-//     lecture.save().then((l) => {
-//       resolve(l);
-//     }).catch((err) => {
-//       reject(err);
-//     })
-//   });
-// }
+function create(req, lecturer_id) {
+  return new Promise((resolve, reject) => {
+    /*
+     * 1. Create a Lecture with the blob uploaded
+     * 2. Splice the pdf into slides and save them in the database
+     */
+    if (req.file !== null && req.file.mimetype !== null && req.file.mimetype === 'application/pdf' &&
+      lecturer_id !== null) {
+      var newLecture = new Lecture({
+        lecturerId: lecturer_id,
+        fileName: req.file.originalname,
+        file: req.file.buffer
+      });
+      newLecture.save().then((lect) => {
+        slidesDb.createFromLecture(lect).then(() => {
+          resolve();
+        }).catch((err) => {
+          console.error(err);
+          var errorMsg = "Failed to create slides, removing lecture...";
+          console.error(errorMsg);
+          lect.remove().then((lectRemoved) => {
+            console.log("[INFO] Fallback lecture removal was successful");
+            reject(errorMsg);
+          }).catch((err) => {
+            reject(err);
+          });
+        });
+      }).catch((err) => {
+        reject(err);
+      })
+    } else {
+      reject("req.file or lecturer_id was null or the mimetype was malformed");
+    }
+  });
+}
 //
 // function update(lecture) {
 //   return new Promise((resolve, reject) => {
