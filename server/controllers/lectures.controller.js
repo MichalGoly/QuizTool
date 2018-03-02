@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
 var authHelper = require('../helpers/auth.helper');
 var lecturesDb = require('../db/lectures.db');
 var multer = require('multer');
@@ -12,7 +13,7 @@ router.get('/', getLectures);
 router.get('/:_id', getLecture);
 router.get('/:_id/file', getFile);
 router.delete('/:_id', deleteLecture);
-router.post('/', upload.single('presentation'), newLecture);
+router.post('/', upload.single('file'), newLecture);
 
 module.exports = router;
 
@@ -21,7 +22,6 @@ module.exports = router;
 function getLectures(req, res) {
   authHelper.check(req, res).then((lecturer) => {
     lecturesDb.getAll(lecturer._id).then((lectures) => {
-      console.log(lectures);
       var out = [];
       for (var i = 0; i < lectures.length; i++) {
         var temp = lectures[i];
