@@ -11,7 +11,8 @@ COPY package*.json ./
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		ghostscript \
-		pdftk
+		pdftk \
+		poppler-utils
 
 RUN npm install
 # If you are building your code for production
