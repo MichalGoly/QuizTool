@@ -23,20 +23,30 @@ function createFromLecture(lecture) {
     } else {
       /*
        * 1. Store the PDF presentation in a temp file on disk
-       * 2. Extract text from all the slides and group it into a map where key is the
-       *    page number
-       * 3. Iterate over the keys of the map and use the page numbers to convert
-       *    PDF pages into PNG images
-       * 4. Iterate over the map and save all slides into the database
+       * 2. Extract array containing text of all slides
+       * 3. Iterate over the array and use the page numbers to convert PDF pages into PNG images
+       * 4. Iterate over the array and save all slides into the database
        * 5. Finally, remove the temp PDF file
        */
       fs.writeFile(TEMP_PRESENTATION, lecture.file, 'binary', (err) => {
         if (err) {
           reject(err);
         } else {
-          extractSlidesMap(TEMP_PRESENTATION).then((slidesMap) => {
+          extractSlidesTextArray(TEMP_PRESENTATION).then((slidesArr) => {
             // 3
-            resolve();
+            var promisesQueue = [];
+            for (var i = 0; i < slidesArr.length; i++) {
+              promisesQueue.push(extractImageFromSlide(slidesArr[i]));
+            }
+            Promise.all(promisesQueue).then((images) => {
+
+            }).catch((err) => {
+              // clean up the temp file
+              fs.unlink(TEMP_PRESENTATION, (err) => {
+                reject(err);
+              });
+              reject(err);
+            });
           }).catch((err) => {
             // clean up the temp file
             fs.unlink(TEMP_PRESENTATION, (err) => {
@@ -67,25 +77,56 @@ function createFromLecture(lecture) {
   });
 }
 
-function extractSlidesMap(filePath) {
+function extractSlidesTextArray(filePath) {
   return new Promise((resolve, reject) => {
+    /*
+     * 1. Use pdf_extract to extract text from each slide
+     * 2. Keep track of the paths to pdf single page file leftovers and append
+     *    them to the output array for future PDF -> PNG conversion
+     */
     var options = {
-      type: 'text'
+      type: 'text',
+      clean: false // keeps the single page pdfs on disk after processor completes
     };
     var processor = pdf_extract(filePath, options, (err) => {
       if (err) {
         reject(err);
       } else {
         processor.on('complete', (data) => {
-          // inspect(data.text_pages, 'extracted text pages');
-          // callback(null, data.text_pages);
-          console.log(data);
-          resolve();
+          var slides = [];
+          for (var i = 0; i < data.text_pages.length) {
+            slides.push({
+              text: data.text_pages[i],
+              slidePath: data.single_page_pdf_file_paths[i]
+            });
+          }
+          resolve(slides);
         });
         processor.on('error', (err) => {
           reject(err);
         });
       }
+    });
+  });
+}
+
+function extractImageFromSlide(slide) {
+  return new Promise((resolve, reject) => {
+    /*
+     * 1. Extract the png from the single page PDF provided
+     * 2. Clean up the slide from disk before resolving the image back
+     */
+    var pngStream = scissors(slide.slidePath).pages(1).pngStream(300);
+    streamToBuffer(pngStream).then((img) => {
+      fs.unlink(slide.slidePath, (err) => {
+        // does not matter
+        console.warn(err);
+        resolve(img);
+      });
+      resolve(img);
+    }).catch((err) => {
+      console.error("[ERR] extractImageFromSlide failed: " + err);
+      reject(err);
     });
   });
 }
