@@ -23,10 +23,11 @@ function createFromLecture(lecture) {
     } else {
       /*
        * 1. Store the PDF presentation in a temp file on disk
-       * 2. Extract array containing text of all slides
-       * 3. Iterate over the array and use the page numbers to convert PDF pages into PNG images
-       * 4. Iterate over the array and save all slides into the database
-       * 5. Finally, remove the temp PDF file
+       * 2. Extract text from all slides and take keep track of paths of single page PDF
+       *    left over by pdf-extract processor
+       * 3. Convert each single sided PDF file into a PNG image
+       * 4. Group the extracted data into Slide models
+       * 5. Bulk insert all into the database
        */
       fs.writeFile(TEMP_PRESENTATION, lecture.file, 'binary', (err) => {
         if (err) {
