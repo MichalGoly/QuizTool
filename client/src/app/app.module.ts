@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routing } from './app.routing';
 import { JwtInterceptor } from './utils/jwt.interceptor';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { MzButtonModule } from 'ng2-materialize'
 import { MzCardModule } from 'ng2-materialize'
@@ -22,6 +23,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { LecturerService } from './services/lecturer.service';
+import { LectureService } from './services/lecture.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { LecturerService } from './services/lecturer.service';
     MzCardModule,
     MzTabModule,
     MzInputModule,
-    MzNavbarModule
+    MzNavbarModule,
+    FileUploadModule
   ],
   providers: [
     CookieService,
@@ -51,7 +54,8 @@ import { LecturerService } from './services/lecturer.service';
       useClass: JwtInterceptor,
       multi: true
     },
-    LecturerService
+    LecturerService,
+    LectureService
   ],
   bootstrap: [AppComponent]
 })

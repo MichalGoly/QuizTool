@@ -10,6 +10,6 @@ export class LecturerService {
   // Retrieves the currently logged in lecturer. The jwt interceptor makes sure this
   // works by appending the authorization header to the HTTP request.s
   getCurrentLecturer() {
-    return this.http.get<Lecturer>('express/lecturer');
+    return this.http.get<Lecturer>('express/lecturers/logged-in');
   }
 }

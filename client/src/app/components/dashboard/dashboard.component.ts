@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FileUploader, FileUploaderOptions } from 'ng2-file-upload';
 
 import { LecturerService } from '../../services/lecturer.service';
+import { LectureService } from '../../services/lecture.service';
+import { AuthService } from '../../services/auth.service';
+
 import { Lecturer } from '../../models/lecturer';
+import { Lecture } from '../../models/lecture';
+
+const UPLOAD_ENDPOINT = 'express/lectures';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,10 +18,17 @@ import { Lecturer } from '../../models/lecturer';
 })
 export class DashboardComponent implements OnInit {
 
+  uploader: FileUploader;
   lecturer: Lecturer;
-  lectures: string[];
+  lectures: Lecture[];
 
-  constructor(private lecturerService: LecturerService, private router: Router) { }
+  constructor(private lecturerService: LecturerService, private lectureService: LectureService,
+    private router: Router, private authService: AuthService) {
+    this.uploader = new FileUploader({
+      url: UPLOAD_ENDPOINT,
+      autoUpload: true
+    });
+  }
 
   ngOnInit() {
     this.lecturerService.getCurrentLecturer().subscribe(lecturer => this.lecturer = lecturer,
@@ -22,19 +36,26 @@ export class DashboardComponent implements OnInit {
         console.error(err);
         this.router.navigate(['login']);
       });
-    this.lectures = [
-      "First",
-      "Second",
-      "Third",
-      "Fourth",
-      "Fifth",
-      "Sixth",
-      "Seventh",
-      "Eighth",
-      "Ninth"
-    ]
-    // this.lectures = [];
-    this.openDiscovery();
+    this.lectureService.getAll().subscribe(lectures => {
+      this.lectures = lectures
+      if (this.lectures.length === 0) {
+        this.openDiscovery();
+      }
+    },
+      err => {
+        console.error(err);
+      });
+    this.authorizeUploader();
+
+    // override uploader listeners
+    // this.uploader.onAfterAddingFile = (file) => {
+    //   console.log(file);
+    //   // this.uploader.uploadItem(file);
+    //
+    // };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      console.log("PdfUpload:uploaded:", item, status, response);
+    };
   }
 
   openDiscovery(): void {
@@ -43,5 +64,17 @@ export class DashboardComponent implements OnInit {
 
   closeDiscovery(): void {
     $('.tap-target').tapTarget('close');
+  }
+
+  // Appends the Authorization: Bearer <JWT_TOKEN> to the uploader's requests
+  // https://github.com/valor-software/ng2-file-upload/issues/317
+  private authorizeUploader(): void {
+    const authHeader: Array<{
+      name: string;
+      value: string;
+    }> = [];
+    authHeader.push({ name: 'Authorization', value: 'Bearer ' + this.authService.getToken() });
+    const uploadOptions = <FileUploaderOptions>{ headers: authHeader };
+    this.uploader.setOptions(uploadOptions);
   }
 }

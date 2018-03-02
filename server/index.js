@@ -1,13 +1,48 @@
 var express = require('express');
 var http = require('http');
 var io = require('socket.io');
-
 var app = express();
 var server = http.createServer(app);
-
-var authHelper = require('./helpers/auth-helper');
+var passport = require('./helpers/passport.helper');
 var db = require('./db/db');
-var Lecturer = require('./models/lecturer');
+
+app.use('/lecturers', require('./controllers/lecturers.controller'));
+app.use('/lectures', require('./controllers/lectures.controller'));
+
+// TODO remove once no longer needed for dev purposes
+// var Slide = require('./models/slide');
+// app.get('/img', (req, res) => {
+//   Slide.find((err, slides) => {
+//     if (err) {
+//       res.send("Error: " + err);
+//     } else {
+//       res.send(slides);
+//     }
+//   });
+// });
+//
+// app.get('/img/:_id', (req, res) => {
+//   Slide.findById(req.params._id).then((slide) => {
+//     res.contentType('image/png');
+//     res.send(slide.image);
+//   }).catch((err) => {
+//     res.send("error: " + err);
+//   })
+// });
+
+app.get('/auth/google',
+  passport.authenticate('google', {
+    scope: ['email profile']
+  }));
+
+app.get('/auth/google/callback',
+  passport.authenticate('google', {
+    session: false,
+    failureRedirect: '/'
+  }), (req, res) => {
+    res.cookie('auth', req.user.token);
+    res.redirect('/');
+  });
 
 /* setup socket.io */
 io = io(server);
@@ -41,74 +76,6 @@ io.on('connection', (socket) => {
     });
   });
 });
-
-// Returns the currently logged in lecturer, without the token
-app.get('/lecturer', (req, res) => {
-  authHelper.check(req, res).then((data) => {
-    var lecturer = JSON.parse(JSON.stringify(data));
-    delete lecturer.token;
-    return res.json(lecturer);
-  }).catch((err) => {
-    console.error(err);
-    return res.send(401);
-  });
-});
-
-app.get('/lecturers', (req, res) => {
-  Lecturer.find((err, lecturers) => {
-    if (err) {
-      res.send("Error: " + err);
-    } else {
-      res.send(lecturers);
-    }
-  });
-});
-
-// passport google authentication
-var passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
-passport.use(new GoogleStrategy({
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.GOOGLE_CALLBACK_URL
-}, (accessToken, refreshToken, profile, done) => {
-  Lecturer.findOne({
-    googleId: profile.id
-  }, (err, lecturer) => {
-    if (lecturer === null) {
-      var newLecturer = new Lecturer({
-        googleId: profile.id,
-        name: profile.displayName,
-        token: accessToken
-      });
-      newLecturer.save((err, newLecturer) => {
-        if (err)
-          throw err;
-        // start session and redirect to the dashboard
-        done(null, newLecturer);
-      });
-    } else {
-      console.log("[WARN] User with id " + profile.id + " already exists, logging in...");
-      // start session and redirect to the dashboard
-      done(null, lecturer);
-    }
-  })
-}));
-
-app.get('/auth/google',
-  passport.authenticate('google', {
-    scope: ['email profile']
-  }));
-
-app.get('/auth/google/callback',
-  passport.authenticate('google', {
-    session: false,
-    failureRedirect: '/'
-  }), (req, res) => {
-    res.cookie('auth', req.user.token);
-    res.redirect('/');
-  });
 
 server.listen('3000', () => {
   var host = server.address().address;

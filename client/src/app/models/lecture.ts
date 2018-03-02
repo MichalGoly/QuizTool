@@ -1,3 +1,5 @@
 export class Lecture {
-  fileName: string
+  _id: string;
+  lecturerId: string;
+  fileName: string;
 }
