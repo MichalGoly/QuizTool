@@ -5,7 +5,8 @@ var slideSchema = mongoose.Schema({
   lectureId: String,
   image: Buffer,
   text: String,
-  isQuiz: Boolean
+  isQuiz: Boolean,
+  slideNumber: Number
 });
 
 module.exports = mongoose.model('Slide', slideSchema);

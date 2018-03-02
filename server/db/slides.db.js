@@ -39,40 +39,48 @@ function createFromLecture(lecture) {
               promisesQueue.push(extractImageFromSlide(slidesArr[i]));
             }
             Promise.all(promisesQueue).then((images) => {
-
+              var slides = [];
+              for (var j = 0; j < slidesArr.length; j++) {
+                slides.push(new Slide({
+                  lectureId: lecture._id,
+                  image: images[j],
+                  text: slidesArr[j].text,
+                  isQuiz: false,
+                  slideNumber: j + 1
+                }));
+              }
+              Slide.insertMany(slides).then((docs) => {
+                console.log("Inserted " + docs.length + " slides");
+                resolve();
+              }).catch((err) => {
+                // clean up the temp file
+                fs.unlink(TEMP_PRESENTATION, (err2) => {
+                  if (err2) {
+                    console.error(err2);
+                  }
+                  reject(err);
+                });
+              });
             }).catch((err) => {
               // clean up the temp file
-              fs.unlink(TEMP_PRESENTATION, (err) => {
+              fs.unlink(TEMP_PRESENTATION, (err2) => {
+                if (err2) {
+                  console.error(err2);
+                }
                 reject(err);
               });
-              reject(err);
             });
           }).catch((err) => {
             // clean up the temp file
-            fs.unlink(TEMP_PRESENTATION, (err) => {
+            fs.unlink(TEMP_PRESENTATION, (err2) => {
+              if (err2) {
+                console.error(err2);
+              }
               reject(err);
             });
-            reject(err);
           });
         }
       });
-
-      // pngStream = scissors(bufferToStream(lecture.file)).pages(1).pngStream(300);
-      // streamToBuffer(pngStream).then((buffer) => {
-      //   var slide = new Slide({
-      //     lectureId: lecture._id,
-      //     image: buffer,
-      //     text: "This is some text found on the slide",
-      //     isQuiz: false
-      //   });
-      //   slide.save().then((savedSlide) => {
-      //     resolve();
-      //   }).catch((err) => {
-      //     reject(err);
-      //   })
-      // }).catch((err) => {
-      //   reject(err);
-      // });
     }
   });
 }
@@ -94,7 +102,7 @@ function extractSlidesTextArray(filePath) {
       } else {
         processor.on('complete', (data) => {
           var slides = [];
-          for (var i = 0; i < data.text_pages.length) {
+          for (var i = 0; i < data.text_pages.length; i++) {
             slides.push({
               text: data.text_pages[i],
               slidePath: data.single_page_pdf_file_paths[i]
@@ -120,10 +128,11 @@ function extractImageFromSlide(slide) {
     streamToBuffer(pngStream).then((img) => {
       fs.unlink(slide.slidePath, (err) => {
         // does not matter
-        console.warn(err);
+        if (err) {
+          console.warn("[WARN]: " + err);
+        }
         resolve(img);
       });
-      resolve(img);
     }).catch((err) => {
       console.error("[ERR] extractImageFromSlide failed: " + err);
       reject(err);
