@@ -142,14 +142,6 @@ function extractImageFromSlide(slide) {
 }
 
 // http://derpturkey.com/buffer-to-stream-in-node/
-function bufferToStream(buffer) {
-  let stream = new Duplex();
-  stream.push(buffer);
-  stream.push(null);
-  return stream;
-}
-
-// http://derpturkey.com/buffer-to-stream-in-node/
 function streamToBuffer(stream) {
   return new Promise((resolve, reject) => {
     let buffers = [];
