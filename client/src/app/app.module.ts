@@ -24,13 +24,15 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { LecturerService } from './services/lecturer.service';
 import { LectureService } from './services/lecture.service';
+import { BroadcastComponent } from './components/broadcast/broadcast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    BroadcastComponent
   ],
   imports: [
     Routing,

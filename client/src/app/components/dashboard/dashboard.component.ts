@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   uploader: FileUploader;
   lecturer: Lecturer;
   lectures: Lecture[];
+  lectureBroadcasted: Lecture;
 
   constructor(private lecturerService: LecturerService, private lectureService: LectureService,
     private router: Router, private authService: AuthService) {
@@ -36,8 +37,17 @@ export class DashboardComponent implements OnInit {
         console.error(err);
         this.router.navigate(['login']);
       });
+    this.refreshLecturers();
+    this.authorizeUploader();
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      console.log("PdfUpload:uploaded:", item, status, response);
+      this.refreshLecturers();
+    };
+  }
+
+  refreshLecturers(): void {
     this.lectureService.getAll().subscribe(lectures => {
-      this.lectures = lectures
+      this.lectures = lectures;
       if (this.lectures.length === 0) {
         this.openDiscovery();
       }
@@ -45,17 +55,10 @@ export class DashboardComponent implements OnInit {
       err => {
         console.error(err);
       });
-    this.authorizeUploader();
+  }
 
-    // override uploader listeners
-    // this.uploader.onAfterAddingFile = (file) => {
-    //   console.log(file);
-    //   // this.uploader.uploadItem(file);
-    //
-    // };
-    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      console.log("PdfUpload:uploaded:", item, status, response);
-    };
+  broadcast(lecture: Lecture): void {
+    this.lectureBroadcasted = lecture;
   }
 
   openDiscovery(): void {
