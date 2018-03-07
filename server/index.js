@@ -8,6 +8,7 @@ var db = require('./db/db');
 
 app.use('/lecturers', require('./controllers/lecturers.controller'));
 app.use('/lectures', require('./controllers/lectures.controller'));
+app.use('/slides', require('./controllers/slides.controller'));
 
 // TODO remove once no longer needed for dev purposes
 // var Slide = require('./models/slide');

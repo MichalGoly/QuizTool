@@ -1,4 +1,9 @@
 <div *ngIf="lecture">
-  <button mz-button (click)="navigateBack()">Back</button>
-  <p>{{lecture._id}}</p>
+  <button mz-button [flat]="'true'" (click)="navigateBack()">Back</button>
+  <h3>{{lecture.fileName}}</h3>
+  <ul>
+    <li *ngFor="let slide of slides">
+      {{slide._id}} {{slide.slideNumber}}
+    </li>
+  </ul>
 </div>

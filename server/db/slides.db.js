@@ -93,15 +93,24 @@ function getByLectureId(lecture_id) {
   return new Promise((resolve, reject) => {
     Slide.find({
       lectureId: lecture_id
-    }, {
-      sort: {
-        slideNumber: 1 // ascending
-      }
+    }).sort({
+      slideNumber: 'ascending'
     }).then((slides) => {
       resolve(slides);
     }).catch((err) => {
       reject(err);
     });
+    // Slide.find({
+    //   lectureId: lecture_id
+    // }, {
+    //   sort: {
+    //     slideNumber: 1 // ascending
+    //   }
+    // }).then((slides) => {
+    //   resolve(slides);
+    // }).catch((err) => {
+    //   reject(err);
+    // });
   });
 }
 

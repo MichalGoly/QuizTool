@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Lecture } from '../../models/lecture';
+import { Slide } from '../../models/slide';
+import { SlideService } from '../../services/slide.service';
 
 @Component({
   selector: 'app-broadcast',
@@ -15,9 +17,16 @@ export class BroadcastComponent implements OnInit {
   @Output()
   lectureChange: EventEmitter<Lecture> = new EventEmitter<Lecture>();
 
-  constructor() { }
+  slides: Slide[];
+
+  constructor(private slideService: SlideService) { }
 
   ngOnInit() {
+    this.slideService.getByLectureId(this.lecture._id).subscribe(slides => this.slides = slides,
+      err => {
+        console.error(err);
+        // TODO this should be handled by an error handler
+      });
   }
 
   navigateBack(): void {

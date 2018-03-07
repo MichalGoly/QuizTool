@@ -8,7 +8,7 @@ export class SlideService {
   constructor(private http: HttpClient) { }
 
   getByLectureId(_id: string) {
-    return this.http.get<Slide>('express/slides/' + _id);
+    return this.http.get<Slide[]>('express/slides/' + _id);
   }
 
 }
