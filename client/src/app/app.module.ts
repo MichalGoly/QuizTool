@@ -18,13 +18,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { BroadcastComponent } from './components/broadcast/broadcast.component';
 
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { LecturerService } from './services/lecturer.service';
 import { LectureService } from './services/lecture.service';
-import { BroadcastComponent } from './components/broadcast/broadcast.component';
+import { SlideService } from './services/slide.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { BroadcastComponent } from './components/broadcast/broadcast.component';
       multi: true
     },
     LecturerService,
-    LectureService
+    LectureService,
+    SlideService
   ],
   bootstrap: [AppComponent]
 })
