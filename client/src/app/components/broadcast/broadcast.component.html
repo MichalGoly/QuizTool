@@ -3,6 +3,7 @@
   <h3>{{lecture.fileName}}</h3>
   <div *ngIf="slides; else spinner">
     <p>Current slide: {{slides[currentIndex]._id}} {{slides[currentIndex].slideNumber}}</p>
+    <img [src]="getSrc(slides[currentIndex].image)" width="800" height="600">
     <button mz-button [disabled]="isPreviousDisabled()" (click)="previousSlide()">Previous</button>
     <button mz-button [disabled]="isNextDisabled()" (click)="nextSlide()">Next</button>
   </div>

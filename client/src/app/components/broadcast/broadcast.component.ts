@@ -49,10 +49,13 @@ export class BroadcastComponent implements OnInit {
     }
   }
 
+  getSrc(image: string): string {
+    return 'data:image/png;base64,' + image;
+  }
+
   nextSlide(): void {
     if (!this.isNextDisabled()) {
       this.currentIndex++;
     }
   }
-
 }
