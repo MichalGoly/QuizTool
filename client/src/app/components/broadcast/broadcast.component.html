@@ -1,9 +1,14 @@
 <div *ngIf="lecture">
   <button mz-button [flat]="'true'" (click)="navigateBack()">Back</button>
   <h3>{{lecture.fileName}}</h3>
-  <ul>
-    <li *ngFor="let slide of slides">
-      {{slide._id}} {{slide.slideNumber}}
-    </li>
-  </ul>
+  <div *ngIf="slides; else spinner">
+    <p>Current slide: {{slides[currentIndex]._id}} {{slides[currentIndex].slideNumber}}</p>
+    <button mz-button [disabled]="isPreviousDisabled()" (click)="previousSlide()">Previous</button>
+    <button mz-button [disabled]="isNextDisabled()" (click)="nextSlide()">Next</button>
+  </div>
+  <ng-template #spinner>
+    <p>
+      <mz-spinner></mz-spinner>
+    </p>
+  </ng-template>
 </div>

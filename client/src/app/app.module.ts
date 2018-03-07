@@ -46,7 +46,8 @@ import { SlideService } from './services/slide.service';
     MzTabModule,
     MzInputModule,
     MzNavbarModule,
-    FileUploadModule
+    FileUploadModule,
+    MzSpinnerModule
   ],
   providers: [
     CookieService,
