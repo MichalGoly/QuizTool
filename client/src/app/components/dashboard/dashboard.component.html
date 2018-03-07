@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container">
   <div *ngIf="lectureBroadcasted; else lecturesList">
-    <app-broadcast [lecture]="lectureBroadcasted"></app-broadcast>
+    <app-broadcast [(lecture)]="lectureBroadcasted"></app-broadcast>
   </div>
   <ng-template #lecturesList>
     <div *ngIf="lecturer" class="row">
