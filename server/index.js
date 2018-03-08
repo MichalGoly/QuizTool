@@ -10,27 +10,6 @@ app.use('/lecturers', require('./controllers/lecturers.controller'));
 app.use('/lectures', require('./controllers/lectures.controller'));
 app.use('/slides', require('./controllers/slides.controller'));
 
-// TODO remove once no longer needed for dev purposes
-// var Slide = require('./models/slide');
-// app.get('/img', (req, res) => {
-//   Slide.find((err, slides) => {
-//     if (err) {
-//       res.send("Error: " + err);
-//     } else {
-//       res.send(slides);
-//     }
-//   });
-// });
-//
-// app.get('/img/:_id', (req, res) => {
-//   Slide.findById(req.params._id).then((slide) => {
-//     res.contentType('image/png');
-//     res.send(slide.image);
-//   }).catch((err) => {
-//     res.send("error: " + err);
-//   })
-// });
-
 app.get('/auth/google',
   passport.authenticate('google', {
     scope: ['email profile']
