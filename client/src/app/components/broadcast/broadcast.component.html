@@ -1,11 +1,26 @@
 <div *ngIf="lecture">
-  <button mz-button [flat]="'true'" (click)="navigateBack()">Back</button>
-  <h3>{{lecture.fileName}}</h3>
+  <div class="row">
+    <div class="col s2">
+      <button mz-button [flat]="'true'" (click)="navigateBack()">Back</button>
+    </div>
+    <div class="col s10">
+      <h3 class="center-align">{{lecture.fileName}}</h3>
+    </div>
+  </div>
   <div *ngIf="slides; else spinner">
-    <p>Current slide: {{slides[currentIndex]._id}} {{slides[currentIndex].slideNumber}}</p>
-    <img [src]="getSrc(slides[currentIndex].image)" width="800" height="600">
-    <button mz-button [disabled]="isPreviousDisabled()" (click)="previousSlide()">Previous</button>
-    <button mz-button [disabled]="isNextDisabled()" (click)="nextSlide()">Next</button>
+    <div class="row">
+      <div class="col s6 offset-s3">
+        <img [src]="getSrc(slides[currentIndex].image)" width="800" height="600">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s2">
+        <button mz-button [disabled]="isPreviousDisabled()" (click)="previousSlide()">Previous</button>
+      </div>
+      <div class="col s2 offset-s8">
+        <button mz-button [disabled]="isNextDisabled()" (click)="nextSlide()">Next</button>
+      </div>
+    </div>
   </div>
   <ng-template #spinner>
     <p>
