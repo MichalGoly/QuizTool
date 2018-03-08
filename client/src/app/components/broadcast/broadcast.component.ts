@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import * as io from 'socket.io-client';
 
 import { Lecture } from '../../models/lecture';
 import { Slide } from '../../models/slide';
+
 import { SlideService } from '../../services/slide.service';
 
 @Component({
@@ -19,16 +21,20 @@ export class BroadcastComponent implements OnInit {
 
   slides: Slide[];
   currentIndex: number;
+  socket: SocketIOClient.Socket;
 
   constructor(private slideService: SlideService) { }
 
   ngOnInit() {
-    this.slideService.getByLectureId(this.lecture._id).subscribe(slides => this.slides = slides,
-      err => {
-        console.error(err);
-        // TODO this should be handled by an error handler
-      });
+    this.slideService.getByLectureId(this.lecture._id).subscribe((slides) => {
+      this.slides = slides;
+      this.emitCurrentSlide();
+    }, err => {
+      console.error(err);
+      // TODO this should be handled by an error handler
+    });
     this.currentIndex = 0;
+    this.socket = io.connect(location.host);
   }
 
   navigateBack(): void {
@@ -46,6 +52,14 @@ export class BroadcastComponent implements OnInit {
   previousSlide(): void {
     if (!this.isPreviousDisabled()) {
       this.currentIndex--;
+      this.emitCurrentSlide();
+    }
+  }
+
+  nextSlide(): void {
+    if (!this.isNextDisabled()) {
+      this.currentIndex++;
+      this.emitCurrentSlide();
     }
   }
 
@@ -53,9 +67,11 @@ export class BroadcastComponent implements OnInit {
     return 'data:image/png;base64,' + image;
   }
 
-  nextSlide(): void {
-    if (!this.isNextDisabled()) {
-      this.currentIndex++;
-    }
+  emitCurrentSlide(): void {
+    console.log("emitCurrentSlide called");
+    const currentSlide = {
+      img: this.slides[this.currentIndex].image
+    };
+    this.socket.emit('slide-update', currentSlide);
   }
 }
