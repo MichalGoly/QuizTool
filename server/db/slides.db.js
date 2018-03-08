@@ -100,17 +100,6 @@ function getByLectureId(lecture_id) {
     }).catch((err) => {
       reject(err);
     });
-    // Slide.find({
-    //   lectureId: lecture_id
-    // }, {
-    //   sort: {
-    //     slideNumber: 1 // ascending
-    //   }
-    // }).then((slides) => {
-    //   resolve(slides);
-    // }).catch((err) => {
-    //   reject(err);
-    // });
   });
 }
 
