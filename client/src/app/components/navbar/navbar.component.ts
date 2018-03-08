@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -8,6 +8,12 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./navbar.component.sass']
 })
 export class NavbarComponent implements OnInit {
+
+  @Input()
+  isDashboard: boolean;
+
+  @Input()
+  sessionCode: string;
 
   constructor(private authService: AuthService) { }
 

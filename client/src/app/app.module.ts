@@ -18,19 +18,24 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { BroadcastComponent } from './components/broadcast/broadcast.component';
 
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { LecturerService } from './services/lecturer.service';
 import { LectureService } from './services/lecture.service';
+import { SlideService } from './services/slide.service';
+import { LectureComponent } from './components/lecture/lecture.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    BroadcastComponent,
+    LectureComponent
   ],
   imports: [
     Routing,
@@ -43,7 +48,8 @@ import { LectureService } from './services/lecture.service';
     MzTabModule,
     MzInputModule,
     MzNavbarModule,
-    FileUploadModule
+    FileUploadModule,
+    MzSpinnerModule
   ],
   providers: [
     CookieService,
@@ -55,7 +61,8 @@ import { LectureService } from './services/lecture.service';
       multi: true
     },
     LecturerService,
-    LectureService
+    LectureService,
+    SlideService
   ],
   bootstrap: [AppComponent]
 })

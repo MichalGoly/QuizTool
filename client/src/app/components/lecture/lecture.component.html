@@ -1,0 +1,13 @@
+<app-navbar [isDashboard]="false" [sessionCode]="sessionCode"></app-navbar>
+<div class="container">
+  <div *ngIf="image; else noImage">
+    <div class="row">
+      <div class="col s6 offset-s3">
+        <img id="broadcast-img" [src]="image" width="800" height="600">
+      </div>
+    </div>
+  </div>
+  <ng-template #noImage>
+    <p>Your session has not started yet, please wait...</p>
+  </ng-template>
+</div>

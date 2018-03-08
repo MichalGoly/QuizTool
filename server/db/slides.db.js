@@ -11,6 +11,7 @@ var Slide = require('../models/slide');
 var database = {}
 
 database.createFromLecture = createFromLecture;
+database.getByLectureId = getByLectureId;
 
 module.exports = database;
 
@@ -83,6 +84,22 @@ function createFromLecture(lecture) {
         }
       });
     }
+  });
+}
+
+// Returns the list of slides for the specified lecture and sorts them according
+// to slide numbers
+function getByLectureId(lecture_id) {
+  return new Promise((resolve, reject) => {
+    Slide.find({
+      lectureId: lecture_id
+    }).sort({
+      slideNumber: 'ascending'
+    }).then((slides) => {
+      resolve(slides);
+    }).catch((err) => {
+      reject(err);
+    });
   });
 }
 

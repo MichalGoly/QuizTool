@@ -1,39 +1,44 @@
-<app-navbar></app-navbar>
+<app-navbar [isDashboard]="true"></app-navbar>
 <div class="container">
-  <div *ngIf="lecturer" class="row">
-    <h4>Hello, {{lecturer.name}}! Your lectures:</h4>
+  <div *ngIf="lectureBroadcasted; else lecturesList">
+    <app-broadcast [(lecture)]="lectureBroadcasted"></app-broadcast>
   </div>
-  <div class="row">
-    <div *ngFor="let lecture of lectures" class="col l3">
-      <div class="card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="/assets/images/pdf.png">
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">{{lecture.fileName}}<i class="material-icons right">more_vert</i></span>
-          <p><a href="">This is a link</a></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">{{lecture.fileName}}<i class="material-icons right">close</i></span>
-          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+  <ng-template #lecturesList>
+    <div *ngIf="lecturer" class="row">
+      <h4>Hello, {{lecturer.name}}! Your lectures:</h4>
+    </div>
+    <div class="row">
+      <div *ngFor="let lecture of lectures" class="col l3">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="/assets/images/pdf.png">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">{{lecture.fileName}}<i class="material-icons right">more_vert</i></span>
+            <p><a href="javascript:void(0)" (click)="broadcast(lecture)">Broadcast</a></p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">{{lecture.fileName}}<i class="material-icons right">close</i></span>
+            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Fixed action button -->
-  <div class="fixed-action-btn">
-    <div class="file-field input-field">
-      <div id="btn-upload" class="btn-floating btn-large waves-effect waves-light">
-        <i class="large material-icons">add</i>
-        <input type="file" ng2FileSelect [uploader]="uploader" />
+    <!-- Fixed action button -->
+    <div class="fixed-action-btn">
+      <div class="file-field input-field">
+        <div id="btn-upload" class="btn-floating btn-large waves-effect waves-light">
+          <i class="large material-icons">add</i>
+          <input type="file" ng2FileSelect [uploader]="uploader" />
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Button's feature discovery tooltip -->
-  <div class="tap-target" data-activates="btn-upload">
-    <div class="tap-target-content">
-      <h5>Upload your PDF slides</h5>
-      <p>You can upload your slides by clicking the action button, or dragging and dropping your file anywhere on the screen :)</p>
+    <!-- Button's feature discovery tooltip -->
+    <div class="tap-target" data-activates="btn-upload">
+      <div class="tap-target-content">
+        <h5>Upload your PDF slides</h5>
+        <p>You can upload your slides by clicking the action button, or dragging and dropping your file anywhere on the screen :)</p>
+      </div>
     </div>
-  </div>
+  </ng-template>
 </div>

@@ -10,8 +10,8 @@
             <mz-card-title>Enter your session code below</mz-card-title>
             <mz-card-content>
               <mz-input-container>
-                <input mz-input type="text" length="10" id="session-input" [label]="'Code'">
-                <button (click)="joinSession()" mz-button>Join</button>
+                <input #sessionInput mz-input type="text" length="10" id="session-input" [label]="'Code'">
+                <button (click)="joinSession(sessionInput.value)" mz-button>Join</button>
               </mz-input-container>
             </mz-card-content>
           </mz-card>
