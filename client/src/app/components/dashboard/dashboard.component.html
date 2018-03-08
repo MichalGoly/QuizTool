@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar [isDashboard]="true"></app-navbar>
 <div class="container">
   <div *ngIf="lectureBroadcasted; else lecturesList">
     <app-broadcast [(lecture)]="lectureBroadcasted"></app-broadcast>

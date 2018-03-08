@@ -1,8 +1,12 @@
 <mz-navbar>
   <div class="container">
-    <a href="#" class="brand-logo">Quiz Tool</a>
+    <a href="#" class="brand-logo">Quiz Tool <span *ngIf="!isDashboard">(session {{sessionCode}})</span></a>
     <mz-navbar-item-container [align]="'right'">
-      <mz-navbar-item><button mz-button (click)="logout()">Logout</button></mz-navbar-item>
+      <mz-navbar-item>
+        <div *ngIf="isDashboard">
+          <button mz-button (click)="logout()">Logout</button>
+        </div>
+      </mz-navbar-item>
     </mz-navbar-item-container>
   </div>
 </mz-navbar>

@@ -26,6 +26,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { LecturerService } from './services/lecturer.service';
 import { LectureService } from './services/lecture.service';
 import { SlideService } from './services/slide.service';
+import { LectureComponent } from './components/lecture/lecture.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SlideService } from './services/slide.service';
     NavbarComponent,
     LoginComponent,
     DashboardComponent,
-    BroadcastComponent
+    BroadcastComponent,
+    LectureComponent
   ],
   imports: [
     Routing,
