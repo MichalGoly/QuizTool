@@ -38,6 +38,7 @@ export class BroadcastComponent implements OnInit {
   }
 
   navigateBack(): void {
+    this.emitSessionOver();
     this.lectureChange.emit(null);
   }
 
@@ -73,5 +74,11 @@ export class BroadcastComponent implements OnInit {
       img: this.slides[this.currentIndex].image
     };
     this.socket.emit('slide-update', currentSlide);
+  }
+
+  emitSessionOver(): void {
+    this.socket.emit('slide-update', {
+      img: null
+    });
   }
 }

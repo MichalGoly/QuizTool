@@ -20,7 +20,12 @@ export class LectureComponent implements OnInit {
       this.sessionCode = params['code'];
       this.socket = io.connect(location.host);
       this.socket.on('slide-change', (slide: any) => {
-        this.image = 'data:image/png;base64,' + slide.img;
+        if (slide.img === null) {
+          // session is over
+          this.image = null;
+        } else {
+          this.image = 'data:image/png;base64,' + slide.img;
+        }
       });
     });
   }
