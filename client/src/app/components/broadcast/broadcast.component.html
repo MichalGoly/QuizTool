@@ -10,7 +10,7 @@
   <div *ngIf="slides; else spinner">
     <div class="row">
       <div class="col s6 offset-s3">
-        <img [src]="getSrc(slides[currentIndex].image)" width="800" height="600">
+        <img id="broadcast-img" [src]="getSrc(slides[currentIndex].image)" width="800" height="600">
       </div>
     </div>
     <div class="row">
