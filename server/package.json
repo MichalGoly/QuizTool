@@ -22,5 +22,10 @@
     "request-promise": "^4.2.2",
     "scissors": "^0.2.3",
     "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^5.0.4"
   }
 }
