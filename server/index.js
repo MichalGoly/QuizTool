@@ -36,3 +36,5 @@ server.listen('3000', () => {
 
   console.log('Example app listening at http://%s:%s', host, port);
 });
+
+module.exports = app;
