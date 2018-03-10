@@ -47,4 +47,34 @@ describe('test lectures controller', () => {
       done();
     });
   });
+
+  it('should return an empty list lectures for the mocked user', (done) => {
+    chai.request(app).get('/lectures').end((err, res) => {
+      res.should.have.status(200);
+      res.body.length.should.be.eql(0);
+      done();
+    });
+  });
+
+  it('should create a lecture and split it into slides', (done) => {
+
+  });
 });
+
+
+
+
+
+
+
+
+
+//
+
+
+
+
+
+
+
+//
