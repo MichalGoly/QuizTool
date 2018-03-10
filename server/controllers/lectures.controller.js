@@ -22,13 +22,18 @@ module.exports = router;
 function getLectures(req, res) {
   authHelper.check(req, res).then((lecturer) => {
     lecturesDb.getAll(lecturer._id).then((lectures) => {
-      var out = [];
-      for (var i = 0; i < lectures.length; i++) {
-        var temp = lectures[i];
-        delete temp.file;
-        out.push(temp);
+      var out = JSON.parse(JSON.stringify(lectures));
+      for (var i = 0; i < out.length; i++) {
+        delete out[i].file;
       }
       res.send(out);
+      // var out = [];
+      // for (var i = 0; i < lectures.length; i++) {
+      //   var temp = lectures[i];
+      //   delete temp.file;
+      //   out.push(temp);
+      // }
+      // res.send(out);
     }).catch((err) => {
       console.error(err);
       res.send(500);

@@ -20,7 +20,7 @@ function check(req, res) {
    */
   return new Promise((resolve, reject) => {
     if (process.env.AUTH_DISABLED === 'true') {
-      Lecturer.find({
+      Lecturer.findOne({
         token: "token123"
       }).then((bob) => {
         resolve(bob);
