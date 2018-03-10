@@ -12,7 +12,7 @@ describe('clean up', () => {
   })
 });
 
-describe('test lecturers.db', () => {
+describe('test lectures.db', () => {
   it('should get return an error when retrieving lectures with non existing lecturer id', (done) => {
     lecturesDb.getAll('foo123').then((lectures) => {
       assert.fail(1, 0, 'lecturesDb was supposed to throw an error for non existing lecturer id');
