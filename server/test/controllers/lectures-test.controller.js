@@ -3,7 +3,11 @@ var chaiHttp = require('chai-http');
 var app = require('../../index');
 var assert = chai.assert;
 var should = chai.should();
+// var supertest = require('supertest');
+// var request = supertest('localhost');
 var Lecturer = require('../../models/lecturer');
+var Lecture = require('../../models/lecture');
+var Slide = require('../../models/slide');
 
 chai.use(chaiHttp);
 
@@ -15,25 +19,33 @@ describe('test lectures controller', () => {
      * 3. Disable authentication checks for testing
      */
     Lecturer.remove({}, (err) => {
-      var bob = new Lecturer({
-        googleId: "google123",
-        name: "Bob Smith",
-        token: "token123"
-      });
-      bob.save().then((lecturer) => {
-        process.env['AUTH_DISABLED'] = 'true';
-        done();
-      }).catch((err) => {
-        assert.fail(0, 1, err);
-        done();
+      Lecture.remove({}, (err) => {
+        Slide.remove({}, (err) => {
+          var bob = new Lecturer({
+            googleId: "google123",
+            name: "Bob Smith",
+            token: "token123"
+          });
+          bob.save().then((lecturer) => {
+            process.env['AUTH_DISABLED'] = 'true';
+            done();
+          }).catch((err) => {
+            assert.fail(0, 1, err);
+            done();
+          });
+        });
       });
     });
   });
 
   after((done) => {
     Lecturer.remove({}, (err) => {
-      delete process.env['AUTH_DISABLED'];
-      done();
+      Lecture.remove({}, (err) => {
+        Slide.remove({}, (err) => {
+          delete process.env['AUTH_DISABLED'];
+          done();
+        });
+      });
     });
   });
 
@@ -57,7 +69,16 @@ describe('test lectures controller', () => {
   });
 
   it('should create a lecture and split it into slides', (done) => {
-
+    // request.post('/lectures').attach('file', __dirname + '/../bin/presentation.pdf').end((err, res) => {
+    //   console.log(res);
+    //   res.should.have.status(201);
+    //   done();
+    // });
+    chai.request(app).post('/lectures').attach('file', __dirname + '/../bin/presentation.pdf')
+      .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
   });
 });
 
@@ -73,6 +94,11 @@ describe('test lectures controller', () => {
 
 
 
+
+
+
+
+//
 
 
 
