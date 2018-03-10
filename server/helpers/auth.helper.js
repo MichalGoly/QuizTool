@@ -9,6 +9,7 @@ authHelper.check = check;
 
 function check(req, res) {
   /*
+   * 0. Check if authorisation disabled for testing and return mock lecturer
    * 1. Check if request contains the Bearer Authorisation token
    * 2. Check if there is a lecturer with given token in the database
    * 3. If so, resolve lecturer back to the caller
@@ -18,55 +19,66 @@ function check(req, res) {
    * 7. No -> Should never happen, reject
    */
   return new Promise((resolve, reject) => {
-    if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
-      var jwtToken = req.headers.authorization.split(' ')[1];
-      if (jwtToken === null)
-        reject("jwtToken was null");
-      Lecturer.findOne({
-        token: jwtToken
-      }).then((data) => {
-        if (data === null) {
-          // 4
-          var options = {
-            uri: GOOGLE_TOKEN_CHECK_URI + jwtToken,
-            headers: {
-              'User-Agent': 'Request-Promise'
-            },
-            json: true // Automatically parses the JSON string in the response
-          };
-          rp(options).then((res) => {
-            if ("issued_to" in res && "user_id" in res && res.issued_to === GOOGLE_QUIZ_TOOL_ID) {
-              // 5
-              Lecturer.findOne({
-                googleId: res.user_id
-              }).then((lecturer) => {
-                // 6
-                lecturer.token = jwtToken;
-                lecturer.save((err, updatedLecturer) => {
-                  if (err) {
-                    reject(err);
-                  } else {
-                    resolve(updatedLecturer);
-                  }
-                });
-              }).catch((err) => {
-                reject(err);
-              });
-            } else {
-              reject("Token invalid");
-            }
-          }).catch((err) => {
-            reject(err);
-          });
-        } else {
-          // 3
-          resolve(data);
-        }
+    if (process.env.AUTH_DISABLED === 'true') {
+      Lecturer.find({
+        token: "token123"
+      }).then((bob) => {
+        resolve(bob);
       }).catch((err) => {
         reject(err);
       });
     } else {
-      reject("The Authorization Bearer token is missing, or is malformed!");
+      // 1
+      if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+        var jwtToken = req.headers.authorization.split(' ')[1];
+        if (jwtToken === null)
+          reject("jwtToken was null");
+        Lecturer.findOne({
+          token: jwtToken
+        }).then((data) => {
+          if (data === null) {
+            // 4
+            var options = {
+              uri: GOOGLE_TOKEN_CHECK_URI + jwtToken,
+              headers: {
+                'User-Agent': 'Request-Promise'
+              },
+              json: true // Automatically parses the JSON string in the response
+            };
+            rp(options).then((res) => {
+              if ("issued_to" in res && "user_id" in res && res.issued_to === GOOGLE_QUIZ_TOOL_ID) {
+                // 5
+                Lecturer.findOne({
+                  googleId: res.user_id
+                }).then((lecturer) => {
+                  // 6
+                  lecturer.token = jwtToken;
+                  lecturer.save((err, updatedLecturer) => {
+                    if (err) {
+                      reject(err);
+                    } else {
+                      resolve(updatedLecturer);
+                    }
+                  });
+                }).catch((err) => {
+                  reject(err);
+                });
+              } else {
+                reject("Token invalid");
+              }
+            }).catch((err) => {
+              reject(err);
+            });
+          } else {
+            // 3
+            resolve(data);
+          }
+        }).catch((err) => {
+          reject(err);
+        });
+      } else {
+        reject("The Authorization Bearer token is missing, or is malformed!");
+      }
     }
   });
 }
