@@ -11,6 +11,7 @@ router.get('/:lecture_id', getSlides);
 function getSlides(req, res) {
   authHelper.check(req, res).then((lecturer) => {
     lecturesDb.getOne(req.params.lecture_id).then((lecture) => {
+
       if (lecturer._id == lecture.lecturerId) {
         slidesDb.getByLectureId(lecture._id).then((slides) => {
           var out = [];
@@ -33,8 +34,12 @@ function getSlides(req, res) {
         res.send(401);
       }
     }).catch((err) => {
-      console.error("An error has occurred: " + err);
-      res.send(500);
+      if (err === 400) {
+        res.send(400);
+      } else {
+        console.error("An error has occurred: " + err);
+        res.send(500);
+      }
     });
   }).catch((err) => {
     res.send(401);

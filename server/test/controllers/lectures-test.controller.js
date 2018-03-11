@@ -146,7 +146,15 @@ describe('test lectures controller', () => {
       var lecture_id = lectures[0]._id;
       chai.request(app).delete('/lectures/' + lecture_id).end((err, res) => {
         res.should.have.status(200);
-        done();
+        Slide.find({
+          lectureId: lecture_id
+        }).then((slides) => {
+          assert.isEmpty(slides);
+          done();
+        }).catch((err) => {
+          assert.fail(1, 0, err);
+          done();
+        });
       });
     }).catch((err) => {
       assert.fail(1, 0, err);
