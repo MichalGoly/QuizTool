@@ -27,13 +27,6 @@ function getLectures(req, res) {
         delete out[i].file;
       }
       res.send(out);
-      // var out = [];
-      // for (var i = 0; i < lectures.length; i++) {
-      //   var temp = lectures[i];
-      //   delete temp.file;
-      //   out.push(temp);
-      // }
-      // res.send(out);
     }).catch((err) => {
       console.error(err);
       res.send(500);
@@ -47,7 +40,20 @@ function getLectures(req, res) {
 // NOTE: File blobs is ignored
 function getLecture(req, res) {
   authHelper.check(req, res).then((lecturer) => {
-
+    lecturesDb.getOne(req.params._id).then((lecture) => {
+      if (lecture === null) {
+        res.send(400);
+      } else if (lecture.lecturerId === lecturer._id) {
+        var out = JSON.parse(JSON.stringify(lecture));
+        delete out.file;
+        res.send(out);
+      } else {
+        res.send(401);
+      }
+    }).catch((err) => {
+      console.error("An error has occurred " + err);
+      res.send(500);
+    });
   }).catch((err) => {
     res.send(401);
   });

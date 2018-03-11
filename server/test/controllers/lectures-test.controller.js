@@ -96,6 +96,13 @@ describe('test lectures controller', () => {
         });
       });
   });
+
+  it('should return 400 when trying to get a non existent lecture by id', (done) => {
+    chai.request(app).get('/lectures/123').end((err, res) => {
+      res.should.have.status(400);
+      done();
+    });
+  });
 });
 
 

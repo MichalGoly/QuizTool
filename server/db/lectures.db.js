@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 var slidesDb = require('./slides.db');
 var Lecture = require('../models/lecture');
 
@@ -26,11 +27,15 @@ function getAll(l_id) {
 
 function getOne(_id) {
   return new Promise((resolve, reject) => {
-    Lecture.findById(_id).then((lecture) => {
-      resolve(lecture);
-    }).catch((err) => {
-      reject(err);
-    });
+    if (mongoose.Types.ObjectId.isValid(_id)) {
+      Lecture.findById(_id).then((lecture) => {
+        resolve(lecture);
+      }).catch((err) => {
+        reject(err);
+      });
+    } else {
+      resolve(null);
+    }
   });
 }
 
