@@ -93,15 +93,12 @@ function create(req, lecturer_id) {
 //
 function _delete(id, lecturer_id) {
   return new Promise((resolve, reject) => {
-    console.log("Inside _delete");
     if (mongoose.Types.ObjectId.isValid(id)) {
       Lecture.findById(id).then((lecture) => {
         if (lecture === null) {
           reject(404);
         } else if (lecture.lecturerId == lecturer_id) {
-          console.log("Before remove");
           lecture.remove((err, removedLecture) => {
-            console.log("Inside remove");
             if (err) {
               reject(err);
             } else {

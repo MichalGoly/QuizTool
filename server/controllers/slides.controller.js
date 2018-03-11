@@ -11,7 +11,6 @@ router.get('/:lecture_id', getSlides);
 function getSlides(req, res) {
   authHelper.check(req, res).then((lecturer) => {
     lecturesDb.getOne(req.params.lecture_id).then((lecture) => {
-
       if (lecturer._id == lecture.lecturerId) {
         slidesDb.getByLectureId(lecture._id).then((slides) => {
           var out = [];
