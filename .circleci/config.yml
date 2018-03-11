@@ -38,10 +38,10 @@ jobs:
       - run:
           name: run tests
           command: |
-            echo $GOOGLE_CLIENT_ID
-            echo $GOOGLE_CLIENT_SECRET
-            echo $GOOGLE_CALLBACK_URL
-            docker-compose -f docker-compose.test.yml build
+            echo "GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" >> .env
+            echo "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> .env
+            echo "GOOGLE_CALLBACK_URL=$GOOGLE_CALLBACK_URL" >> .env
+            echo .env
             docker-compose -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from repo_server_node_1
 
       # deploy only master and develop branch
