@@ -140,6 +140,19 @@ describe('test lectures controller', () => {
       done();
     });
   });
+
+  it('should remove lecture and slides when valid id and user authorized', (done) => {
+    Lecture.find({}).then((lectures) => {
+      var lecture_id = lectures[0]._id;
+      chai.request(app).delete('/lectures/' + lecture_id).end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
+    }).catch((err) => {
+      assert.fail(1, 0, err);
+      done();
+    });
+  });
 });
 
 
