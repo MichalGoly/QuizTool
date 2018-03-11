@@ -43,7 +43,7 @@ function getLecture(req, res) {
     lecturesDb.getOne(req.params._id).then((lecture) => {
       if (lecture === null) {
         res.send(400);
-      } else if (lecture.lecturerId === lecturer._id) {
+      } else if (lecture.lecturerId == lecturer._id) {
         var out = JSON.parse(JSON.stringify(lecture));
         delete out.file;
         res.send(out);
@@ -55,6 +55,7 @@ function getLecture(req, res) {
       res.send(500);
     });
   }).catch((err) => {
+    console.error("An error has occurred " + err);
     res.send(401);
   });
 }
@@ -71,7 +72,18 @@ function getFile(req, res) {
 // Deletes a specific lecture based on the _id provided
 function deleteLecture(req, res) {
   authHelper.check(req, res).then((lecturer) => {
-
+    lecturesDb._delete(req.params._id, lecturer._id).then(() => {
+      res.send(200);
+    }).catch((err) => {
+      if (err === 401) {
+        res.send(401);
+      } else if (err === 400) {
+        res.send(400);
+      } else {
+        console.error("An error has occurred: " + err);
+        res.send(500);
+      }
+    });
   }).catch((err) => {
     res.send(401);
   });

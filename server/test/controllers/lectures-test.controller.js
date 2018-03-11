@@ -103,6 +103,22 @@ describe('test lectures controller', () => {
       done();
     });
   });
+
+  it('should get lecture by id', (done) => {
+    Lecture.find({}).then((lectures) => {
+      chai.request(app).get('/lectures/' + lectures[0]._id).end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('_id').eql(lectures[0]._id + "");
+        res.body.should.have.property('lecturerId').eql(lectures[0].lecturerId);
+        res.body.should.have.property('fileName').eql(lectures[0].fileName);
+        res.body.should.not.have.property('file');
+        done();
+      });
+    }).catch((err) => {
+      assert.fail(0, 1, err);
+      done();
+    })
+  });
 });
 
 

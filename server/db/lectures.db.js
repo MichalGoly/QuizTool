@@ -9,7 +9,7 @@ database.getOne = getOne;
 database.getFile = getFile;
 database.create = create;
 // database.update = update;
-// database._delete = _delete;
+database._delete = _delete;
 
 module.exports = database;
 
@@ -91,8 +91,28 @@ function create(req, lecturer_id) {
 //   });
 // }
 //
-// function _delete(_id) {
-//   return new Promise((resolve, reject) => {
-//
-//   });
-// }
+function _delete(id, lecturer_id) {
+  return new Promise((resolve, reject) => {
+    if (mongoose.Types.ObjectId.isValid(id)) {
+      Lecture.findById(id).then((lecture) => {
+        if (lecture.lecturerId === lecturer_id) {
+          Lecture.remove({
+            _id: id
+          }, (err) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve();
+            }
+          });
+        } else {
+          reject(401);
+        }
+      }).catch((err) => {
+        reject(400);
+      });
+    } else {
+      reject("id was invalid");
+    }
+  });
+}
