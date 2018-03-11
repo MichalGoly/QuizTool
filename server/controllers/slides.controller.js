@@ -33,8 +33,12 @@ function getSlides(req, res) {
         res.send(401);
       }
     }).catch((err) => {
-      console.error("An error has occurred: " + err);
-      res.send(500);
+      if (err === 400) {
+        res.send(400);
+      } else {
+        console.error("An error has occurred: " + err);
+        res.send(500);
+      }
     });
   }).catch((err) => {
     res.send(401);

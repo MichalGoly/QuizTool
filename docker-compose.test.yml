@@ -1,0 +1,21 @@
+version: '2.0'
+services:
+  client:
+    build: client
+    ports:
+      - "80:80"
+    links:
+      - server_node
+  server_node:
+    build: server
+    environment:
+      - NODE_ENV=test
+    env_file:
+      - .env
+    links:
+      - database
+    entrypoint: npm test
+  database:
+    image: mongo
+    ports:
+      - "27017:27017"

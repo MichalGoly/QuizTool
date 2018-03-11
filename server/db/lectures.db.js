@@ -1,3 +1,4 @@
+var mongoose = require('mongoose');
 var slidesDb = require('./slides.db');
 var Lecture = require('../models/lecture');
 
@@ -8,7 +9,7 @@ database.getOne = getOne;
 database.getFile = getFile;
 database.create = create;
 // database.update = update;
-// database._delete = _delete;
+database._delete = _delete;
 
 module.exports = database;
 
@@ -26,11 +27,15 @@ function getAll(l_id) {
 
 function getOne(_id) {
   return new Promise((resolve, reject) => {
-    Lecture.findById(_id).then((lecture) => {
-      resolve(lecture);
-    }).catch((err) => {
-      reject(err);
-    });
+    if (mongoose.Types.ObjectId.isValid(_id)) {
+      Lecture.findById(_id).then((lecture) => {
+        resolve(lecture);
+      }).catch((err) => {
+        reject(err);
+      });
+    } else {
+      reject(400);
+    }
   });
 }
 
@@ -86,8 +91,28 @@ function create(req, lecturer_id) {
 //   });
 // }
 //
-// function _delete(_id) {
-//   return new Promise((resolve, reject) => {
-//
-//   });
-// }
+function _delete(id, lecturer_id) {
+  return new Promise((resolve, reject) => {
+    if (mongoose.Types.ObjectId.isValid(id)) {
+      Lecture.findById(id).then((lecture) => {
+        if (lecture === null) {
+          reject(404);
+        } else if (lecture.lecturerId == lecturer_id) {
+          lecture.remove((err, removedLecture) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve();
+            }
+          });
+        } else {
+          reject(401);
+        }
+      }).catch((err) => {
+        reject(err);
+      });
+    } else {
+      reject(400);
+    }
+  });
+}
