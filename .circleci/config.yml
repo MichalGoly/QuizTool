@@ -38,7 +38,11 @@ jobs:
       - run:
           name: run tests
           command: |
-            docker-compose -f docker-compose.test.yml up --abort-on-container-exit
+            echo $GOOGLE_CLIENT_ID
+            echo $GOOGLE_CLIENT_SECRET
+            echo $GOOGLE_CALLBACK_URL
+            docker-compose -f docker-compose.test.yml build
+            docker-compose -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from repo_server_node_1
 
       # deploy only master and develop branch
       - deploy:
