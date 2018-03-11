@@ -97,9 +97,16 @@ describe('test lectures controller', () => {
       });
   });
 
-  it('should return 400 when trying to get a non existent lecture by id', (done) => {
+  it('should return 400 when trying to get a lecture by an invalid id', (done) => {
     chai.request(app).get('/lectures/123').end((err, res) => {
       res.should.have.status(400);
+      done();
+    });
+  });
+
+  it('should return 404 when trying to get a lecture which does not exist', (done) => {
+    chai.request(app).get('/lectures/41224d776a326fb40f000001').end((err, res) => {
+      res.should.have.status(404);
       done();
     });
   });
@@ -118,6 +125,20 @@ describe('test lectures controller', () => {
       assert.fail(0, 1, err);
       done();
     })
+  });
+
+  it('should return 400 when removing a lecture by an invalid id', (done) => {
+    chai.request(app).delete('/lectures/4324').end((err, res) => {
+      res.should.have.status(400);
+      done();
+    });
+  });
+
+  it('should return 404 when removing a non existent lecture', (done) => {
+    chai.request(app).delete('/lectures/41224d776a326fb40f000001').end((err, res) => {
+      res.should.have.status(404);
+      done();
+    });
   });
 });
 
@@ -142,4 +163,5 @@ describe('test lectures controller', () => {
 
 
 
+//
 //

@@ -34,7 +34,7 @@ function getOne(_id) {
         reject(err);
       });
     } else {
-      resolve(null);
+      reject(400);
     }
   });
 }
@@ -95,7 +95,9 @@ function _delete(id, lecturer_id) {
   return new Promise((resolve, reject) => {
     if (mongoose.Types.ObjectId.isValid(id)) {
       Lecture.findById(id).then((lecture) => {
-        if (lecture.lecturerId === lecturer_id) {
+        if (lecture === null) {
+          reject(404);
+        } else if (lecture.lecturerId === lecturer_id) {
           Lecture.remove({
             _id: id
           }, (err) => {
@@ -109,10 +111,10 @@ function _delete(id, lecturer_id) {
           reject(401);
         }
       }).catch((err) => {
-        reject(400);
+        reject(err);
       });
     } else {
-      reject("id was invalid");
+      reject(400);
     }
   });
 }
