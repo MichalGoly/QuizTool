@@ -22,6 +22,7 @@ export class BroadcastComponent implements OnInit {
   slides: Slide[];
   currentIndex: number;
   socket: SocketIOClient.Socket;
+  sessionCode: string;
 
   constructor(private slideService: SlideService) { }
 
@@ -35,6 +36,7 @@ export class BroadcastComponent implements OnInit {
     });
     this.currentIndex = 0;
     this.socket = io.connect(location.host);
+    this.sessionCode = this.generateSessionCode();
   }
 
   navigateBack(): void {
@@ -80,5 +82,9 @@ export class BroadcastComponent implements OnInit {
     this.socket.emit('slide-update', {
       img: null
     });
+  }
+
+  generateSessionCode(): string {
+    return "code213";
   }
 }
