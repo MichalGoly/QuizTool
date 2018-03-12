@@ -41,6 +41,7 @@ export class DashboardComponent implements OnInit {
     this.authorizeUploader();
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       console.log("PdfUpload:uploaded:", item, status, response);
+      this.uploader.clearQueue();
       this.refreshLecturers();
     };
   }
