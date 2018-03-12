@@ -41,6 +41,7 @@ export class DashboardComponent implements OnInit {
     this.authorizeUploader();
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       console.log("PdfUpload:uploaded:", item, status, response);
+      this.uploader.clearQueue();
       this.refreshLecturers();
     };
   }
@@ -67,6 +68,14 @@ export class DashboardComponent implements OnInit {
 
   closeDiscovery(): void {
     $('.tap-target').tapTarget('close');
+  }
+
+  remove(lecture: Lecture): void {
+    this.lectureService.delete(lecture._id).subscribe(() => {
+      this.refreshLecturers();
+    }, err => {
+      console.log(err);
+    });
   }
 
   // Appends the Authorization: Bearer <JWT_TOKEN> to the uploader's requests
