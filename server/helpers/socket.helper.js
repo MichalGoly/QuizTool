@@ -9,7 +9,8 @@ module.exports = function(server) {
     socket.on('slide-update', (currentSlide) => {
       console.log("[INFO] Socket.io event: slide-change");
       socket.broadcast.emit('slide-change', {
-        img: currentSlide.img
+        img: currentSlide.img,
+        sessionCode: currentSlide.sessionCode
       });
     });
   });

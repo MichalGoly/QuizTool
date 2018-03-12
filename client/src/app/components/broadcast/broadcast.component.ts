@@ -71,20 +71,21 @@ export class BroadcastComponent implements OnInit {
   }
 
   emitCurrentSlide(): void {
-    console.log("emitCurrentSlide called");
     const currentSlide = {
-      img: this.slides[this.currentIndex].image
+      img: this.slides[this.currentIndex].image,
+      sessionCode: this.sessionCode
     };
     this.socket.emit('slide-update', currentSlide);
   }
 
   emitSessionOver(): void {
     this.socket.emit('slide-update', {
-      img: null
+      img: null,
+      sessionCode: this.sessionCode
     });
   }
 
   generateSessionCode(): string {
-    return "code213";
+    return (new Date().getTime() * Math.random()).toString(36).substr(2, 8).toString();
   }
 }
