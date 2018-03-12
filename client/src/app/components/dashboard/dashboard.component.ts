@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
     private router: Router, private authService: AuthService) {
     this.uploader = new FileUploader({
       url: UPLOAD_ENDPOINT,
+      allowedMimeType: ['application/pdf'],
       autoUpload: true
     });
   }
