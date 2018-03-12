@@ -69,6 +69,14 @@ export class DashboardComponent implements OnInit {
     $('.tap-target').tapTarget('close');
   }
 
+  remove(lecture: Lecture): void {
+    this.lectureService.delete(lecture._id).subscribe(() => {
+      this.refreshLecturers();
+    }, err => {
+      console.log(err);
+    });
+  }
+
   // Appends the Authorization: Bearer <JWT_TOKEN> to the uploader's requests
   // https://github.com/valor-software/ng2-file-upload/issues/317
   private authorizeUploader(): void {
