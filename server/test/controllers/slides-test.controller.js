@@ -113,4 +113,13 @@ describe('test slides controller', () => {
         });
       });
   });
+
+  it('should return 400 bad request for a malformed document', (done) => {
+    chai.request(app).put('/slides/').set('content-type', 'application/json').send({
+      hello: "world"
+    }).end((err, res) => {
+      res.should.have.status(400);
+      done();
+    });
+  });
 });
