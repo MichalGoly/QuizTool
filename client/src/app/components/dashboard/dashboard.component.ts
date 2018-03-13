@@ -59,6 +59,10 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  edit(lecture: Lecture): void {
+    window.alert(lecture.fileName);
+  }
+
   broadcast(lecture: Lecture): void {
     this.lectureBroadcasted = lecture;
   }
