@@ -27,6 +27,7 @@ import { LecturerService } from './services/lecturer.service';
 import { LectureService } from './services/lecture.service';
 import { SlideService } from './services/slide.service';
 import { LectureComponent } from './components/lecture/lecture.component';
+import { EditComponent } from './components/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { LectureComponent } from './components/lecture/lecture.component';
     LoginComponent,
     DashboardComponent,
     BroadcastComponent,
-    LectureComponent
+    LectureComponent,
+    EditComponent
   ],
   imports: [
     Routing,

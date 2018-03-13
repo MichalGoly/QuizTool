@@ -1,8 +1,13 @@
 <app-navbar [isDashboard]="true"></app-navbar>
 <div class="container">
-  <div *ngIf="lectureBroadcasted; else lecturesList">
+  <div *ngIf="lectureBroadcasted; else editPanel">
     <app-broadcast [(lecture)]="lectureBroadcasted"></app-broadcast>
   </div>
+  <ng-template #editPanel>
+    <div *ngIf="lectureEdited; else lecturesList">
+      <app-edit [(lecture)]="lectureEdited"></app-edit>
+    </div>
+  </ng-template>
   <ng-template #lecturesList>
     <div *ngIf="lecturer" class="row">
       <h4>Hello, {{lecturer.name}}! Your lectures:</h4>

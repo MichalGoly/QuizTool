@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   lecturer: Lecturer;
   lectures: Lecture[];
   lectureBroadcasted: Lecture;
+  lectureEdited: Lecture;
 
   constructor(private lecturerService: LecturerService, private lectureService: LectureService,
     private router: Router, private authService: AuthService) {
@@ -60,7 +61,7 @@ export class DashboardComponent implements OnInit {
   }
 
   edit(lecture: Lecture): void {
-    window.alert(lecture.fileName);
+    this.lectureEdited = lecture;
   }
 
   broadcast(lecture: Lecture): void {
