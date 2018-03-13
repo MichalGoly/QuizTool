@@ -1,6 +1,17 @@
 <div *ngIf="lecture">
-  <p>
-    Editing {{lecture.fileName}}
-  </p>
-  <button mz-button (click)="navigateBack()">Back</button>
+  <button mz-button [flat]="'true'" (click)="navigateBack()">Back</button>
+  <button mz-button (click)="save()">Save</button>
+
+  <div *ngIf="slides; else slidesSpinner">
+    <ul class="collection">
+      <li *ngFor="let slide of slides" class="collection-item">
+        <img class="responsive-img" [src]="getSrc(slide.image)">
+      </li>
+    </ul>
+  </div>
+  <ng-template #slidesSpinner>
+    <p>
+      <mz-spinner></mz-spinner>
+    </p>
+  </ng-template>
 </div>
