@@ -4,8 +4,21 @@
 
   <div *ngIf="slides; else slidesSpinner">
     <ul class="collection">
-      <li *ngFor="let slide of slides" class="collection-item">
-        <img class="responsive-img" [src]="getSrc(slide.image)">
+      <li *ngFor="let slide of slides; let i = index" [attr.data-index]="i" class="collection-item">
+        <div class="row">
+          <div class="col s6">
+            <img class="responsive-img" [src]="getSrc(slide.image)">
+          </div>
+          <div class="col s6">
+            <div class="center-align">
+              <h5>Slide {{slide.slideNumber}}</h5>
+              <mz-checkbox-container>
+                <input mz-checkbox [label]="'Make quiz'" id="{{i}}" type="checkbox" [(ngModel)]="slides[i].isQuiz" />
+              </mz-checkbox-container>
+              <p>isQuiz: {{slide.isQuiz}}</p>
+            </div>
+          </div>
+        </div>
       </li>
     </ul>
   </div>

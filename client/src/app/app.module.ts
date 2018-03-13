@@ -13,6 +13,7 @@ import { MzTabModule } from 'ng2-materialize'
 import { MzInputModule } from 'ng2-materialize'
 import { MzNavbarModule } from 'ng2-materialize'
 import { MzSpinnerModule } from 'ng2-materialize'
+import { MzCheckboxModule } from 'ng2-materialize'
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -51,7 +52,8 @@ import { EditComponent } from './components/edit/edit.component';
     MzInputModule,
     MzNavbarModule,
     FileUploadModule,
-    MzSpinnerModule
+    MzSpinnerModule,
+    MzCheckboxModule
   ],
   providers: [
     CookieService,
