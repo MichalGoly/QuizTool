@@ -12,6 +12,8 @@ var database = {}
 
 database.createFromLecture = createFromLecture;
 database.getByLectureId = getByLectureId;
+database.bulkUpdateQuiz = bulkUpdateQuiz;
+database.updateQuiz = updateQuiz;
 
 module.exports = database;
 
@@ -100,6 +102,54 @@ function getByLectureId(lecture_id) {
     }).catch((err) => {
       reject(err);
     });
+  });
+}
+
+function bulkUpdateQuiz(slides) {
+  return new Promise((resolve, reject) => {
+    if (slides === null) {
+      reject("Parameter slides was null");
+    } else if (slides.length === null) {
+      reject("Parameter slides.length was null");
+    } else {
+      /*
+       * 1. Iterate over the slides
+       * 2. For each, update the existing slide with data provided
+       */
+      var promisesQueue = [];
+      for (var i = 0; i < slides.length; i++) {
+        promisesQueue.push(updateQuiz(slides[i]));
+      }
+      Promise.all(promisesQueue).then(() => {
+        resolve();
+      }).catch((err) => {
+        reject(err);
+      });
+    }
+  });
+}
+
+// updates a single slide in the database
+function updateQuiz(slide) {
+  return new Promise((resolve, reject) => {
+    if (slide === null) {
+      reject("Parameter slide was null");
+    } else {
+      Slide.findById(slide._id, (err, s) => {
+        if (err) {
+          reject(err);
+        } else {
+          s.isQuiz = slide.isQuiz;
+          s.save((err, updatedSlide) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve();
+            }
+          });
+        }
+      });
+    }
   });
 }
 

@@ -7,6 +7,7 @@ var slidesDb = require('../db/slides.db');
 var Slide = require('../models/slide');
 
 router.get('/:lecture_id', getSlides);
+router.put('/', bulkUpdateQuiz);
 
 function getSlides(req, res) {
   authHelper.check(req, res).then((lecturer) => {
@@ -39,6 +40,20 @@ function getSlides(req, res) {
         console.error("An error has occurred: " + err);
         res.send(500);
       }
+    });
+  }).catch((err) => {
+    res.send(401);
+  });
+}
+
+// Bulk updates isQuiz flags of the slides provided
+function bulkUpdateQuiz(req, res) {
+  authHelper.check(req, res).then((lecturer) => {
+    slidesDb.bulkUpdateQuiz(req.body).then(() => {
+      res.send(200);
+    }).catch((err) => {
+      console.error("An error has occurred: " + err);
+      res.send(500);
     });
   }).catch((err) => {
     res.send(401);

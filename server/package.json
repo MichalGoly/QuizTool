@@ -10,6 +10,7 @@
   "author": "Michal Goly",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.15.2",
     "eyes": "^0.1.8",
     "fs": "0.0.1-security",
