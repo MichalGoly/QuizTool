@@ -13,12 +13,15 @@ import { MzTabModule } from 'ng2-materialize'
 import { MzInputModule } from 'ng2-materialize'
 import { MzNavbarModule } from 'ng2-materialize'
 import { MzSpinnerModule } from 'ng2-materialize'
+import { MzCheckboxModule } from 'ng2-materialize'
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BroadcastComponent } from './components/broadcast/broadcast.component';
+import { LectureComponent } from './components/lecture/lecture.component';
+import { EditComponent } from './components/edit/edit.component';
 
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
@@ -26,7 +29,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { LecturerService } from './services/lecturer.service';
 import { LectureService } from './services/lecture.service';
 import { SlideService } from './services/slide.service';
-import { LectureComponent } from './components/lecture/lecture.component';
+import { QuizService } from './services/quiz.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,8 @@ import { LectureComponent } from './components/lecture/lecture.component';
     LoginComponent,
     DashboardComponent,
     BroadcastComponent,
-    LectureComponent
+    LectureComponent,
+    EditComponent
   ],
   imports: [
     Routing,
@@ -49,7 +53,8 @@ import { LectureComponent } from './components/lecture/lecture.component';
     MzInputModule,
     MzNavbarModule,
     FileUploadModule,
-    MzSpinnerModule
+    MzSpinnerModule,
+    MzCheckboxModule
   ],
   providers: [
     CookieService,
@@ -62,7 +67,8 @@ import { LectureComponent } from './components/lecture/lecture.component';
     },
     LecturerService,
     LectureService,
-    SlideService
+    SlideService,
+    QuizService
   ],
   bootstrap: [AppComponent]
 })

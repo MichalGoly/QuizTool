@@ -1,8 +1,13 @@
 <app-navbar [isDashboard]="true"></app-navbar>
 <div class="container">
-  <div *ngIf="lectureBroadcasted; else lecturesList">
+  <div *ngIf="lectureBroadcasted; else editPanel">
     <app-broadcast [(lecture)]="lectureBroadcasted"></app-broadcast>
   </div>
+  <ng-template #editPanel>
+    <div *ngIf="lectureEdited; else lecturesList">
+      <app-edit [(lecture)]="lectureEdited"></app-edit>
+    </div>
+  </ng-template>
   <ng-template #lecturesList>
     <div *ngIf="lecturer" class="row">
       <h4>Hello, {{lecturer.name}}! Your lectures:</h4>
@@ -16,7 +21,10 @@
             </div>
             <div class="card-content">
               <span class="card-title activator grey-text text-darken-4">{{lecture.fileName}}<i class="material-icons right">more_vert</i></span>
-              <p><a href="javascript:void(0)" (click)="broadcast(lecture)">Broadcast</a></p>
+            </div>
+            <div class="card-action">
+              <a href="javascript:void(0)" (click)="edit(lecture)">Edit</a>
+              <a href="javascript:void(0)" (click)="broadcast(lecture)">Broadcast</a>
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">{{lecture.fileName}}<i class="material-icons right">close</i></span>

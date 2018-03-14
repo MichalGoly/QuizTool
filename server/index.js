@@ -1,10 +1,13 @@
 var express = require('express');
 var http = require('http');
 var app = express();
+var bodyParser = require('body-parser');
 var server = http.createServer(app);
 var passport = require('./helpers/passport.helper');
 var io = require('./helpers/socket.helper')(server);
 var db = require('./db/db');
+
+app.use(bodyParser.json());
 
 // socket.io setup
 app.use(function(req, res, next) {

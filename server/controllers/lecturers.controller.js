@@ -16,7 +16,7 @@ function getLoggedIn(req, res) {
     return res.json(lecturer);
   }).catch((err) => {
     console.error(err);
-    return res.send(401);
+    return res.sendStatus(401);
   });
 };
 

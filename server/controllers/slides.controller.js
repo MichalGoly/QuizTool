@@ -3,10 +3,13 @@ var router = express.Router();
 var authHelper = require('../helpers/auth.helper');
 var lecturesDb = require('../db/lectures.db');
 var slidesDb = require('../db/slides.db');
-
 var Slide = require('../models/slide');
+var Validator = require('jsonschema').Validator;
+var validator = new Validator();
+var BulkSlideUpdateSchema = require('../schemas/bulkSlideUpdate');
 
 router.get('/:lecture_id', getSlides);
+router.put('/', bulkUpdateQuiz);
 
 function getSlides(req, res) {
   authHelper.check(req, res).then((lecturer) => {
@@ -27,22 +30,40 @@ function getSlides(req, res) {
           res.send(out);
         }).catch((err) => {
           console.error("An error has occurred: " + err);
-          res.send(500);
+          res.sendStatus(500);
         });
       } else {
-        res.send(401);
+        res.sendStatus(401);
       }
     }).catch((err) => {
       if (err === 400) {
-        res.send(400);
+        res.sendStatus(400);
       } else {
         console.error("An error has occurred: " + err);
-        res.send(500);
+        res.sendStatus(500);
       }
     });
   }).catch((err) => {
-    res.send(401);
+    res.sendStatus(401);
   });
+}
+
+// Bulk updates isQuiz flags of the slides provided
+function bulkUpdateQuiz(req, res) {
+  if (validator.validate(req.body, BulkSlideUpdateSchema).valid) {
+    authHelper.check(req, res).then((lecturer) => {
+      slidesDb.bulkUpdateQuiz(req.body).then(() => {
+        res.sendStatus(200);
+      }).catch((err) => {
+        console.error("An error has occurred: " + err);
+        res.sendStatus(500);
+      });
+    }).catch((err) => {
+      res.sendStatus(401);
+    });
+  } else {
+    res.sendStatus(400);
+  }
 }
 
 module.exports = router;
