@@ -10,7 +10,16 @@ module.exports = function(server) {
       console.log("[INFO] Socket.io event: slide-change");
       socket.broadcast.emit('slide-change', {
         img: currentSlide.img,
+        text: currentSlide.text,
+        isQuiz: currentSlide.isQuiz,
         sessionCode: currentSlide.sessionCode
+      });
+    });
+
+    socket.on('answer-sent', (answer) => {
+      socket.broadcast.emit('answer-received', {
+        sessionCode: answer.sessionCode,
+        option: answer.option
       });
     });
   });

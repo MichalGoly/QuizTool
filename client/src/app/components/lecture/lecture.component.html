@@ -1,13 +1,13 @@
 <app-navbar [isDashboard]="false" [sessionCode]="sessionCode"></app-navbar>
 <div class="container">
-  <div *ngIf="image; else noImage">
-    <div class="row">
+  <div *ngIf="currentSlide?.img; else noSlide">
+    <div class="row padding-top">
       <div class="col s8 offset-s2">
-        <img id="broadcast-img" class="responsive-img" [src]="image">
+        <img id="broadcast-img" class="responsive-img z-depth-3" [src]="currentSlide.img">
       </div>
     </div>
   </div>
-  <ng-template #noImage>
+  <ng-template #noSlide>
     <p>Your session has not started yet, please wait...</p>
   </ng-template>
 </div>

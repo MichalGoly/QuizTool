@@ -23,6 +23,8 @@ export class BroadcastComponent implements OnInit {
   currentIndex: number;
   socket: SocketIOClient.Socket;
   sessionCode: string;
+  answers: Map<string, Object>;
+  liveAnswers: Object;
 
   constructor(private slideService: SlideService) { }
 
@@ -37,6 +39,8 @@ export class BroadcastComponent implements OnInit {
     this.currentIndex = 0;
     this.socket = io.connect(location.host);
     this.sessionCode = this.generateSessionCode();
+    this.answers = new Map<string, Object>();
+    this.liveAnswers = {};
   }
 
   navigateBack(): void {
@@ -75,6 +79,8 @@ export class BroadcastComponent implements OnInit {
   emitCurrentSlide(): void {
     const currentSlide = {
       img: this.slides[this.currentIndex].image,
+      text: this.slides[this.currentIndex].text,
+      isQuiz: this.slides[this.currentIndex].isQuiz,
       sessionCode: this.sessionCode
     };
     this.socket.emit('slide-update', currentSlide);
@@ -83,11 +89,14 @@ export class BroadcastComponent implements OnInit {
   emitSessionOver(): void {
     this.socket.emit('slide-update', {
       img: null,
+      text: null,
+      isQuiz: false,
       sessionCode: this.sessionCode
     });
   }
 
   generateSessionCode(): string {
-    return (new Date().getTime() * Math.random()).toString(36).substr(2, 8).toString();
+    let code = (new Date().getTime() * Math.random()).toString(36).substr(2, 8).toString();
+    return code.replace(/\./g, '0'); // replace dots with 0
   }
 }
