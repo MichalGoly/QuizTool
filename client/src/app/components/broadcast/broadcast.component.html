@@ -4,23 +4,36 @@
       <button mz-button [flat]="'true'" (click)="navigateBack()">Back</button>
     </div>
     <div class="col s10">
-      <h3 class="center-align">{{lecture.fileName}}</h3>
-      <h4>Session: {{sessionCode}}</h4>
+      <h4 class="left-align">{{lecture.fileName}}, session: {{sessionCode}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s2">
+      <button mz-button [disabled]="isPreviousDisabled()" (click)="previousSlide() | async"><i class="fa fa-arrow-left"></i></button>
+    </div>
+    <div class="col s2 offset-s8">
+      <button mz-button [disabled]="isNextDisabled()" (click)="nextSlide()"><i class="fa fa-arrow-right"></i></button>
     </div>
   </div>
   <div *ngIf="slides; else spinner">
     <div class="row">
-      <div class="col s8 offset-s2">
-        <img id="broadcast-img" class="responsive-img" [src]="getSrc(slides[currentIndex].image)">
+      <div *ngIf="slides[currentIndex].isQuiz; else fullScreen">
+        <div class="col s6">
+          <img class="responsive-img z-depth-3" [src]="getSrc(slides[currentIndex].image)">
+        </div>
+        <div class="col s6">
+          <div class="card">
+            <div class="card-content">
+              <p>This slide is a quiz</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col s2">
-        <button mz-button [disabled]="isPreviousDisabled()" (click)="previousSlide()">Previous</button>
-      </div>
-      <div class="col s2 offset-s8">
-        <button mz-button [disabled]="isNextDisabled()" (click)="nextSlide()">Next</button>
-      </div>
+      <ng-template #fullScreen>
+        <div class="col s8 offset-s2">
+          <img class="responsive-img z-depth-3" [src]="getSrc(slides[currentIndex].image)">
+        </div>
+      </ng-template>
     </div>
   </div>
   <ng-template #spinner>

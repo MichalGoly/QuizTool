@@ -49,7 +49,9 @@ export class BroadcastComponent implements OnInit {
   }
 
   isNextDisabled(): boolean {
-    return this.currentIndex >= this.slides.length - 1;
+    if (this.slides !== null && this.slides !== undefined) {
+      return this.currentIndex >= this.slides.length - 1;
+    }
   }
 
   previousSlide(): void {
