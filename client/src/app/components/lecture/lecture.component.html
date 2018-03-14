@@ -6,6 +6,9 @@
         <img id="broadcast-img" class="responsive-img z-depth-3" [src]="currentSlide.img">
       </div>
     </div>
+    <div *ngIf="currentSlide.isQuiz">
+      <lecture-answer [currentSlide]="currentSlide"></lecture-answer>
+    </div>
   </div>
   <ng-template #noSlide>
     <p>Your session has not started yet, please wait...</p>
