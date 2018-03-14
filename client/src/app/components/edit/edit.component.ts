@@ -4,6 +4,7 @@ import { Lecture } from '../../models/lecture';
 import { Slide } from '../../models/slide';
 
 import { SlideService } from '../../services/slide.service';
+import { QuizService } from '../../services/quiz.service';
 
 @Component({
   selector: 'app-edit',
@@ -20,7 +21,7 @@ export class EditComponent implements OnInit {
 
   slides: Slide[];
 
-  constructor(private slideService: SlideService) { }
+  constructor(private slideService: SlideService, private quizService: QuizService) { }
 
   ngOnInit() {
     this.slideService.getByLectureId(this.lecture._id).subscribe(slides => {
@@ -47,6 +48,10 @@ export class EditComponent implements OnInit {
 
   getSrc(image: string): string {
     return 'data:image/png;base64,' + image;
+  }
+
+  isEligible(slide: Slide): boolean {
+    return this.quizService.isEligible(slide);
   }
 
 }

@@ -20,6 +20,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BroadcastComponent } from './components/broadcast/broadcast.component';
+import { LectureComponent } from './components/lecture/lecture.component';
+import { EditComponent } from './components/edit/edit.component';
 
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
@@ -27,8 +29,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { LecturerService } from './services/lecturer.service';
 import { LectureService } from './services/lecture.service';
 import { SlideService } from './services/slide.service';
-import { LectureComponent } from './components/lecture/lecture.component';
-import { EditComponent } from './components/edit/edit.component';
+import { QuizService } from './services/quiz.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { EditComponent } from './components/edit/edit.component';
     },
     LecturerService,
     LectureService,
-    SlideService
+    SlideService,
+    QuizService
   ],
   bootstrap: [AppComponent]
 })
