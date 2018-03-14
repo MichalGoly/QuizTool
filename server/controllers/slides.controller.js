@@ -3,8 +3,10 @@ var router = express.Router();
 var authHelper = require('../helpers/auth.helper');
 var lecturesDb = require('../db/lectures.db');
 var slidesDb = require('../db/slides.db');
-
 var Slide = require('../models/slide');
+var Validator = require('jsonschema').Validator;
+var validator = new Validator();
+var BulkSlideUpdateSchema = require('../schemas/bulkSlideUpdate');
 
 router.get('/:lecture_id', getSlides);
 router.put('/', bulkUpdateQuiz);
@@ -48,16 +50,20 @@ function getSlides(req, res) {
 
 // Bulk updates isQuiz flags of the slides provided
 function bulkUpdateQuiz(req, res) {
-  authHelper.check(req, res).then((lecturer) => {
-    slidesDb.bulkUpdateQuiz(req.body).then(() => {
-      res.send(200);
+  if (validator.validate(req.body, BulkSlideUpdateSchema).valid) {
+    authHelper.check(req, res).then((lecturer) => {
+      slidesDb.bulkUpdateQuiz(req.body).then(() => {
+        res.send(200);
+      }).catch((err) => {
+        console.error("An error has occurred: " + err);
+        res.send(500);
+      });
     }).catch((err) => {
-      console.error("An error has occurred: " + err);
-      res.send(500);
+      res.send(401);
     });
-  }).catch((err) => {
-    res.send(401);
-  });
+  } else {
+    res.sendStatus(400);
+  }
 }
 
 module.exports = router;

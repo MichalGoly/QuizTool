@@ -14,6 +14,7 @@
     "express": "^4.15.2",
     "eyes": "^0.1.8",
     "fs": "0.0.1-security",
+    "jsonschema": "^1.2.2",
     "mongoose": "^5.0.7",
     "multer": "^1.3.0",
     "passport": "^0.4.0",
