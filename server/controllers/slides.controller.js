@@ -30,21 +30,21 @@ function getSlides(req, res) {
           res.send(out);
         }).catch((err) => {
           console.error("An error has occurred: " + err);
-          res.send(500);
+          res.sendStatus(500);
         });
       } else {
-        res.send(401);
+        res.sendStatus(401);
       }
     }).catch((err) => {
       if (err === 400) {
-        res.send(400);
+        res.sendStatus(400);
       } else {
         console.error("An error has occurred: " + err);
-        res.send(500);
+        res.sendStatus(500);
       }
     });
   }).catch((err) => {
-    res.send(401);
+    res.sendStatus(401);
   });
 }
 
@@ -53,13 +53,13 @@ function bulkUpdateQuiz(req, res) {
   if (validator.validate(req.body, BulkSlideUpdateSchema).valid) {
     authHelper.check(req, res).then((lecturer) => {
       slidesDb.bulkUpdateQuiz(req.body).then(() => {
-        res.send(200);
+        res.sendStatus(200);
       }).catch((err) => {
         console.error("An error has occurred: " + err);
-        res.send(500);
+        res.sendStatus(500);
       });
     }).catch((err) => {
-      res.send(401);
+      res.sendStatus(401);
     });
   } else {
     res.sendStatus(400);

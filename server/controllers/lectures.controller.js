@@ -29,10 +29,10 @@ function getLectures(req, res) {
       res.send(out);
     }).catch((err) => {
       console.error(err);
-      res.send(500);
+      res.sendStatus(500);
     });
   }).catch((err) => {
-    res.send(401);
+    res.sendStatus(401);
   });
 }
 
@@ -42,34 +42,34 @@ function getLecture(req, res) {
   authHelper.check(req, res).then((lecturer) => {
     lecturesDb.getOne(req.params._id).then((lecture) => {
       if (lecture === null) {
-        res.send(404);
+        res.sendStatus(404);
       } else if (lecture.lecturerId == lecturer._id) {
         var out = JSON.parse(JSON.stringify(lecture));
         delete out.file;
         res.send(out);
       } else {
-        res.send(401);
+        res.sendStatus(401);
       }
     }).catch((err) => {
       if (err === 400) {
-        res.send(400);
+        res.sendStatus(400);
       } else {
         console.error("An error has occurred " + err);
-        res.send(500);
+        res.sendStatus(500);
       }
     });
   }).catch((err) => {
     console.error("An error has occurred " + err);
-    res.send(401);
+    res.sendStatus(401);
   });
 }
 
 // Returns the file blob PDF presentation of the specific lecture
 function getFile(req, res) {
   authHelper.check(req, res).then((lecturer) => {
-
+    // TODO
   }).catch((err) => {
-    res.send(401);
+    res.sendStatus(401);
   });
 }
 
@@ -77,33 +77,33 @@ function getFile(req, res) {
 function deleteLecture(req, res) {
   authHelper.check(req, res).then((lecturer) => {
     lecturesDb._delete(req.params._id, lecturer._id).then(() => {
-      res.send(200);
+      res.sendStatus(200);
     }).catch((err) => {
       if (err === 401) {
-        res.send(401);
+        res.sendStatus(401);
       } else if (err === 400) {
-        res.send(400);
+        res.sendStatus(400);
       } else if (err === 404) {
-        res.send(404);
+        res.sendStatus(404);
       } else {
         console.error("An error has occurred: " + err);
-        res.send(500);
+        res.sendStatus(500);
       }
     });
   }).catch((err) => {
-    res.send(401);
+    res.sendStatus(401);
   });
 }
 
 function newLecture(req, res) {
   authHelper.check(req, res).then((lecturer) => {
     lecturesDb.create(req, lecturer._id).then(() => {
-      res.send(201);
+      res.sendStatus(201);
     }).catch((err) => {
       console.error(err);
-      res.send(500);
+      res.sendStatus(500);
     });
   }).catch((err) => {
-    res.send(401);
+    res.sendStatus(401);
   });
 }
