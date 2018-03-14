@@ -36,11 +36,6 @@ export class EditComponent implements OnInit {
   }
 
   save(): void {
-    /*
-    * 1. Go off to the server and update the lecture
-    * 2. Show a spinner
-    * 3. Then navigate back
-    */
     if (this.slides !== null) {
       this.slideService.bulkUpdateQuiz(this.slides).subscribe(() => {
         this.navigateBack();
