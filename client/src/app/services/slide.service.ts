@@ -13,4 +13,15 @@ export class SlideService {
     return this.http.get<Slide[]>(ENDPOINT + _id);
   }
 
+  bulkUpdateQuiz(slides: Slide[]) {
+    let out = [];
+    for (let i = 0; i < slides.length; i++) {
+      out.push({
+        _id: slides[i]._id,
+        isQuiz: slides[i].isQuiz
+      });
+    }
+    return this.http.put<any>(ENDPOINT, out);
+  }
+
 }

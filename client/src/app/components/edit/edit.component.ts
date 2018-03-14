@@ -36,10 +36,18 @@ export class EditComponent implements OnInit {
   }
 
   save(): void {
-    // go off to the server and update the lecture
-    // spin round baby round round
-    // then navigate back
-    this.navigateBack();
+    /*
+    * 1. Go off to the server and update the lecture
+    * 2. Show a spinner
+    * 3. Then navigate back
+    */
+    if (this.slides !== null) {
+      this.slideService.bulkUpdateQuiz(this.slides).subscribe(() => {
+        this.navigateBack();
+      }, err => {
+        console.error(err);
+      });
+    }
   }
 
   getSrc(image: string): string {
