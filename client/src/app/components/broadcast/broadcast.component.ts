@@ -5,6 +5,7 @@ import { Lecture } from '../../models/lecture';
 import { Slide } from '../../models/slide';
 
 import { SlideService } from '../../services/slide.service';
+import { QuizService } from '../../services/quiz.service';
 
 @Component({
   selector: 'app-broadcast',
@@ -25,8 +26,10 @@ export class BroadcastComponent implements OnInit {
   sessionCode: string;
   answers: Map<string, Object>;
   liveAnswers: Object;
+  options: string[];
+  chosenOption: string;
 
-  constructor(private slideService: SlideService) { }
+  constructor(private slideService: SlideService, private quizService: QuizService) { }
 
   ngOnInit() {
     this.slideService.getByLectureId(this.lecture._id).subscribe((slides) => {
@@ -78,6 +81,10 @@ export class BroadcastComponent implements OnInit {
     if (!this.isPreviousDisabled()) {
       this.currentIndex--;
       this.liveAnswers = {};
+      this.chosenOption = null;
+      if (this.slides[this.currentIndex].isQuiz) {
+        this.options = this.quizService.extractOptions(this.slides[this.currentIndex].text);
+      }
       this.emitCurrentSlide();
     }
   }
@@ -86,6 +93,10 @@ export class BroadcastComponent implements OnInit {
     if (!this.isNextDisabled()) {
       this.currentIndex++;
       this.liveAnswers = {};
+      this.chosenOption = null;
+      if (this.slides[this.currentIndex].isQuiz) {
+        this.options = this.quizService.extractOptions(this.slides[this.currentIndex].text);
+      }
       this.emitCurrentSlide();
     }
   }
@@ -113,6 +124,29 @@ export class BroadcastComponent implements OnInit {
     });
   }
 
+  choose(option: string): void {
+    this.handleSelection(option);
+    this.chosenOption = option;
+  }
+
+  submit(): void {
+    if (this.chosenOption !== null) {
+      for (let i = 0; i < this.options.length; i++) {
+        $('#' + this.options[i]).addClass('disabled');
+      }
+      this.socket.emit('correct-answer', {
+        sessionCode: this.sessionCode,
+        option: this.chosenOption
+      });
+    }
+  }
+
+  askAgain(): void {
+    this.liveAnswers = {};
+    this.chosenOption = null;
+    this.emitCurrentSlide();
+  }
+
   generateSessionCode(): string {
     let code = (new Date().getTime() * Math.random()).toString(36).substr(2, 8).toString();
     return code.replace(/\./g, '0'); // replace dots with 0
@@ -122,5 +156,22 @@ export class BroadcastComponent implements OnInit {
     return answer !== null && answer !== undefined && answer.sessionCode !== null
       && answer.sessionCode !== undefined && answer.option !== null && answer.option !== undefined
       && this.sessionCode === answer.sessionCode;
+  }
+
+  handleSelection(option: string): void {
+    /*
+    * 1. Deselect previosuly selected buttons
+    * 2. Select the on passed into the method
+    */
+    for (let i = 0; i < this.options.length; i++) {
+      let element = $('#' + this.options[i]);
+      if (element.hasClass('yellow')) {
+        element.removeClass('yellow');
+      }
+      if (!element.hasClass('blue')) {
+        element.addClass('blue');
+      }
+    }
+    $('#' + option).addClass('yellow');
   }
 }

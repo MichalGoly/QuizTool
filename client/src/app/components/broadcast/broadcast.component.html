@@ -24,8 +24,23 @@
         <div class="col s6">
           <div class="card">
             <div class="card-content">
-              <div *ngIf="liveAnswers">
-                {{liveAnswers | json}}
+              <div class="row">
+                <div *ngIf="liveAnswers">
+                  {{liveAnswers | json}}
+                </div>
+              </div>
+              <div class="row">
+                <p><i class="fa fa-eye"></i> Select the correct answer and display it to students</p>
+                <div class="col s2" *ngFor="let option of options">
+                  <a href="javascript:void(0)" id="{{option}}" class="waves-effect waves-light btn blue" (click)="choose(option)">{{option}}</a>
+                </div>
+              </div>
+              <div class="row">
+                <button mz-button (click)="submit()">Submit</button>
+              </div>
+              <div class="row">
+                <p><i class="fa fa-redo"></i> Or ask students to answer again</p>
+                <p><button mz-button [flat]="'true'" (click)="askAgain()">Retry</button></p>
               </div>
             </div>
           </div>

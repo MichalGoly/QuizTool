@@ -23,6 +23,14 @@ module.exports = function(server) {
         option: answer.option
       });
     });
+
+    socket.on('correct-answer', (answer) => {
+      console.log("[INFO] Socket.io event: correct-answer");
+      socket.broadcast.emit('correct-received', {
+        sessionCode: answer.sessionCode,
+        option: answer.option
+      });
+    })
   });
 
   return io;

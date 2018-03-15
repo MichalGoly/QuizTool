@@ -21,6 +21,7 @@ export class AnswerComponent implements OnInit {
   options: string[];
   chosenOption: string;
   isSubmitted: boolean;
+  correctAnswer: string;
 
   constructor(private quizService: QuizService) {
     this.isSubmitted = false;
@@ -28,6 +29,19 @@ export class AnswerComponent implements OnInit {
 
   ngOnInit() {
     this.options = this.quizService.extractOptions(this.currentSlide["text"]);
+    this.chosenOption = null;
+    this.isSubmitted = false;
+    this.correctAnswer = null;
+
+    this.socket.on('correct-received', (correctAnswer: any) => {
+      if (this.isValid(correctAnswer)) {
+        if (this.chosenOption == correctAnswer.option) {
+          this.correctAnswer = "WELL DONE, IT WAS: " + correctAnswer.option;
+        } else {
+          this.correctAnswer = "BETTER LUCK NEXT TIME, IT WAS: " + correctAnswer.option;
+        }
+      }
+    });
   }
 
   choose(option: string): void {
@@ -69,4 +83,9 @@ export class AnswerComponent implements OnInit {
     $('#' + option).addClass('yellow');
   }
 
+  isValid(answer: any): boolean {
+    return answer !== null && answer !== undefined && answer.sessionCode !== null
+      && answer.sessionCode !== undefined && answer.option !== null && answer.option !== undefined
+      && this.sessionCode === answer.sessionCode;
+  }
 }

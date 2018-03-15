@@ -7,6 +7,7 @@
     </div>
     <div class="row">
       <button mz-button (click)="submit()">Submit</button>
+      <p *ngIf="correctAnswer">{{correctAnswer}}</p>
     </div>
   </div>
 </div>
