@@ -1,7 +1,13 @@
 <div *ngIf="currentSlide">
   <div *ngIf="currentSlide.isQuiz">
     <div class="row">
-      <p>{{currentSlide.text}}</p>
+      <div class="col s2" *ngFor="let option of options">
+        <a href="javascript:void(0)" id="{{option}}" class="waves-effect waves-light btn blue" (click)="choose(option)">{{option}}</a>
+      </div>
+    </div>
+    <div class="row">
+      <p>chosenOption: {{chosenOption}}</p>
+      <button mz-button (click)="submit()">Submit</button>
     </div>
   </div>
 </div>

@@ -4,10 +4,10 @@
     <div class="row padding-top">
       <div class="col s8 offset-s2">
         <img id="broadcast-img" class="responsive-img z-depth-3" [src]="currentSlide.img">
+        <div *ngIf="currentSlide.isQuiz">
+          <lecture-answer [currentSlide]="currentSlide" [socket]="socket"></lecture-answer>
+        </div>
       </div>
-    </div>
-    <div *ngIf="currentSlide.isQuiz">
-      <lecture-answer [currentSlide]="currentSlide"></lecture-answer>
     </div>
   </div>
   <ng-template #noSlide>
