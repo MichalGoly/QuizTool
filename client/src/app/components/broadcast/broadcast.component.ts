@@ -80,11 +80,6 @@ export class BroadcastComponent implements OnInit {
   previousSlide(): void {
     if (!this.isPreviousDisabled()) {
       this.currentIndex--;
-      this.liveAnswers = {};
-      this.chosenOption = null;
-      if (this.slides[this.currentIndex].isQuiz) {
-        this.options = this.quizService.extractOptions(this.slides[this.currentIndex].text);
-      }
       this.emitCurrentSlide();
     }
   }
@@ -92,12 +87,27 @@ export class BroadcastComponent implements OnInit {
   nextSlide(): void {
     if (!this.isNextDisabled()) {
       this.currentIndex++;
-      this.liveAnswers = {};
-      this.chosenOption = null;
-      if (this.slides[this.currentIndex].isQuiz) {
-        this.options = this.quizService.extractOptions(this.slides[this.currentIndex].text);
-      }
       this.emitCurrentSlide();
+    }
+  }
+
+  cleanUp(): void {
+    this.liveAnswers = {};
+    this.chosenOption = null;
+    if (this.slides[this.currentIndex].isQuiz) {
+      this.options = this.quizService.extractOptions(this.slides[this.currentIndex].text);
+      if ($("#btn-submit").hasClass('disabled')) {
+        $("#btn-submit").removeClass('disabled');
+      }
+      for (let i = 0; i < this.options.length; i++) {
+        let element = $('#' + this.options[i]);
+        if (element.hasClass('green'))
+          element.removeClass('green');
+        if (element.hasClass('yellow'))
+          element.removeClass('yellow');
+        if (!element.hasClass('blue'))
+          element.addClass('blue');
+      }
     }
   }
 
@@ -106,6 +116,7 @@ export class BroadcastComponent implements OnInit {
   }
 
   emitCurrentSlide(): void {
+    this.cleanUp();
     const currentSlide = {
       img: this.slides[this.currentIndex].image,
       text: this.slides[this.currentIndex].text,
@@ -131,9 +142,7 @@ export class BroadcastComponent implements OnInit {
 
   submit(): void {
     if (this.chosenOption !== null) {
-      for (let i = 0; i < this.options.length; i++) {
-        $('#' + this.options[i]).addClass('disabled');
-      }
+      $('#btn-submit').addClass('disabled');
       this.socket.emit('correct-answer', {
         sessionCode: this.sessionCode,
         option: this.chosenOption

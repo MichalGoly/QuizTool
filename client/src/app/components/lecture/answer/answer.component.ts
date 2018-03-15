@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { QuizService } from '../../../services/quiz.service';
 
@@ -21,27 +21,50 @@ export class AnswerComponent implements OnInit {
   options: string[];
   chosenOption: string;
   isSubmitted: boolean;
-  correctAnswer: string;
+  // correctAnswer: string;
 
   constructor(private quizService: QuizService) {
     this.isSubmitted = false;
   }
 
   ngOnInit() {
+    this.init();
+    this.socket.on('correct-received', (correctAnswer: any) => {
+      if (this.isValid(correctAnswer)) {
+        let element = $('#' + correctAnswer["option"]);
+        if (element.hasClass('yellow'))
+          element.removeClass('yellow');
+        if (element.hasClass('blue'))
+          element.removeClass('blue');
+        element.addClass('green');
+      }
+    });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("ngOnChanges called");
+    this.init();
+  }
+
+  init(): void {
     this.options = this.quizService.extractOptions(this.currentSlide["text"]);
     this.chosenOption = null;
     this.isSubmitted = false;
-    this.correctAnswer = null;
+    // this.correctAnswer = null;
 
-    this.socket.on('correct-received', (correctAnswer: any) => {
-      if (this.isValid(correctAnswer)) {
-        if (this.chosenOption == correctAnswer.option) {
-          this.correctAnswer = "WELL DONE, IT WAS: " + correctAnswer.option;
-        } else {
-          this.correctAnswer = "BETTER LUCK NEXT TIME, IT WAS: " + correctAnswer.option;
-        }
-      }
-    });
+    // clean up buttons' states
+    if ($('#btn-submit').hasClass('disabled')) {
+      $('#btn-submit').removeClass('disabled');
+    }
+    for (let i = 0; i < this.options.length; i++) {
+      let element = $('#' + this.options[i]);
+      if (element.hasClass('green'))
+        element.removeClass('green');
+      if (element.hasClass('yellow'))
+        element.removeClass('yellow');
+      if (!element.hasClass('blue'))
+        element.addClass('blue');
+    }
   }
 
   choose(option: string): void {
@@ -55,9 +78,7 @@ export class AnswerComponent implements OnInit {
     * 2. Submit the chosenOption using sockets
     */
     if (this.chosenOption !== null) {
-      for (let i = 0; i < this.options.length; i++) {
-        $('#' + this.options[i]).addClass('disabled');
-      }
+      $("#btn-submit").addClass('disabled');
       const answer = {
         sessionCode: this.sessionCode,
         option: this.chosenOption

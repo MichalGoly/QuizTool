@@ -27,6 +27,7 @@ export class LectureComponent implements OnInit {
             // session is over
             this.currentSlide = null;
           } else {
+            this.currentSlide = {}; // needed for the ngOnChanges to fire in the answer.component
             this.currentSlide["img"] = 'data:image/png;base64,' + slide.img;
             this.currentSlide["text"] = slide.text;
             this.currentSlide["isQuiz"] = slide.isQuiz;
