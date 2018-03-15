@@ -17,6 +17,7 @@ module.exports = function(server) {
     });
 
     socket.on('answer-sent', (answer) => {
+      console.log("[INFO] Socket.io event: answer-sent");
       socket.broadcast.emit('answer-received', {
         sessionCode: answer.sessionCode,
         option: answer.option

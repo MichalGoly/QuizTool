@@ -41,6 +41,22 @@ export class BroadcastComponent implements OnInit {
     this.sessionCode = this.generateSessionCode();
     this.answers = new Map<string, Object>();
     this.liveAnswers = {};
+
+    this.socket.on('answer-received', (answer: any) => {
+      if (this.isValid(answer)) {
+        let currentSlideId = this.slides[this.currentIndex]._id;
+        if (!this.liveAnswers.hasOwnProperty(currentSlideId)) {
+          this.liveAnswers[currentSlideId] = {};
+        }
+        if (this.liveAnswers[currentSlideId].hasOwnProperty(answer.option)) {
+          // increment the count
+          this.liveAnswers[currentSlideId][answer.option] += 1;
+        } else {
+          // initialise with a count 1
+          this.liveAnswers[currentSlideId][answer.option] = 1;
+        }
+      }
+    });
   }
 
   navigateBack(): void {
@@ -61,6 +77,7 @@ export class BroadcastComponent implements OnInit {
   previousSlide(): void {
     if (!this.isPreviousDisabled()) {
       this.currentIndex--;
+      this.liveAnswers = {};
       this.emitCurrentSlide();
     }
   }
@@ -68,6 +85,7 @@ export class BroadcastComponent implements OnInit {
   nextSlide(): void {
     if (!this.isNextDisabled()) {
       this.currentIndex++;
+      this.liveAnswers = {};
       this.emitCurrentSlide();
     }
   }
@@ -98,5 +116,11 @@ export class BroadcastComponent implements OnInit {
   generateSessionCode(): string {
     let code = (new Date().getTime() * Math.random()).toString(36).substr(2, 8).toString();
     return code.replace(/\./g, '0'); // replace dots with 0
+  }
+
+  isValid(answer: any): boolean {
+    return answer !== null && answer !== undefined && answer.sessionCode !== null
+      && answer.sessionCode !== undefined && answer.option !== null && answer.option !== undefined
+      && this.sessionCode === answer.sessionCode;
   }
 }

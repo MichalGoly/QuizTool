@@ -5,7 +5,7 @@
       <div class="col s8 offset-s2">
         <img id="broadcast-img" class="responsive-img z-depth-3" [src]="currentSlide.img">
         <div *ngIf="currentSlide.isQuiz">
-          <lecture-answer [currentSlide]="currentSlide" [socket]="socket"></lecture-answer>
+          <lecture-answer [currentSlide]="currentSlide" [socket]="socket" [sessionCode]="sessionCode"></lecture-answer>
         </div>
       </div>
     </div>

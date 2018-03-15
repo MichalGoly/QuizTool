@@ -24,7 +24,9 @@
         <div class="col s6">
           <div class="card">
             <div class="card-content">
-              <p>This slide is a quiz</p>
+              <div *ngIf="liveAnswers">
+                {{liveAnswers | json}}
+              </div>
             </div>
           </div>
         </div>

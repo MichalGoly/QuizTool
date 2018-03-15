@@ -15,6 +15,9 @@ export class AnswerComponent implements OnInit {
   @Input()
   socket: SocketIOClient.Socket;
 
+  @Input()
+  sessionCode: string;
+
   options: string[];
   chosenOption: string;
   isSubmitted: boolean;
@@ -37,7 +40,16 @@ export class AnswerComponent implements OnInit {
     * 1. Disable all buttons
     * 2. Submit the chosenOption using sockets
     */
-    console.log("Submitting: " + this.chosenOption);
+    if (this.chosenOption !== null) {
+      for (let i = 0; i < this.options.length; i++) {
+        $('#' + this.options[i]).addClass('disabled');
+      }
+      const answer = {
+        sessionCode: this.sessionCode,
+        option: this.chosenOption
+      };
+      this.socket.emit('answer-sent', answer);
+    }
   }
 
   handleSelection(option: string): void {
