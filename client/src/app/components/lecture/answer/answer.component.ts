@@ -21,7 +21,6 @@ export class AnswerComponent implements OnInit {
   options: string[];
   chosenOption: string;
   isSubmitted: boolean;
-  // correctAnswer: string;
 
   constructor(private quizService: QuizService) {
     this.isSubmitted = false;
@@ -50,7 +49,6 @@ export class AnswerComponent implements OnInit {
     this.options = this.quizService.extractOptions(this.currentSlide["text"]);
     this.chosenOption = null;
     this.isSubmitted = false;
-    // this.correctAnswer = null;
 
     // clean up buttons' states
     if ($('#btn-submit').hasClass('disabled')) {
