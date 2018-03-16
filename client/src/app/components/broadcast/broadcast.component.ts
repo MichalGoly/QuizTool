@@ -59,6 +59,7 @@ export class BroadcastComponent implements OnInit {
           this.liveAnswers[currentSlideId][answer.option] = 1;
         }
       }
+      this.liveAnswers = JSON.parse(JSON.stringify(this.liveAnswers));
     });
   }
 
@@ -109,6 +110,16 @@ export class BroadcastComponent implements OnInit {
           element.addClass('blue');
       }
     }
+  }
+
+  // removes the slide ID before passing the object to the chart component
+  removeId(liveAnswers: Object): Object {
+    let out = {};
+    let currentSlideId = this.slides[this.currentIndex]._id;
+    if (liveAnswers.hasOwnProperty(currentSlideId)) {
+      out = liveAnswers[currentSlideId];
+    }
+    return out;
   }
 
   getSrc(image: string): string {
