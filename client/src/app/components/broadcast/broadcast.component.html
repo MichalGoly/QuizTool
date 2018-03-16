@@ -25,9 +25,7 @@
           <div class="card">
             <div class="card-content">
               <div class="row">
-                <div *ngIf="liveAnswers">
-                  {{liveAnswers | json}}
-                </div>
+                <broadcast-chart *ngIf="liveAnswers" [liveAnswers]="liveAnswers"></broadcast-chart>
               </div>
               <div class="row">
                 <p><i class="fa fa-eye"></i> Select the correct answer and display it to students</p>
