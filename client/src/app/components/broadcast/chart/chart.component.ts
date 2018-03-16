@@ -16,14 +16,9 @@ export class ChartComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("HELLO");
-    console.log(this.liveAnswers);
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("ngOnChanges called");
-    console.log(JSON.stringify(this.liveAnswers));
-    console.log(JSON.stringify(this.options));
   }
 
   getCount(option: string) {
