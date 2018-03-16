@@ -47,19 +47,15 @@ export class BroadcastComponent implements OnInit {
 
     this.socket.on('answer-received', (answer: any) => {
       if (this.isValid(answer)) {
-        let currentSlideId = this.slides[this.currentIndex]._id;
-        if (!this.liveAnswers.hasOwnProperty(currentSlideId)) {
-          this.liveAnswers[currentSlideId] = {};
-        }
-        if (this.liveAnswers[currentSlideId].hasOwnProperty(answer.option)) {
+        if (this.liveAnswers.hasOwnProperty(answer.option)) {
           // increment the count
-          this.liveAnswers[currentSlideId][answer.option] += 1;
+          this.liveAnswers[answer.option] += 1;
         } else {
           // initialise with a count 1
-          this.liveAnswers[currentSlideId][answer.option] = 1;
+          this.liveAnswers[answer.option] = 1;
         }
+        this.liveAnswers = JSON.parse(JSON.stringify(this.liveAnswers));
       }
-      this.liveAnswers = JSON.parse(JSON.stringify(this.liveAnswers));
     });
   }
 
@@ -112,16 +108,6 @@ export class BroadcastComponent implements OnInit {
     }
   }
 
-  // removes the slide ID before passing the object to the chart component
-  removeId(liveAnswers: Object): Object {
-    let out = {};
-    let currentSlideId = this.slides[this.currentIndex]._id;
-    if (liveAnswers.hasOwnProperty(currentSlideId)) {
-      out = liveAnswers[currentSlideId];
-    }
-    return out;
-  }
-
   getSrc(image: string): string {
     return 'data:image/png;base64,' + image;
   }
@@ -149,6 +135,7 @@ export class BroadcastComponent implements OnInit {
   choose(option: string): void {
     this.handleSelection(option);
     this.chosenOption = option;
+    this.liveAnswers["correct"] = this.chosenOption;
   }
 
   submit(): void {
