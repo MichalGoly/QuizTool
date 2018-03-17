@@ -54,6 +54,7 @@ export class BroadcastComponent implements OnInit {
           // initialise with a count 1
           this.liveAnswers[answer.option] = 1;
         }
+        // clone the object to trigger onChanges lifecycle hook in the child component
         this.liveAnswers = JSON.parse(JSON.stringify(this.liveAnswers));
       }
     });
@@ -91,7 +92,6 @@ export class BroadcastComponent implements OnInit {
     }
   }
 
-  // edge case -> save and exit should add the currentSlide into the map before persisting
   nextSlide(): void {
     if (!this.isNextDisabled()) {
       this.keepAnswer();
