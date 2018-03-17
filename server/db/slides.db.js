@@ -20,6 +20,7 @@ module.exports = database;
 const TEMP_PRESENTATION = 'temp.pdf';
 
 function createFromLecture(lecture) {
+  console.log("[INFO] createFromLecture called");
   return new Promise((resolve, reject) => {
     if (lecture === null) {
       reject("Parameter lecture was null");
@@ -33,9 +34,12 @@ function createFromLecture(lecture) {
        * 5. Bulk insert all into the database
        */
       fs.writeFile(TEMP_PRESENTATION, lecture.file, 'binary', (err) => {
+        console.log("fs.writeFile finished");
         if (err) {
+          console.log("REJECTING " + err);
           reject(err);
         } else {
+          console.log("no error");
           extractSlidesTextArray(TEMP_PRESENTATION).then((slidesArr) => {
             // 3
             var promisesQueue = [];
@@ -154,6 +158,7 @@ function updateQuiz(slide) {
 }
 
 function extractSlidesTextArray(filePath) {
+  console.log("[INFO] extractSlidesTextArray called");
   return new Promise((resolve, reject) => {
     /*
      * 1. Use pdf_extract to extract text from each slide
@@ -187,6 +192,7 @@ function extractSlidesTextArray(filePath) {
 }
 
 function extractImageFromSlide(slide) {
+  console.log("extractImageFromSlide called");
   return new Promise((resolve, reject) => {
     /*
      * 1. Extract the png from the single page PDF provided
