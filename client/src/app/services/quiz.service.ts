@@ -28,4 +28,14 @@ export class QuizService {
       && slide.text.indexOf(this.letters[1]) >= 0;
   }
 
+  extractOptions(text: string): string[] {
+    let out = [];
+    for (let i = 0; i < this.letters.length; i++) {
+      if (text.indexOf(this.letters[i]) >= 0) {
+        out.push(this.letters[i].charAt(0));
+      }
+    }
+    return out;
+  }
+
 }

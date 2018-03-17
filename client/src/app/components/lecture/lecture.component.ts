@@ -9,11 +9,13 @@ import * as io from 'socket.io-client';
 })
 export class LectureComponent implements OnInit {
 
-  sessionCode: string;
   socket: SocketIOClient.Socket;
-  image: string;
+  sessionCode: string;
+  currentSlide: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {
+    this.currentSlide = {};
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -23,9 +25,12 @@ export class LectureComponent implements OnInit {
         if (this.sessionCode === slide.sessionCode) {
           if (slide.img === null) {
             // session is over
-            this.image = null;
+            this.currentSlide = null;
           } else {
-            this.image = 'data:image/png;base64,' + slide.img;
+            this.currentSlide = {}; // needed for the ngOnChanges to fire in the answer.component
+            this.currentSlide["img"] = 'data:image/png;base64,' + slide.img;
+            this.currentSlide["text"] = slide.text;
+            this.currentSlide["isQuiz"] = slide.isQuiz;
           }
         }
       });

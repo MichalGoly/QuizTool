@@ -30,6 +30,8 @@ import { LecturerService } from './services/lecturer.service';
 import { LectureService } from './services/lecture.service';
 import { SlideService } from './services/slide.service';
 import { QuizService } from './services/quiz.service';
+import { AnswerComponent } from './components/lecture/answer/answer.component';
+import { ChartComponent } from './components/broadcast/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { QuizService } from './services/quiz.service';
     DashboardComponent,
     BroadcastComponent,
     LectureComponent,
-    EditComponent
+    EditComponent,
+    AnswerComponent,
+    ChartComponent
   ],
   imports: [
     Routing,
