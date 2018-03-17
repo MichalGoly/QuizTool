@@ -60,6 +60,14 @@ export class BroadcastComponent implements OnInit {
   }
 
   navigateBack(): void {
+    if (this.answers.size !== 0) {
+      let session = {
+        answers: this.answers,
+        date: new Date(),
+        lectureId: this.lecture._id
+      };
+      console.log(session);
+    }
     this.emitSessionOver();
     this.lectureChange.emit(null);
   }
@@ -78,11 +86,21 @@ export class BroadcastComponent implements OnInit {
     if (!this.isPreviousDisabled()) {
       this.currentIndex--;
       this.emitCurrentSlide();
+      // navigating back removes previously stored answers
+      let currentSlide = this.slides[this.currentIndex];
+      if (currentSlide.isQuiz && this.answers.has(currentSlide._id)) {
+        this.answers.delete(currentSlide._id);
+      }
     }
   }
 
+  // edge case -> save and exit should add the currentSlide into the map before persisting
   nextSlide(): void {
     if (!this.isNextDisabled()) {
+      // add students' answers to the in memory map
+      if (this.slides[this.currentIndex].isQuiz) {
+        this.answers.set(this.slides[this.currentIndex]._id, this.liveAnswers);
+      }
       this.currentIndex++;
       this.emitCurrentSlide();
     }
