@@ -60,6 +60,7 @@ export class BroadcastComponent implements OnInit {
   }
 
   navigateBack(): void {
+    this.keepAnswer();
     if (this.answers.size !== 0) {
       let session = {
         answers: this.answers,
@@ -86,21 +87,14 @@ export class BroadcastComponent implements OnInit {
     if (!this.isPreviousDisabled()) {
       this.currentIndex--;
       this.emitCurrentSlide();
-      // navigating back removes previously stored answers
-      let currentSlide = this.slides[this.currentIndex];
-      if (currentSlide.isQuiz && this.answers.has(currentSlide._id)) {
-        this.answers.delete(currentSlide._id);
-      }
+      this.discardAnswer();
     }
   }
 
   // edge case -> save and exit should add the currentSlide into the map before persisting
   nextSlide(): void {
     if (!this.isNextDisabled()) {
-      // add students' answers to the in memory map
-      if (this.slides[this.currentIndex].isQuiz) {
-        this.answers.set(this.slides[this.currentIndex]._id, this.liveAnswers);
-      }
+      this.keepAnswer();
       this.currentIndex++;
       this.emitCurrentSlide();
     }
@@ -170,6 +164,21 @@ export class BroadcastComponent implements OnInit {
     this.liveAnswers = {};
     this.chosenOption = null;
     this.emitCurrentSlide();
+  }
+
+  // adds students' answers to the in memory map
+  keepAnswer(): void {
+    if (this.slides[this.currentIndex].isQuiz) {
+      this.answers.set(this.slides[this.currentIndex]._id, this.liveAnswers);
+    }
+  }
+
+  // moving back removes the previously submitted answers from the map
+  discardAnswer(): void {
+    let currentSlide = this.slides[this.currentIndex];
+    if (currentSlide.isQuiz && this.answers.has(currentSlide._id)) {
+      this.answers.delete(currentSlide._id);
+    }
   }
 
   generateSessionCode(): string {
