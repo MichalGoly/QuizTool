@@ -1,7 +1,3 @@
 <div *ngIf="liveAnswers">
-  <ul class="collection">
-    <li *ngFor="let option of options">
-      <b>{{option}}:</b> {{getCount(option)}}
-    </li>
-  </ul>
+  <canvas baseChart [datasets]="barChartData" [labels]="options" [options]="barChartOptions" [chartType]="'bar'"></canvas>
 </div>
