@@ -47,6 +47,7 @@ function createFromLecture(lecture) {
               promisesQueue.push(extractImageFromSlide(slidesArr[i]));
             }
             Promise.all(promisesQueue).then((images) => {
+              console.log("[INFO] all extract image promises resolved");
               var slides = [];
               for (var j = 0; j < slidesArr.length; j++) {
                 slides.push(new Slide({
@@ -57,6 +58,8 @@ function createFromLecture(lecture) {
                   slideNumber: j + 1
                 }));
               }
+              console.log("Before insert many slides");
+              console.log(slides);
               Slide.insertMany(slides).then((docs) => {
                 console.log("Inserted " + docs.length + " slides");
                 resolve();
