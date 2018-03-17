@@ -42,6 +42,7 @@ function createFromLecture(lecture) {
           console.log("no error");
           extractSlidesTextArray(TEMP_PRESENTATION).then((slidesArr) => {
             // 3
+            console.log(slidesArr);
             var promisesQueue = [];
             for (var i = 0; i < slidesArr.length; i++) {
               promisesQueue.push(extractImageFromSlide(slidesArr[i]));
