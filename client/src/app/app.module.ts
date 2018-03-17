@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routing } from './app.routing';
 import { JwtInterceptor } from './utils/jwt.interceptor';
 import { FileUploadModule } from 'ng2-file-upload';
-import { ChartsModule } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { MzButtonModule } from 'ng2-materialize'
 import { MzCardModule } from 'ng2-materialize'
