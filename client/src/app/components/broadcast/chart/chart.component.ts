@@ -46,6 +46,7 @@ export class ChartComponent implements OnInit {
     this.barChartData = JSON.parse(JSON.stringify(this.barChartData));
     this.options = JSON.parse(JSON.stringify(this.options));
     if (this.chart !== null && this.chart !== undefined && this.chart.chart !== undefined) {
+      this.chart.chart.config.data.labels = this.options;
       this.chart.chart.update();
     }
   }
