@@ -20,7 +20,6 @@ module.exports = database;
 const TEMP_PRESENTATION = 'temp.pdf';
 
 function createFromLecture(lecture) {
-  console.log("[INFO] createFromLecture called");
   return new Promise((resolve, reject) => {
     if (lecture === null) {
       reject("Parameter lecture was null");
@@ -34,16 +33,17 @@ function createFromLecture(lecture) {
        * 5. Bulk insert all into the database
        */
       fs.writeFile(TEMP_PRESENTATION, lecture.file, 'binary', (err) => {
-        console.log("fs.writeFile finished");
         if (err) {
-          console.log("REJECTING " + err);
           reject(err);
         } else {
-          console.log("no error");
           extractSlidesTextArray(TEMP_PRESENTATION).then((slidesArr) => {
             // 3
-            processArray(slidesArr, extractImageFromSlide).then(function(images) {
-              console.log("[INFO] all images extracted");
+            var promisesQueue = [];
+            for (var i = 0; i < slidesArr.length; i++) {
+              promisesQueue.push(extractImageFromSlide(slidesArr[i]));
+            }
+            Promise.all(promisesQueue).then((images) => {
+              console.log("[INFO] all extract image promises resolved");
               var slides = [];
               for (var j = 0; j < slidesArr.length; j++) {
                 slides.push(new Slide({
@@ -54,8 +54,6 @@ function createFromLecture(lecture) {
                   slideNumber: j + 1
                 }));
               }
-              console.log("Before insert many slides");
-              console.log(slides);
               Slide.insertMany(slides).then((docs) => {
                 console.log("Inserted " + docs.length + " slides");
                 resolve();
@@ -68,7 +66,7 @@ function createFromLecture(lecture) {
                   reject(err);
                 });
               });
-            }, function(err) {
+            }).catch((err) => {
               // clean up the temp file
               fs.unlink(TEMP_PRESENTATION, (err2) => {
                 if (err2) {
@@ -77,45 +75,6 @@ function createFromLecture(lecture) {
                 reject(err);
               });
             });
-            // var promisesQueue = [];
-            // for (var i = 0; i < slidesArr.length; i++) {
-            //   promisesQueue.push(extractImageFromSlide(slidesArr[i]));
-            // }
-            // Promise.all(promisesQueue).then((images) => {
-            //   console.log("[INFO] all extract image promises resolved");
-            //   var slides = [];
-            //   for (var j = 0; j < slidesArr.length; j++) {
-            //     slides.push(new Slide({
-            //       lectureId: lecture._id,
-            //       image: images[j],
-            //       text: slidesArr[j].text,
-            //       isQuiz: false,
-            //       slideNumber: j + 1
-            //     }));
-            //   }
-            //   console.log("Before insert many slides");
-            //   console.log(slides);
-            //   Slide.insertMany(slides).then((docs) => {
-            //     console.log("Inserted " + docs.length + " slides");
-            //     resolve();
-            //   }).catch((err) => {
-            //     // clean up the temp file
-            //     fs.unlink(TEMP_PRESENTATION, (err2) => {
-            //       if (err2) {
-            //         console.error(err2);
-            //       }
-            //       reject(err);
-            //     });
-            //   });
-            // }).catch((err) => {
-            //   // clean up the temp file
-            //   fs.unlink(TEMP_PRESENTATION, (err2) => {
-            //     if (err2) {
-            //       console.error(err2);
-            //     }
-            //     reject(err);
-            //   });
-            // });
           }).catch((err) => {
             // clean up the temp file
             fs.unlink(TEMP_PRESENTATION, (err2) => {
@@ -196,7 +155,6 @@ function updateQuiz(slide) {
 }
 
 function extractSlidesTextArray(filePath) {
-  console.log("[INFO] extractSlidesTextArray called");
   return new Promise((resolve, reject) => {
     /*
      * 1. Use pdf_extract to extract text from each slide
@@ -219,8 +177,6 @@ function extractSlidesTextArray(filePath) {
               slidePath: data.single_page_pdf_file_paths[i]
             });
           }
-          console.log(slides);
-          console.log(slides[1].slidePath + " file? " + fs.existsSync(slides[1].slidePath));
           resolve(slides);
         });
         processor.on('error', (err) => {
@@ -232,23 +188,18 @@ function extractSlidesTextArray(filePath) {
 }
 
 function extractImageFromSlide(slide) {
-  console.log("extractImageFromSlide called");
   return new Promise((resolve, reject) => {
     /*
      * 1. Extract the png from the single page PDF provided
      * 2. Clean up the slide from disk before resolving the image back
      */
-    console.log(slide.slidePath);
     var pngStream = scissors(slide.slidePath).pages(1).pngStream(300).on('error', (e) => reject(e));
-    console.log(pngStream);
     streamToBuffer(pngStream).then((img) => {
-      console.log(img);
       fs.unlink(slide.slidePath, (err) => {
         // does not matter
         if (err) {
           console.warn("[WARN]: " + err);
         }
-        console.log(slide.slidePath + " resolving");
         resolve(img);
       });
     }).catch((err) => {
@@ -260,24 +211,10 @@ function extractImageFromSlide(slide) {
 
 // http://derpturkey.com/buffer-to-stream-in-node/
 function streamToBuffer(stream) {
-  console.log("streamToBuffer called");
   return new Promise((resolve, reject) => {
     let buffers = [];
     stream.on('error', reject);
     stream.on('data', (data) => buffers.push(data));
     stream.on('end', () => resolve(Buffer.concat(buffers)));
   });
-}
-
-// https://stackoverflow.com/questions/29880715/how-to-synchronize-a-sequence-of-promises
-function processArray(array, fn) {
-  var results = [];
-  return array.reduce(function(p, item) {
-    return p.then(function() {
-      return fn(item).then(function(data) {
-        results.push(data);
-        return results;
-      });
-    });
-  }, Promise.resolve());
 }
