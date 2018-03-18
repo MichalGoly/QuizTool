@@ -61,7 +61,6 @@ function create(req, lecturer_id) {
       newLecture.save().then((lect) => {
         console.log("[INFO] Lecture " + lect._id + " saved in database");
         slidesDb.createFromLecture(lect).then(() => {
-          console.log("[INFO] createFromLecture resolving...");
           resolve();
         }).catch((err) => {
           console.error(err);
