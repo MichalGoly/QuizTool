@@ -42,12 +42,8 @@ function createFromLecture(lecture) {
           console.log("no error");
           extractSlidesTextArray(TEMP_PRESENTATION).then((slidesArr) => {
             // 3
-            var promisesQueue = [];
-            for (var i = 0; i < slidesArr.length; i++) {
-              promisesQueue.push(extractImageFromSlide(slidesArr[i]));
-            }
-            Promise.all(promisesQueue).then((images) => {
-              console.log("[INFO] all extract image promises resolved");
+            processArray(slidesArr, extractImageFromSlide).then(function(images) {
+              console.log("[INFO] all images extracted");
               var slides = [];
               for (var j = 0; j < slidesArr.length; j++) {
                 slides.push(new Slide({
@@ -72,7 +68,7 @@ function createFromLecture(lecture) {
                   reject(err);
                 });
               });
-            }).catch((err) => {
+            }, function(err) {
               // clean up the temp file
               fs.unlink(TEMP_PRESENTATION, (err2) => {
                 if (err2) {
@@ -81,6 +77,45 @@ function createFromLecture(lecture) {
                 reject(err);
               });
             });
+            // var promisesQueue = [];
+            // for (var i = 0; i < slidesArr.length; i++) {
+            //   promisesQueue.push(extractImageFromSlide(slidesArr[i]));
+            // }
+            // Promise.all(promisesQueue).then((images) => {
+            //   console.log("[INFO] all extract image promises resolved");
+            //   var slides = [];
+            //   for (var j = 0; j < slidesArr.length; j++) {
+            //     slides.push(new Slide({
+            //       lectureId: lecture._id,
+            //       image: images[j],
+            //       text: slidesArr[j].text,
+            //       isQuiz: false,
+            //       slideNumber: j + 1
+            //     }));
+            //   }
+            //   console.log("Before insert many slides");
+            //   console.log(slides);
+            //   Slide.insertMany(slides).then((docs) => {
+            //     console.log("Inserted " + docs.length + " slides");
+            //     resolve();
+            //   }).catch((err) => {
+            //     // clean up the temp file
+            //     fs.unlink(TEMP_PRESENTATION, (err2) => {
+            //       if (err2) {
+            //         console.error(err2);
+            //       }
+            //       reject(err);
+            //     });
+            //   });
+            // }).catch((err) => {
+            //   // clean up the temp file
+            //   fs.unlink(TEMP_PRESENTATION, (err2) => {
+            //     if (err2) {
+            //       console.error(err2);
+            //     }
+            //     reject(err);
+            //   });
+            // });
           }).catch((err) => {
             // clean up the temp file
             fs.unlink(TEMP_PRESENTATION, (err2) => {
@@ -232,4 +267,17 @@ function streamToBuffer(stream) {
     stream.on('data', (data) => buffers.push(data));
     stream.on('end', () => resolve(Buffer.concat(buffers)));
   });
+}
+
+// https://stackoverflow.com/questions/29880715/how-to-synchronize-a-sequence-of-promises
+function processArray(array, fn) {
+  var results = [];
+  return array.reduce(function(p, item) {
+    return p.then(function() {
+      return fn(item).then(function(data) {
+        results.push(data);
+        return results;
+      });
+    });
+  }, Promise.resolve());
 }
