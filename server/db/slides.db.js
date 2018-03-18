@@ -203,13 +203,16 @@ function extractImageFromSlide(slide) {
      * 1. Extract the png from the single page PDF provided
      * 2. Clean up the slide from disk before resolving the image back
      */
+    console.log(slide.slidePath);
     var pngStream = scissors(slide.slidePath).pages(1).pngStream(300);
+    console.log(pngStream);
     streamToBuffer(pngStream).then((img) => {
       fs.unlink(slide.slidePath, (err) => {
         // does not matter
         if (err) {
           console.warn("[WARN]: " + err);
         }
+        console.log(slide.slidePath + " resolving");
         resolve(img);
       });
     }).catch((err) => {
@@ -221,6 +224,7 @@ function extractImageFromSlide(slide) {
 
 // http://derpturkey.com/buffer-to-stream-in-node/
 function streamToBuffer(stream) {
+  console.log("streamToBuffer called");
   return new Promise((resolve, reject) => {
     let buffers = [];
     stream.on('error', reject);
