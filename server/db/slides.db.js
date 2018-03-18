@@ -184,6 +184,8 @@ function extractSlidesTextArray(filePath) {
               slidePath: data.single_page_pdf_file_paths[i]
             });
           }
+          console.log(slides);
+          console.log(slides[1].slidePath + " file? " + fs.existsSync(slides[1].slidePath));
           resolve(slides);
         });
         processor.on('error', (err) => {
