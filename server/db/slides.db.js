@@ -204,9 +204,10 @@ function extractImageFromSlide(slide) {
      * 2. Clean up the slide from disk before resolving the image back
      */
     console.log(slide.slidePath);
-    var pngStream = scissors(slide.slidePath).pages(1).pngStream(300);
+    var pngStream = scissors(slide.slidePath).pages(1).pngStream(300).on('error', (e) => reject(e));
     console.log(pngStream);
     streamToBuffer(pngStream).then((img) => {
+      console.log(img);
       fs.unlink(slide.slidePath, (err) => {
         // does not matter
         if (err) {
