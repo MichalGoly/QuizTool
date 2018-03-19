@@ -12,7 +12,8 @@ COPY package*.json ./
 RUN apt-get update && apt-get install -y --no-install-recommends \
 		ghostscript \
 		pdftk \
-		poppler-utils
+		poppler-utils \
+		graphicsmagick
 
 RUN npm install
 # If you are building your code for production
