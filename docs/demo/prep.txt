@@ -1,9 +1,0 @@
-## Mid-Project Demo ##
-- Reflect on the methodology followed and whether it is working as expected
-
-Assessment:
- - Project Description -> What the project is about and the methodology used?
- - Technical Work -> How advanced is the technical work?
- - Technical Issues -> To what extent does the student understand the technologies and technical issues in the project?
-
- 
