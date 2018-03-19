@@ -56,7 +56,13 @@ function createFromLecture(lecture) {
               }
               Slide.insertMany(slides).then((docs) => {
                 console.log("Inserted " + docs.length + " slides");
-                resolve();
+                // clean up the temp file from disk and resolve
+                fs.unlink(TEMP_PRESENTATION, (err2) => {
+                  if (err2) {
+                    console.error(err2);
+                  }
+                  resolve();
+                });
               }).catch((err) => {
                 // clean up the temp file
                 fs.unlink(TEMP_PRESENTATION, (err2) => {
