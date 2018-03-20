@@ -89,7 +89,8 @@ describe('test lectures controller', () => {
             res.body[5].should.have.property('image');
             res.body[5].should.have.property('text');
             expect(res.body[5]['text']).to.have.string('• Table names are pluralized by default...');
-            res.body[5].should.have.property('isQuiz').eql(false);
+            res.body[5].should.have.property('quizType');
+            assert.isNull(res.body[5]['quizType']);
             res.body[5].should.have.property('slideNumber').eql(6);
             done();
           });

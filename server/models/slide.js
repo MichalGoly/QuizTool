@@ -5,7 +5,7 @@ var slideSchema = mongoose.Schema({
   lectureId: String,
   image: Buffer,
   text: String,
-  isQuiz: Boolean,
+  quizType: String,
   slideNumber: Number
 });
 

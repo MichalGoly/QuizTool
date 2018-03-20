@@ -6,12 +6,12 @@ module.exports = {
       "_id": {
         "type": "string"
       },
-      "isQuiz": {
-        "type": "boolean"
+      "quizType": {
+        "type": ["string", "null"]
       }
     },
     "required": [
-      "_id", "isQuiz"
+      "_id", "quizType"
     ]
   }
 }

@@ -103,7 +103,7 @@ export class BroadcastComponent implements OnInit {
   cleanUp(): void {
     this.liveAnswers = {};
     this.chosenOption = null;
-    if (this.slides[this.currentIndex].isQuiz) {
+    if (this.slides[this.currentIndex].quizType !== null) {
       this.options = this.quizService.extractOptions(this.slides[this.currentIndex].text);
       if ($("#btn-submit").hasClass('disabled')) {
         $("#btn-submit").removeClass('disabled');
@@ -129,7 +129,7 @@ export class BroadcastComponent implements OnInit {
     const currentSlide = {
       img: this.slides[this.currentIndex].image,
       text: this.slides[this.currentIndex].text,
-      isQuiz: this.slides[this.currentIndex].isQuiz,
+      quizType: this.slides[this.currentIndex].quizType,
       sessionCode: this.sessionCode
     };
     this.socket.emit('slide-update', currentSlide);
@@ -139,7 +139,7 @@ export class BroadcastComponent implements OnInit {
     this.socket.emit('slide-update', {
       img: null,
       text: null,
-      isQuiz: false,
+      quizType: null,
       sessionCode: this.sessionCode
     });
   }
@@ -168,7 +168,7 @@ export class BroadcastComponent implements OnInit {
 
   // adds students' answers to the in memory map
   keepAnswer(): void {
-    if (this.slides[this.currentIndex].isQuiz) {
+    if (this.slides[this.currentIndex].quizType !== null) {
       this.answers.set(this.slides[this.currentIndex]._id, this.liveAnswers);
     }
   }
@@ -176,7 +176,7 @@ export class BroadcastComponent implements OnInit {
   // moving back removes the previously submitted answers from the map
   discardAnswer(): void {
     let currentSlide = this.slides[this.currentIndex];
-    if (currentSlide.isQuiz && this.answers.has(currentSlide._id)) {
+    if (currentSlide.quizType !== null && this.answers.has(currentSlide._id)) {
       this.answers.delete(currentSlide._id);
     }
   }

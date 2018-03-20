@@ -1,5 +1,5 @@
 <div *ngIf="currentSlide">
-  <div *ngIf="currentSlide.isQuiz">
+  <div *ngIf="currentSlide.quizType">
     <div class="row">
       <div class="col s2" *ngFor="let option of options">
         <a href="javascript:void(0)" id="{{option}}" class="waves-effect waves-light btn blue" (click)="choose(option)">{{option}}</a>

@@ -30,7 +30,7 @@ export class LectureComponent implements OnInit {
             this.currentSlide = {}; // needed for the ngOnChanges to fire in the answer.component
             this.currentSlide["img"] = 'data:image/png;base64,' + slide.img;
             this.currentSlide["text"] = slide.text;
-            this.currentSlide["isQuiz"] = slide.isQuiz;
+            this.currentSlide["quizType"] = slide.quizType;
           }
         }
       });

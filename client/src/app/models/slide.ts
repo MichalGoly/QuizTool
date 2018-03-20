@@ -3,6 +3,6 @@ export class Slide {
   lectureId: string;
   image: string; // base64
   text: string;
-  isQuiz: boolean;
+  quizType: string;
   slideNumber: number;
 }

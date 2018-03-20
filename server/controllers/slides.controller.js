@@ -23,7 +23,7 @@ function getSlides(req, res) {
               lectureId: slides[i].lectureId,
               image: slides[i].image.toString('base64'),
               text: slides[i].text,
-              isQuiz: slides[i].isQuiz,
+              quizType: slides[i].quizType,
               slideNumber: slides[i].slideNumber
             });
           }
@@ -48,7 +48,7 @@ function getSlides(req, res) {
   });
 }
 
-// Bulk updates isQuiz flags of the slides provided
+// Bulk updates quizType of the slides provided
 function bulkUpdateQuiz(req, res) {
   if (validator.validate(req.body, BulkSlideUpdateSchema).valid) {
     authHelper.check(req, res).then((lecturer) => {

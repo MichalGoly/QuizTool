@@ -11,7 +11,7 @@ module.exports = function(server) {
       socket.broadcast.emit('slide-change', {
         img: currentSlide.img,
         text: currentSlide.text,
-        isQuiz: currentSlide.isQuiz,
+        quizType: currentSlide.quizType,
         sessionCode: currentSlide.sessionCode
       });
     });

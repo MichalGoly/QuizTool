@@ -17,7 +17,7 @@
   </div>
   <div *ngIf="slides; else spinner">
     <div class="row">
-      <div *ngIf="slides[currentIndex].isQuiz; else fullScreen">
+      <div *ngIf="slides[currentIndex].quizType; else fullScreen">
         <div class="col s6">
           <img class="responsive-img z-depth-3" [src]="getSrc(slides[currentIndex].image)">
         </div>
