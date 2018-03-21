@@ -51,8 +51,16 @@ export class EditComponent implements OnInit {
     return 'data:image/png;base64,' + image;
   }
 
-  // isEligible(slide: Slide): boolean {
-  //   return this.quizService.isEligible(slide);
-  // }
+  isEligibleTrueFalse(slide: Slide): boolean {
+    return true; // every slide is eligible to become a true/false quiz
+  }
+
+  isEligibleSingle(slide: Slide): boolean {
+    return this.quizService.isEligible(slide);
+  }
+
+  isEligibleMulti(slide: Slide): boolean {
+    return this.quizService.isEligible(slide);
+  }
 
 }
