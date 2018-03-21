@@ -26,7 +26,6 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     this.slideService.getByLectureId(this.lecture._id).subscribe(slides => {
       this.slides = slides;
-      console.log(this.slides);
     }, err => {
       // make this user friendly
       console.error(err);
