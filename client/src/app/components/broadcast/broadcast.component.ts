@@ -27,7 +27,7 @@ export class BroadcastComponent implements OnInit {
   answers: Map<string, Object>;
   liveAnswers: Object;
   options: string[];
-  chosenOption: string;
+  chosenOptions: string[];
 
   constructor(private slideService: SlideService, private quizService: QuizService) { }
 
@@ -47,12 +47,14 @@ export class BroadcastComponent implements OnInit {
 
     this.socket.on('answer-received', (answer: any) => {
       if (this.isValid(answer)) {
-        if (this.liveAnswers.hasOwnProperty(answer.option)) {
-          // increment the count
-          this.liveAnswers[answer.option] += 1;
-        } else {
-          // initialise with a count 1
-          this.liveAnswers[answer.option] = 1;
+        for (let i = 0; i < answer.options.length; i++) {
+          if (this.liveAnswers.hasOwnProperty(answer.options[i])) {
+            // increment the count
+            this.liveAnswers[answer.options[i]] += 1;
+          } else {
+            // initialise with a count 1
+            this.liveAnswers[answer.options[i]] = 1;
+          }
         }
         // clone the object to trigger onChanges lifecycle hook in the child component
         this.liveAnswers = JSON.parse(JSON.stringify(this.liveAnswers));
@@ -102,7 +104,7 @@ export class BroadcastComponent implements OnInit {
 
   cleanUp(): void {
     this.liveAnswers = {};
-    this.chosenOption = null;
+    this.chosenOptions = [];
     if (this.slides[this.currentIndex].quizType !== null) {
       this.options = this.quizService.extractOptions(this.slides[this.currentIndex].text,
         this.slides[this.currentIndex].quizType);
@@ -147,23 +149,34 @@ export class BroadcastComponent implements OnInit {
 
   choose(option: string): void {
     this.handleSelection(option);
-    this.chosenOption = option;
-    this.liveAnswers["correct"] = this.chosenOption;
+    if (this.slides[this.currentIndex].quizType === "multi") {
+      let index = this.chosenOptions.indexOf(option);
+      if (index > -1) {
+        // option already in chosenOptions, remove it
+        this.chosenOptions.splice(index, 1);
+      } else {
+        // option not in chosenOptions, add it
+        this.chosenOptions.push(option);
+      }
+    } else {
+      this.chosenOptions = [option];
+    }
+    this.liveAnswers["correct"] = this.chosenOptions;
   }
 
   submit(): void {
-    if (this.chosenOption !== null) {
+    if (this.chosenOptions !== []) {
       $('#btn-submit').addClass('disabled');
       this.socket.emit('correct-answer', {
         sessionCode: this.sessionCode,
-        option: this.chosenOption
+        options: this.chosenOptions
       });
     }
   }
 
   askAgain(): void {
     this.liveAnswers = {};
-    this.chosenOption = null;
+    this.chosenOptions = [];
     this.emitCurrentSlide();
   }
 
@@ -189,24 +202,38 @@ export class BroadcastComponent implements OnInit {
 
   isValid(answer: any): boolean {
     return answer !== null && answer !== undefined && answer.sessionCode !== null
-      && answer.sessionCode !== undefined && answer.option !== null && answer.option !== undefined
-      && this.sessionCode === answer.sessionCode;
+      && answer.sessionCode !== undefined && answer.options !== null && answer.options !== undefined
+      && answer.options.length !== undefined && answer.options.length > 0 && this.sessionCode === answer.sessionCode;
   }
 
   handleSelection(option: string): void {
-    /*
-    * 1. Deselect previosuly selected buttons
-    * 2. Select the on passed into the method
-    */
-    for (let i = 0; i < this.options.length; i++) {
-      let element = $('#' + this.options[i]);
-      if (element.hasClass('yellow')) {
+    if (this.slides[this.currentIndex].quizType === "multi") {
+      /*
+      * 1. Toggle the color of the button corresonding to the option
+      */
+      let element = $('#' + option);
+      if (element.hasClass('blue')) {
+        element.removeClass('blue');
+        element.addClass('yellow');
+      } else if (element.hasClass('yellow')) {
         element.removeClass('yellow');
-      }
-      if (!element.hasClass('blue')) {
         element.addClass('blue');
       }
+    } else {
+      /*
+      * 1. Deselect previosuly selected buttons
+      * 2. Select the on passed into the method
+      */
+      for (let i = 0; i < this.options.length; i++) {
+        let element = $('#' + this.options[i]);
+        if (element.hasClass('yellow')) {
+          element.removeClass('yellow');
+        }
+        if (!element.hasClass('blue')) {
+          element.addClass('blue');
+        }
+      }
+      $('#' + option).addClass('yellow');
     }
-    $('#' + option).addClass('yellow');
   }
 }

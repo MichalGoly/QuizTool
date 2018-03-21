@@ -20,7 +20,7 @@ module.exports = function(server) {
       console.log("[INFO] Socket.io event: answer-sent");
       socket.broadcast.emit('answer-received', {
         sessionCode: answer.sessionCode,
-        option: answer.option
+        options: answer.options
       });
     });
 
@@ -28,7 +28,7 @@ module.exports = function(server) {
       console.log("[INFO] Socket.io event: correct-answer");
       socket.broadcast.emit('correct-received', {
         sessionCode: answer.sessionCode,
-        option: answer.option
+        options: answer.options
       });
     })
   });
