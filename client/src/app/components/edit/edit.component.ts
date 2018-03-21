@@ -26,6 +26,7 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     this.slideService.getByLectureId(this.lecture._id).subscribe(slides => {
       this.slides = slides;
+      console.log(this.slides);
     }, err => {
       // make this user friendly
       console.error(err);
@@ -50,8 +51,8 @@ export class EditComponent implements OnInit {
     return 'data:image/png;base64,' + image;
   }
 
-  isEligible(slide: Slide): boolean {
-    return this.quizService.isEligible(slide);
-  }
+  // isEligible(slide: Slide): boolean {
+  //   return this.quizService.isEligible(slide);
+  // }
 
 }
