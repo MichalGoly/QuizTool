@@ -33,37 +33,114 @@ export class QuizService {
     * b) or at least A. and B. found in slide text
     * c) or at least two bullet points found in slide text
     */
-    return slide.text.length > 0 && (this.isAbParenthesis(slide) || this.isAbDot(slide) || this.isAbBullet(slide));
+    return slide.text.length > 0 && (this.isAbParenthesis(slide.text) || this.isAbDot(slide.text) || this.isAbBullet(slide.text));
   }
 
-  isAbParenthesis(slide: Slide): boolean {
+  isAbParenthesis(text: string): boolean {
     // true if at least A) and B) found in slide text
-    return slide.text.indexOf(this.letters[0] + ")") >= 0 && slide.text.indexOf(this.letters[1] + ")") >= 0;
+    return text.indexOf(this.letters[0] + ")") >= 0 && text.indexOf(this.letters[1] + ")") >= 0;
   }
 
-  isAbDot(slide: Slide): boolean {
+  isAbDot(text: string): boolean {
     // true if at least A. and B. found in slide text
-    return slide.text.indexOf(this.letters[0] + ".") >= 0 && slide.text.indexOf(this.letters[1] + ".") >= 0;
+    return text.indexOf(this.letters[0] + ".") >= 0 && text.indexOf(this.letters[1] + ".") >= 0;
   }
 
-  isAbBullet(slide: Slide): boolean {
+  isAbBullet(text: string): boolean {
     // true if at least two bullet points found in slide text
     for (let i = 0; i < BULLET_CHARACTERS.length; i++) {
-      if (((slide.text.split(BULLET_CHARACTERS[i])).length - 1) >= 2) {
+      if (((text.split(BULLET_CHARACTERS[i])).length - 1) >= 2) {
         return true;
       }
     }
     return false;
   }
 
-  extractOptions(text: string): string[] {
-    let out = [];
-    for (let i = 0; i < this.letters.length; i++) {
-      if (text.indexOf(this.letters[i]) >= 0) {
-        out.push(this.letters[i].charAt(0));
+  extractOptions(text: string, quizType: string): string[] {
+    /*
+    * 1. If quizType is truefalse, return ["true", "false"]
+    * 2. Otherwise, determine if slide is A)B), A.B. or bullet points
+    * 3. Extract the amount of questions from the slide's text
+    * 4. Return an array populated with the amount of letters equal to the number of questions
+    */
+    let options = [];
+    if (quizType !== null && quizType !== undefined) {
+      if (quizType === "truefalse") {
+        options.push("true");
+        options.push("false");
+      } else if (this.isAbParenthesis(text)) {
+        let questionsNumber = this.extractQuestionsNumber(text, ")");
+        for (let i = 0; i < questionsNumber; i++) {
+          options.push(this.letters[i]);
+        }
+      } else if (this.isAbDot(text)) {
+        let questionsNumber = this.extractQuestionsNumber(text, ".");
+        for (let i = 0; i < questionsNumber; i++) {
+          options.push(this.letters[i]);
+        }
+      } else if (this.isAbBullet(text)) {
+        // determine the type of the bullet used, then use the counter to generate options
+        for (let i = 0; i < BULLET_CHARACTERS.length; i++) {
+          let bulletCount = (text.split(BULLET_CHARACTERS[i])).length - 1;
+          if (bulletCount >= 2) {
+            for (let j = 0; j < bulletCount; j++) {
+              options.push(this.letters[j]);
+            }
+            break;
+          }
+        }
       }
     }
-    return out;
+    return options;
+    //
+    //
+    //
+    // let out = [];
+    // if (quizType === null || quizType === undefined) {
+    //   return out;
+    // } else if (quizType === "truefalse") {
+    //   out.push("true");
+    //   out.push("false");
+    //   return out;
+    // } else if (this.isAbParenthesis(text)) {
+    //   let questionsNumber = this.extractQuestionsNumber(text, ")");
+    //   for (let i = 0; i < questionsNumber; i++) {
+    //     out.push(this.letters[i]);
+    //   }
+    //   return out;
+    // } else if (this.isAbDot(text)) {
+    //   let questionsNumber = this.extractQuestionsNumber(text, ".");
+    //   for (let i = 0; i < questionsNumber; i++) {
+    //     out.push(this.letters[i]);
+    //   }
+    //   return out;
+    // } else if (this.isAbBullet(text)) {
+    //   // determine the type of the bullet used, then use the counter to generate options
+    //   for (let i = 0; i < BULLET_CHARACTERS.length; i++) {
+    //     let bulletCount = (text.split(BULLET_CHARACTERS[i])).length - 1;
+    //     if (bulletCount >= 2) {
+    //       for (let j = 0; j < bulletCount; j++) {
+    //         out.push(this.letters[j]);
+    //       }
+    //       return out;
+    //     }
+    //   }
+    //   return out;
+    // } else {
+    //   return out;
+    // }
+  }
+
+  extractQuestionsNumber(text: string, character: string): number {
+    let counter = 0;
+    for (let i = 0; i < this.letters.length; i++) {
+      if (text.indexOf(this.letters[i] + character) >= 0) {
+        counter++;
+      } else {
+        break;
+      }
+    }
+    return counter;
   }
 
 }

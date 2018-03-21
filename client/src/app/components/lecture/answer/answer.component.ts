@@ -46,7 +46,7 @@ export class AnswerComponent implements OnInit {
   }
 
   init(): void {
-    this.options = this.quizService.extractOptions(this.currentSlide["text"]);
+    this.options = this.quizService.extractOptions(this.currentSlide["text"], this.currentSlide["quizType"]);
     this.chosenOption = null;
     this.isSubmitted = false;
 

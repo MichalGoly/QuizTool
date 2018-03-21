@@ -104,7 +104,8 @@ export class BroadcastComponent implements OnInit {
     this.liveAnswers = {};
     this.chosenOption = null;
     if (this.slides[this.currentIndex].quizType !== null) {
-      this.options = this.quizService.extractOptions(this.slides[this.currentIndex].text);
+      this.options = this.quizService.extractOptions(this.slides[this.currentIndex].text,
+        this.slides[this.currentIndex].quizType);
       if ($("#btn-submit").hasClass('disabled')) {
         $("#btn-submit").removeClass('disabled');
       }
