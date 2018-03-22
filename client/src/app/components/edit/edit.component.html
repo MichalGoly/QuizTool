@@ -12,9 +12,12 @@
           <div class="col s6">
             <div class="center-align">
               <h5>Slide {{slide.slideNumber}}</h5>
-              <mz-checkbox-container>
-                <input mz-checkbox [label]="'Make quiz'" id="{{i}}" type="checkbox" [(ngModel)]="slides[i].isQuiz" [disabled]="!isEligible(slide)" />
-              </mz-checkbox-container>
+              <mz-radio-button-container>
+                <input mz-radio-button [label]="'Not a quiz'" [(ngModel)]="slides[i].quizType" [value]="null" id="null-{{i}}" name="group-{{i}}" type="radio"><br>
+                <input mz-radio-button [label]="'Make true/false quiz'" [(ngModel)]="slides[i].quizType" [value]="'truefalse'" [disabled]="!isEligibleTrueFalse(slide)" id="truefalse-{{i}}" name="group-{{i}}" type="radio"><br>
+                <input mz-radio-button [label]="'Make single choice quiz'" [(ngModel)]="slides[i].quizType" [value]="'single'" [disabled]="!isEligibleSingle(slide)" id="single-{{i}}" name="group-{{i}}" type="radio"><br>
+                <input mz-radio-button [label]="'Make milti choice quiz'" [(ngModel)]="slides[i].quizType" [value]="'multi'" [disabled]="!isEligibleMulti(slide)" id="multi-{{i}}" name="group-{{i}}" type="radio">
+              </mz-radio-button-container>
             </div>
           </div>
         </div>

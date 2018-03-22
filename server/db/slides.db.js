@@ -72,7 +72,7 @@ function createFromLecture(lecture) {
                       lectureId: lecture._id,
                       image: images[j],
                       text: slidesTextArr[j],
-                      isQuiz: false,
+                      quizType: null,
                       slideNumber: j + 1
                     }));
                   }
@@ -170,7 +170,7 @@ function updateQuiz(slide) {
         if (err) {
           reject(err);
         } else {
-          s.isQuiz = slide.isQuiz;
+          s.quizType = slide.quizType;
           s.save((err, updatedSlide) => {
             if (err) {
               reject(err);

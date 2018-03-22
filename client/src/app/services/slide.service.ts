@@ -18,7 +18,7 @@ export class SlideService {
     for (let i = 0; i < slides.length; i++) {
       out.push({
         _id: slides[i]._id,
-        isQuiz: slides[i].isQuiz
+        quizType: slides[i].quizType
       });
     }
     return this.http.put<any>(ENDPOINT, out);

@@ -15,6 +15,7 @@ import { MzInputModule } from 'ng2-materialize'
 import { MzNavbarModule } from 'ng2-materialize'
 import { MzSpinnerModule } from 'ng2-materialize'
 import { MzCheckboxModule } from 'ng2-materialize'
+import { MzRadioButtonModule } from 'ng2-materialize'
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -60,7 +61,8 @@ import { QuizService } from './services/quiz.service';
     FileUploadModule,
     MzSpinnerModule,
     MzCheckboxModule,
-    ChartsModule
+    ChartsModule,
+    MzRadioButtonModule
   ],
   providers: [
     CookieService,

@@ -77,14 +77,15 @@ describe('test slides controller', () => {
             res.body[5].should.have.property('image');
             res.body[5].should.have.property('text');
             expect(res.body[5]['text']).to.have.string('• Table names are pluralized by default...');
-            res.body[5].should.have.property('isQuiz').eql(false);
+            res.body[5].should.have.property('quizType');
+            assert.isNull(res.body[5]['quizType']);
             res.body[5].should.have.property('slideNumber').eql(6);
 
             var slides = res.body;
-            slides[2].isQuiz = true;
-            slides[4].isQuiz = true;
-            slides[5].isQuiz = true;
-            slides[6].isQuiz = true;
+            slides[2].quizType = "single";
+            slides[4].quizType = "single";
+            slides[5].quizType = "single";
+            slides[6].quizType = "single";
             for (var i = 0; i < slides.length; i++) {
               delete slides[i].lectureId;
               delete slides[i].image;
@@ -104,7 +105,12 @@ describe('test slides controller', () => {
                   res.body[5].should.have.property('text');
                   res.body[5].should.have.property('slideNumber').eql(6);
                   for (var i = 0; i < res.body.length; i++) {
-                    res.body[i].should.have.property('isQuiz').eql(slides[i].isQuiz);
+                    if (i === 2 || i === 4 || i === 5 || i === 6) {
+                      res.body[i].should.have.property('quizType').eql(slides[i].quizType);
+                    } else {
+                      res.body[i].should.have.property('quizType');
+                      assert.isNull(res.body[i]['quizType']);
+                    }
                   }
                   done();
                 });

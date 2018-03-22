@@ -27,7 +27,8 @@ export class BroadcastComponent implements OnInit {
   answers: Map<string, Object>;
   liveAnswers: Object;
   options: string[];
-  chosenOption: string;
+  chosenOptions: string[];
+  labelOptions: string[];
 
   constructor(private slideService: SlideService, private quizService: QuizService) { }
 
@@ -47,12 +48,18 @@ export class BroadcastComponent implements OnInit {
 
     this.socket.on('answer-received', (answer: any) => {
       if (this.isValid(answer)) {
-        if (this.liveAnswers.hasOwnProperty(answer.option)) {
+        let option = this.convertToString(answer.options);
+        if (this.liveAnswers.hasOwnProperty(option)) {
           // increment the count
-          this.liveAnswers[answer.option] += 1;
+          this.liveAnswers[option] += 1;
         } else {
           // initialise with a count 1
-          this.liveAnswers[answer.option] = 1;
+          this.liveAnswers[option] = 1;
+        }
+        // update options
+        if (!this.options.includes(option)) {
+          this.options.push(option);
+          this.options = JSON.parse(JSON.stringify(this.options));
         }
         // clone the object to trigger onChanges lifecycle hook in the child component
         this.liveAnswers = JSON.parse(JSON.stringify(this.liveAnswers));
@@ -68,7 +75,7 @@ export class BroadcastComponent implements OnInit {
         date: new Date(),
         lectureId: this.lecture._id
       };
-      console.log(session);
+      console.log(session); // TODO remove this
     }
     this.emitSessionOver();
     this.lectureChange.emit(null);
@@ -102,14 +109,16 @@ export class BroadcastComponent implements OnInit {
 
   cleanUp(): void {
     this.liveAnswers = {};
-    this.chosenOption = null;
-    if (this.slides[this.currentIndex].isQuiz) {
-      this.options = this.quizService.extractOptions(this.slides[this.currentIndex].text);
+    this.chosenOptions = [];
+    if (this.slides[this.currentIndex].quizType !== null) {
+      this.options = this.quizService.extractOptions(this.slides[this.currentIndex].text,
+        this.slides[this.currentIndex].quizType);
+      this.labelOptions = JSON.parse(JSON.stringify(this.options));
       if ($("#btn-submit").hasClass('disabled')) {
         $("#btn-submit").removeClass('disabled');
       }
-      for (let i = 0; i < this.options.length; i++) {
-        let element = $('#' + this.options[i]);
+      for (let i = 0; i < this.labelOptions.length; i++) {
+        let element = $('#' + this.labelOptions[i]);
         if (element.hasClass('green'))
           element.removeClass('green');
         if (element.hasClass('yellow'))
@@ -129,7 +138,7 @@ export class BroadcastComponent implements OnInit {
     const currentSlide = {
       img: this.slides[this.currentIndex].image,
       text: this.slides[this.currentIndex].text,
-      isQuiz: this.slides[this.currentIndex].isQuiz,
+      quizType: this.slides[this.currentIndex].quizType,
       sessionCode: this.sessionCode
     };
     this.socket.emit('slide-update', currentSlide);
@@ -139,36 +148,62 @@ export class BroadcastComponent implements OnInit {
     this.socket.emit('slide-update', {
       img: null,
       text: null,
-      isQuiz: false,
+      quizType: null,
       sessionCode: this.sessionCode
     });
   }
 
   choose(option: string): void {
     this.handleSelection(option);
-    this.chosenOption = option;
-    this.liveAnswers["correct"] = this.chosenOption;
+    if (this.slides[this.currentIndex].quizType === "multi") {
+      let index = this.chosenOptions.indexOf(option);
+      if (index > -1) {
+        // option already in chosenOptions, remove it
+        this.chosenOptions.splice(index, 1);
+      } else {
+        // option not in chosenOptions, add it
+        this.chosenOptions.push(option);
+      }
+    } else {
+      this.chosenOptions = [option];
+    }
+    this.liveAnswers["correct"] = this.convertToString(this.chosenOptions);
+  }
+
+  // Flattens the provided array of strings into a single string e.g. ["A", "B"] => "AB"
+  convertToString(chosenOptions: string[]): string {
+    /*
+    * 1. Sort the array alphabetically
+    * 2. Flatten to string
+    */
+    let clone = JSON.parse(JSON.stringify(chosenOptions));
+    clone.sort();
+    let out = "";
+    for (let i = 0; i < clone.length; i++) {
+      out += clone[i];
+    }
+    return out;
   }
 
   submit(): void {
-    if (this.chosenOption !== null) {
+    if (this.chosenOptions !== []) {
       $('#btn-submit').addClass('disabled');
       this.socket.emit('correct-answer', {
         sessionCode: this.sessionCode,
-        option: this.chosenOption
+        options: this.chosenOptions
       });
     }
   }
 
   askAgain(): void {
     this.liveAnswers = {};
-    this.chosenOption = null;
+    this.chosenOptions = [];
     this.emitCurrentSlide();
   }
 
   // adds students' answers to the in memory map
   keepAnswer(): void {
-    if (this.slides[this.currentIndex].isQuiz) {
+    if (this.slides[this.currentIndex].quizType !== null) {
       this.answers.set(this.slides[this.currentIndex]._id, this.liveAnswers);
     }
   }
@@ -176,7 +211,7 @@ export class BroadcastComponent implements OnInit {
   // moving back removes the previously submitted answers from the map
   discardAnswer(): void {
     let currentSlide = this.slides[this.currentIndex];
-    if (currentSlide.isQuiz && this.answers.has(currentSlide._id)) {
+    if (currentSlide.quizType !== null && this.answers.has(currentSlide._id)) {
       this.answers.delete(currentSlide._id);
     }
   }
@@ -188,24 +223,38 @@ export class BroadcastComponent implements OnInit {
 
   isValid(answer: any): boolean {
     return answer !== null && answer !== undefined && answer.sessionCode !== null
-      && answer.sessionCode !== undefined && answer.option !== null && answer.option !== undefined
-      && this.sessionCode === answer.sessionCode;
+      && answer.sessionCode !== undefined && answer.options !== null && answer.options !== undefined
+      && answer.options.length !== undefined && answer.options.length > 0 && this.sessionCode === answer.sessionCode;
   }
 
   handleSelection(option: string): void {
-    /*
-    * 1. Deselect previosuly selected buttons
-    * 2. Select the on passed into the method
-    */
-    for (let i = 0; i < this.options.length; i++) {
-      let element = $('#' + this.options[i]);
-      if (element.hasClass('yellow')) {
+    if (this.slides[this.currentIndex].quizType === "multi") {
+      /*
+      * 1. Toggle the color of the button corresonding to the option
+      */
+      let element = $('#' + option);
+      if (element.hasClass('blue')) {
+        element.removeClass('blue');
+        element.addClass('yellow');
+      } else if (element.hasClass('yellow')) {
         element.removeClass('yellow');
-      }
-      if (!element.hasClass('blue')) {
         element.addClass('blue');
       }
+    } else {
+      /*
+      * 1. Deselect previosuly selected buttons
+      * 2. Select the on passed into the method
+      */
+      for (let i = 0; i < this.labelOptions.length; i++) {
+        let element = $('#' + this.labelOptions[i]);
+        if (element.hasClass('yellow')) {
+          element.removeClass('yellow');
+        }
+        if (!element.hasClass('blue')) {
+          element.addClass('blue');
+        }
+      }
+      $('#' + option).addClass('yellow');
     }
-    $('#' + option).addClass('yellow');
   }
 }
