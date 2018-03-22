@@ -92,43 +92,6 @@ export class QuizService {
       }
     }
     return options;
-    //
-    //
-    //
-    // let out = [];
-    // if (quizType === null || quizType === undefined) {
-    //   return out;
-    // } else if (quizType === "truefalse") {
-    //   out.push("true");
-    //   out.push("false");
-    //   return out;
-    // } else if (this.isAbParenthesis(text)) {
-    //   let questionsNumber = this.extractQuestionsNumber(text, ")");
-    //   for (let i = 0; i < questionsNumber; i++) {
-    //     out.push(this.letters[i]);
-    //   }
-    //   return out;
-    // } else if (this.isAbDot(text)) {
-    //   let questionsNumber = this.extractQuestionsNumber(text, ".");
-    //   for (let i = 0; i < questionsNumber; i++) {
-    //     out.push(this.letters[i]);
-    //   }
-    //   return out;
-    // } else if (this.isAbBullet(text)) {
-    //   // determine the type of the bullet used, then use the counter to generate options
-    //   for (let i = 0; i < BULLET_CHARACTERS.length; i++) {
-    //     let bulletCount = (text.split(BULLET_CHARACTERS[i])).length - 1;
-    //     if (bulletCount >= 2) {
-    //       for (let j = 0; j < bulletCount; j++) {
-    //         out.push(this.letters[j]);
-    //       }
-    //       return out;
-    //     }
-    //   }
-    //   return out;
-    // } else {
-    //   return out;
-    // }
   }
 
   extractQuestionsNumber(text: string, character: string): number {
