@@ -29,7 +29,7 @@
               </div>
               <div class="row">
                 <p><i class="fa fa-eye"></i> Select the correct answer and display it to students</p>
-                <div class="col s2" *ngFor="let option of options">
+                <div class="col s2" *ngFor="let option of labelOptions">
                   <a href="javascript:void(0)" id="{{option}}" class="waves-effect waves-light btn blue" (click)="choose(option)">{{option}}</a>
                 </div>
               </div>
