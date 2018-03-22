@@ -12,9 +12,11 @@ export class LectureComponent implements OnInit {
   socket: SocketIOClient.Socket;
   sessionCode: string;
   currentSlide: any;
+  isFirstSlideReceived: boolean;
 
   constructor(private route: ActivatedRoute) {
     this.currentSlide = {};
+    this.isFirstSlideReceived = false;
   }
 
   ngOnInit() {
@@ -31,9 +33,31 @@ export class LectureComponent implements OnInit {
             this.currentSlide["img"] = 'data:image/png;base64,' + slide.img;
             this.currentSlide["text"] = slide.text;
             this.currentSlide["quizType"] = slide.quizType;
+            this.isFirstSlideReceived = true;
           }
         }
       });
+      if (!this.isFirstSlideReceived) {
+        this.requestCurrentSlide();
+      }
+      this.socket.on('current-slide-received', (slide: any) => {
+        if (this.sessionCode === slide.sessionCode && !this.isFirstSlideReceived) {
+          this.currentSlide = {}; // needed for the ngOnChanges to fire in the answer.component
+          this.currentSlide["img"] = 'data:image/png;base64,' + slide.img;
+          this.currentSlide["text"] = slide.text;
+          this.currentSlide["quizType"] = slide.quizType;
+          this.isFirstSlideReceived = true;
+        }
+      });
+    });
+  }
+
+  // sends off a request to the server to get the currently broadcasted slide,
+  // if the user joined after the session has already started. Without this method, student
+  // would have to wait until the next 'slide-change' event to render the current slide.
+  requestCurrentSlide(): void {
+    this.socket.emit('current-slide-request', {
+      sessionCode: this.sessionCode
     });
   }
 
