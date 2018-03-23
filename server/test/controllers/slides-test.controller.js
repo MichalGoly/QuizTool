@@ -128,9 +128,4 @@ describe('test slides controller', () => {
       done();
     });
   });
-
-  it('should fail', (done) => {
-    assert.fail(0, 1, "This is an error");
-    done();
-  });
 });
