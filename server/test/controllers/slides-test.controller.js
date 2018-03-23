@@ -130,7 +130,7 @@ describe('test slides controller', () => {
   });
 
   it('should fail', (done) => {
-    assert.fail(0, 1, "This is an error");
+    assert.fail(0, 1, "This is an errors");
     done();
   });
 });
