@@ -41,8 +41,7 @@ jobs:
             echo "GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" >> .env
             echo "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> .env
             echo "GOOGLE_CALLBACK_URL=$GOOGLE_CALLBACK_URL" >> .env
-            set -eo pipefail
-            docker-compose -f docker-compose.test.yml up --abort-on-container-exit
+            docker-compose -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from repo_server_node_1
 
       # deploy only master and develop branch
       - deploy:
