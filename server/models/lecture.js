@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Slide = require('./slide');
+var Session = require('./session');
 
 var lectureSchema = mongoose.Schema({
   lecturerId: String,
@@ -12,7 +13,11 @@ var lectureSchema = mongoose.Schema({
 lectureSchema.post('remove', (doc) => {
   Slide.remove({
     lectureId: doc._id
-  }).exec();
+  }).then(() => {
+    Session.remove({
+      lectureId: doc._id
+    }).exec();
+  })
 });
 
 module.exports = mongoose.model('Lecture', lectureSchema);

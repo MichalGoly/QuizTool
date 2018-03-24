@@ -6,6 +6,7 @@ import { Slide } from '../../models/slide';
 
 import { SlideService } from '../../services/slide.service';
 import { QuizService } from '../../services/quiz.service';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-broadcast',
@@ -30,7 +31,7 @@ export class BroadcastComponent implements OnInit {
   chosenOptions: string[];
   labelOptions: string[];
 
-  constructor(private slideService: SlideService, private quizService: QuizService) { }
+  constructor(private slideService: SlideService, private quizService: QuizService, private sessionService: SessionService) { }
 
   ngOnInit() {
     this.slideService.getByLectureId(this.lecture._id).subscribe((slides) => {
@@ -70,15 +71,14 @@ export class BroadcastComponent implements OnInit {
   navigateBack(): void {
     this.keepAnswer();
     if (this.answers.size !== 0) {
-      let session = {
-        answers: this.answers,
-        date: new Date(),
-        lectureId: this.lecture._id
-      };
-      console.log(session); // TODO remove this
+      let session = this.sessionService.buildSession(this.answers, new Date(), this.lecture._id);
+      this.sessionService.newSession(session).subscribe(() => {
+        this.emitSessionOver();
+        this.lectureChange.emit(null);
+      }, err => {
+        console.error(err);
+      });
     }
-    this.emitSessionOver();
-    this.lectureChange.emit(null);
   }
 
   isPreviousDisabled(): boolean {

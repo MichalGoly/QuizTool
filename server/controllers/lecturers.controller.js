@@ -4,7 +4,6 @@ var authHelper = require('../helpers/auth.helper');
 var Lecturer = require('../models/lecturer');
 
 router.get('/logged-in', getLoggedIn);
-router.get('/', getLecturers);
 
 module.exports = router;
 
@@ -17,16 +16,5 @@ function getLoggedIn(req, res) {
   }).catch((err) => {
     console.error(err);
     return res.sendStatus(401);
-  });
-};
-
-// TODO remove once no longer needed
-function getLecturers(req, res) {
-  Lecturer.find((err, lecturers) => {
-    if (err) {
-      res.send("Error: " + err);
-    } else {
-      res.send(lecturers);
-    }
   });
 };

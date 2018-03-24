@@ -18,6 +18,7 @@ app.use(function(req, res, next) {
 app.use('/lecturers', require('./controllers/lecturers.controller'));
 app.use('/lectures', require('./controllers/lectures.controller'));
 app.use('/slides', require('./controllers/slides.controller'));
+app.use('/sessions', require('./controllers/sessions.controller'));
 
 app.get('/auth/google',
   passport.authenticate('google', {
@@ -37,7 +38,7 @@ server.listen('3000', () => {
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
+  console.log('Quiz Tool listening at http://%s:%s', host, port);
 });
 
 module.exports = app;

@@ -8,7 +8,6 @@ database.getAll = getAll;
 database.getOne = getOne;
 database.getFile = getFile;
 database.create = create;
-// database.update = update;
 database._delete = _delete;
 
 module.exports = database;
@@ -81,17 +80,7 @@ function create(req, lecturer_id) {
     }
   });
 }
-//
-// function update(lecture) {
-//   return new Promise((resolve, reject) => {
-//     lecture.update().then(() => {
-//       resolve();
-//     }).catch((err) => {
-//       reject(err);
-//     })
-//   });
-// }
-//
+
 function _delete(id, lecturer_id) {
   return new Promise((resolve, reject) => {
     if (mongoose.Types.ObjectId.isValid(id)) {
