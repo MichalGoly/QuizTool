@@ -102,12 +102,23 @@ describe('test sessions controller', () => {
                 };
                 chai.request(app).post('/sessions').set('content-type', 'application/json').send(newSession).end((err, res) => {
                   res.should.have.status(201);
+                  console.log("[BOCIAN] " + lect._id);
                   chai.request(app).get('/sessions/' + lect._id).end((err, res) => {
                     res.should.have.status(200);
-                    res.body.length.should.be.eql(2);
+                    res.body.length.should.be.eql(1);
                     res.body[0].should.have.property('_id');
-                    res.body[0].should.have.property('lectureId').eql(lect._id);
-                    res.body[0].should.have.property('answers').eql(answers);
+                    res.body[0].should.have.property('lectureId').eql(lect._id.toString());
+                    res.body[0].should.have.property('answers').eql({
+                      slide1_id: {
+                        "B": 10,
+                        "C": 1,
+                        "correct": "C"
+                      },
+                      slide3_id: {
+                        "A": 2,
+                        "AB": 20,
+                      }
+                    });
                     res.body[0].should.have.property('date');
                     done();
                   });

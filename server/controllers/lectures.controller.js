@@ -68,6 +68,7 @@ function getLecture(req, res) {
 function getFile(req, res) {
   authHelper.check(req, res).then((lecturer) => {
     // TODO
+    res.sendStatus(500);
   }).catch((err) => {
     res.sendStatus(401);
   });
