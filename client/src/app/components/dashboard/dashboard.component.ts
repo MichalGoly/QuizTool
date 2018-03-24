@@ -65,6 +65,14 @@ export class DashboardComponent implements OnInit {
     this.lectureEdited = lecture;
   }
 
+  openReports(lecture: Lecture): void {
+    this.sessionService.getByLectureId(lecture._id).subscribe((sessions) => {
+      console.log(JSON.stringify(sessions));
+    }, (err) => {
+      console.error(err);
+    });
+  }
+
   broadcast(lecture: Lecture): void {
     this.lectureBroadcasted = lecture;
   }
