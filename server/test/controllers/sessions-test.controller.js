@@ -102,7 +102,6 @@ describe('test sessions controller', () => {
                 };
                 chai.request(app).post('/sessions').set('content-type', 'application/json').send(newSession).end((err, res) => {
                   res.should.have.status(201);
-                  console.log("[BOCIAN] " + lect._id);
                   chai.request(app).get('/sessions/' + lect._id).end((err, res) => {
                     res.should.have.status(200);
                     res.body.length.should.be.eql(1);
