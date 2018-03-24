@@ -8,14 +8,15 @@ import { JwtInterceptor } from './utils/jwt.interceptor';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
-import { MzButtonModule } from 'ng2-materialize'
-import { MzCardModule } from 'ng2-materialize'
-import { MzTabModule } from 'ng2-materialize'
-import { MzInputModule } from 'ng2-materialize'
-import { MzNavbarModule } from 'ng2-materialize'
-import { MzSpinnerModule } from 'ng2-materialize'
-import { MzCheckboxModule } from 'ng2-materialize'
-import { MzRadioButtonModule } from 'ng2-materialize'
+import { MzButtonModule } from 'ng2-materialize';
+import { MzCardModule } from 'ng2-materialize';
+import { MzTabModule } from 'ng2-materialize';
+import { MzInputModule } from 'ng2-materialize';
+import { MzNavbarModule } from 'ng2-materialize';
+import { MzSpinnerModule } from 'ng2-materialize';
+import { MzCheckboxModule } from 'ng2-materialize';
+import { MzRadioButtonModule } from 'ng2-materialize';
+import { MzTooltipModule } from 'ng2-materialize';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -63,7 +64,8 @@ import { SessionService } from './services/session.service';
     MzSpinnerModule,
     MzCheckboxModule,
     ChartsModule,
-    MzRadioButtonModule
+    MzRadioButtonModule,
+    MzTooltipModule
   ],
   providers: [
     CookieService,

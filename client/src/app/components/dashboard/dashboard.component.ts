@@ -93,6 +93,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  download(lecture: Lecture): void {
+    console.log("Downloading " + lecture.fileName);
+  }
+
   // Appends the Authorization: Bearer <JWT_TOKEN> to the uploader's requests
   // https://github.com/valor-software/ng2-file-upload/issues/317
   private authorizeUploader(): void {
