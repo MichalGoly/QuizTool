@@ -14,7 +14,7 @@ function newSession(req, res) {
   if (validator.validate(req.body, NewSessionSchema).valid) {
     authHelper.check(req, res).then((lecturer) => {
       sessionsDb.create(req.body).then(() => {
-        res.sendStatus(200);
+        res.sendStatus(201);
       }).catch((err) => {
         console.error(err);
         res.sendStatus(500);

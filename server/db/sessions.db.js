@@ -9,6 +9,6 @@ module.exports = database;
 
 function create(liveAnswers) {
   return new Promise((resolve, reject) => {
-
+    reject("Not implemented yet");
   });
 }

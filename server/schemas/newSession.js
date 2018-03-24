@@ -1,7 +1,7 @@
 module.exports = {
   "type": "object",
   "properties": {
-    "lecture_id": {
+    "lectureId": {
       "type": "string"
     },
     "date": {
@@ -12,6 +12,6 @@ module.exports = {
     }
   },
   "required": [
-    "lecture_id", "date", "answers"
+    "lectureId", "date", "answers"
   ]
 }
