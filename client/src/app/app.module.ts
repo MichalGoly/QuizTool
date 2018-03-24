@@ -34,6 +34,7 @@ import { LecturerService } from './services/lecturer.service';
 import { LectureService } from './services/lecture.service';
 import { SlideService } from './services/slide.service';
 import { QuizService } from './services/quiz.service';
+import { SessionService } from './services/session.service';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { QuizService } from './services/quiz.service';
     LecturerService,
     LectureService,
     SlideService,
-    QuizService
+    QuizService,
+    SessionService
   ],
   bootstrap: [AppComponent]
 })
