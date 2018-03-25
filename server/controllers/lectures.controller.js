@@ -67,9 +67,29 @@ function getLecture(req, res) {
 // Returns the file blob PDF presentation of the specific lecture
 function getFile(req, res) {
   authHelper.check(req, res).then((lecturer) => {
-    // TODO
-    res.sendStatus(500);
+    lecturesDb.getOne(req.params._id).then((lecture) => {
+      if (lecture === null) {
+        res.sendStatus(404);
+      } else {
+        if (lecturer._id == lecture.lecturerId) {
+          res.set('Content-Type', 'application/pdf');
+          res.set('Content-Disposition', 'attachment; filename="' + lecture.fileName + '"');
+          res.set('Access-Control-Expose-Headers', 'Content-Disposition');
+          res.send(lecture.file);
+        } else {
+          res.sendStatus(401);
+        }
+      }
+    }).catch((err) => {
+      console.error("An error has occurred " + err);
+      if (err === 400) {
+        res.sendStatus(400);
+      } else {
+        res.sendStatus(500);
+      }
+    });
   }).catch((err) => {
+    console.error("An error has occurred " + err);
     res.sendStatus(401);
   });
 }

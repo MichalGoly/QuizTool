@@ -18,8 +18,7 @@ export class LectureService {
   }
 
   getFile(_id: string) {
-    // TODO
-    return null;
+    return this.http.get(ENDPOINT + _id + "/file", { responseType: 'blob' });
   }
 
   delete(_id: string) {

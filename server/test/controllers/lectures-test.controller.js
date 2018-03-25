@@ -255,4 +255,39 @@ describe('test lectures controller', () => {
         });
       });
   });
+
+  it('should download a pdf file in the original format', (done) => {
+    chai.request(app).post('/lectures').attach('file', __dirname + '/../bin/presentation.pdf')
+      .end((err, res) => {
+        res.should.have.status(201);
+
+        chai.request(app).get('/lectures').end((err, res) => {
+          res.should.have.status(200);
+          res.body.length.should.be.eql(1);
+          res.body[0].should.have.property('_id');
+          res.body[0].should.have.property('lecturerId');
+          res.body[0].should.have.property('fileName', 'presentation.pdf');
+          res.body[0].should.not.have.property('file');
+
+          chai.request(app).get('/lectures/' + res.body[0]._id + '/file').end((err, res) => {
+            res.should.have.status(200);
+            res.should.have.property('type').eql('application/pdf');
+            res.headers.should.have.property('content-length').eql('162794');
+            done();
+          });
+        });
+      });
+  });
+
+  it('should return 400 when trying to download a file with an invalid or non existent id', (done) => {
+    chai.request(app).get('/lectures/coffee1234coffee/file').end((err, res) => {
+      res.should.have.status(400);
+
+      chai.request(app).get('/lectures/41224d776a326fb40f000001/file').end((err, res) => {
+        res.should.have.status(404);
+        done();
+      });
+    });
+  });
+
 });

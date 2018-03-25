@@ -73,12 +73,18 @@ export class BroadcastComponent implements OnInit {
     if (this.answers.size !== 0) {
       let session = this.sessionService.buildSession(this.answers, new Date(), this.lecture._id);
       this.sessionService.newSession(session).subscribe(() => {
-        this.emitSessionOver();
-        this.lectureChange.emit(null);
+        this.sessionOver();
       }, err => {
         console.error(err);
       });
+    } else {
+      this.sessionOver();
     }
+  }
+
+  sessionOver(): void {
+    this.emitSessionOver();
+    this.lectureChange.emit(null);
   }
 
   isPreviousDisabled(): boolean {
