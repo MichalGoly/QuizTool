@@ -94,7 +94,12 @@ export class DashboardComponent implements OnInit {
   }
 
   download(lecture: Lecture): void {
-    console.log("Downloading " + lecture.fileName);
+    this.lectureService.getFile(lecture._id).subscribe(res => {
+      console.log(res);
+      window.open(window.URL.createObjectURL(res));
+    }, err => {
+      console.log(err);
+    })
   }
 
   // Appends the Authorization: Bearer <JWT_TOKEN> to the uploader's requests
