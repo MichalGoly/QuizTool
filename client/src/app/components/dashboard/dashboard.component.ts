@@ -6,7 +6,6 @@ import { saveAs } from "file-saver";
 import { LecturerService } from '../../services/lecturer.service';
 import { LectureService } from '../../services/lecture.service';
 import { AuthService } from '../../services/auth.service';
-import { SessionService } from '../../services/session.service';
 
 import { Lecturer } from '../../models/lecturer';
 import { Lecture } from '../../models/lecture';
@@ -25,9 +24,10 @@ export class DashboardComponent implements OnInit {
   lectures: Lecture[];
   lectureBroadcasted: Lecture;
   lectureEdited: Lecture;
+  lectureReported: Lecture;
 
   constructor(private lecturerService: LecturerService, private lectureService: LectureService,
-    private sessionService: SessionService, private router: Router, private authService: AuthService) {
+    private router: Router, private authService: AuthService) {
     this.uploader = new FileUploader({
       url: UPLOAD_ENDPOINT,
       allowedMimeType: ['application/pdf'],
@@ -67,11 +67,7 @@ export class DashboardComponent implements OnInit {
   }
 
   openReports(lecture: Lecture): void {
-    this.sessionService.getByLectureId(lecture._id).subscribe((sessions) => {
-      console.log(JSON.stringify(sessions));
-    }, (err) => {
-      console.error(err);
-    });
+    this.lectureReported = lecture;
   }
 
   broadcast(lecture: Lecture): void {

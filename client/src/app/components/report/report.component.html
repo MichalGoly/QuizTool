@@ -1,0 +1,18 @@
+<div *ngIf="lecture">
+  <div class="row">
+    <div class="col s2">
+      <button mz-button [flat]="'true'" (click)="navigateBack()">Back</button>
+    </div>
+    <div class="col s10">
+      <h4 class="left-align">{{lecture.fileName}}</h4>
+    </div>
+  </div>
+  <div *ngIf="sessions; else reportsSpinner" class="row">
+    {{sessions}}
+  </div>
+  <ng-template #reportsSpinner>
+    <p>
+      <mz-spinner></mz-spinner>
+    </p>
+  </ng-template>
+</div>

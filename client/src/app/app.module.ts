@@ -36,6 +36,7 @@ import { LectureService } from './services/lecture.service';
 import { SlideService } from './services/slide.service';
 import { QuizService } from './services/quiz.service';
 import { SessionService } from './services/session.service';
+import { ReportComponent } from './components/report/report.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { SessionService } from './services/session.service';
     LectureComponent,
     EditComponent,
     AnswerComponent,
-    ChartComponent
+    ChartComponent,
+    ReportComponent
   ],
   imports: [
     Routing,

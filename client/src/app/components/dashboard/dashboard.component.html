@@ -4,8 +4,13 @@
     <app-broadcast [(lecture)]="lectureBroadcasted"></app-broadcast>
   </div>
   <ng-template #editPanel>
-    <div *ngIf="lectureEdited; else lecturesList">
+    <div *ngIf="lectureEdited; else reportsPanel">
       <app-edit [(lecture)]="lectureEdited"></app-edit>
+    </div>
+  </ng-template>
+  <ng-template #reportsPanel>
+    <div *ngIf="lectureReported; else lecturesList">
+      <app-report [(lecture)]="lectureReported"></app-report>
     </div>
   </ng-template>
   <ng-template #lecturesList>
