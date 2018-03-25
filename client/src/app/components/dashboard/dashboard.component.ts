@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FileUploader, FileUploaderOptions } from 'ng2-file-upload';
+import { saveAs } from "file-saver";
 
 import { LecturerService } from '../../services/lecturer.service';
 import { LectureService } from '../../services/lecture.service';
@@ -94,9 +95,8 @@ export class DashboardComponent implements OnInit {
   }
 
   download(lecture: Lecture): void {
-    this.lectureService.getFile(lecture._id).subscribe(res => {
-      console.log(res);
-      window.open(window.URL.createObjectURL(res));
+    this.lectureService.getFile(lecture._id).subscribe(blob => {
+      saveAs(blob, lecture.fileName);
     }, err => {
       console.log(err);
     })
