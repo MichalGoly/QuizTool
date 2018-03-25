@@ -3,12 +3,17 @@
     <div class="col s2">
       <button mz-button [flat]="'true'" (click)="navigateBack()">Back</button>
     </div>
-    <div class="col s10">
-      <h4 class="left-align">{{lecture.fileName}}</h4>
-    </div>
   </div>
   <div *ngIf="sessions; else reportsSpinner" class="row">
-    {{sessions}}
+    <mz-collection>
+      <mz-collection-header>
+        <h4>{{lecture.fileName}} sessions</h4>
+      </mz-collection-header>
+      <mz-collection-item *ngFor="let session of sessions">
+        {{session.date | date:'dd/MM/yy hh:mm:ss'}}
+        <a href="javascript:void(0)" mz-secondary-content mz-tooltip [tooltip]="'Export as PDF'" (click)="generateReport(session)"><i class="material-icons">file_download</i></a>
+      </mz-collection-item>
+    </mz-collection>
   </div>
   <ng-template #reportsSpinner>
     <p>

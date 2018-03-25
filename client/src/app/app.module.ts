@@ -17,6 +17,7 @@ import { MzSpinnerModule } from 'ng2-materialize';
 import { MzCheckboxModule } from 'ng2-materialize';
 import { MzRadioButtonModule } from 'ng2-materialize';
 import { MzTooltipModule } from 'ng2-materialize';
+import { MzCollectionModule } from 'ng2-materialize';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -67,7 +68,8 @@ import { ReportComponent } from './components/report/report.component';
     MzCheckboxModule,
     ChartsModule,
     MzRadioButtonModule,
-    MzTooltipModule
+    MzTooltipModule,
+    MzCollectionModule
   ],
   providers: [
     CookieService,

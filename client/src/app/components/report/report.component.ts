@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Lecture } from '../../models/lecture';
+import { Session } from '../../models/session';
+
 import { SessionService } from '../../services/session.service';
 
 @Component({
@@ -16,13 +18,13 @@ export class ReportComponent implements OnInit {
   @Output()
   lectureChange: EventEmitter<Lecture> = new EventEmitter<Lecture>();
 
-  sessions: string;
+  sessions: Session[];
 
   constructor(private sessionService: SessionService) { }
 
   ngOnInit() {
     this.sessionService.getByLectureId(this.lecture._id).subscribe((sessions) => {
-      this.sessions = JSON.stringify(sessions);
+      this.sessions = sessions;
     }, (err) => {
       console.error(err);
     });
@@ -30,6 +32,10 @@ export class ReportComponent implements OnInit {
 
   navigateBack(): void {
     this.lectureChange.emit(null);
+  }
+
+  generateReport(session: Session): void {
+    console.log("Report generation... " + session.date);
   }
 
 }
