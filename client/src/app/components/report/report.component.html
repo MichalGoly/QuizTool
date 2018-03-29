@@ -9,10 +9,17 @@
       <mz-collection-header>
         <h4>{{lecture.fileName}} sessions</h4>
       </mz-collection-header>
-      <mz-collection-item *ngFor="let session of sessions">
-        {{session.date | date:'dd/MM/yy hh:mm:ss'}}
-        <a href="javascript:void(0)" mz-secondary-content mz-tooltip [tooltip]="'Export as PDF'" (click)="generateReport(session)"><i class="material-icons">file_download</i></a>
-      </mz-collection-item>
+      <div *ngIf="sessions.length > 0; else noSessions">
+        <mz-collection-item *ngFor="let session of sessions">
+          {{session.date | date:'dd/MM/yy hh:mm:ss'}}
+          <a href="javascript:void(0)" mz-secondary-content mz-tooltip [tooltip]="'Export as PDF'" (click)="generateReport(session)"><i class="material-icons">file_download</i></a>
+        </mz-collection-item>
+      </div>
+      <ng-template #noSessions>
+        <mz-collection-item>
+          There are no sessions to show. You need to broadcast your lecture first.
+        </mz-collection-item>
+      </ng-template>
     </mz-collection>
   </div>
   <ng-template #reportsSpinner>
