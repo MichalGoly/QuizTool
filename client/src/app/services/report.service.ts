@@ -20,7 +20,7 @@ export class ReportService {
     * 2. Put lecture title and session's date on the pdf
     * 3. Retrieve all slides for the lecture
     * 4. Iterate over the slides
-    *.4.1. Put each slide img on the report, next to students' answers if exist
+    *.4.1. Put each slide number on the report, next to students' answers if exist
     * 5. Generate a pdf file and download to user's machine
     */
     return new Promise((resolve, reject) => {
@@ -30,7 +30,6 @@ export class ReportService {
         "Date: " + this.datePipe.transform(session.date, 'M/d/yy, h:mm a')
       ]);
       this.slideService.getByLectureId(lecture._id).subscribe((slides) => {
-        // https://codepen.io/someatoms/pen/vLYXWB
         let columns = ["Slide no", "Answers", "Correct"];
         let rows = this.getRows(session, slides);
         report.autoTable(columns, rows, {
