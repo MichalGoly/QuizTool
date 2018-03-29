@@ -28,6 +28,7 @@ import { LectureComponent } from './components/lecture/lecture.component';
 import { EditComponent } from './components/edit/edit.component';
 import { AnswerComponent } from './components/lecture/answer/answer.component';
 import { ChartComponent } from './components/broadcast/chart/chart.component';
+import { ReportComponent } from './components/report/report.component';
 
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/auth.service';
@@ -37,7 +38,7 @@ import { LectureService } from './services/lecture.service';
 import { SlideService } from './services/slide.service';
 import { QuizService } from './services/quiz.service';
 import { SessionService } from './services/session.service';
-import { ReportComponent } from './components/report/report.component';
+import { ReportService } from './services/report.service';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { ReportComponent } from './components/report/report.component';
     LectureService,
     SlideService,
     QuizService,
-    SessionService
+    SessionService,
+    ReportService
   ],
   bootstrap: [AppComponent]
 })
