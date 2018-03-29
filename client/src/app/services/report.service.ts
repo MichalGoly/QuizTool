@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Session } from '../models/session';
 import { Lecture } from '../models/lecture';
 
+import * as jsPDF from 'jspdf'
+
 @Injectable()
 export class ReportService {
 
@@ -18,10 +20,10 @@ export class ReportService {
     * 5. Generate a pdf file and download to user's machine
     */
     return new Promise((resolve, reject) => {
-      // let report = new jsPDF();
-      // report.text(20, 20, "Hello, world");
-      // report.save('hello.pdf');
-      // resolve();
+      let report = new jsPDF();
+      report.text(20, 20, "Hello, world");
+      report.save('hello.pdf');
+      resolve();
     });
   }
 

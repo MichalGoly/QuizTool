@@ -4,6 +4,7 @@ import { Lecture } from '../../models/lecture';
 import { Session } from '../../models/session';
 
 import { SessionService } from '../../services/session.service';
+import { ReportService } from '../../services/report.service';
 
 @Component({
   selector: 'app-report',
@@ -19,8 +20,11 @@ export class ReportComponent implements OnInit {
   lectureChange: EventEmitter<Lecture> = new EventEmitter<Lecture>();
 
   sessions: Session[];
+  isGeneratingReport: boolean;
 
-  constructor(private sessionService: SessionService) { }
+  constructor(private sessionService: SessionService, private reportService: ReportService) {
+    this.isGeneratingReport = false;
+  }
 
   ngOnInit() {
     this.sessionService.getByLectureId(this.lecture._id).subscribe((sessions) => {
@@ -35,7 +39,13 @@ export class ReportComponent implements OnInit {
   }
 
   generateReport(session: Session): void {
-    console.log("Report generation... " + session.date);
+    this.isGeneratingReport = true;
+    this.reportService.generateReport(session, this.lecture).then(() => {
+      console.log("PDF report generated");
+      this.isGeneratingReport = false;
+    }).catch((err) => {
+      console.error(err);
+    });
   }
 
 }

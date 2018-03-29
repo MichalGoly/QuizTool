@@ -4,7 +4,7 @@
       <button mz-button [flat]="'true'" (click)="navigateBack()">Back</button>
     </div>
   </div>
-  <div *ngIf="sessions; else reportsSpinner" class="row">
+  <div *ngIf="sessions && !isGeneratingReport; else reportsSpinner" class="row">
     <mz-collection>
       <mz-collection-header>
         <h4>{{lecture.fileName}} sessions</h4>
