@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
+import { SlideService } from './slide.service';
 
 import { Session } from '../models/session';
 import { Lecture } from '../models/lecture';
 
-import * as jsPDF from 'jspdf'
+declare let jsPDF;
 
 @Injectable()
 export class ReportService {
 
-  constructor() { }
+  constructor(private slideService: SlideService) { }
 
   generateReport(session: Session, lecture: Lecture): Promise<any> {
     /*
@@ -21,9 +22,23 @@ export class ReportService {
     */
     return new Promise((resolve, reject) => {
       let report = new jsPDF();
-      report.text(20, 20, "Hello, world");
-      report.save('hello.pdf');
-      resolve();
+      report.text(20, 20, [
+        "Lecture: " + lecture.fileName,
+        "Date: " + session.date
+      ]);
+      this.slideService.getByLectureId(lecture._id).subscribe((slides) => {
+        let columns = ["ID", "Name", "Country"];
+        let rows = [
+          [1, "Shaw", "Tanzania"],
+          [2, "Nelson", "Kazakhstan"],
+          [3, "Garcia", "Madagascar"],
+        ];
+        report.autoTable(columns, rows);
+        report.save('hello.pdf');
+        resolve();
+      }, err => {
+        reject(err);
+      });
     });
   }
 

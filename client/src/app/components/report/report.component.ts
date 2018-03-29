@@ -41,7 +41,6 @@ export class ReportComponent implements OnInit {
   generateReport(session: Session): void {
     this.isGeneratingReport = true;
     this.reportService.generateReport(session, this.lecture).then(() => {
-      console.log("PDF report generated");
       this.isGeneratingReport = false;
     }).catch((err) => {
       console.error(err);
