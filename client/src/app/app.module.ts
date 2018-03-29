@@ -7,6 +7,7 @@ import { Routing } from './app.routing';
 import { JwtInterceptor } from './utils/jwt.interceptor';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { DatePipe } from '@angular/common';
 
 import { MzButtonModule } from 'ng2-materialize';
 import { MzCardModule } from 'ng2-materialize';
@@ -86,7 +87,8 @@ import { ReportService } from './services/report.service';
     SlideService,
     QuizService,
     SessionService,
-    ReportService
+    ReportService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
