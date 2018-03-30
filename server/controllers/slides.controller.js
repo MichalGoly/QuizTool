@@ -11,6 +11,8 @@ var BulkSlideUpdateSchema = require('../schemas/bulkSlideUpdate');
 router.get('/:lecture_id', getSlides);
 router.put('/', bulkUpdateQuiz);
 
+module.exports = router;
+
 function getSlides(req, res) {
   authHelper.check(req, res).then((lecturer) => {
     lecturesDb.getOne(req.params.lecture_id).then((lecture) => {
@@ -30,21 +32,31 @@ function getSlides(req, res) {
           res.send(out);
         }).catch((err) => {
           console.error("An error has occurred: " + err);
-          res.sendStatus(500);
+          res.status(500).send({
+            error: err
+          });
         });
       } else {
-        res.sendStatus(401);
+        res.status(401).send({
+          error: "Unauthorized"
+        });
       }
     }).catch((err) => {
       if (err === 400) {
-        res.sendStatus(400);
+        res.status(400).send({
+          error: "Bad request, lectureId malformed"
+        });
       } else {
         console.error("An error has occurred: " + err);
-        res.sendStatus(500);
+        res.status(500).send({
+          error: err
+        });
       }
     });
   }).catch((err) => {
-    res.sendStatus(401);
+    res.status(401).send({
+      error: "Unauthorized"
+    });
   });
 }
 
@@ -56,14 +68,18 @@ function bulkUpdateQuiz(req, res) {
         res.sendStatus(200);
       }).catch((err) => {
         console.error("An error has occurred: " + err);
-        res.sendStatus(500);
+        res.status(500).send({
+          error: "Internal server error"
+        });
       });
     }).catch((err) => {
-      res.sendStatus(401);
+      res.status(401).send({
+        error: "Unauthorized"
+      });
     });
   } else {
-    res.sendStatus(400);
+    res.status(400).send({
+      error: "Bad request"
+    });
   }
 }
-
-module.exports = router;

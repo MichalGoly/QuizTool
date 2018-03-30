@@ -12,9 +12,11 @@ function getLoggedIn(req, res) {
   authHelper.check(req, res).then((data) => {
     var lecturer = JSON.parse(JSON.stringify(data));
     delete lecturer.token;
-    return res.json(lecturer);
+    res.json(lecturer);
   }).catch((err) => {
     console.error(err);
-    return res.sendStatus(401);
+    res.status(401).send({
+      error: err
+    });
   });
 };
