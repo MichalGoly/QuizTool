@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.lecturerService.getCurrentLecturer().subscribe(lecturer => this.lecturer = lecturer,
       err => {
-        this.toastService.show(err.error, 5000, 'red');
+        this.toastService.show(err.error.error, 5000, 'red');
         this.router.navigate(['login']);
       });
     this.refreshLecturers();
@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit {
       }
     },
       err => {
-        this.toastService.show(err.error, 5000, 'red');
+        this.toastService.show(err.error.error, 5000, 'red');
       });
   }
 
@@ -91,7 +91,7 @@ export class DashboardComponent implements OnInit {
     this.lectureService.delete(lecture._id).subscribe(() => {
       this.refreshLecturers();
     }, err => {
-      this.toastService.show(err.error, 5000, 'red');
+      this.toastService.show(err.error.error, 5000, 'red');
     });
   }
 
@@ -99,7 +99,7 @@ export class DashboardComponent implements OnInit {
     this.lectureService.getFile(lecture._id).subscribe(blob => {
       saveAs(blob, lecture.fileName);
     }, err => {
-      this.toastService.show(err.error, 5000, 'red');
+      this.toastService.show(err.error.error, 5000, 'red');
     })
   }
 
