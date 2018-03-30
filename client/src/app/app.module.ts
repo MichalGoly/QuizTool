@@ -19,6 +19,7 @@ import { MzCheckboxModule } from 'ng2-materialize';
 import { MzRadioButtonModule } from 'ng2-materialize';
 import { MzTooltipModule } from 'ng2-materialize';
 import { MzCollectionModule } from 'ng2-materialize';
+import { MzToastModule, MzToastService } from 'ng2-materialize';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -71,7 +72,8 @@ import { ReportService } from './services/report.service';
     ChartsModule,
     MzRadioButtonModule,
     MzTooltipModule,
-    MzCollectionModule
+    MzCollectionModule,
+    MzToastModule
   ],
   providers: [
     CookieService,
@@ -88,7 +90,8 @@ import { ReportService } from './services/report.service';
     QuizService,
     SessionService,
     ReportService,
-    DatePipe
+    DatePipe,
+    MzToastService
   ],
   bootstrap: [AppComponent]
 })
