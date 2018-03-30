@@ -32,7 +32,7 @@ export class ReportComponent implements OnInit {
     this.sessionService.getByLectureId(this.lecture._id).subscribe((sessions) => {
       this.sessions = sessions;
     }, (err) => {
-      this.toastService.show(err, 5000, 'red');
+      this.toastService.show(err.error, 5000, 'red');
     });
   }
 
@@ -45,7 +45,7 @@ export class ReportComponent implements OnInit {
     this.reportService.generateReport(session, this.lecture).then(() => {
       this.isGeneratingReport = false;
     }).catch((err) => {
-      this.toastService.show(err, 5000, 'red');
+      this.toastService.show(err.error, 5000, 'red');
     });
   }
 

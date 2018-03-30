@@ -40,7 +40,7 @@ export class BroadcastComponent implements OnInit {
       this.slides = slides;
       this.emitCurrentSlide();
     }, err => {
-      this.toastService.show(err, 5000, 'red');
+      this.toastService.show(err.error, 5000, 'red');
     });
     this.currentIndex = 0;
     this.socket = io.connect(location.host);
@@ -76,7 +76,7 @@ export class BroadcastComponent implements OnInit {
       this.sessionService.newSession(session).subscribe(() => {
         this.sessionOver();
       }, err => {
-        this.toastService.show(err, 5000, 'red');
+        this.toastService.show(err.error, 5000, 'red');
       });
     } else {
       this.sessionOver();
