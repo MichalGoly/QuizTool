@@ -39,15 +39,19 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.lecturerService.getCurrentLecturer().subscribe(lecturer => this.lecturer = lecturer,
       err => {
-        this.toastService.show(err, 5000, 'red');
+        this.toastService.show(err.error.error, 5000, 'red');
         this.router.navigate(['login']);
       });
     this.refreshLecturers();
     this.authorizeUploader();
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      console.log("PdfUpload:uploaded:", item, status, response);
+      // console.log("PdfUpload:uploaded:", item, status, response);
       this.uploader.clearQueue();
       this.refreshLecturers();
+    };
+    this.uploader.onErrorItem = (item: any, response: string, status: any, headers: any) => {
+      this.uploader.clearQueue();
+      this.toastService.show("File upload failed (max file size 15MB)", 5000, 'red');
     };
   }
 
@@ -59,7 +63,7 @@ export class DashboardComponent implements OnInit {
       }
     },
       err => {
-        this.toastService.show(err, 5000, 'red');
+        this.toastService.show(err.error.error, 5000, 'red');
       });
   }
 
@@ -87,7 +91,7 @@ export class DashboardComponent implements OnInit {
     this.lectureService.delete(lecture._id).subscribe(() => {
       this.refreshLecturers();
     }, err => {
-      this.toastService.show(err, 5000, 'red');
+      this.toastService.show(err.error.error, 5000, 'red');
     });
   }
 
@@ -95,7 +99,7 @@ export class DashboardComponent implements OnInit {
     this.lectureService.getFile(lecture._id).subscribe(blob => {
       saveAs(blob, lecture.fileName);
     }, err => {
-      this.toastService.show(err, 5000, 'red');
+      this.toastService.show(err.error.error, 5000, 'red');
     })
   }
 

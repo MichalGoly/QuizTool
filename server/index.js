@@ -20,6 +20,13 @@ app.use('/lectures', require('./controllers/lectures.controller'));
 app.use('/slides', require('./controllers/slides.controller'));
 app.use('/sessions', require('./controllers/sessions.controller'));
 
+// Global handler for uncaught errors
+app.use(function(err, req, res, next) {
+  res.status(500).send({
+    error: err
+  });
+});
+
 app.get('/auth/google',
   passport.authenticate('google', {
     scope: ['email profile']

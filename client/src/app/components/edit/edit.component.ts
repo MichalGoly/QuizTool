@@ -29,7 +29,7 @@ export class EditComponent implements OnInit {
     this.slideService.getByLectureId(this.lecture._id).subscribe(slides => {
       this.slides = slides;
     }, err => {
-      this.toastService.show(err, 5000, 'red');
+      this.toastService.show(err.error.error, 5000, 'red');
     });
   }
 
@@ -42,7 +42,7 @@ export class EditComponent implements OnInit {
       this.slideService.bulkUpdateQuiz(this.slides).subscribe(() => {
         this.navigateBack();
       }, err => {
-        this.toastService.show(err, 5000, 'red');
+        this.toastService.show(err.error.error, 5000, 'red');
       });
     }
   }

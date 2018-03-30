@@ -6,7 +6,6 @@ var database = {}
 
 database.getAll = getAll;
 database.getOne = getOne;
-database.getFile = getFile;
 database.create = create;
 database._delete = _delete;
 
@@ -35,12 +34,6 @@ function getOne(_id) {
     } else {
       reject(400);
     }
-  });
-}
-
-function getFile(_id) {
-  return new Promise((resolve, reject) => {
-    // TODO
   });
 }
 

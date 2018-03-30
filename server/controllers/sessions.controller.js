@@ -19,14 +19,20 @@ function newSession(req, res) {
         res.sendStatus(201);
       }).catch((err) => {
         console.error("An error has occurred " + err);
-        res.sendStatus(500);
+        res.status(500).send({
+          error: err
+        });
       });
     }).catch((err) => {
       console.error("An error has occurred " + err);
-      res.sendStatus(401);
+      res.status(401).send({
+        error: err
+      });
     });
   } else {
-    res.sendStatus(400);
+    res.status(400).send({
+      err: "Bad request"
+    });
   }
 };
 
@@ -35,25 +41,36 @@ function getSessions(req, res) {
     sessionsDb.getByLectureId(req.params._id).then((sessions) => {
       if (sessions === null) {
         res.sendStatus(401);
+        res.status(401).send({
+          error: "Lecture with ID provided not found"
+        });
       } else {
         // make sure caller authorised to access the resource
         lecturesDb.getOne(req.params._id).then((lecture) => {
           if (lecture.lecturerId == lecturer._id) {
             res.send(sessions);
           } else {
-            res.sendStatus(401);
+            res.status(401).send({
+              error: "Unauthorized"
+            });
           }
         }).catch((err) => {
           console.error("An error has occurred " + err);
-          res.sendStatus(500);
+          res.status(500).send({
+            error: err
+          });
         });
       }
     }).catch((err) => {
       console.error("An error has occurred " + err);
-      res.sendStatus(500);
+      res.status(500).send({
+        error: err
+      });
     });
   }).catch((err) => {
     console.error("An error has occurred " + err);
-    res.sendStatus(401);
+    res.status(401).send({
+      error: err
+    });
   });
 }
