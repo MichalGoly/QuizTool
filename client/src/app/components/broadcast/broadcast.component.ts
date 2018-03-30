@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as io from 'socket.io-client';
+import { MzToastService } from 'ng2-materialize';
 
 import { Lecture } from '../../models/lecture';
 import { Slide } from '../../models/slide';
@@ -31,15 +32,15 @@ export class BroadcastComponent implements OnInit {
   chosenOptions: string[];
   labelOptions: string[];
 
-  constructor(private slideService: SlideService, private quizService: QuizService, private sessionService: SessionService) { }
+  constructor(private slideService: SlideService, private quizService: QuizService,
+    private sessionService: SessionService, private toastService: MzToastService) { }
 
   ngOnInit() {
     this.slideService.getByLectureId(this.lecture._id).subscribe((slides) => {
       this.slides = slides;
       this.emitCurrentSlide();
     }, err => {
-      console.error(err);
-      // TODO this should be handled by an error handler
+      this.toastService.show(err, 5000, 'red');
     });
     this.currentIndex = 0;
     this.socket = io.connect(location.host);
@@ -75,7 +76,7 @@ export class BroadcastComponent implements OnInit {
       this.sessionService.newSession(session).subscribe(() => {
         this.sessionOver();
       }, err => {
-        console.error(err);
+        this.toastService.show(err, 5000, 'red');
       });
     } else {
       this.sessionOver();

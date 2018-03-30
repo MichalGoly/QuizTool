@@ -5,6 +5,7 @@ import { Slide } from '../../models/slide';
 
 import { SlideService } from '../../services/slide.service';
 import { QuizService } from '../../services/quiz.service';
+import { MzToastService } from 'ng2-materialize';
 
 @Component({
   selector: 'app-edit',
@@ -21,14 +22,14 @@ export class EditComponent implements OnInit {
 
   slides: Slide[];
 
-  constructor(private slideService: SlideService, private quizService: QuizService) { }
+  constructor(private slideService: SlideService, private quizService: QuizService,
+    private toastService: MzToastService) { }
 
   ngOnInit() {
     this.slideService.getByLectureId(this.lecture._id).subscribe(slides => {
       this.slides = slides;
     }, err => {
-      // make this user friendly
-      console.error(err);
+      this.toastService.show(err, 5000, 'red');
     });
   }
 
@@ -41,7 +42,7 @@ export class EditComponent implements OnInit {
       this.slideService.bulkUpdateQuiz(this.slides).subscribe(() => {
         this.navigateBack();
       }, err => {
-        console.error(err);
+        this.toastService.show(err, 5000, 'red');
       });
     }
   }

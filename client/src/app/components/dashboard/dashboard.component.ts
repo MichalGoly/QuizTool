@@ -6,6 +6,7 @@ import { saveAs } from "file-saver";
 import { LecturerService } from '../../services/lecturer.service';
 import { LectureService } from '../../services/lecture.service';
 import { AuthService } from '../../services/auth.service';
+import { MzToastService } from 'ng2-materialize';
 
 import { Lecturer } from '../../models/lecturer';
 import { Lecture } from '../../models/lecture';
@@ -27,7 +28,7 @@ export class DashboardComponent implements OnInit {
   lectureReported: Lecture;
 
   constructor(private lecturerService: LecturerService, private lectureService: LectureService,
-    private router: Router, private authService: AuthService) {
+    private router: Router, private authService: AuthService, private toastService: MzToastService) {
     this.uploader = new FileUploader({
       url: UPLOAD_ENDPOINT,
       allowedMimeType: ['application/pdf'],
@@ -38,7 +39,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.lecturerService.getCurrentLecturer().subscribe(lecturer => this.lecturer = lecturer,
       err => {
-        console.error(err);
+        this.toastService.show(err, 5000, 'red');
         this.router.navigate(['login']);
       });
     this.refreshLecturers();
@@ -58,7 +59,7 @@ export class DashboardComponent implements OnInit {
       }
     },
       err => {
-        console.error(err);
+        this.toastService.show(err, 5000, 'red');
       });
   }
 
@@ -86,7 +87,7 @@ export class DashboardComponent implements OnInit {
     this.lectureService.delete(lecture._id).subscribe(() => {
       this.refreshLecturers();
     }, err => {
-      console.log(err);
+      this.toastService.show(err, 5000, 'red');
     });
   }
 
@@ -94,7 +95,7 @@ export class DashboardComponent implements OnInit {
     this.lectureService.getFile(lecture._id).subscribe(blob => {
       saveAs(blob, lecture.fileName);
     }, err => {
-      console.log(err);
+      this.toastService.show(err, 5000, 'red');
     })
   }
 
