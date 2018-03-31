@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { NavbarComponent } from './navbar.component';
+import { MzNavbarModule } from 'ng2-materialize';
+import { AuthService } from '../../services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -8,9 +12,17 @@ describe('NavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      declarations: [NavbarComponent],
+      imports: [
+        MzNavbarModule,
+        RouterTestingModule
+      ],
+      providers: [
+        AuthService,
+        CookieService
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
