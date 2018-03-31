@@ -14,7 +14,8 @@
     ],
     "types": [
       "jquery",
-      "materialize-css"
+      "materialize-css",
+      "jasmine"
     ],
     "lib": [
       "es2016",
