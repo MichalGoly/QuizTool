@@ -56,4 +56,10 @@ describe('BroadcastComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should flatten the string array', () => {
+    expect(component.convertToString(["A", "B", "C"])).toEqual("ABC");
+    expect(component.convertToString(["A"])).toEqual("A");
+    expect(component.convertToString([])).toEqual("");
+  });
 });
