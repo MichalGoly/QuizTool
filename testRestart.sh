@@ -1,7 +1,7 @@
 #!/bin/sh
 echo "Running client unit tests"
 cd client
-docker build -t clienttest --file Dockerfile.test
+docker build -t clienttest --file Dockerfile.test .
 docker run -it clienttest
 
 # Server side unit tests
