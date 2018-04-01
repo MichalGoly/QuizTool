@@ -40,7 +40,7 @@ jobs:
           command: |
             docker -v
             cd client
-            docker build -t clienttest --file Dockerfile.test
+            docker build -t clienttest --file Dockerfile.test .
             docker run -it clienttest
             cd ..
 
