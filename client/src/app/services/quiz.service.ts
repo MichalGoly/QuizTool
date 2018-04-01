@@ -96,7 +96,7 @@ export class QuizService {
     return options;
   }
 
-  extractQuestionsNumber(text: string, character: string): number {
+  private extractQuestionsNumber(text: string, character: string): number {
     let counter = 0;
     for (let i = 0; i < this.letters.length; i++) {
       if (text.indexOf(this.letters[i] + character) >= 0) {
