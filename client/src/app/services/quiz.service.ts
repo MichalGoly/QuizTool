@@ -38,19 +38,21 @@ export class QuizService {
 
   isAbParenthesis(text: string): boolean {
     // true if at least A) and B) found in slide text
-    return text.indexOf(this.letters[0] + ")") >= 0 && text.indexOf(this.letters[1] + ")") >= 0;
+    return text !== null && text.indexOf(this.letters[0] + ")") >= 0 && text.indexOf(this.letters[1] + ")") >= 0;
   }
 
   isAbDot(text: string): boolean {
     // true if at least A. and B. found in slide text
-    return text.indexOf(this.letters[0] + ".") >= 0 && text.indexOf(this.letters[1] + ".") >= 0;
+    return text !== null && text.indexOf(this.letters[0] + ".") >= 0 && text.indexOf(this.letters[1] + ".") >= 0;
   }
 
   isAbBullet(text: string): boolean {
     // true if at least two bullet points found in slide text
-    for (let i = 0; i < BULLET_CHARACTERS.length; i++) {
-      if (((text.split(BULLET_CHARACTERS[i])).length - 1) >= 2) {
-        return true;
+    if (text !== null) {
+      for (let i = 0; i < BULLET_CHARACTERS.length; i++) {
+        if (((text.split(BULLET_CHARACTERS[i])).length - 1) >= 2) {
+          return true;
+        }
       }
     }
     return false;

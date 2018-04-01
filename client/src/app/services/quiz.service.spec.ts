@@ -38,4 +38,20 @@ describe('QuizService', () => {
     slide.text = "A. There we go";
     expect(service.isEligible(slide)).toBe(false);
   }));
+
+  it('should extract options from slide text and slide type provided', inject([QuizService], (service: QuizService) => {
+    expect(service.extractOptions("Welcome to today's lecture \n ∙ Boring \n ∙ Awesome ∙ Not sure\ndasmdsa",
+      "multi")).toEqual(["A", "B", "C"]);
+    expect(service.extractOptions("Welcome to today's lecture \n A. Boring \n B. Awesome ∙ Not sure\ndasmdsa",
+      "multi")).toEqual(["A", "B"]);
+    expect(service.extractOptions("Welcome to today's lecture \n A) Boring \n B) Awesome C) Not sure\ndasmdsa",
+      "multi")).toEqual(["A", "B", "C"]);
+    expect(service.extractOptions("Welcome to today's lecture \n A) Boring \n B) Awesome C) Not sure\ndasmdsa",
+      "truefalse")).toEqual(["true", "false"]);
+    expect(service.extractOptions(null, "truefalse")).toEqual(["true", "false"]);
+    expect(service.extractOptions(null, "single")).toEqual([]);
+    expect(service.extractOptions(null, "multi")).toEqual([]);
+    expect(service.extractOptions("There we go A) there B) is C) Hope", null)).toEqual([]);
+    expect(service.extractOptions("∙ ∙ ∙ ∙ ∙ ∙ ∙ ∙ ∙ ", "single")).toEqual(["A", "B", "C", "D", "E", "F", "G", "H", "I"]);
+  }));
 });
