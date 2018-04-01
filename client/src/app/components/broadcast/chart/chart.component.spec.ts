@@ -20,10 +20,22 @@ describe('ChartComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ChartComponent);
     component = fixture.componentInstance;
+    component.liveAnswers = {
+      "A": 5,
+      "B": 1,
+      "E": 4
+    };
     fixture.detectChanges();
   });
 
   it('should be created', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should get count based on the option provided', () => {
+    expect(component.getCount("A")).toEqual(5);
+    expect(component.getCount("B")).toEqual(1);
+    expect(component.getCount("E")).toEqual(4);
+    expect(component.getCount("X")).toEqual(0);
   });
 });
