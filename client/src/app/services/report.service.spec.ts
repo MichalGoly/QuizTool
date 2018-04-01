@@ -1,11 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { DatePipe } from '@angular/common';
 
 import { ReportService } from './report.service';
+import { SlideService } from './slide.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ReportService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ReportService]
+      imports: [HttpClientModule],
+      providers: [ReportService, SlideService, DatePipe]
     });
   });
 

@@ -36,7 +36,15 @@ jobs:
             docker-compose build
 
       - run:
-          name: run tests
+          name: run client unit tests
+          command: |
+            cd client
+            docker build -t clienttest --file Dockerfile.test .
+            docker run -it clienttest
+            cd ..
+
+      - run:
+          name: run server unit tests
           command: |
             echo "GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" >> .env
             echo "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> .env
