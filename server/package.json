@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha --recursive --timeout 60000 --exit"
+    "test": "mocha --recursive 'test/**/*.js' --timeout 60000 --exit",
+    "integration": "mocha --recursive 'test_integration/**/*.js' --timeout 60000 --exit"
   },
   "author": "Michal Goly",
   "license": "MIT",
@@ -28,6 +29,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
-    "mocha": "^5.0.4"
+    "mocha": "^5.0.4",
+    "selenium-webdriver": "^4.0.0-alpha.1"
   }
 }
