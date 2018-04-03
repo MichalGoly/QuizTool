@@ -43,6 +43,20 @@ describe('test the login page', () => {
     });
   });
 
+  it('should login as a lecturer', (done) => {
+    driver.get('http://client').then(() => {
+      driver.findElement(By.xpath("//a[@href='#lecturer']")).click().then(() => {
+        driver.findElement(By.id("lecturer-login-btn")).click().then(() => {
+          driver.takeScreenshot().then(function(data) {
+            var base64Data = data.replace(/^data:image\/png;base64,/, "")
+            console.log(base64Data);
+            done();
+          });
+        });
+      });
+    });
+  });
+
   after((done) => {
     driver.quit();
     done();
