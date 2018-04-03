@@ -21,7 +21,13 @@ services:
     depends_on:
       - chrome
       - firefox
-    entrypoint: npm run integration
+  # Integration tests runner 
+  tester:
+    build: tester
+    depends_on:
+      - chrome
+      - firefox
+    entrypoint: npm test
   database:
     image: mongo
     ports:
