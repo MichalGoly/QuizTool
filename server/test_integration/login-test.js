@@ -25,6 +25,24 @@ describe('test the login page', () => {
     });
   });
 
+  it('should login as student', (done) => {
+    driver.get('http://client').then(() => {
+      driver.findElement(By.id("session-input")).then((inputElement) => {
+        inputElement.sendKeys("6d2nd25af");
+        driver.findElement(By.id("student-login-btn")).click().then(() => {
+          driver.wait(until.elementLocated(By.id("brand-logo")), 3000).then(() => {
+            driver.findElement(By.id("brand-logo")).then((logo) => {
+              logo.getText().then((text) => {
+                expect(text).to.equal("Quiz Tool (session 6d2nd25af)");
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
   after((done) => {
     driver.quit();
     done();
