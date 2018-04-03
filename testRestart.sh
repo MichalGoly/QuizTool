@@ -1,4 +1,5 @@
 #!/bin/sh
+# This file is only used to run tests during local development
 echo "Running client unit tests"
 cd client
 docker build -t clienttest --file Dockerfile.test .
