@@ -8,6 +8,7 @@ var expect = chai.expect;
 var common = {}
 
 common.lecturerLogin = lecturerLogin;
+common.fileUpload = fileUpload;
 common.screenshot = screenshot;
 
 module.exports = common;
@@ -24,6 +25,28 @@ function lecturerLogin(driver) {
                 resolve();
               });
             });
+          });
+        });
+      });
+    });
+  });
+}
+
+/*
+ * @param driver - The seleniu driver
+ * @param fileName - the name of the presentation file to upload
+ * @param lectureIndex - The expected index of the Lecture card rendered once upload finished
+ */
+function fileUpload(driver, fileName, lectureIndex) {
+  return new Promise((resolve, reject) => {
+    driver.findElement(By.id("hello-header")).click().then(() => {
+      var filePath = __dirname + '/../bin/' + fileName;
+      driver.findElement(By.id("input-file-upload")).sendKeys(filePath);
+      driver.wait(until.elementLocated(By.id("card-" + lectureIndex)), 60000).then(() => {
+        driver.findElement(By.id("card-title-" + lectureIndex)).then((titleElement) => {
+          titleElement.getText().then((text) => {
+            expect(text).to.equal(fileName + "\nmore_vert");
+            resolve();
           });
         });
       });

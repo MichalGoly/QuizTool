@@ -21,17 +21,8 @@ describe('test the login page', () => {
 
   it('should upload two lectures and remove the first one', (done) => {
     common.lecturerLogin(driver).then(() => {
-      driver.findElement(By.id("hello-header")).click().then(() => {
-        var filePath = __dirname + '/bin/presentation.pdf';
-        driver.findElement(By.id("input-file-upload")).sendKeys(filePath);
-        driver.wait(until.elementLocated(By.id("card-0")), 50000).then(() => {
-          driver.findElement(By.id("card-title-0")).then((titleElement) => {
-            titleElement.getText().then((text) => {
-              expect(text).to.equal("presentation.pdf\nmore_vert");
-              done();
-            });
-          });
-        });
+      common.fileUpload(driver, "presentation.pdf", 0).then(() => {
+        done();
       });
     });
   });
