@@ -22,7 +22,9 @@ describe('test the login page', () => {
   it('should upload two lectures and remove the first one', (done) => {
     common.lecturerLogin(driver).then(() => {
       common.fileUpload(driver, "presentation.pdf", 0).then(() => {
-        done();
+        common.fileUpload(driver, "L2-review-and-parameters.pdf", 1).then(() => {
+          done();
+        });
       });
     });
   });
