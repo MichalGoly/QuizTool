@@ -10,6 +10,7 @@ var common = {}
 common.lecturerLogin = lecturerLogin;
 common.fileUpload = fileUpload;
 common.screenshot = screenshot;
+common.sleep = sleep;
 
 module.exports = common;
 
@@ -62,4 +63,8 @@ function screenshot(driver) {
       resolve(base64Data);
     });
   });
+}
+
+function sleep(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
 }
