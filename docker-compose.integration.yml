@@ -14,6 +14,8 @@ services:
     build: server
     environment:
       - NODE_ENV=test
+      - AUTH_DISABLED=true
+      - GOOGLE_AUTH_DISABLED=true
     env_file:
       - .env
     links:
@@ -21,13 +23,6 @@ services:
     depends_on:
       - chrome
       - firefox
-  # Integration tests runner 
-  tester:
-    build: tester
-    depends_on:
-      - chrome
-      - firefox
-    entrypoint: npm test
   database:
     image: mongo
     ports:
@@ -35,6 +30,15 @@ services:
     depends_on:
       - chrome
       - firefox
+  # Integration tests runner
+  tester:
+    build: tester
+    depends_on:
+      - chrome
+      - firefox
+    env_file:
+      - .env
+    entrypoint: npm test
   # Selenium hub for integration testing
   selenium-hub:
     image: selenium/hub

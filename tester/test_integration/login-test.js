@@ -47,10 +47,13 @@ describe('test the login page', () => {
     driver.get('http://client').then(() => {
       driver.findElement(By.xpath("//a[@href='#lecturer']")).click().then(() => {
         driver.findElement(By.id("lecturer-login-btn")).click().then(() => {
-          driver.takeScreenshot().then(function(data) {
-            var base64Data = data.replace(/^data:image\/png;base64,/, "")
-            console.log(base64Data);
-            done();
+          driver.wait(until.elementLocated(By.id("hello-header")), 3000).then(() => {
+            driver.findElement(By.id("hello-header")).then((header) => {
+              header.getText().then((text) => {
+                expect(text).to.equal("Hello, Bob Smith! Your lectures:");
+                done();
+              });
+            });
           });
         });
       });
@@ -62,3 +65,7 @@ describe('test the login page', () => {
     done();
   });
 });
+
+function sleep(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}

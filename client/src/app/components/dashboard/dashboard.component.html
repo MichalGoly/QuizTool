@@ -15,7 +15,7 @@
   </ng-template>
   <ng-template #lecturesList>
     <div *ngIf="lecturer" class="row">
-      <h4>Hello, {{lecturer.name}}! Your lectures:</h4>
+      <h4 id="hello-header">Hello, {{lecturer.name}}! Your lectures:</h4>
     </div>
     <div *ngIf="uploader?.queue?.length == 0; else spinnerLecturesList">
       <div class="row">
