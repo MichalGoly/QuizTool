@@ -8,6 +8,7 @@ var expect = chai.expect;
 var common = {}
 
 common.lecturerLogin = lecturerLogin;
+common.screenshot = screenshot;
 
 module.exports = common;
 
@@ -26,6 +27,16 @@ function lecturerLogin(driver) {
           });
         });
       });
+    });
+  });
+}
+
+// https://stackoverflow.com/questions/3422262/take-a-screenshot-with-selenium-webdriver
+function screenshot(driver) {
+  return new Promise((resolve, reject) => {
+    driver.takeScreenshot().then(function(data) {
+      var base64Data = data.replace(/^data:image\/png;base64,/, "")
+      resolve(base64Data);
     });
   });
 }
