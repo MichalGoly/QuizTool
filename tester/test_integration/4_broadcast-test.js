@@ -79,12 +79,52 @@ describe('test the broadcast page', () => {
             // 2
             var sessionCode = headerText.split(" ").slice(-1);
             common.joinAsStudentNewTab(studentDriver1, sessionCode).then(() => {
-              common.joinAsStudentNewTab(studentDriver2).then(() => {
-                common.joinAsStudentNewTab(studentDriver3).then(() => {
-                  // 4
-                  common.screenshot(driver).then((img) => {
-                    console.log(img);
-                    done();
+              common.joinAsStudentNewTab(studentDriver2, sessionCode).then(() => {
+                common.joinAsStudentNewTab(studentDriver3, sessionCode).then(() => {
+                  // 5
+                  driver.findElement(By.id("next-btn")).click().then(() => {
+                    driver.findElement(By.id("next-btn")).click().then(() => {
+                      // 8
+                      common.sleep(1000).then(() => {
+                        common.screenshot(studentDriver1).then((img) => {
+                          console.log(img);
+                          done();
+                        })
+                      })
+                      // studentDriver1.wait(until.elementLocated(By.id("true")), 3000).then(() => {
+                      //   studentDriver1.findElement(By.id("true")).click().then(() => {
+                      //     studentDriver1.findElement(By.id("btn-submit")).click().then(() => {
+                      //       studentDriver2.findElement(By.id("false")).click().then(() => {
+                      //         studentDriver2.findElement(By.id("true")).click().then(() => {
+                      //           studentDriver2.findElement(By.id("btn-submit")).click().then(() => {
+                      //             driver.findElement(By.id("retry-btn")).click().then(() => {
+                      //               studentDriver3.findElement(By.id("false")).click().then(() => {
+                      //                 studentDriver3.findElement(By.id("btn-submit")).click().then(() => {
+                      //                   studentDriver2.findElement(By.id("false")).click().then(() => {
+                      //                     studentDriver2.findElement(By.id("btn-submit")).click().then(() => {
+                      //                       // 12
+                      //                       driver.findElement(By.id("false")).click().then(() => {
+                      //                         driver.findElement(By.id("btn-submit")).click().then(() => {
+                      //                           studentDriver2.findElement(By.id("false")).then((element) => {
+                      //                             element.getAttribute('class').then((classes) => {
+                      //                               console.log(classes);
+                      //                               done();
+                      //                             });
+                      //                           });
+                      //                         });
+                      //                       });
+                      //                     });
+                      //                   });
+                      //                 });
+                      //               });
+                      //             });
+                      //           });
+                      //         });
+                      //       });
+                      //     });
+                      //   });
+                      // });
+                    });
                   });
                 });
               });

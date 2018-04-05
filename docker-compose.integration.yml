@@ -51,6 +51,8 @@ services:
     image: selenium/node-chrome
     depends_on:
       - selenium-hub
+    volumes:
+      - /dev/shm:/dev/shm
     environment:
       - HUB_PORT_4444_TCP_ADDR=selenium-hub
       - HUB_PORT_4444_TCP_PORT=4444
@@ -60,6 +62,8 @@ services:
     image: selenium/node-firefox
     depends_on:
       - selenium-hub
+    volumes:
+      - /dev/shm:/dev/shm      
     environment:
       - HUB_PORT_4444_TCP_ADDR=selenium-hub
       - HUB_PORT_4444_TCP_PORT=4444
