@@ -65,7 +65,19 @@ describe('test the broadcast page', () => {
      * 15. Navigate to the next slide without specifying the correct answer
      * 16. End the broadcast
      */
-    done();
+    driver.findElement(By.id("broadcast-1")).click().then(() => {
+      driver.wait(until.elementLocated(By.id("broadcast-header")), 3000).then(() => {
+        driver.findElement(By.id("broadcast-header")).then((header) => {
+          header.getText().then((headerText) => {
+            expect(headerText).to.include("L2-review-and-parameters.pdf, session:");
+            // 2
+            var sessionCode = headerText.split(" ").slice(-1);
+            console.log("[BOCIAN]: " + sessionCode);
+            done();
+          });
+        });
+      });
+    });
   });
 
   after((done) => {
