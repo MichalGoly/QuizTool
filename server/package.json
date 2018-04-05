@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha --recursive --timeout 60000 --exit"
+    "test": "mocha --recursive 'test/**/*.js' --timeout 60000 --exit",
+    "integration": "mocha --recursive 'test_integration/**/*.js' --timeout 60000 --exit"
   },
   "author": "Michal Goly",
   "license": "MIT",

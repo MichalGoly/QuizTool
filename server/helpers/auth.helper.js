@@ -6,6 +6,7 @@ const GOOGLE_TOKEN_CHECK_URI = 'https://www.googleapis.com/oauth2/v1/tokeninfo?a
 const GOOGLE_QUIZ_TOOL_ID = '564650356041-pe6cejm0gpl4qqrd9o084mmk456nt4pn.apps.googleusercontent.com';
 
 authHelper.check = check;
+authHelper.authenticateForTesting = authenticateForTesting;
 
 function check(req, res) {
   /*
@@ -80,6 +81,20 @@ function check(req, res) {
         reject("The Authorization Bearer token is missing, or is malformed!");
       }
     }
+  });
+}
+
+// Used only during integration tests, as a workaround the problem of not being able
+// to use selenium to automate the Google Single Sign On
+function authenticateForTesting(req, res) {
+  var bob = new Lecturer({
+    googleId: "google123",
+    name: "Bob Smith",
+    token: "token123"
+  });
+  bob.save().then((lecturer) => {
+    res.cookie('auth', lecturer.token);
+    res.redirect('/');
   });
 }
 

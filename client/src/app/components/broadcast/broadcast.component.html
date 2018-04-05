@@ -1,18 +1,18 @@
 <div *ngIf="lecture">
   <div class="row">
     <div class="col s2">
-      <button mz-button [flat]="'true'" (click)="navigateBack()">Back</button>
+      <button id="back-btn" mz-button [flat]="'true'" (click)="navigateBack()">Back</button>
     </div>
     <div class="col s10">
-      <h4 class="left-align">{{lecture.fileName}}, session: {{sessionCode}}</h4>
+      <h4 id="broadcast-header" class="left-align">{{lecture.fileName}}, session: {{sessionCode}}</h4>
     </div>
   </div>
   <div class="row">
     <div class="col s2">
-      <button mz-button [disabled]="isPreviousDisabled()" (click)="previousSlide()"><i class="fa fa-arrow-left"></i></button>
+      <button id="previous-btn" mz-button [disabled]="isPreviousDisabled()" (click)="previousSlide()"><i class="fa fa-arrow-left"></i></button>
     </div>
     <div class="col s2 offset-s8">
-      <button mz-button [disabled]="isNextDisabled()" (click)="nextSlide()"><i class="fa fa-arrow-right"></i></button>
+      <button id="next-btn" mz-button [disabled]="isNextDisabled()" (click)="nextSlide()"><i class="fa fa-arrow-right"></i></button>
     </div>
   </div>
   <div *ngIf="slides; else spinner">
@@ -38,7 +38,7 @@
               </div>
               <div class="row">
                 <p><i class="fa fa-redo"></i> Or ask students to answer again</p>
-                <p><button mz-button [flat]="'true'" (click)="askAgain()">Retry</button></p>
+                <p><button id="retry-btn" mz-button [flat]="'true'" (click)="askAgain()">Retry</button></p>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 <div *ngIf="lecture">
-  <button mz-button [flat]="'true'" (click)="navigateBack()">Back</button>
-  <button mz-button (click)="save()">Save</button>
+  <button id="back-btn" mz-button [flat]="'true'" (click)="navigateBack()">Back</button>
+  <button id="save-btn" mz-button (click)="save()">Save</button>
 
   <div *ngIf="slides; else slidesSpinner">
     <ul class="collection">
@@ -11,7 +11,7 @@
           </div>
           <div class="col s6">
             <div class="center-align">
-              <h5>Slide {{slide.slideNumber}}</h5>
+              <h5 id="edit-header-{{i}}">Slide {{slide.slideNumber}}</h5>
               <mz-radio-button-container>
                 <input mz-radio-button [label]="'Not a quiz'" [(ngModel)]="slides[i].quizType" [value]="null" id="null-{{i}}" name="group-{{i}}" type="radio"><br>
                 <input mz-radio-button [label]="'Make true/false quiz'" [(ngModel)]="slides[i].quizType" [value]="'truefalse'" [disabled]="!isEligibleTrueFalse(slide)" id="truefalse-{{i}}" name="group-{{i}}" type="radio"><br>

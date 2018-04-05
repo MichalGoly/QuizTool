@@ -15,27 +15,27 @@
   </ng-template>
   <ng-template #lecturesList>
     <div *ngIf="lecturer" class="row">
-      <h4>Hello, {{lecturer.name}}! Your lectures:</h4>
+      <h4 id="hello-header">Hello, {{lecturer.name}}! Your lectures:</h4>
     </div>
     <div *ngIf="uploader?.queue?.length == 0; else spinnerLecturesList">
       <div class="row">
-        <div *ngFor="let lecture of lectures" class="col l3">
-          <div class="card">
+        <div *ngFor="let lecture of lectures; let i = index" [attr.data-index]="i" class="col l3">
+          <div id="card-{{i}}" class="card">
             <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" src="/assets/images/pdf.png">
             </div>
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">{{lecture.fileName}}<i class="material-icons right">more_vert</i></span>
+              <span id="card-title-{{i}}" class="card-title activator grey-text text-darken-4">{{lecture.fileName}}<i id="more-vert-{{i}}" class="material-icons right">more_vert</i></span>
             </div>
             <div class="card-action">
-              <a href="javascript:void(0)" (click)="edit(lecture)">Edit</a>
-              <a href="javascript:void(0)" (click)="broadcast(lecture)">Broadcast</a>
+              <a id="edit-{{i}}" href="javascript:void(0)" (click)="edit(lecture)">Edit</a>
+              <a id="broadcast-{{i}}" href="javascript:void(0)" (click)="broadcast(lecture)">Broadcast</a>
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">{{lecture.fileName}}<i class="material-icons right">close</i></span>
-              <button mz-button mz-tooltip [tooltip]="'Delete this lecture'" [flat]="'true'" (click)="remove(lecture)"><i class="material-icons">delete</i></button>
-              <button mz-button mz-tooltip [tooltip]="'Sessions history'" [flat]="'true'" (click)="openReports(lecture)"><i class="material-icons">history</i></button>
-              <button mz-button mz-tooltip [tooltip]="'Download original presentation'" [flat]="'true'" (click)="download(lecture)"><i class="material-icons">file_download</i></button>
+              <button mz-button mz-tooltip [tooltip]="'Delete this lecture'" [flat]="'true'" (click)="remove(lecture)"><i id="delete-{{i}}" class="material-icons">delete</i></button>
+              <button mz-button mz-tooltip [tooltip]="'Sessions history'" [flat]="'true'" (click)="openReports(lecture)"><i id="sessions-{{i}}" class="material-icons">history</i></button>
+              <button mz-button mz-tooltip [tooltip]="'Download original presentation'" [flat]="'true'" (click)="download(lecture)"><i id="download-{{i}}" class="material-icons">file_download</i></button>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
       <div class="file-field input-field">
         <div id="btn-upload" class="btn-floating btn-large waves-effect waves-light">
           <i class="large material-icons">add</i>
-          <input type="file" ng2FileSelect [uploader]="uploader" accept="application/pdf" />
+          <input id="input-file-upload" type="file" ng2FileSelect [uploader]="uploader" accept="application/pdf" />
         </div>
       </div>
     </div>

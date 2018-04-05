@@ -1,0 +1,18 @@
+{
+  "name": "tester",
+  "version": "1.0.0",
+  "description": "Integration tests runner",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo 'noop'",
+    "test": "mocha --recursive 'test_integration/**/*.js' --timeout 120000 --exit"
+  },
+  "author": "Michal Goly",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "mocha": "^5.0.5",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  }
+}

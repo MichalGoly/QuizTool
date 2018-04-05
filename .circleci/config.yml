@@ -50,6 +50,16 @@ jobs:
             echo "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> .env
             echo "GOOGLE_CALLBACK_URL=$GOOGLE_CALLBACK_URL" >> .env
             docker-compose -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from server_node
+            docker-compose -f docker-compose.test.yml down
+
+      - run:
+          name: run integration tests
+          command: |
+            echo "TEST_EMAIL=$TEST_EMAIL" >> .env
+            echo "TEST_PASSWORD=$TEST_PASSWORD" >> .env
+            docker-compose -f docker-compose.integration.yml build
+            docker-compose -f docker-compose.integration.yml up --abort-on-container-exit --exit-code-from tester
+            docker-compose -f docker-compose.integration.yml down
 
       # deploy only master and develop branch
       - deploy:

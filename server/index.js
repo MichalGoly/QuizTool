@@ -4,6 +4,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var server = http.createServer(app);
 var passport = require('./helpers/passport.helper');
+var auth = require('./helpers/auth.helper');
 var io = require('./helpers/socket.helper')(server);
 var db = require('./db/db');
 
@@ -27,10 +28,16 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.get('/auth/google',
-  passport.authenticate('google', {
-    scope: ['email profile']
-  }));
+if (process.env.GOOGLE_AUTH_DISABLED === 'true') {
+  app.get('/auth/google', (req, res) => {
+    auth.authenticateForTesting(req, res);
+  });
+} else {
+  app.get('/auth/google',
+    passport.authenticate('google', {
+      scope: ['email profile']
+    }));
+}
 
 app.get('/auth/google/callback',
   passport.authenticate('google', {
