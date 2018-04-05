@@ -28,8 +28,8 @@
               <span id="card-title-{{i}}" class="card-title activator grey-text text-darken-4">{{lecture.fileName}}<i id="more-vert-{{i}}" class="material-icons right">more_vert</i></span>
             </div>
             <div class="card-action">
-              <a href="javascript:void(0)" (click)="edit(lecture)">Edit</a>
-              <a href="javascript:void(0)" (click)="broadcast(lecture)">Broadcast</a>
+              <a id="edit-{{i}}" href="javascript:void(0)" (click)="edit(lecture)">Edit</a>
+              <a id="broadcast-{{i}}" href="javascript:void(0)" (click)="broadcast(lecture)">Broadcast</a>
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">{{lecture.fileName}}<i class="material-icons right">close</i></span>

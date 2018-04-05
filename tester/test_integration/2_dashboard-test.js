@@ -9,7 +9,7 @@ var assert = chai.assert;
 var expect = chai.expect;
 var common = require('./common/common');
 
-describe('test the login page', () => {
+describe('test the dashboard page', () => {
 
   var driver;
 
@@ -40,6 +40,11 @@ describe('test the login page', () => {
         });
       });
     });
+  });
+
+  it('should prevent from uploading a pdf over 15MB', (done) => {
+    // TODO
+    done();
   });
 
   after((done) => {
