@@ -24,7 +24,26 @@ describe('test the broadcast page', () => {
      * 1. Upload lecture
      * 2. Mark slides as quizes
      */
-    done();
+    common.lecturerLogin(driver).then(() => {
+      common.fileUpload(driver, "L2-review-and-parameters.pdf", 1).then(() => {
+        driver.findElement(By.id("edit-1")).click().then(() => {
+          driver.wait(until.elementLocated(By.id("edit-header-0")), 3000).then(() => {
+            // 2
+            driver.findElement(By.xpath("//label[@for='truefalse-2']")).click().then(() => {
+              driver.findElement(By.xpath("//label[@for='multi-3']")).click().then(() => {
+                driver.findElement(By.xpath("//label[@for='single-4']")).click().then(() => {
+                  driver.findElement(By.id("save-btn")).click().then(() => {
+                    driver.wait(until.elementLocated(By.id("edit-0")), 3000).then(() => {
+                      done();
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
   });
 
   it('should broadcast lecture to 3 students', (done) => {
