@@ -26,15 +26,17 @@ describe('test the report page', () => {
      * 3. Download the session as PDF
      */
     common.lecturerLogin(driver).then(() => {
-      driver.findElement(By.id("more-vert-1")).click().then(() => {
-        common.sleep(500).then(() => {
-          driver.findElement(By.id("sessions-1")).click().then(() => {
-            driver.wait(until.elementLocated(By.id("report-header")), 3000).then(() => {
-              driver.findElement(By.id("report-header")).then((header) => {
-                header.getText().then((headerText) => {
-                  expect(headerText).to.equal("L2-review-and-parameters.pdf sessions");
-                  driver.findElement(By.id("export-0")).click().then(() => {
-                    done();
+      driver.wait(until.elementLocated(By.id("more-vert-1")), 3000).then(() => {
+        driver.findElement(By.id("more-vert-1")).click().then(() => {
+          common.sleep(500).then(() => {
+            driver.findElement(By.id("sessions-1")).click().then(() => {
+              driver.wait(until.elementLocated(By.id("report-header")), 3000).then(() => {
+                driver.findElement(By.id("report-header")).then((header) => {
+                  header.getText().then((headerText) => {
+                    expect(headerText).to.equal("L2-review-and-parameters.pdf sessions");
+                    driver.findElement(By.id("export-0")).click().then(() => {
+                      done();
+                    });
                   });
                 });
               });

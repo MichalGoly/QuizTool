@@ -43,8 +43,13 @@ describe('test the dashboard page', () => {
   });
 
   it('should prevent from uploading a pdf over 15MB', (done) => {
-    // TODO
-    done();
+    driver.findElement(By.id("hello-header")).click().then(() => {
+      var filePath = __dirname + '/bin/large.pdf';
+      driver.findElement(By.id("input-file-upload")).sendKeys(filePath);
+      driver.wait(until.elementLocated(By.id("toast-container")), 3000).then(() => {
+        done();
+      });
+    });
   });
 
   after((done) => {
