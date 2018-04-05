@@ -34,8 +34,8 @@
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4">{{lecture.fileName}}<i class="material-icons right">close</i></span>
               <button mz-button mz-tooltip [tooltip]="'Delete this lecture'" [flat]="'true'" (click)="remove(lecture)"><i id="delete-{{i}}" class="material-icons">delete</i></button>
-              <button mz-button mz-tooltip [tooltip]="'Sessions history'" [flat]="'true'" (click)="openReports(lecture)"><i class="material-icons">history</i></button>
-              <button mz-button mz-tooltip [tooltip]="'Download original presentation'" [flat]="'true'" (click)="download(lecture)"><i class="material-icons">file_download</i></button>
+              <button mz-button mz-tooltip [tooltip]="'Sessions history'" [flat]="'true'" (click)="openReports(lecture)"><i id="sessions-{{i}}" class="material-icons">history</i></button>
+              <button mz-button mz-tooltip [tooltip]="'Download original presentation'" [flat]="'true'" (click)="download(lecture)"><i id="download-{{i}}" class="material-icons">file_download</i></button>
             </div>
           </div>
         </div>
