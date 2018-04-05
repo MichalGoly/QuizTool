@@ -102,7 +102,24 @@ describe('test the broadcast page', () => {
                                                 studentDriver2.findElement(By.id("false")).then((element) => {
                                                   element.getAttribute('class').then((classes) => {
                                                     expect(classes).to.include("green");
-                                                    done();
+                                                    driver.findElement(By.id("next-btn")).click().then(() => {
+                                                      // 14
+                                                      handleStudentsAnswers(studentDriver1, studentDriver2, studentDriver3).then(() => {
+                                                        // 15
+                                                        driver.findElement(By.id("next-btn")).click().then(() => {
+                                                          driver.findElement(By.id("back-btn")).click().then(() => {
+                                                            driver.wait(until.elementLocated(By.id("hello-header")), 3000).then(() => {
+                                                              studentDriver1.findElement(By.id("no-slide-msg")).then((msgElement) => {
+                                                                msgElement.getText().then((msg) => {
+                                                                  expect(msg).to.equal("Your session has not started yet, please wait...");
+                                                                  done();
+                                                                })
+                                                              })
+                                                            });
+                                                          });
+                                                        });
+                                                      });
+                                                    });
                                                   });
                                                 });
                                               });
@@ -137,3 +154,31 @@ describe('test the broadcast page', () => {
     done();
   });
 });
+
+// A helper function to handle answers selection by 3 students in a multi choice quiz
+function handleStudentsAnswers(studentDriver1, studentDriver2, studentDriver3) {
+  return new Promise((resolve, reject) => {
+    studentDriver3.wait(until.elementLocated(By.id("A")), 3000).then(() => {
+      studentDriver3.findElement(By.id("A")).click().then(() => {
+        studentDriver3.findElement(By.id("C")).click().then(() => {
+          studentDriver3.findElement(By.id("btn-submit")).click().then(() => {
+            studentDriver2.findElement(By.id("A")).click().then(() => {
+              studentDriver2.findElement(By.id("btn-submit")).click().then(() => {
+                studentDriver1.findElement(By.id("B")).click().then(() => {
+                  studentDriver1.findElement(By.id("B")).click().then(() => {
+                    studentDriver2.findElement(By.id("btn-submit")).then((element) => {
+                      element.getAttribute('class').then((classes) => {
+                        expect(classes).to.include("disabled");
+                        resolve();
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+}
