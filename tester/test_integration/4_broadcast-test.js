@@ -12,9 +12,15 @@ var common = require('./common/common');
 describe('test the broadcast page', () => {
 
   var driver;
+  var studentDriver1;
+  var studentDriver2;
+  var studentDriver3;
 
   before((done) => {
     driver = new Builder().forBrowser('firefox').forBrowser('chrome').usingServer('http://selenium-hub:4444/wd/hub').build();
+    studentDriver1 = new Builder().forBrowser('firefox').forBrowser('chrome').usingServer('http://selenium-hub:4444/wd/hub').build();
+    studentDriver2 = new Builder().forBrowser('firefox').forBrowser('chrome').usingServer('http://selenium-hub:4444/wd/hub').build();
+    studentDriver3 = new Builder().forBrowser('firefox').forBrowser('chrome').usingServer('http://selenium-hub:4444/wd/hub').build();
     driver.setFileDetector(new remote.FileDetector());
     done();
   });
@@ -72,8 +78,17 @@ describe('test the broadcast page', () => {
             expect(headerText).to.include("L2-review-and-parameters.pdf, session:");
             // 2
             var sessionCode = headerText.split(" ").slice(-1);
-            console.log("[BOCIAN]: " + sessionCode);
-            done();
+            common.joinAsStudentNewTab(studentDriver1, sessionCode).then(() => {
+              common.joinAsStudentNewTab(studentDriver2).then(() => {
+                common.joinAsStudentNewTab(studentDriver3).then(() => {
+                  // 4
+                  common.screenshot(driver).then((img) => {
+                    console.log(img);
+                    done();
+                  });
+                });
+              });
+            });
           });
         });
       });
@@ -82,6 +97,9 @@ describe('test the broadcast page', () => {
 
   after((done) => {
     driver.quit();
+    studentDriver1.quit();
+    studentDriver2.quit();
+    studentDriver3.quit();
     done();
   });
 });

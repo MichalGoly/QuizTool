@@ -1,6 +1,7 @@
 const {
   By,
-  until
+  until,
+  Builder
 } = require('selenium-webdriver');
 var chai = require('chai');
 var expect = chai.expect;
@@ -9,6 +10,7 @@ var common = {}
 
 common.lecturerLogin = lecturerLogin;
 common.fileUpload = fileUpload;
+common.joinAsStudentNewTab = joinAsStudentNewTab;
 common.screenshot = screenshot;
 common.sleep = sleep;
 
@@ -50,6 +52,17 @@ function fileUpload(driver, fileName, lectureIndex) {
             resolve();
           });
         });
+      });
+    });
+  });
+}
+
+function joinAsStudentNewTab(studentDriver, sessionCode) {
+  return new Promise((resolve, reject) => {
+    studentDriver.get('http://client/lecture/' + sessionCode).then(() => {
+      studentDriver.getTitle().then((title) => {
+        expect(title).to.equal("Quiz Tool");
+        resolve();
       });
     });
   });
