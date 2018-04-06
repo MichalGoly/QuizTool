@@ -23,7 +23,7 @@ describe('test the report page', () => {
     /*
      * 1. Open previous sessions page
      * 2. Make sure there's only one historical session to export
-     * 3. Download the session as PDF
+     * 3. Download the session as PDF.
      */
     common.lecturerLogin(driver).then(() => {
       driver.wait(until.elementLocated(By.id("more-vert-1")), 3000).then(() => {
