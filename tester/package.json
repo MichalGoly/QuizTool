@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "echo 'noop'",
-    "test": "(sleep 5 && echo sleeping) & mocha --recursive 'test_integration/**/*.js' --timeout 120000 --exit"
+    "test": "sleep 10; mocha --recursive 'test_integration/**/*.js' --timeout 120000 --exit"
   },
   "author": "Michal Goly",
   "license": "MIT",
