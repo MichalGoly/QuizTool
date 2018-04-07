@@ -1,5 +1,13 @@
 {
     "AWSEBDockerrunVersion": 2,
+    "volumes": [
+      {
+        "name": "mongo-db",
+        "host": {
+          "sourcePath": "/var/app/mongo-db"
+        }
+      }
+    ],
     "containerDefinitions": [
         {
             "name": "client",
@@ -30,6 +38,12 @@
           "image": "mongo",
           "memory": 300,
           "essential": true,
+          "mountPoints": [
+              {
+                "sourceVolume": "mongo-db",
+                "containerPath": "/data/mongo"
+              }
+          ],
           "portMappings": [
               {
                   "hostPort": 27017,
