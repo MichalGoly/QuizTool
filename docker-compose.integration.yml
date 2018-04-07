@@ -47,6 +47,7 @@ services:
       - "4444:4444"
     environment:
       - GRID_MAX_SESSION=10
+      - GRID_NEW_SESSION_WAIT_TIMEOUT=10000
   chrome:
     image: selenium/node-chrome
     depends_on:
@@ -63,7 +64,7 @@ services:
     depends_on:
       - selenium-hub
     volumes:
-      - /dev/shm:/dev/shm      
+      - /dev/shm:/dev/shm
     environment:
       - HUB_PORT_4444_TCP_ADDR=selenium-hub
       - HUB_PORT_4444_TCP_PORT=4444
