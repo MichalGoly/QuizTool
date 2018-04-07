@@ -65,7 +65,3 @@ describe('test the login page', () => {
     done();
   });
 });
-
-function sleep(time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
-}

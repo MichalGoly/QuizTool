@@ -36,6 +36,7 @@ services:
     depends_on:
       - chrome
       - firefox
+      - selenium-hub
     env_file:
       - .env
     entrypoint: npm test
@@ -63,7 +64,7 @@ services:
     depends_on:
       - selenium-hub
     volumes:
-      - /dev/shm:/dev/shm      
+      - /dev/shm:/dev/shm
     environment:
       - HUB_PORT_4444_TCP_ADDR=selenium-hub
       - HUB_PORT_4444_TCP_PORT=4444

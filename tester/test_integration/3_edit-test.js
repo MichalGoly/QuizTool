@@ -31,25 +31,27 @@ describe('test the edit page', () => {
      * 8. Make sure the changes have been preserved
      */
     common.lecturerLogin(driver).then(() => {
-      driver.findElement(By.id("edit-0")).click().then(() => {
-        driver.wait(until.elementLocated(By.id("edit-header-0")), 3000).then(() => {
-          driver.findElement(By.xpath("//label[@for='single-9']")).click().then(() => {
-            driver.findElement(By.id("back-btn")).click().then(() => {
-              driver.wait(until.elementLocated(By.id("edit-0")), 3000).then(() => {
-                driver.findElement(By.id("edit-0")).click().then(() => {
-                  driver.wait(until.elementLocated(By.id("edit-header-0")), 3000).then(() => {
-                    driver.findElement(By.xpath("//label[@for='multi-10']")).click().then(() => {
-                      driver.findElement(By.id("save-btn")).click().then(() => {
-                        driver.wait(until.elementLocated(By.id("edit-0")), 3000).then(() => {
-                          driver.findElement(By.id("edit-0")).click().then(() => {
-                            driver.wait(until.elementLocated(By.id("edit-header-0")), 3000).then(() => {
-                              driver.findElement(By.id("single-0")).isSelected().then((isSelected0) => {
-                                expect(isSelected0).to.equal(false);
-                                driver.findElement(By.id("single-9")).isSelected().then((isSelected9) => {
-                                  expect(isSelected9).to.equal(false);
-                                  driver.findElement(By.id("multi-10")).isSelected().then((isSelected10) => {
-                                    expect(isSelected10).to.equal(true);
-                                    done();
+      driver.wait(until.elementLocated(By.id("edit-0")), 3000).then(() => {
+        driver.findElement(By.id("edit-0")).click().then(() => {
+          driver.wait(until.elementLocated(By.id("edit-header-0")), 3000).then(() => {
+            driver.findElement(By.xpath("//label[@for='single-9']")).click().then(() => {
+              driver.findElement(By.id("back-btn")).click().then(() => {
+                driver.wait(until.elementLocated(By.id("edit-0")), 3000).then(() => {
+                  driver.findElement(By.id("edit-0")).click().then(() => {
+                    driver.wait(until.elementLocated(By.id("edit-header-0")), 3000).then(() => {
+                      driver.findElement(By.xpath("//label[@for='multi-10']")).click().then(() => {
+                        driver.findElement(By.id("save-btn")).click().then(() => {
+                          driver.wait(until.elementLocated(By.id("edit-0")), 3000).then(() => {
+                            driver.findElement(By.id("edit-0")).click().then(() => {
+                              driver.wait(until.elementLocated(By.id("edit-header-0")), 3000).then(() => {
+                                driver.findElement(By.id("single-0")).isSelected().then((isSelected0) => {
+                                  expect(isSelected0).to.equal(false);
+                                  driver.findElement(By.id("single-9")).isSelected().then((isSelected9) => {
+                                    expect(isSelected9).to.equal(false);
+                                    driver.findElement(By.id("multi-10")).isSelected().then((isSelected10) => {
+                                      expect(isSelected10).to.equal(true);
+                                      done();
+                                    });
                                   });
                                 });
                               });
