@@ -12,11 +12,8 @@ describe('test the login page', () => {
   var driver;
 
   before((done) => {
-    // hack to prevent from tests running before selenium-hub is ready to accept connections
-    common.sleep(5000).then(() => {
-      driver = new Builder().forBrowser('firefox').forBrowser('chrome').usingServer('http://selenium-hub:4444/wd/hub').build();
-      done();
-    });
+    driver = new Builder().forBrowser('firefox').forBrowser('chrome').usingServer('http://selenium-hub:4444/wd/hub').build();
+    done();
   });
 
   it('should render the login page', (done) => {
