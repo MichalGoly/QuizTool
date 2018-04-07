@@ -33,31 +33,28 @@ jobs:
           command: |
             touch .env
             set -x
-      #       docker-compose build
-      # 
-      # # - run:
-      # #     name: run client unit tests
-      # #     command: |
-      # #       cd client
-      # #       docker build -t clienttest --file Dockerfile.test .
-      # #       docker run -it clienttest
-      # #       cd ..
-      # #
-      # # - run:
-      # #     name: run server unit tests
-      # #     command: |
-      # #       echo "GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" >> .env
-      # #       echo "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> .env
-      # #       echo "GOOGLE_CALLBACK_URL=$GOOGLE_CALLBACK_URL" >> .env
-      # #       docker-compose -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from server_node
-      # #       docker-compose -f docker-compose.test.yml down
+            docker-compose build
 
       - run:
-          name: run integration tests
+          name: run client unit tests
+          command: |
+            cd client
+            docker build -t clienttest --file Dockerfile.test .
+            docker run -it clienttest
+            cd ..
+
+      - run:
+          name: run server unit tests
           command: |
             echo "GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" >> .env
             echo "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> .env
             echo "GOOGLE_CALLBACK_URL=$GOOGLE_CALLBACK_URL" >> .env
+            docker-compose -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from server_node
+            docker-compose -f docker-compose.test.yml down
+
+      - run:
+          name: run integration tests
+          command: |
             echo "TEST_EMAIL=$TEST_EMAIL" >> .env
             echo "TEST_PASSWORD=$TEST_PASSWORD" >> .env
             docker-compose -f docker-compose.integration.yml build
