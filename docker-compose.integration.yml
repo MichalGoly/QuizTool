@@ -30,15 +30,6 @@ services:
     depends_on:
       - chrome
       - firefox
-  # Integration tests runner
-  tester:
-    build: tester
-    depends_on:
-      - chrome
-      - firefox
-    env_file:
-      - .env
-    entrypoint: npm test
   # Selenium hub for integration testing
   selenium-hub:
     image: selenium/hub
@@ -70,3 +61,12 @@ services:
       - HUB_PORT_4444_TCP_PORT=4444
       - NODE_MAX_SESSION=10
       - NODE_MAX_INSTANCES=10
+  # Integration tests runner
+  tester:
+    build: tester
+    depends_on:
+      - chrome
+      - firefox
+    env_file:
+      - .env
+    entrypoint: npm test
