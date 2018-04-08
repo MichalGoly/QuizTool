@@ -139,7 +139,9 @@ the code to be merged
 Low fidelity prototypes are available in files `docs/design/story_board_lecturer.jpg` and
 `docs/design/story_board_client.jpg`.
 
-
+## LICENSE
+The source code is licensed under GPLv2, due to the PDFtk dependency licensed under
+GPLv2. 
 
 
 
