@@ -9,6 +9,33 @@ The production environment can be accessed [here](http://prod-env.3nhfpmarra.eu-
 ## Timesheet
 [Google sheets timesheet](https://docs.google.com/spreadsheets/d/1V1cxn0A4oLpygT2_huqFQaV2wz1W9XVqJLWeiHpg0qw/edit?usp=sharing)
 
+## Running the app locally
+### Prerequisites
+You should have the following installed on your machine.
+- [Docker](http://docker.com/)
+- [docker-compose](https://docs.docker.com/compose/)
+
+You should also make sure there is a `.env` file in the root of the project with the following
+environment variables set for Google Single Sign on purposes.
+
+```
+GOOGLE_CLIENT_ID=<GOOGLE_CLIENT_ID>
+GOOGLE_CLIENT_SECRET=<GOOGLE_CLIENT_SECRET>
+GOOGLE_CALLBACK_URL=<GOOGLE_CALLBACK_URL>
+
+```
+
+To run the app locally using docker-compose:
+```
+$ chmod +x restart.sh
+$ ./restart.sh
+```
+
+To run front-end unit tests, back-end unit tests and integration tests locally:
+```
+$ chmod +x testRestart.sh
+$ ./testRestart.sh
+```
 
 ## Project Description
 Student engagement and live knowledge monitoring are vital in the provision of good quality
@@ -28,20 +55,20 @@ redundant in the future. This ambition can only be achieved if the project is of
 high quality and its future maintainability is considered at all stages of the design
 and development.
 
-The Quiz Tool will allow lecturers to login with their university credentials and
-they will be authenticated using the university LDAP. Lecturers will then
-be able to upload their PDF lecture slides and create *Lectures* in the system.
-Each *Lecture* can be then edited and quizzes can be added between slides.
+The Quiz Tool allows lecturers to login with their Google credentials, upload their PDF lecture slides
+and create *Lectures* in the system.
+Each *Lecture* can be then edited and eligible slides can become quizes.
 An example of a quiz would be an "ABC style" question where a student can select
 one of the options and submit their answer. Once a lecturer is happy with their
 *Lecture*, he can broadcast it and receive a session key which can be
 shared with students. Lecture slides will be shown to all students and the
-lecture can be delivered in a traditional fashion up to the moment a quiz
-has been embedded between two slides. Students will then be able to answer
+lecture can be delivered in a traditional fashion up to the moment a slide has been marked as a quiz.
+Students will then be able to answer
 the question and polling results will be presented in real time to the lecturer.
-It will be also possible to export the quiz answers as JSON for future analysis.
+It is also possible to export the quiz answers as a PDF report for future analysis,
+by accessing sessions history page of each lecture.
 
-The tool will be composed of the back-end with an associated database, and two
+The toolis composed of the back-end with an associated database, and two
 front-ends. One for lecturers and one for students. Finally, the tool will be
 developed using an agile methodology, adjusted for a single person project.
 
@@ -109,24 +136,12 @@ by opening a pull request
 the code to be merged
 
 ## Business Logic
-- The server side app listens to incoming calls
-- The Lecturer client logs in using his Google account.
-- Lectuer presented with a clean interface enabling him to upload PDF slides
-- This creates a new *Lecture* in the system
-- Multiple lectures can exist
-- Lecturer can open a lecture and add quiz questions between slides as necessary
-- Lecturer can then start the lecture by clicking "broadcast"
-- Lecturer presented with a session code which he can share with the class
-- Each student uses the session key to access the lecture
-- Ideally, multiple lecturers can run multiple sessions at the same times
-- The responses can be viewed in real time by *Lecturer* and showed to students once
-the polling is complete
-- The results can be then exported as JSON for later analysis/persistence
-
 Low fidelity prototypes are available in files `docs/design/story_board_lecturer.jpg` and
 `docs/design/story_board_client.jpg`.
 
-
+## LICENSE
+The source code is licensed under GPLv2, due to the PDFtk dependency licensed under
+GPLv2. 
 
 
 

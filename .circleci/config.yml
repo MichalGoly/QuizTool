@@ -55,8 +55,6 @@ jobs:
       - run:
           name: run integration tests
           command: |
-            echo "TEST_EMAIL=$TEST_EMAIL" >> .env
-            echo "TEST_PASSWORD=$TEST_PASSWORD" >> .env
             docker-compose -f docker-compose.integration.yml build
             docker-compose -f docker-compose.integration.yml up --abort-on-container-exit --exit-code-from tester
             docker-compose -f docker-compose.integration.yml down
