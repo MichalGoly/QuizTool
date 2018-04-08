@@ -15,6 +15,16 @@ You should have the following installed on your machine.
 - [Docker](http://docker.com/)
 - [docker-compose](https://docs.docker.com/compose/)
 
+You should also make sure there is a `.env` file in the root of the project with the following
+environment variables set for Google Single Sign on purposes.
+
+```
+GOOGLE_CLIENT_ID=<GOOGLE_CLIENT_ID>
+GOOGLE_CLIENT_SECRET=<GOOGLE_CLIENT_SECRET>
+GOOGLE_CALLBACK_URL=<GOOGLE_CALLBACK_URL>
+
+```
+
 To run the app locally using docker-compose:
 ```
 $ chmod +x restart.sh
