@@ -13,6 +13,7 @@ common.fileUpload = fileUpload;
 common.joinAsStudentNewTab = joinAsStudentNewTab;
 common.screenshot = screenshot;
 common.sleep = sleep;
+common.formatFileName = formatFileName;
 
 module.exports = common;
 
@@ -48,7 +49,7 @@ function fileUpload(driver, fileName, lectureIndex) {
       driver.wait(until.elementLocated(By.id("card-" + lectureIndex)), 60000).then(() => {
         driver.findElement(By.id("card-title-" + lectureIndex)).then((titleElement) => {
           titleElement.getText().then((text) => {
-            expect(text).to.equal(fileName + "\nmore_vert");
+            expect(text).to.equal(formatFileName(fileName) + "\nmore_vert");
             resolve();
           });
         });
@@ -80,4 +81,8 @@ function screenshot(driver) {
 
 function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+function formatFileName(fileName) {
+  return fileName.length < 15 ? fileName : fileName.substring(0, 15) + "...";
 }

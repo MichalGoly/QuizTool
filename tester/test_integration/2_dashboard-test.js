@@ -29,7 +29,7 @@ describe('test the dashboard page', () => {
                 common.sleep(500).then(() => {
                   driver.findElement(By.id("card-title-0")).then((titleElement) => {
                     titleElement.getText().then((text) => {
-                      expect(text).to.equal("L2-review-and-parameters.pdf\nmore_vert");
+                      expect(text).to.equal(common.formatFileName("L2-review-and-parameters.pdf") + "\nmore_vert");
                       done();
                     });
                   });
