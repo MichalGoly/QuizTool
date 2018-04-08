@@ -81,7 +81,7 @@ export class DashboardComponent implements OnInit {
 
   // Truncates long file names and adds "..." at the end
   formatTitle(fileName: string): string {
-    return fileName.length < 14 ? fileName : fileName.substring(0, 17) + "...";
+    return fileName.length < 15 ? fileName : fileName.substring(0, 15) + "...";
   }
 
   openDiscovery(): void {

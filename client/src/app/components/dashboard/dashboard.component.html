@@ -19,7 +19,7 @@
     </div>
     <div *ngIf="uploader?.queue?.length == 0; else spinnerLecturesList">
       <div class="row">
-        <div *ngFor="let lecture of lectures; let i = index" [attr.data-index]="i" class="col m6 l3">
+        <div *ngFor="let lecture of lectures; let i = index" [attr.data-index]="i" class="col m6 l6 xl3">
           <div id="card-{{i}}" class="card">
             <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" src="/assets/images/pdf.png">
