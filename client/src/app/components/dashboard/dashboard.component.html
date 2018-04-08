@@ -19,13 +19,13 @@
     </div>
     <div *ngIf="uploader?.queue?.length == 0; else spinnerLecturesList">
       <div class="row">
-        <div *ngFor="let lecture of lectures; let i = index" [attr.data-index]="i" class="col l3">
+        <div *ngFor="let lecture of lectures; let i = index" [attr.data-index]="i" class="col m6 l6 xl3">
           <div id="card-{{i}}" class="card">
             <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" src="/assets/images/pdf.png">
             </div>
             <div class="card-content">
-              <span id="card-title-{{i}}" class="card-title activator grey-text text-darken-4">{{lecture.fileName}}<i id="more-vert-{{i}}" class="material-icons right">more_vert</i></span>
+              <span id="card-title-{{i}}" class="card-title activator grey-text text-darken-4">{{formatTitle(lecture.fileName)}}<i id="more-vert-{{i}}" class="material-icons right">more_vert</i></span>
             </div>
             <div class="card-action">
               <a id="edit-{{i}}" href="javascript:void(0)" (click)="edit(lecture)">Edit</a>
@@ -58,9 +58,9 @@
     </div>
     <!-- Button's feature discovery tooltip -->
     <div class="tap-target" data-activates="btn-upload">
-      <div class="tap-target-content">
+      <div class="tap-target-content white-text">
         <h5>Upload your PDF slides</h5>
-        <p>You can upload your slides by clicking the action button, or dragging and dropping your file anywhere on the screen :)</p>
+        <p>You can upload your slides by clicking the action button</p>
       </div>
     </div>
   </ng-template>

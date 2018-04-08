@@ -79,6 +79,11 @@ export class DashboardComponent implements OnInit {
     this.lectureBroadcasted = lecture;
   }
 
+  // Truncates long file names and adds "..." at the end
+  formatTitle(fileName: string): string {
+    return fileName.length < 15 ? fileName : fileName.substring(0, 15) + "...";
+  }
+
   openDiscovery(): void {
     $('.tap-target').tapTarget('open');
   }
