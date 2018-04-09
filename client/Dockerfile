@@ -1,3 +1,4 @@
+# https://github.com/avatsaev/angular4-docker-example/blob/master/Dockerfile
 ### STAGE 1: Build ###
 
 # We label our stage as 'builder'
