@@ -1,0 +1,8 @@
+# Manual Testing
+Have a look at my comments in MMP_S11. The table is one way to report tests,
+but not the only way. If you have automated tests, then discuss what you have
+done and why - but you don't need to produce a table equivalent of those tests.
+
+You might want a test table to talk about areas that aren't automated. In that
+case, the test table could go in an appendix and discussion of the approach and
+any particularly interesting items in the body of the report.
