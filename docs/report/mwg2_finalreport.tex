@@ -2,34 +2,34 @@
 
 % Aberstwyth dissertation LaTeX Template
 % Authors: Dr. Hannah Dee (hmd1@aber.ac.uk), Neil Taylor (nst@aber.ac.uk)
-% This has been adapted from the Leeds Thesis template and the 
+% This has been adapted from the Leeds Thesis template and the
 % Group Project template for Computer Science in Aberystywth University.
-% 
+%
 % All comments and suggestions welcome.
 %
 % Template designed to be used with pdflatex: it may need alteration to
 % run with a different LaTeX engine.
 %
-% Note - this is offered as a starting point for your work. You are not 
-% required to use this template and can choose to create your own document 
-% without it. 
+% Note - this is offered as a starting point for your work. You are not
+% required to use this template and can choose to create your own document
+% without it.
 
 % To build document on the unix command line, run four commands:
- 
+
 % pdflatex dissertation
 % bibtex dissertation
 % pdflatex dissertation
 % pdflatex dissertation
 
-% you will end up with dissertation.pdf 
+% you will end up with dissertation.pdf
 \usepackage{mmp}
 
-% the following packages are used for citations - You only need to include one. 
+% the following packages are used for citations - You only need to include one.
 %
-% Use the cite package if you are using the numeric style (e.g. IEEEannot). 
-% Use the natbib package if you are using the author-date style (e.g. authordate2annot). 
-% Only use one of these and comment out the other one. 
-\usepackage{cite}
+% Use the cite package if you are using the numeric style (e.g. IEEEannot).
+% Use the natbib package if you are using the author-date style (e.g. authordate2annot).
+% Only use one of these and comment out the other one.
+% \usepackage{cite}
 %\usepackage{natbib}
 
 % Use the following to selectively exclude chapters
@@ -44,13 +44,13 @@
 \pagenumbering{roman}
 
 % This is the front page
-\include{cover}                        
+\include{cover}
 
 % Set up page numbering
 \pagestyle{empty}
 
-% declarations of originality 
-\include{declaration}               
+% declarations of originality
+\include{declaration}
 
 \include{acknowledgements} % Acknowledgements
 \include{abstract}                 % Abstract
@@ -62,10 +62,10 @@
 \renewcommand{\headrulewidth}{0 pt}
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 
-\tableofcontents   
+\tableofcontents
 \newpage
 \listoffigures
-\newpage 
+\newpage
 \listoftables
 \newpage
 
@@ -85,11 +85,11 @@
 \setemptyheader
 \addcontentsline{toc}{chapter}{Appendices}
 \chapter*{Appendices}
-The appendices are for additional content that is useful to support the discussion in the report. It is material that is not necessarily needed in the body of the report, but its inclusion in the appendices makes it easy to access. 
+The appendices are for additional content that is useful to support the discussion in the report. It is material that is not necessarily needed in the body of the report, but its inclusion in the appendices makes it easy to access.
 
 For example, if you have developed a Design Specification document as part of a plan-driven approach for the project, then it would be appropriate to include that document as an appendix. In the body of your report you would highlight the most interesting aspects of the design, referring your reader to the full specification for further detail.
 
-If you have taken an agile approach to developing the project, then you may be less likely to have developed a full requirements specification. Perhaps you use stories to keep track of the functionality and the 'future conversations'. It might not be relevant to include all of those in the body of your report. Instead, you might include those in an appendix. 
+If you have taken an agile approach to developing the project, then you may be less likely to have developed a full requirements specification. Perhaps you use stories to keep track of the functionality and the 'future conversations'. It might not be relevant to include all of those in the body of your report. Instead, you might include those in an appendix.
 
 There is a balance to be struck between what is relevant to include in the body of your report and whether additional supporting evidence is appropriate in the appendices. Speak to your supervisor or the module coordinator if you have questions about this.
 
@@ -127,17 +127,15 @@ There is a balance to be struck between what is relevant to include in the body 
 
 \setemptyheader
 
-\nocite{*} % include everything from the bibliography, irrespective of whether it has been referenced.
-
-% the following line is included so that the bibliography is also shown in the table of contents. There is the possibility that this is added to the previous page for the bibliography. To address this, a newline is added so that it appears on the first page for the bibliography. 
+% the following line is included so that the bibliography is also shown in the table of contents. There is the possibility that this is added to the previous page for the bibliography. To address this, a newline is added so that it appears on the first page for the bibliography.
 \addcontentsline{toc}{chapter}{Annotated Bibliography} % Adds References to contents page
 
-%
-% example of including an annotated bibliography. The current style is an author date one. If you want to change, comment out the line and uncomment the subsequent line. You should also modify the packages included at the top (see the notes earlier in the file) and then trash your aux files and re-run. 
-%\bibliographystyle{authordate2annot}
-\bibliographystyle{IEEEannotU}
-\renewcommand{\bibname}{Annotated Bibliography} 
+\begin{thebibliography}{1}
 
-\bibliography{References/references} % References file
+\bibitem{1} Qwizdom, “Qwizdom homepage,” 2018. [Online] Available: https://qwizdom.com/, [Accessed: Feb. 6, 2018].
+
+  Qwizdom is the tool currently used by the univeristy and will be replaced with this project.
+  
+\end{thebibliography}
 
 \end{document}
