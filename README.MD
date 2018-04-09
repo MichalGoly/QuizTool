@@ -41,7 +41,7 @@ $ ./testRestart.sh
 - `.elasticbeanstalk/` contains the Multicontainer AWS Elasticbeanstalk config file
 - `client/` contains the definition of the `client` Docker container, composed of
 an Angular front end, and an nginx reverse proxy
-- 'docs/' contains the documents produced during the development of the final project
+- `docs/` contains the documents produced during the development of the final project
 - 'scripts/' contains the production deployment script
 - `server/` contains the definition of the `server_node` Docker container, composed of
 the back end of the application written in Express.js
