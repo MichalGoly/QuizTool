@@ -47,19 +47,19 @@ an Angular front end, and an nginx reverse proxy
 the back end of the application written in Express.js
 - `tester/` contains the definition of the `tester` Docker container, used for running
 Selenium tests during integration tests
-- '.env' file (not checked into the GitHub repository), contains the environment variables
+- `.env` file (not checked into the GitHub repository), contains the environment variables
 necessary for Google Single Sign On integration
-- '.gitignore' file specifies which files should not be commited to the git repository
-- 'docker-compose.integration.yml' file defines the containers interactions during
+- `.gitignore` file specifies which files should not be commited to the git repository
+- `docker-compose.integration.yml` file defines the containers interactions during
 integration testing
-- 'docker-compose.test.yml' file defines the containers interactions during server side
+- `docker-compose.test.yml` file defines the containers interactions during server side
 unit tests
-- 'docker-compose.yml' file deifnes the containers interactions when the Quiz Tool is run
+- `docker-compose.yml` file deifnes the containers interactions when the Quiz Tool is run
 locally
-- 'Dockerrun.aws.json' file defines the containers interactions when the Quiz Tool runs
+- `Dockerrun.aws.json` file defines the containers interactions when the Quiz Tool runs
 in production on AWS
-- 'restart.sh' is a bash script used for running the application locally
-- 'testRestart.sh' is a bash script used for running all tests of the application
+- `restart.sh` is a bash script used for running the application locally
+- `testRestart.sh` is a bash script used for running all tests of the application
 
 ## Project Description
 Student engagement and live knowledge monitoring are vital in the provision of good quality
