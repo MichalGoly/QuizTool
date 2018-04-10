@@ -22,6 +22,6 @@
 \contentsline {chapter}{Appendices}{9}{chapter.5}
 \contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{10}{appendix.A}
 \contentsline {chapter}{\numberline {B}Ethics Submission}{11}{appendix.B}
-\contentsline {chapter}{\numberline {C}Code Examples}{12}{appendix.C}
-\contentsline {section}{\numberline {3.1}Random Number Generator}{12}{section.C.1}
-\contentsline {chapter}{Bibliography}{15}{section.C.1}
+\contentsline {chapter}{\numberline {C}Code Examples}{14}{appendix.C}
+\contentsline {section}{\numberline {3.1}Random Number Generator}{14}{section.C.1}
+\contentsline {chapter}{Bibliography}{17}{section.C.1}
