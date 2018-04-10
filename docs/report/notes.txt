@@ -62,9 +62,12 @@ google sheets
   - vary -
   - Sprint retrospective
 
->>> X. Potentially, final design of the system? <<<
-  
-3. Critical evaluation
+3. final design of the system? <<<
+4. TESTING (maybe)
+  -
+  -
+  -
+5. Critical evaluation
 Appendices
   A. 3rd party code and libraries
   B. Ethics form
@@ -73,3 +76,11 @@ Appendices
   E. Sprint burndown charts
   F. Google timesheet
 Bibliography
+
+
+
+ALTERNATIVE
+
+
+
+1.
