@@ -24,4 +24,4 @@
 \contentsline {chapter}{\numberline {B}Ethics Submission}{11}{appendix.B}
 \contentsline {chapter}{\numberline {C}Code Examples}{12}{appendix.C}
 \contentsline {section}{\numberline {3.1}Random Number Generator}{12}{section.C.1}
-\contentsline {chapter}{Annotated Bibliography}{15}{section.C.1}
+\contentsline {chapter}{Bibliography}{15}{section.C.1}
