@@ -63,7 +63,7 @@ google sheets
   - Sprint retrospective
 
 >>> X. Potentially, final design of the system? <<<
-
+  
 3. Critical evaluation
 Appendices
   A. 3rd party code and libraries
