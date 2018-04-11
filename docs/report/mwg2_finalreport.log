@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  11 APR 2018 13:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  11 APR 2018 15:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -539,10 +539,17 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 [1
 
 
-] [2]) [3]
+] <images/qwizdom.png, id=227, 348.30125pt x 293.095pt>
+File: images/qwizdom.png Graphic file (type png)
+
+<use images/qwizdom.png>
+Package pdftex.def Info: images/qwizdom.png used on input line 89.
+(pdftex.def)             Requested size: 348.3004pt x 293.09427pt.
+ [2]) [3 <./images/qwizdom.png>]
 \openout2 = `Chapter2/chapter2.aux'.
 
- (./Chapter2/chapter2.tex
+
+(./Chapter2/chapter2.tex
 Chapter 2.
 [4
 
@@ -588,7 +595,7 @@ LaTeX Warning: Citation `apache_license' on page 11 undefined on input line 16.
 
  (./Appendix2/appendix2.tex
 Appendix B.
-<Appendix2/9563.pdf, id=285, 614.295pt x 794.97pt>
+<Appendix2/9563.pdf, id=291, 614.295pt x 794.97pt>
 File: Appendix2/9563.pdf Graphic file (type pdf)
  <use Appendix2/9563.pdf>
 Package pdftex.def Info: Appendix2/9563.pdf used on input line 6.
@@ -599,7 +606,7 @@ File: Appendix2/9563.pdf Graphic file (type pdf)
 Package pdftex.def Info: Appendix2/9563.pdf used on input line 6.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 
-<Appendix2/9563.pdf, id=288, page=1, 614.295pt x 794.97pt>
+<Appendix2/9563.pdf, id=294, page=1, 614.295pt x 794.97pt>
 File: Appendix2/9563.pdf Graphic file (type pdf)
 
 <use Appendix2/9563.pdf, page 1>
@@ -629,7 +636,7 @@ File: Appendix2/9563.pdf Graphic file (type pdf)
 Package pdftex.def Info: Appendix2/9563.pdf, page1 used on input line 6.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [13 <./Appendix2/9563.pdf>]
-<Appendix2/9563.pdf, id=302, page=2, 614.295pt x 794.97pt>
+<Appendix2/9563.pdf, id=308, page=2, 614.295pt x 794.97pt>
 File: Appendix2/9563.pdf Graphic file (type pdf)
 
 <use Appendix2/9563.pdf, page 2>
@@ -734,29 +741,35 @@ ing-chat-application-
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 202--203
+[]\OT1/ptm/m/n/10.95 Microsoft Pow-er-Point, "prod-ucts.office.com", 2018. [On-
+line] Avail-able:
+ []
+
+
 AED: lastpage setting LastPage
 [19]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 204.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 204.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 208.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 208.
  (./mwg2_finalreport.aux (./cover.aux) (./declaration.aux)
 (./acknowledgements.aux) (./abstract.aux) (./Chapter1/chapter1.aux)
 (./Chapter2/chapter2.aux) (./Chapter3/chapter3.aux) (./Appendix1/appendix1.aux)
 (./Appendix2/appendix2.aux) (./Appendix3/appendix3.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 204.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 204.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 208.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 208.
 Package rerunfilecheck Info: File `mwg2_finalreport.out' has not changed.
-(rerunfilecheck)             Checksum: E823562E8FB6247222EA41248D7EA3C1;1912.
+(rerunfilecheck)             Checksum: 2FEE11FF417700C9ACBC0417316AA8F5;1912.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 204.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 208.
  ) 
 Here is how much of TeX's memory you used:
- 8810 strings out of 493029
- 129707 string characters out of 6136234
- 230365 words of memory out of 5000000
- 12056 multiletter control sequences out of 15000+600000
+ 8826 strings out of 493029
+ 129930 string characters out of 6136234
+ 230469 words of memory out of 5000000
+ 12067 multiletter control sequences out of 15000+600000
  26005 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  49i,18n,48p,566b,457s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -766,10 +779,10 @@ f-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
 /utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on mwg2_finalreport.pdf (26 pages, 119579 bytes).
+Output written on mwg2_finalreport.pdf (26 pages, 152074 bytes).
 PDF statistics:
- 376 PDF objects out of 1000 (max. 8388607)
- 333 compressed objects within 4 object streams
- 76 named destinations out of 1000 (max. 500000)
- 274 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 382 PDF objects out of 1000 (max. 8388607)
+ 338 compressed objects within 4 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 279 words of extra memory for PDF output out of 10000 (max. 10000000)
 

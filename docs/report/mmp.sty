@@ -14,12 +14,13 @@
 \usepackage{graphicx} %to allow images to be imported see example at end of template
 
 \usepackage{palatino} %or {times} etc
-\usepackage{plain} %bibliography style 
+\usepackage{plain} %bibliography style
 \usepackage{amsmath} %math fonts - just in case
 \usepackage{amsfonts} %math fonts
 \usepackage{amssymb} %math fonts
 
 % packages for figures
+\graphicspath{ {images/} }
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{float}
@@ -31,11 +32,11 @@
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 
-% package for tidy url formatting - commented out in favour of the 
-% hyperref package which also provides clickable links in the document. 
+% package for tidy url formatting - commented out in favour of the
+% hyperref package which also provides clickable links in the document.
 %\usepackage{url}
 
-% Package for url formatting and also creates hyperlinks.  
+% Package for url formatting and also creates hyperlinks.
 \usepackage{hyperref}
 
 % Various parameters
@@ -64,7 +65,7 @@
   \newcommand{\showname}{#1}
 }
 
-\newcommand{\userid}[1]{ 
+\newcommand{\userid}[1]{
    \newcommand{\showuserid}{#1}
 }
 
@@ -112,13 +113,13 @@
   \newcommand{\showwordcount}{#1}
 }
 
-\newcommand{\helv}{ 
+\newcommand{\helv}{
 	%bold, 18point, 21point line spacing
 	\fontfamily{phv}\fontseries{b}\fontsize{18}{21}\selectfont
-} 
+}
 
-\def\labelenumi{\arabic{enumi}.} 
-\def\theenumi{\arabic{enumi}} 
+\def\labelenumi{\arabic{enumi}.}
+\def\theenumi{\arabic{enumi}}
 \def\labelenumii{(\alph{enumii})}
 \def\theenumii{\alph{enumii}}
 \def\p@enumii{\theenumi}
@@ -126,7 +127,7 @@
 \def\theenumiii{\roman{enumiii}}
 \def\p@enumiii{\theenumi(\theenumii)}
 \def\labelenumiv{\Alph{enumiv}.}
-\def\theenumiv{\Alph{enumiv}} 
+\def\theenumiv{\Alph{enumiv}}
 \def\p@enumiv{\p@enumiii\theenumiii}
 
 \def\labelitemi{$\bullet$}
@@ -134,8 +135,8 @@
 \def\labelitemiii{$\ast$}
 \def\labelitemiv{$\cdot$}
 
-\def\verse{\let\\=\@centercr 
- \list{}{\itemsep\z@ \itemindent -1.5em\listparindent \itemindent 
+\def\verse{\let\\=\@centercr
+ \list{}{\itemsep\z@ \itemindent -1.5em\listparindent \itemindent
  \rightmargin\leftmargin\advance\leftmargin 1.5em}\item[]}
 \let\endverse\endlist
 \def\quotation{\list{}{\listparindent 1.5em
@@ -157,11 +158,11 @@
  \else \newpage \fi \thispagestyle{empty}\c@page\z@}
 \def\endtitlepage{\if@restonecol\twocolumn \else \newpage \fi}
 
-\arraycolsep 5pt \tabcolsep 6pt \arrayrulewidth .4pt \doublerulesep 2pt 
-\tabbingsep \labelsep 
+\arraycolsep 5pt \tabcolsep 6pt \arrayrulewidth .4pt \doublerulesep 2pt
+\tabbingsep \labelsep
 
 \skip\@mpfootins = \skip\footins
-\fboxsep = 3pt \fboxrule = .4pt 
+\fboxsep = 3pt \fboxrule = .4pt
 
 
 \def\thepart{\Roman{part}}
@@ -210,13 +211,13 @@
 \def\l@part#1#2{\addpenalty{\@secpenalty}
  \addvspace{2.25em plus 1pt} \begingroup
  \@tempdima 3em \parindent \z@ \rightskip \@pnumwidth \parfillskip
--\@pnumwidth 
+-\@pnumwidth
  {\large \bf \leavevmode #1\hfil \hbox to\@pnumwidth{\hss #2}}\par
  \nobreak \endgroup}
 %\def\l@section#1#2{\addpenalty{\@secpenalty} \addvspace{1.0em plus 1pt}
 %\@tempdima 1.5em \begingroup
-% \parindent \z@ \rightskip \@pnumwidth 
-% \parfillskip -\@pnumwidth 
+% \parindent \z@ \rightskip \@pnumwidth
+% \parfillskip -\@pnumwidth
 % \bf \leavevmode #1\hfil \hbox to\@pnumwidth{\hss #2}\par
 % \endgroup}
 \def\l@section{\@dottedtocline{1}{1.5em}{2.3em}}
@@ -237,10 +238,10 @@
 \def\maketitle{\par
  \begingroup
  \def\thefootnote{\fnsymbol{footnote}}
- \def\@makefnmark{\hbox 
- to 0pt{$^{\@thefnmark}$\hss}} 
- \if@twocolumn 
- \twocolumn[\@maketitle] 
+ \def\@makefnmark{\hbox
+ to 0pt{$^{\@thefnmark}$\hss}}
+ \if@twocolumn
+ \twocolumn[\@maketitle]
  \else \newpage
  \global\@topnum\z@ \@maketitle \fi\thispagestyle{myheadings}\@thanks
  \endgroup
@@ -258,7 +259,7 @@
  \hskip 0.3in
 \begin{minipage}{4.2in}
  %\centering\mbox{\includegraphics[width=6cm]{Images/aber-uni-logo} }
- \vskip 0.3in 
+ \vskip 0.3in
  \centering\Large{\bf\@title\par}
  \normalsize
  \vskip 0.3in
@@ -269,13 +270,13 @@
  \vskip 0.05in
  \centering {\it Supervisor:}\hskip 0.05in \@supervisor\hskip 0.05in (\@supervisoremail)
 
- 
+
  \vskip 0.3in
- \centering {\@date} \vskip 0.05in 
+ \centering {\@date} \vskip 0.05in
  \centering Version: {\@version} ({\@status})
 
  \vskip 0.6in
- This report was submitted as partial fulfilment of a {\@degreetype} degree in   
+ This report was submitted as partial fulfilment of a {\@degreetype} degree in
   {\@degreeschemetitle} ({\@degreeschemecode})
 
 
@@ -295,7 +296,7 @@ Wales, UK \\
 \end{minipage}
 \newpage}}
 
-\def\setchapterheaderfooter{ 
+\def\setchapterheaderfooter{
 %%%%% Added to redefine the page style %%%%%%%%%%%%%%
 \fancypagestyle{plain}{%
 %\fancyhf{} % clear all header and footer fields
@@ -306,7 +307,7 @@ Wales, UK \\
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}}
 
-%%% Setting the header and footer 
+%%% Setting the header and footer
 \fancyhead[L]{\textsl{Chapter\ \thechapter}}
 \fancyhead[R]{\textsl{\leftmark}}
 \fancyfoot[C]{{\thepage} of \pageref{LastPage}}
@@ -315,7 +316,7 @@ Wales, UK \\
 
 }
 
-\def\setemptyheader{ 
+\def\setemptyheader{
 \fancypagestyle{plain}{%
 \fancyhead{}}
 
