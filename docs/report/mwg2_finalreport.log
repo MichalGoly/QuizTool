@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  11 APR 2018 16:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  11 APR 2018 18:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -496,36 +496,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--54
 ] (./mwg2_finalreport.toc
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
-)
-\tf@toc=\write4
-\openout4 = `mwg2_finalreport.toc'.
-
 pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.67 \newpage
-              [1
+l.43 ...e {chapter}{Bibliography}{19}{section.C.1}
+                                                   [1
 
-] (./mwg2_finalreport.lof)
-\tf@lof=\write5
-\openout5 = `mwg2_finalreport.lof'.
+])
+\tf@toc=\write4
+\openout4 = `mwg2_finalreport.toc'.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.69 \newpage
-              [2] (./mwg2_finalreport.lot)
-\tf@lot=\write6
-\openout6 = `mwg2_finalreport.lot'.
+l.67 \newpage
+              [2] (./mwg2_finalreport.lof)
+\tf@lof=\write5
+\openout5 = `mwg2_finalreport.lof'.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.iii}) ha
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.71 \newpage
-              [3]
+l.69 \newpage
+              [3] (./mwg2_finalreport.lot)
+\tf@lot=\write6
+\openout6 = `mwg2_finalreport.lot'.
+
+ [4]
 \openout2 = `Chapter1/chapter1.aux'.
 
  (./Chapter1/chapter1.tex
@@ -539,39 +539,40 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 [1
 
 
-] [2] <images/qwizdom.png, id=244, 348.30125pt x 293.095pt>
+] [2] <images/qwizdom.png, id=293, 348.30125pt x 293.095pt>
 File: images/qwizdom.png Graphic file (type png)
 
 <use images/qwizdom.png>
 Package pdftex.def Info: images/qwizdom.png used on input line 95.
 (pdftex.def)             Requested size: 348.3004pt x 293.09427pt.
-) [3 <./images/qwizdom.png>]
+ [3 <./images/qwizdom.png>]) [4]
 \openout2 = `Chapter2/chapter2.aux'.
 
- (./Chapter2/chapter2.tex
+
+(./Chapter2/chapter2.tex
 Chapter 2.
-[4
+[5
 
 
 
-] [5]
+] [6]
 Chapter 3.
-[6
+[7
 
 ]
 Chapter 4.
-) [7
+) [8
 
-] [8]
+] [9]
 \openout2 = `Chapter3/chapter3.aux'.
 
  (./Chapter3/chapter3.tex
 Chapter 5.
-) [9
+) [10
 
 
 
-] [10
+] [11
 
 
 ]
@@ -580,13 +581,13 @@ Chapter 5.
  (./Appendix1/appendix1.tex
 Appendix A.
 
-LaTeX Warning: Citation `apache_poi' on page 11 undefined on input line 15.
+LaTeX Warning: Citation `apache_poi' on page 12 undefined on input line 15.
 
 
-LaTeX Warning: Citation `apache_license' on page 11 undefined on input line 16.
+LaTeX Warning: Citation `apache_license' on page 12 undefined on input line 16.
 
 
-) [11
+) [12
 
 
 ]
@@ -594,7 +595,7 @@ LaTeX Warning: Citation `apache_license' on page 11 undefined on input line 16.
 
  (./Appendix2/appendix2.tex
 Appendix B.
-<Appendix2/9563.pdf, id=293, 614.295pt x 794.97pt>
+<Appendix2/9563.pdf, id=356, 614.295pt x 794.97pt>
 File: Appendix2/9563.pdf Graphic file (type pdf)
  <use Appendix2/9563.pdf>
 Package pdftex.def Info: Appendix2/9563.pdf used on input line 6.
@@ -605,7 +606,7 @@ File: Appendix2/9563.pdf Graphic file (type pdf)
 Package pdftex.def Info: Appendix2/9563.pdf used on input line 6.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 
-<Appendix2/9563.pdf, id=296, page=1, 614.295pt x 794.97pt>
+<Appendix2/9563.pdf, id=359, page=1, 614.295pt x 794.97pt>
 File: Appendix2/9563.pdf Graphic file (type pdf)
 
 <use Appendix2/9563.pdf, page 1>
@@ -615,7 +616,7 @@ File: Appendix2/9563.pdf Graphic file (type pdf)
  <use Appendix2/9563.pdf, page 1>
 Package pdftex.def Info: Appendix2/9563.pdf, page1 used on input line 6.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [12
+ [13
 
 
 
@@ -634,8 +635,8 @@ File: Appendix2/9563.pdf Graphic file (type pdf)
 <use Appendix2/9563.pdf, page 1>
 Package pdftex.def Info: Appendix2/9563.pdf, page1 used on input line 6.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [13 <./Appendix2/9563.pdf>]
-<Appendix2/9563.pdf, id=310, page=2, 614.295pt x 794.97pt>
+ [14 <./Appendix2/9563.pdf>]
+<Appendix2/9563.pdf, id=372, page=2, 614.295pt x 794.97pt>
 File: Appendix2/9563.pdf Graphic file (type pdf)
 
 <use Appendix2/9563.pdf, page 2>
@@ -650,24 +651,24 @@ File: Appendix2/9563.pdf Graphic file (type pdf)
 <use Appendix2/9563.pdf, page 2>
 Package pdftex.def Info: Appendix2/9563.pdf, page2 used on input line 6.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [14 <./Appendix2/9563.pdf>])
+ [15 <./Appendix2/9563.pdf>])
 \openout2 = `Appendix3/appendix3.aux'.
 
 
 (./Appendix3/appendix3.tex
 Appendix C.
 
-LaTeX Warning: Citation `NumericalRecipes' on page 15 undefined on input line 1
+LaTeX Warning: Citation `NumericalRecipes' on page 16 undefined on input line 1
 7.
 
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 19.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [15
+) [16
 
 
 
-] [16]) [17]
+] [17]) [18]
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no œ in font ptmr7t!
@@ -701,7 +702,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 157--158
  Avail-able:
  []
 
-[18
+[19
 
 
 ]
@@ -740,35 +741,41 @@ ing-chat-application-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--203
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
 []\OT1/ptm/m/n/10.95 Microsoft Pow-er-Point, "prod-ucts.office.com", 2018. [On-
 line] Avail-able:
  []
 
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 220--221
+[]\OT1/ptm/m/n/10.95 docker-compose, "docker-compose home-page", [On-line] Avai
+l-able:
+ []
+
 
 AED: lastpage setting LastPage
-[19]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 216.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 216.
+[21]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 231.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 231.
  (./mwg2_finalreport.aux (./cover.aux) (./declaration.aux)
 (./acknowledgements.aux) (./abstract.aux) (./Chapter1/chapter1.aux)
 (./Chapter2/chapter2.aux) (./Chapter3/chapter3.aux) (./Appendix1/appendix1.aux)
 (./Appendix2/appendix2.aux) (./Appendix3/appendix3.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 216.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 216.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 231.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 231.
 Package rerunfilecheck Info: File `mwg2_finalreport.out' has not changed.
-(rerunfilecheck)             Checksum: EE2D353EF9CA6D603C45D5B6622346A1;1911.
+(rerunfilecheck)             Checksum: A50E74074B0DDF65BBA03CB56DACFB41;2545.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 216.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 231.
  ) 
 Here is how much of TeX's memory you used:
- 8828 strings out of 493029
- 129941 string characters out of 6136234
- 230494 words of memory out of 5000000
- 12068 multiletter control sequences out of 15000+600000
+ 8858 strings out of 493029
+ 130320 string characters out of 6136234
+ 232596 words of memory out of 5000000
+ 12082 multiletter control sequences out of 15000+600000
  26005 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  49i,18n,48p,566b,457s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -778,10 +785,10 @@ f-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
 /utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on mwg2_finalreport.pdf (26 pages, 152768 bytes).
+Output written on mwg2_finalreport.pdf (29 pages, 157121 bytes).
 PDF statistics:
- 385 PDF objects out of 1000 (max. 8388607)
- 341 compressed objects within 4 object streams
- 79 named destinations out of 1000 (max. 500000)
- 279 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 455 PDF objects out of 1000 (max. 8388607)
+ 407 compressed objects within 5 object streams
+ 95 named destinations out of 1000 (max. 500000)
+ 351 words of extra memory for PDF output out of 10000 (max. 10000000)
 

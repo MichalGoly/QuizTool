@@ -75,7 +75,7 @@ Socket.io tutorial\cite{15}.
 \subsection{On-site vs External Hosting}
 % - local LSX container vs external cloud provider -> LDAP
 The initial plan to handle authentication in Quiz Tool was to use the university
-LDAP\cite{17}. This way, lecturers would be able to provide their university credentials,
+LDAP\cite{16}. This way, lecturers would be able to provide their university credentials,
 which would be checked using the Bind operation against the university directory of users,
 to check if a given person is authorised to use the tool. This would require the Quiz Tool
 to be deployed to a production environment running within the university intranet. The
@@ -85,7 +85,7 @@ alternative was to deploy the application to an external cloud hosting.
 Qwizdom\cite{1}, is the tool currently used by the university to embed quizzes into
 presentations to judge students' understanding of the content presented. It has to be
 installed on lecturer's machine as it is a desktop application. Qwizdom integrates
-with Microsoft PowerPoint\cite{16}, by adding an extra toolbar allowing the lecturer
+with Microsoft PowerPoint\cite{17}, by adding an extra toolbar allowing the lecturer
 to insert quiz questions into his presentations and then broadcast them. Once
 a presentation is started, a session key appears which can be shared with the audience.
 They can then use the key to join the lecture and answer questions once they become available.
@@ -115,16 +115,58 @@ They can then use the key to join the lecture and answer questions once they bec
 %   for your project. Where there are relevant security issues, discuss how they will
 %   this affect the work that you are doing. Carry forward this discussion into relevant
 %    areas for design, implementation and testing.
-- MEAN stack \& Docker \& docker-compose
-- Version Control
-- build - Circle CI -> testing, autodeploy
-- AWS Production environment (did not know of Elasticbeanstalk at this point)
-- Google Single Sign On -> Security
-- Identification of major problems
-- Top level requirements of the system
 
+% - MEAN stack \& Docker \& docker-compose
+% - Version Control
+% - build - Circle CI -> testing, autodeploy
+% - AWS Production environment (did not know of Elasticbeanstalk at this point)
+% - Google Single Sign On -> Security
+% - Identification of major problems
+% - Top level requirements of the system
+\subsection{MEAN Stack}
+Having considered various methods of developing the Quiz Tool, I have decided to
+choose the web application approach. Allowing students to access the tool using both
+their mobile devices and laptops, combined with the relatively low learning curve
+both for me, and for anyone maintaining the software in the future, made it the best
+option in my opinion. Furthermore, I have decided to develop the application entirely
+in JavaScript based technologies using the MEAN stack\cite{18}.
+
+MEAN stack consists of four elements:
+\begin{itemize}
+  \item \textbf{M}ongoDB is a JSON document storage NoSQL database
+  \item \textbf{E}xpress is a minimalistic JavaScript web development framework
+  \item \textbf{A}ngular is a front end web development framework
+  \item \textbf{N}odeJS is a JavaScript engine
+\end{itemize}
+
+Front ends for both lecturers and students would be written in Angular, NodeJS would be
+used on the back end together with Express, and the persistence layer would be provided
+by MongoDB.
+
+\subsection{Docker}
+Each part of the application would be containerised using Docker\cite{19}, and containers
+would run together in the same fashion on the developer's machine, and the build engine
+using docker-compose\cite{20} container orchestration tool. Docker is an open source
+engine which can be used to wrap an application and all its dependencies into a
+lightweight container that can run on any machine capable of running containers\cite{21}.
+Docker-compose on the other hand, is a tool for defining and running multi-container
+Docker applications.
+
+\subsection{AWS Production Environment}
+
+\subsection{Build}
+
+\subsection{Authentication and Security}
+
+\subsection{Major problems}
+
+\subsection{Top level requirements}
 
 \section{Process}
+\subsection{Development Methodology}
+
+\subsection{Version Control}
+
 % You need to describe briefly the life cycle model or research method that you used. You
 %  do not need to write about all of the different process models that you are aware of.
 %  Focus on the process model that you have used. It is possible that you needed to adapt
