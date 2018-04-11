@@ -1,14 +1,20 @@
 \chapter{Code Examples}
 
-For some projects, it might be relevant to include some code extracts in an appendix. You are not expected to put all of your code here - the correct place for all of your code is in the technical submission that is made in addition to the Final Report. However, if there are some notable aspects of the code that you discuss, including that in an appendix might be useful to make it easier for your readers to access. 
+For some projects, it might be relevant to include some code extracts in an appendix. You
+are not expected to put all of your code here - the correct place for all of your code is in the
+technical submission that is made in addition to the Final Report. However, if there are some notable
+aspects of the code that you discuss, including that in an appendix might be useful to make it easier for your readers to access.
 
-As a general guide, if you are discussing short extracts of code then you are advised to include such code in the body of the report. If there is a longer extract that is relevant, then you might include it as shown in the following section. 
+As a general guide, if you are discussing short extracts of code then you are advised to include
+such code in the body of the report. If there is a longer extract that is relevant, then you
+ might include it as shown in the following section.
 
-Only include code in the appendix if that code is discussed and referred to in the body of the report. 
+Only include code in the appendix if that code is discussed and referred to in the body of the report.
 
 \section{Random Number Generator}
 
-The Bayes Durham Shuffle ensures that the psuedo random numbers used in the simulation are further shuffled, ensuring minimal correlation between subsequent random outputs \cite{NumericalRecipes}.
+The Bayes Durham Shuffle ensures that the psuedo random numbers used in the simulation are further
+ shuffled, ensuring minimal correlation between subsequent random outputs \cite{NumericalRecipes}.
 
 \begin{verbatim}
  #define IM1 2147483563
@@ -16,7 +22,7 @@ The Bayes Durham Shuffle ensures that the psuedo random numbers used in the simu
  #define AM (1.0/IM1)
  #define IMM1 (IM1-1)
  #define IA1 40014
- #define IA2 40692 
+ #define IA2 40692
  #define IQ1 53668
  #define IQ2 52774
  #define IR1 12211
@@ -25,7 +31,7 @@ The Bayes Durham Shuffle ensures that the psuedo random numbers used in the simu
  #define NDIV (1+IMM1/NTAB)
  #define EPS 1.2e-7
  #define RNMX (1.0 - EPS)
- 
+
  double ran2(long *idum)
  {
    /*---------------------------------------------------*/
@@ -34,15 +40,15 @@ The Bayes Durham Shuffle ensures that the psuedo random numbers used in the simu
    /* Based on Park and Miller with Bays Durham Shuffle */
    /* Coupled Schrage methods for extra periodicity     */
    /* Always call with negative number to initialise    */
-   /*---------------------------------------------------*/	
- 
+   /*---------------------------------------------------*/
+
    int j;
    long k;
    static long idum2=123456789;
    static long iy=0;
    static long iv[NTAB];
    double temp;
- 
+
    if (*idum <=0)
    {
      if (-(*idum) < 1)
@@ -66,7 +72,7 @@ The Bayes Durham Shuffle ensures that the psuedo random numbers used in the simu
          iv[j] = *idum;
        }
      }
-     iy = iv[0];	
+     iy = iv[0];
    }
    k = (*idum)/IQ1;
    *idum = IA1*(*idum-k*IQ1) - IR1*k;
@@ -92,9 +98,8 @@ The Bayes Durham Shuffle ensures that the psuedo random numbers used in the simu
      return RNMX;
    }else
    {
-     return temp;	
+     return temp;
    }
  }
- 
-\end{verbatim}
 
+\end{verbatim}
