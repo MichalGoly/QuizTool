@@ -72,17 +72,23 @@ Angular by following the Tour of Heroes tutorial\cite{14}, and finally tried to
 understand how Angular could work together with Socket.io by following the MEAN
 Socket.io tutorial\cite{15}.
 
-\subsection{Internal vs External Hosting}
-- local LSX container vs external cloud provider -> LDAP
+\subsection{On-site vs External Hosting}
+% - local LSX container vs external cloud provider -> LDAP
+The initial plan to handle authentication in Quiz Tool was to use the university
+LDAP\cite{17}. This way, lecturers would be able to provide their university credentials,
+which would be checked using the Bind operation against the university directory of users,
+to check if a given person is authorised to use the tool. This would require the Quiz Tool
+to be deployed to a production environment running within the university intranet. The
+alternative was to deploy the application to an external cloud hosting.
 
 \subsection{Similar Tools}
 Qwizdom\cite{1}, is the tool currently used by the university to embed quizzes into
 presentations to judge students' understanding of the content presented. It has to be
 installed on lecturer's machine as it is a desktop application. Qwizdom integrates
-with Microsoft PowerPoint\cite{16}, by adding an extra toolbar allowing lecturer
+with Microsoft PowerPoint\cite{16}, by adding an extra toolbar allowing the lecturer
 to insert quiz questions into his presentations and then broadcast them. Once
 a presentation is started, a session key appears which can be shared with the audience.
-They can then use key to join the lecture and answer questions once they become available.
+They can then use the key to join the lecture and answer questions once they become available.
 
 \begin{figure}[ht]
     \centering
