@@ -153,8 +153,17 @@ Docker-compose on the other hand, is a tool for defining and running multi-conta
 Docker applications.
 
 \subsection{AWS Production Environment}
+Unfortunately, the on-site hosting provided by the university to students to deploy
+their final projects to was inadequate for the DevOps infrastructure I wanted to
+put in place. I wanted to have a machine capable of running docker-compose, and some
+form of continuous integration agent. The LXC debian containers\cite{22} were not
+compatible with either docker-compose, or Jenkins\cite{23}. The Quiz Tool would be therefore
+deployed to the production environment provided by an external cloud provider AWS\cite{24},
+and an alternative build agent would be used. The GitHub Student Developer Pack\cite{25} offers
+\$150 worth of credits for the Amazon cloud, which is why AWS was chosen.
 
 \subsection{Build}
+
 
 \subsection{Authentication and Security}
 
