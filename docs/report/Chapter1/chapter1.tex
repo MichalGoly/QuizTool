@@ -48,8 +48,18 @@ both React and Angular 4\cite{9}, since I have already briefly used it before. R
 for developing user interface, whereas Angular is a web development framework. The only caveat with
 using Angular is that the developer needs to learn TypeScript\cite{10}, which compiles down to JavaScript.
 
-\subsubsection{WebSockets}
-- Researched what is necessary to create a real time system - Sockets
+\subsubsection{The WebSocket Protocol}
+The Quiz Tool was supposed to allow a lecturer to broadcast his slides to all the students
+participating in a lecture. This requires a bidirectional communication protocol between the
+server and the clients. For example, if a lecturer emits the next slide of his presentation,
+this change should be pushed to the back end, and then the back end needs to be able to
+send the new slide to all the students. Students' clients should also be able to push quiz
+answers back to the back end, so they can be presented to the lecturer in some form.
+
+The WebSocket Protocol can be used to create such real time systems. It enables two-way
+communication between a client and a remote host, making it ideal for instant messaging,
+gaming applications, and the Quiz Tool. It uses a single TCP connection for trafic
+in both directions\cite{11}.
 
 \subsubsection{Prototyping}
 - Socket.io chat tutorial

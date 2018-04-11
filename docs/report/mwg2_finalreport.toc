@@ -3,7 +3,7 @@
 \contentsline {subsection}{\numberline {1.1.1}Motivation}{1}{subsection.1.1.1}
 \contentsline {subsection}{\numberline {1.1.2}Technology Considerations}{1}{subsection.1.1.2}
 \contentsline {subsubsection}{\numberline {1.1.2.1}Programming Languages}{1}{subsubsection.1.1.2.1}
-\contentsline {subsubsection}{\numberline {1.1.2.2}WebSockets}{2}{subsubsection.1.1.2.2}
+\contentsline {subsubsection}{\numberline {1.1.2.2}The WebSocket Protocol}{2}{subsubsection.1.1.2.2}
 \contentsline {subsubsection}{\numberline {1.1.2.3}Prototyping}{2}{subsubsection.1.1.2.3}
 \contentsline {subsection}{\numberline {1.1.3}Similar Tools}{2}{subsection.1.1.3}
 \contentsline {subsection}{\numberline {1.1.4}Internal vs External Hosting}{2}{subsection.1.1.4}
