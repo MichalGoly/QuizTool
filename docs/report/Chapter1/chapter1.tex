@@ -163,7 +163,20 @@ and an alternative build agent would be used. The GitHub Student Developer Pack\
 \$150 worth of credits for the Amazon cloud, which is why AWS was chosen.
 
 \subsection{Build}
+Continuous integration and deployment would be provided by Circle CI\cite{26}, as it is relatively easy
+to work with and very similar to Travis\cite{27}, while not being overly complex like Jenkins\cite{23}.
+Its major advantage over its competitors is the ability to build projects stored in private
+repositories, free of charge to a certain amount of build hours per month. Continuous integration
+and deployment are software development industry practices that enable teams to reliably release
+new features and products. Code is integrated and merged frequently, which shortens the release cycle,
+improves code quality and team's productivity\cite{28}.
 
+Build of the Quiz Tool should at the very least:
+\begin{itemize}
+  \item Checkout the source code from the version control
+  \item Run all the tests
+  \item Deploy the tool to the production environment when a production build runs
+\end{itemize}
 
 \subsection{Authentication and Security}
 
@@ -175,6 +188,8 @@ and an alternative build agent would be used. The GitHub Student Developer Pack\
 \subsection{Development Methodology}
 
 \subsection{Version Control}
+
+\subsection{Kanban}
 
 % You need to describe briefly the life cycle model or research method that you used. You
 %  do not need to write about all of the different process models that you are aware of.
