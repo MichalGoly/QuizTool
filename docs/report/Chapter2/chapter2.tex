@@ -15,6 +15,30 @@ back end of the application in a single GitHub repository. The following subsect
 cover the most important aspects of the sprint, and the entire list of estimated
 stories can be found in the \autoref{chap:spintstories} of this report.
 
+\subsection{Application Structure}
+The main goal of using docker-compose, was to have the whole application running in
+the same manner locally on the developer's machine, during testing on Circle CI, and
+in the production environment. This meant the application had to be containerised
+using Docker, and containers had to be able to communicate with each other appropriately.
+This was even more difficult considering Socket.io had to be incorporated, to allow
+real time broadcast of lecture slides to students in the future. I have decided to
+create a prototype of a very basic chat application, containerised using Docker and
+orchestrated using docker-compose. The prototype had to be written in the MEAN stack,
+and use Socket.io to prove it was possible to make all technologies work together.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../../design/app_structure.jpg}
+    \caption{The proof of concept application structure}
+    \label{fig:appstrucure}
+\end{figure}
+
+\subsection{Continuous Integration}
+
+\subsection{Production Environment}
+
+\subsection{Story Boards}
+
 \subsection{Sprint Retrospective}
 
 \section{Sprint 2 - Bare Bone Application}
