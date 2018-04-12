@@ -213,11 +213,38 @@ supervisor of the project) yielded the following requirements:
 \end{itemize}
 
 \section{Process}
-\subsection{Development Methodology}
-
 \subsection{Version Control}
+Git\cite{29} would be used for the version control during the development of the Quiz Tool, together with
+the GitHub\cite{30} web-based hosting service. The source code would be stored in a private
+repository. There would be a \texttt{master} production branch, and suitable guards would be added
+so that new code cannot be pushed directly to the production branch. The feature-branch git
+workflow\cite{31} would be used and each \texttt{feature-branch} would need to have an associated issue
+(story) on GitHub. Then a pull request could be opened between the \texttt{feature-branch} and the \texttt{master}
+branch, and Circle CI would checkout the code, run all tests and report back to GitHub to either
+allow the merge or block it, depending on whether the build was successful or not. Once the pull request
+is merged into \texttt{master}, a production build would run, where Circle CI would checkout the code, run
+all the tests and finally automatically deploy the new version of the Quiz Tool to the production
+environment provided by AWS.
 
-\subsection{Kanban}
+The Kanban board provided by the ZenHub Chrome plugin\cite{32} would be used. It would allow issues to be grouped
+into epics, and each story could have a corresponding amount of points assigned to it, depending
+on the likely complexity of the task. For example a single point would correspond to half day of work.
+
+\subsection{Development Methodology}
+The application would be developed using the SCRUM methodology adjusted for a single person project.
+The development work would be split into weekly sprints. Each sprint would start with sprint
+planning, where issues would be created and their complexity would be estimated using ZenHub
+story points. During the week, issues would be tackled, and the progress could be monitored using
+the Kanban board. GitHub labels would be used to quickly differentiate between different types
+of issues. For example there would be a different coloured label for front end tasks, back end
+tasks, documentation, DevOps etc. Time commitment would also be tracked on day to day basis
+using a Google Sheets spreadsheet\cite{33}. Each sprint would end with a sprint retrospective, where
+a document would be produced containing a list of things that went well during the week, and things
+that could be improved. Weekly meetings with the client (supervisor) would provide immediate feedback
+on work done and allow re-adjustment of the approach necessary to stay on track to deliver the
+software before the deadline. Finally, velocity would be tracked and burn down charts automatically
+produced following each iteration. This would give more confidence in estimating the future work.
+
 
 % You need to describe briefly the life cycle model or research method that you used. You
 %  do not need to write about all of the different process models that you are aware of.
