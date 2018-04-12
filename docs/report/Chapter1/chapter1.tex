@@ -179,10 +179,24 @@ Build of the Quiz Tool should at the very least:
 \end{itemize}
 
 \subsection{Authentication and Security}
+LDAP authentication could not be used with the production environment provided by
+AWS. The alternative would be to use the Google Single Sign On\cite{2}, where lecturers
+could login to the tool using their Google credentials. The major drawback of this
+approach is that anyone with a Google account can login into the tool as a lecturer.
+The major advantage is, that the credentials handling would be outsourced to Google,
+making the Quiz Tool more secure and the tool would not have to store hashed passwords
+by simply relying on the confirmation of user's identity by Google.
 
-\subsection{Major Problems}
+Having said that, google ids would still be stored in MongoDB to uniquely identify
+lecturers in the future, and to know who is the owner of lectures in the system.
+Due to the fact that the interaction of the Docker containers making up the Quiz Tool would
+be managed by docker-compose, the MongoDB container could be hidden from the outside world
+and could be only accessed from the server container running the back end code. This would
+make the database more secure.
 
 \subsection{Top Level Requirements}
+
+
 
 \section{Process}
 \subsection{Development Methodology}
