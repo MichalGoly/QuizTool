@@ -26,7 +26,7 @@ of a single session Qwizdom license with my tool.
 \subsubsection{Programming Languages}
 % - Initial proposal to create an Android based system for students -> React Native -> MEAN
 The initial proposal was to create the classroom quiz system using Java\cite{3} to run it natively
-on Android\cite{4} mobile devices. The lecturer was supposed the create quizzes on his teaching
+on Android\cite{4} mobile devices. The lecturer was supposed to create quizzes on his teaching
 machine, by interacting with the system using a web front end. Lecture slides were then supposed
 to be broadcasted to his audience, and they could use their mobile phones to answers questions,
 which would be then sent back to the lecturer for analysis. I have had previous experience with
@@ -164,7 +164,7 @@ and an alternative build agent would be used. The GitHub Student Developer Pack\
 
 \subsection{Build}
 Continuous integration and deployment would be provided by Circle CI\cite{26}, as it is relatively easy
-to work with and very similar to Travis\cite{27}, while not being overly complex like Jenkins\cite{23}.
+to work with and is very similar to Travis\cite{27}, while not being overly complex like Jenkins\cite{23}.
 Its major advantage over its competitors is the ability to build projects stored in private
 repositories, free of charge to a certain amount of build hours per month. Continuous integration
 and deployment are software development industry practices that enable teams to reliably release
@@ -187,7 +187,7 @@ The major advantage is, that the credentials handling would be outsourced to Goo
 making the Quiz Tool more secure and the tool would not have to store hashed passwords
 by simply relying on the confirmation of user's identity by Google.
 
-Having said that, google ids would still be stored in MongoDB to uniquely identify
+Having said that, Google ids would still be stored in MongoDB to uniquely identify
 lecturers in the future, and to know who is the owner of lectures in the system.
 Due to the fact that the interaction of the Docker containers making up the Quiz Tool would
 be managed by docker-compose, the MongoDB container could be hidden from the outside world
