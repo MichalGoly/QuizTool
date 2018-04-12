@@ -33,45 +33,98 @@ and use Socket.io to prove it was possible to make all technologies work togethe
     \label{fig:appstrucure}
 \end{figure}
 
-\newpage
-There were three containers in the system:
-\begin{itemize}
-  \item \textbf{client} - which consisted of the Angular front end, and an nginx reverse proxy
-  serving web pages to students and lecturers. It contained the Socket.io client to emit messages
-  to other clients via the Socket.io engine running on the back end.
-  \item \textbf{server\_node} - which contained the back end code written in Express. It also
-  contained the Socket.io engine allowing the chat application to push messages to clients
-  using the WebSocket Protocol.
-  \item \textbf{database} - which contained the MongoDB instance.
-\end{itemize}
-
-\begin{figure}
-  \begin{verbatim}
-    version: '2.0'
-    services:
-      client:
-        build: client
-        ports:
-          - "80:80"
-        links:
-          - server_node
-      server_node:
-        build: server
-        links:
-          - database
-      database:
-        image: mongo
-        ports:
-          - "27017:27017"
-  \end{verbatim}
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small]
+  version: '2.0'
+  services:
+    client:
+      build: client
+      ports:
+        - "80:80"
+      links:
+        - server_node
+    server_node:
+      build: server
+      links:
+        - database
+    database:
+      image: mongo
+      ports:
+        - "27017:27017"
+  \end{lstlisting}
   \caption{The docker-compose.yml file describing the tool's structure}
 \end{figure}
 
+\newpage
 \subsubsection{Front End Container}
+The front end container consisted of Angular 4 and nginx reverse proxy. The structure
+has been based on the \textit{Dockerized Angular 4 App (with Angular CLI)} repository\cite{35}.
+The Socket.io client dependency has been added to allow sending messages to the back end
+using sockets. The Dockerfile below uses the multi-stage build added in Docker 17.05. The
+Angular app is compiled to JavaScript and HTML files during the initial stage of the build,
+and then these files are copied to the nginx public folder to be served to clients.
+This result in a lean, production ready image.
+
+\begin{figure}[ht]
+  \begin{lstlisting}[basicstyle=\tiny]
+    ### STAGE 1: Build ###
+
+    # We label our stage as 'builder'
+    FROM node:8-alpine as builder
+
+    COPY package.json package-lock.json ./
+
+    RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
+
+    ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
+    RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
+
+    WORKDIR /ng-app
+
+    COPY . .
+
+    ## Build the angular app in production mode and store the artifacts in dist folder
+    RUN $(npm bin)/ng build --prod --build-optimizer
+
+    ### STAGE 2: Setup ###
+
+    FROM nginx:1.13.3-alpine
+
+    ## Copy our default nginx config
+    COPY nginx/default.conf /etc/nginx/conf.d/
+
+    ## Remove default nginx website
+    RUN rm -rf /usr/share/nginx/html/*
+
+    ## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
+    COPY --from=builder /ng-app/dist /usr/share/nginx/html
+
+    CMD ["nginx", "-g", "daemon off;"]
+  \end{lstlisting}
+  \caption{Front End Dockerfile}
+\end{figure}
 
 \subsubsection{Back End Container}
+The back end container consisted of a Node.js runtime, Express framework and the Socket.io
+engine capable of pushing messages to clients using Sockets. The following Dockerfile illustrates
+the very basic Node container.
+
+\begin{figure}[ht]
+    \begin{lstlisting}[basicstyle=\small]
+    FROM node:carbon
+    WORKDIR /usr/src/app
+    COPY package*.json ./
+    RUN npm install
+    COPY . .
+    EXPOSE 3000
+    CMD [ "npm", "start" ]
+  \end{lstlisting}
+  \caption{Back End Dockerfile}
+\end{figure}
 
 \subsubsection{Database Container}
+Finally, the MongoDB Docker container has been pulled automatically from the official mongo
+Docker Hub registry\cite{36}.
 
 \subsection{Continuous Integration}
 
