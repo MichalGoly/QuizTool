@@ -8,7 +8,7 @@ case, the test table could go in an appendix and discussion of the approach and
 any particularly interesting items in the body of the report.
 
 # Structure
-1 Background, Analysis, Process
+1 Background, Analysis, Process (2189 words)
 1.1 Background
 
 - Introduction to the problem
@@ -41,7 +41,7 @@ customers' feedback to change project's direction, keeping track of time and vel
 google sheets
 
 2. Design, development and testing
-2.1 Sprint 1
+2.1 Sprint 1 (~1200 words each)
   - Sprint planning
   - vary -
   - Sprint retrospective
@@ -62,12 +62,12 @@ google sheets
   - vary -
   - Sprint retrospective
 
-3. final design of the system? <<<
-4. TESTING (maybe)
+3. final design of the system? <<< (1500 words)
+4. TESTING (maybe) (1000 words)
   -
   -
   -
-5. Critical evaluation
+5. Critical evaluation (1000 words)
 Appendices
   A. 3rd party code and libraries
   B. Ethics form
