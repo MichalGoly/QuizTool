@@ -21,32 +21,35 @@
 \contentsline {section}{\numberline {2.1}Sprint 1 - Hello Quiz Tool}{7}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Sprint Planning}{7}{subsection.2.1.1}
 \contentsline {subsection}{\numberline {2.1.2}Application Structure}{7}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Continuous Integration}{9}{subsection.2.1.3}
-\contentsline {subsection}{\numberline {2.1.4}Production Environment}{9}{subsection.2.1.4}
-\contentsline {subsection}{\numberline {2.1.5}Story Boards}{9}{subsection.2.1.5}
-\contentsline {subsection}{\numberline {2.1.6}Sprint Retrospective}{9}{subsection.2.1.6}
-\contentsline {section}{\numberline {2.2}Sprint 2 - Bare Bone Application}{9}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Sprint Planning}{9}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Sprint Retrospective}{9}{subsection.2.2.2}
-\contentsline {section}{\numberline {2.3}Sprint 3 - Add Quizes}{9}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Sprint Planning}{9}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Sprint Retrospective}{9}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Sprint 4 - Fancy Quizes and Defect Fixing}{9}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Sprint Planning}{9}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Sprint Retrospective}{9}{subsection.2.4.2}
-\contentsline {section}{\numberline {2.5}Sprint 5 - Persistence, Report Generation and Testing}{9}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Sprint Planning}{9}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Sprint Retrospective}{9}{subsection.2.5.2}
-\contentsline {chapter}{\numberline {3}Final Design}{10}{chapter.3}
-\contentsline {chapter}{\numberline {4}Testing}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Server Side Unit Tests}{11}{section.4.1}
-\contentsline {section}{\numberline {4.2}Client Side Unit Tests}{11}{section.4.2}
-\contentsline {section}{\numberline {4.3}Selenium Integration Tests}{11}{section.4.3}
-\contentsline {chapter}{\numberline {5}Evaluation}{12}{chapter.5}
-\contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{13}{appendix.A}
-\contentsline {chapter}{\numberline {B}Ethics Submission}{14}{appendix.B}
-\contentsline {chapter}{\numberline {C}Sprint Stories}{17}{appendix.C}
-\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{18}{appendix.D}
-\contentsline {chapter}{\numberline {E}Code Examples}{19}{appendix.E}
-\contentsline {section}{\numberline {5.1}Random Number Generator}{19}{section.E.1}
-\contentsline {chapter}{Bibliography}{22}{section.E.1}
+\contentsline {subsubsection}{\numberline {2.1.2.1}Front End Container}{10}{subsubsection.2.1.2.1}
+\contentsline {subsubsection}{\numberline {2.1.2.2}Back End Container}{10}{subsubsection.2.1.2.2}
+\contentsline {subsubsection}{\numberline {2.1.2.3}Database Container}{10}{subsubsection.2.1.2.3}
+\contentsline {subsection}{\numberline {2.1.3}Continuous Integration}{10}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Production Environment}{10}{subsection.2.1.4}
+\contentsline {subsection}{\numberline {2.1.5}Story Boards}{10}{subsection.2.1.5}
+\contentsline {subsection}{\numberline {2.1.6}Sprint Retrospective}{10}{subsection.2.1.6}
+\contentsline {section}{\numberline {2.2}Sprint 2 - Bare Bone Application}{10}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Sprint Planning}{10}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Sprint Retrospective}{10}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Sprint 3 - Add Quizes}{10}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Sprint Planning}{10}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Sprint Retrospective}{10}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.4}Sprint 4 - Fancy Quizes and Defect Fixing}{10}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Sprint Planning}{10}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Sprint Retrospective}{10}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}Sprint 5 - Persistence, Report Generation and Testing}{10}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Sprint Planning}{10}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Sprint Retrospective}{10}{subsection.2.5.2}
+\contentsline {chapter}{\numberline {3}Final Design}{11}{chapter.3}
+\contentsline {chapter}{\numberline {4}Testing}{12}{chapter.4}
+\contentsline {section}{\numberline {4.1}Server Side Unit Tests}{12}{section.4.1}
+\contentsline {section}{\numberline {4.2}Client Side Unit Tests}{12}{section.4.2}
+\contentsline {section}{\numberline {4.3}Selenium Integration Tests}{12}{section.4.3}
+\contentsline {chapter}{\numberline {5}Evaluation}{13}{chapter.5}
+\contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{14}{appendix.A}
+\contentsline {chapter}{\numberline {B}Ethics Submission}{15}{appendix.B}
+\contentsline {chapter}{\numberline {C}Sprint Stories}{18}{appendix.C}
+\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{19}{appendix.D}
+\contentsline {chapter}{\numberline {E}Code Examples}{20}{appendix.E}
+\contentsline {section}{\numberline {5.1}Random Number Generator}{20}{section.E.1}
+\contentsline {chapter}{Bibliography}{23}{section.E.1}

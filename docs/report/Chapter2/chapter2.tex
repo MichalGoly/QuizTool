@@ -33,6 +33,46 @@ and use Socket.io to prove it was possible to make all technologies work togethe
     \label{fig:appstrucure}
 \end{figure}
 
+\newpage
+There were three containers in the system:
+\begin{itemize}
+  \item \textbf{client} - which consisted of the Angular front end, and an nginx reverse proxy
+  serving web pages to students and lecturers. It contained the Socket.io client to emit messages
+  to other clients via the Socket.io engine running on the back end.
+  \item \textbf{server\_node} - which contained the back end code written in Express. It also
+  contained the Socket.io engine allowing the chat application to push messages to clients
+  using the WebSocket Protocol.
+  \item \textbf{database} - which contained the MongoDB instance.
+\end{itemize}
+
+\begin{figure}
+  \begin{verbatim}
+    version: '2.0'
+    services:
+      client:
+        build: client
+        ports:
+          - "80:80"
+        links:
+          - server_node
+      server_node:
+        build: server
+        links:
+          - database
+      database:
+        image: mongo
+        ports:
+          - "27017:27017"
+  \end{verbatim}
+  \caption{The docker-compose.yml file describing the tool's structure}
+\end{figure}
+
+\subsubsection{Front End Container}
+
+\subsubsection{Back End Container}
+
+\subsubsection{Database Container}
+
 \subsection{Continuous Integration}
 
 \subsection{Production Environment}
