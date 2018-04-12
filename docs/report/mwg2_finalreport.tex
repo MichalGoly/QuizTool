@@ -82,18 +82,6 @@
 % add any additional chapters here
 
 \setemptyheader
-\addcontentsline{toc}{chapter}{Appendices}
-\chapter*{Appendices}
-The appendices are for additional content that is useful to support the discussion in the report. It is material that is not necessarily needed in the body of the report, but its inclusion in the appendices makes it easy to access.
-
-For example, if you have developed a Design Specification document as part of a plan-driven approach for the project, then it would be appropriate to include that document as an appendix. In the body of your report you would highlight the most interesting aspects of the design, referring your reader to the full specification for further detail.
-
-If you have taken an agile approach to developing the project, then you may be less likely to have developed a full requirements specification. Perhaps you use stories to keep track of the functionality and the 'future conversations'. It might not be relevant to include all of those in the body of your report. Instead, you might include those in an appendix.
-
-There is a balance to be struck between what is relevant to include in the body of your report and whether additional supporting evidence is appropriate in the appendices. Speak to your supervisor or the module coordinator if you have questions about this.
-
-\pagebreak
-
 % start the appendix - sets up different numbering
 \fancypagestyle{plain}{%
 %\fancyhf{} % clear all header and footer fields
@@ -116,6 +104,8 @@ There is a balance to be struck between what is relevant to include in the body 
 \include{Appendix1/appendix1}
 \include{Appendix2/appendix2}
 \include{Appendix3/appendix3}
+\include{Appendix4/appendix4}
+\include{Appendix5/appendix5}
 
 \fancypagestyle{plain}{%
    \fancyhead{} %[C]{Annotated Bibliography}
@@ -288,6 +278,10 @@ There is a balance to be struck between what is relevant to include in the body 
 
   A SaaS tool for creating spreadsheets owned by Google. A spreadsheet has been used to track time commitment on day to day basis during
   the development of the Quiz Tool.
+
+\bibitem{34} nginx, "nginx homepage", [Online] Available: https://www.nginx.com/, [Accessed: Apr. 12, 2018].
+
+  Nginx is a web server which is used as a reverse proxy in the Quiz Tool.
 
 
 \end{thebibliography}
