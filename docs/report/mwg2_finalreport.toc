@@ -51,5 +51,4 @@
 \contentsline {chapter}{\numberline {C}Sprint Stories}{18}{appendix.C}
 \contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{19}{appendix.D}
 \contentsline {chapter}{\numberline {E}Code Examples}{20}{appendix.E}
-\contentsline {section}{\numberline {5.1}Random Number Generator}{20}{section.E.1}
-\contentsline {chapter}{Bibliography}{23}{section.E.1}
+\contentsline {chapter}{Bibliography}{21}{appendix.E}

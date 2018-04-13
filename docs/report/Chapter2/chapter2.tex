@@ -63,7 +63,7 @@ The Socket.io client dependency has been added to allow sending messages to the 
 using sockets. The Dockerfile below uses the multi-stage build added in Docker 17.05. The
 Angular app is compiled to JavaScript and HTML files during the initial stage of the build,
 and then these files are copied to the nginx public folder to be served to clients.
-This result in a lean, production ready image.
+This results in a lean, production ready image.
 
 \begin{figure}[ht]
   \begin{lstlisting}[basicstyle=\tiny]
@@ -123,10 +123,12 @@ the very basic Node container.
 \end{figure}
 
 \subsubsection{Database Container}
-Finally, the MongoDB Docker container has been pulled automatically from the official mongo
+Finally, the MongoDB Docker image has been pulled automatically from the official mongo
 Docker Hub registry\cite{36}.
 
 \subsection{Continuous Integration}
+
+
 
 \subsection{Production Environment}
 
