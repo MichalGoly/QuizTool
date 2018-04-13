@@ -127,6 +127,18 @@ Finally, the MongoDB Docker image has been pulled automatically from the officia
 Docker Hub registry\cite{36}.
 
 \subsection{Continuous Integration}
+Circle CI has been integrated with the GitHub repository containing the source code of the
+Quiz Tool. Every time a pull request was made, Circle CI would be notified. It would then
+assign a virtual machine build agent from a pool, and spin up a clean build environment.
+It would then checkout the code and run the steps specified in the build config file, before
+reporting if the build was successfull back to GitHub.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{circleci.jpg}
+    \caption{Continuous Integration and Deployment}
+    \label{fig:ci}
+\end{figure}
 
 
 
