@@ -140,7 +140,55 @@ reporting if the build was successfull back to GitHub.
     \label{fig:ci}
 \end{figure}
 
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\tiny, breaklines=true]
+  version: 2
+  jobs:
+    build:
+      machine: true
 
+      working_directory: ~/repo
+
+      steps:
+        - checkout
+
+        - run:
+            name: install docker-compose
+            command: |
+              set -x
+              sudo chown -R $(whoami) /usr/local/bin
+              curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+              chmod +x /usr/local/bin/docker-compose
+
+        - run:
+            name: docker compose build image
+            command: |
+              set -x
+              docker-compose build
+              docker-compose up
+
+        - run:
+            name: unit tests
+            command: |
+              curl localhost
+
+        # deploy only master branch
+        - deploy:
+            command: |
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                chmod +x scripts/deploy.sh
+                ./scripts/deploy.sh
+              fi
+  \end{lstlisting}
+  \caption{Initial Build Config File}
+\end{figure}
+
+The \texttt{.circleci/config.yml} file above, describes the initial build steps of the Quiz Tool.
+Code is checked out from the version control, all the dependencies necessary to perform following
+steps are installed, the project is then built and started using docker-compose, before the
+\texttt{curl localhost} command checks if the application is up and running. Finally, if
+the current branch being built is \texttt{master}, the \texttt{deploy.sh} bash script runs, which
+deploys the application to production.
 
 \subsection{Production Environment}
 

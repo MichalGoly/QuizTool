@@ -5,7 +5,8 @@
 \contentsline {figure}{\numberline {2.2}{\ignorespaces The docker-compose.yml file describing the tool's structure\relax }}{8}{figure.caption.6}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Front End Dockerfile\relax }}{9}{figure.caption.7}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Back End Dockerfile\relax }}{9}{figure.caption.8}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces continuous Integration and Deployment\relax }}{10}{figure.caption.9}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Continuous Integration and Deployment\relax }}{10}{figure.caption.9}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Initial Build Config File\relax }}{10}{figure.caption.10}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
