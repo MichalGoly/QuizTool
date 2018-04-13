@@ -191,6 +191,81 @@ the current branch being built is \texttt{master}, the \texttt{deploy.sh} bash s
 deploys the application to production.
 
 \subsection{Production Environment}
+The production environment of the tool is hosted on the AWS cloud. The AWS Elastic Beanstalk
+has been chosen specificaly, as applications in
+various programming languages can be deployed with ease, wihout having to worry about
+the infrastructure running these applications\cite{37}. The Multicontainer Docker AWS Elastic
+Beanstalk\cite{38} environment, creates a single Amazon EC2\cite{39}
+instance and uses ECS (Amazon Container Service)\cite{40} to coordinate container deployments to
+multicontainer Docker environments. The similarity with docker-compose, means the Quiz Tool
+would behave similarly on developer's machine, in testing and in production.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{elasticbeanstalk.jpg}
+    \caption{Quiz Tool Production Environment}
+    \label{fig:ebs}
+\end{figure}
+
+\texttt{docker-compose.yml} files define how docker-compose should run Docker containers together.
+\texttt{Dockerrun.aws.json} is the equivalent configuration file to specify relationships between Docker
+containers running in the Multicontainer Elastic Beanstalk environment. The format of the config file below is very
+similar to the docker-compose configuration files. The major
+difference is that the AWS Elastic Beanstalk does not build Docker images itself, and images have
+to be pulled dynamically from Docker registries. Docker registries are simply servers used for storage and
+distribution of Docker images.
+
+\begin{figure}[ht]
+  \begin{lstlisting}[basicstyle=\tiny, breaklines=true]
+  {
+      "AWSEBDockerrunVersion": 2,
+      "containerDefinitions": [
+          {
+              "name": "client",
+              "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-client:latest",
+              "memory": 128,
+              "essential": true,
+              "portMappings": [
+                  {
+                      "hostPort": 80,
+                      "containerPort": 80
+                  }
+              ],
+              "links": [
+                  "server_node"
+              ]
+          },
+          {
+              "name": "server_node",
+              "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-server:latest",
+              "memory": 128,
+              "essential": true,
+              "links": [
+                "database"
+              ]
+          },
+          {
+            "name": "database",
+            "image": "mongo",
+            "memory": 128,
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 27017,
+                    "containerPort": 27017
+                }
+            ]
+          }
+      ]
+  }
+  \end{lstlisting}
+  \caption{Dockerrun.aws.json}
+\end{figure}
+\newpage
+
+\subsubsection{Circle CI and AWS Integration}
+- Circle CI <-> AWS Integration - deploy.sh file and Circle CI SSH setup
+- graph showing how containers are pulled from the docker repositories before deployment
 
 \subsection{Story Boards}
 
