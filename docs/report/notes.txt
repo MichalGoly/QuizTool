@@ -77,4 +77,19 @@ Appendices
   F. Google timesheet
 Bibliography
 
+Chris's notes
+
+Chapter 5:
+- going back without resetting the ansers
+- save button on the bottom of the page
+- chart.js tweaks
+- For some reason a session has been created when no answers were given
+
+
+Add introduction at the start of the report
+  - the top level purpose of various chapters
+  -
+
+Tesing
+- introduciton - > justify why the approach was taken. Why this kind of testing, what to gain
 

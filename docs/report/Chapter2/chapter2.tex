@@ -196,7 +196,7 @@ has been chosen specificaly, as applications in
 various programming languages can be deployed with ease, wihout having to worry about
 the infrastructure running these applications\cite{37}. The Multicontainer Docker AWS Elastic
 Beanstalk\cite{38} environment, creates a single Amazon EC2\cite{39}
-instance and uses ECS (Amazon Container Service)\cite{40} to coordinate container deployments to
+instance and uses ECS (Amazon Elastic Container Service)\cite{40} to coordinate container deployments to
 multicontainer Docker environments. The similarity with docker-compose, means the Quiz Tool
 would behave similarly on developer's machine, in testing and in production.
 
@@ -319,6 +319,41 @@ the official mongo Docker hub.
 \end{figure}
 
 \subsection{Story Boards}
+Including the customer
+early in the development and design process allows teams to stay on track and readjust
+their design if necessary. The story boards below have been produced to gain feedback
+from the client, and ease the front end development in future iterations.
+
+\autoref{fig:storylecturer} shows how the lectuer would login into the tool using
+Google Single Sign On. He could then upload his lecture slides using an action
+button in the bottom right corner of the screen, be able to edit his slides and
+mark certain slides as quizzes. A list of cards would be presented showing all
+lectures belonging to the lecturer and he could broadcast them to his audience.
+Subsequently, he could navigate through the slides and slides with embedded quizzes would
+split the screen in half to show a bar chart with answers as they come in. Finally,
+lecture would end once he clicks the end button.
+
+\autoref{fig:storystudent} on the other hand, shows how students could interact with
+the tool. Student could join an ongoing lecture using a session key provided by the
+lecturer. She could then participate in the lecture by watching the slides, and
+submitting answers to quizzes as they come in. The correct answer could be presented
+back to her in a form of a bar chart. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../../design/story_board_lecturer.jpg}
+    \caption{Story Board Lecturer Interaction}
+    \label{fig:storylecturer}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../../design/story_board_student.jpg}
+    \caption{Story Board Student Interaction}
+    \label{fig:storystudent}
+\end{figure}
+
+
 
 \subsection{Sprint Retrospective}
 
