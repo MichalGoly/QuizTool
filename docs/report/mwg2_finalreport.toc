@@ -34,14 +34,14 @@
 \contentsline {subsection}{\numberline {2.2.2}Login Page and Authorisation}{15}{subsection.2.2.2}
 \contentsline {subsubsection}{\numberline {2.2.2.1}Google Single Sign On and JWT Tokens}{16}{subsubsection.2.2.2.1}
 \contentsline {subsection}{\numberline {2.2.3}Persistence Layer}{16}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Lecture Upload}{16}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Lecture Broadcast}{16}{subsection.2.2.5}
-\contentsline {subsection}{\numberline {2.2.6}Sprint Retrospective}{16}{subsection.2.2.6}
-\contentsline {section}{\numberline {2.3}Sprint 3 - Add Quizes}{16}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Sprint Planning}{16}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Sprint Retrospective}{16}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Sprint 4 - Fancy Quizes and Defect Fixing}{16}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Sprint Planning}{16}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.2.4}Lecture Upload}{17}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Lecture Broadcast}{17}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Sprint Retrospective}{17}{subsection.2.2.6}
+\contentsline {section}{\numberline {2.3}Sprint 3 - Add Quizes}{17}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Sprint Planning}{17}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Sprint Retrospective}{17}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.4}Sprint 4 - Fancy Quizes and Defect Fixing}{17}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Sprint Planning}{17}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Sprint Retrospective}{17}{subsection.2.4.2}
 \contentsline {section}{\numberline {2.5}Sprint 5 - Persistence, Report Generation and Testing}{17}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}Sprint Planning}{17}{subsection.2.5.1}

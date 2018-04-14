@@ -232,9 +232,9 @@ The Materialize\cite{43} CSS framework has been added to achieve a modern user i
 \end{figure}
 
 Angular has a concept of guards, which allow specified routes to be only accessible to
-authrorised users. The code extracted from the \texttt{client/src/app/app.routing.ts} below
+authorised users. The code extracted from the \texttt{client/src/app/app.routing.ts} below
 shows how the desired behaviour has been achieved. All undefined routes redirect to the \texttt{/}
-which has a \texttt{canActivate: [AuthGuard]} protection. The guard checks if current user has a
+which has a \texttt{canActivate: [AuthGuard]} protection. The guard checks if the current user has a
 valid session cookie with a JWT token\cite{44} present as described in the subsection below, before allowing
 the user to navigate to his dashboard.
 
@@ -252,7 +252,25 @@ the user to navigate to his dashboard.
 \end{figure}
 
 \subsubsection{Google Single Sign On and JWT Tokens}
+Once the lecturer clicks on the Google Sign-In button, he is redirected to Google
+and asked to provide his Google credentials, and authorise the Quiz Tool to get
+basic information about him. The passport.js\cite{45} Node.js middleware, together
+with the Google passport strategy\cite{46} have been added to handle the OAuth2\cite{47} authorisation.
+Once the lecturer authorises Quiz Tool to get the basic information about him, Google calls the
+\texttt{/auth/google/callback} callback defined in the \texttt{server/index.js}. The callback
+handler located in the \texttt{server/helpers/passport.helper.js} takes the access token, user's
+Google display name and his public Google ID, and stores them in the database by creating a new
+lecturer entry in MongoDB. Finally, a session cookie is sent back to the lecturer's client
+containing the access token.
 
+As mentioned before, the \texttt{AuthGuard} on the Angular side makes sure user is logged in, before
+rendering his dashboard. The guard uses the \texttt{client/src/app/services/auth.service.ts} to make
+sure the session cookie exists. Each HTTP call Angular makes to the back end is intercepted by
+the \texttt{client/src/app/utils/jwt.interceptor.ts} which checks if user has the token, and if so,
+an extra authorisation header is added containing the token in the format \texttt{Authorization: Bearer fancyJSONToken123}.
+Finally, all routes on the back end are protected with the \texttt{server/helper/auth.helper.js}, which
+checks if the token provided exists in the database, is valid and has not expired, by checking with Google if it was issued
+against the Quiz Tool.
 
 \subsection{Persistence Layer}
 - mongoose
