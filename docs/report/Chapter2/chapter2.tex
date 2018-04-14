@@ -60,67 +60,17 @@ and use Socket.io to prove it was possible to make all technologies work togethe
 The front end container consisted of Angular 4 and nginx reverse proxy. The structure
 has been based on the \textit{Dockerized Angular 4 App (with Angular CLI)} repository\cite{35}.
 The Socket.io client dependency has been added to allow sending messages to the back end
-using sockets. The Dockerfile below uses the multi-stage build added in Docker 17.05. The
+using sockets. The initial \texttt{Dockerfile} included in the \autoref{chap:codesamples} of this report
+as the \autoref{sample:clientdocker} uses the multi-stage build added in Docker 17.05. The
 Angular app is compiled to JavaScript and HTML files during the initial stage of the build,
 and then these files are copied to the nginx public folder to be served to clients.
 This results in a lean, production ready image.
 
-\begin{figure}[ht]
-  \begin{lstlisting}[basicstyle=\tiny]
-    ### STAGE 1: Build ###
-
-    # We label our stage as 'builder'
-    FROM node:8-alpine as builder
-
-    COPY package.json package-lock.json ./
-
-    RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
-
-    ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
-    RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
-
-    WORKDIR /ng-app
-
-    COPY . .
-
-    ## Build the angular app in production mode and store the artifacts in dist folder
-    RUN $(npm bin)/ng build --prod --build-optimizer
-
-    ### STAGE 2: Setup ###
-
-    FROM nginx:1.13.3-alpine
-
-    ## Copy our default nginx config
-    COPY nginx/default.conf /etc/nginx/conf.d/
-
-    ## Remove default nginx website
-    RUN rm -rf /usr/share/nginx/html/*
-
-    ## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
-    COPY --from=builder /ng-app/dist /usr/share/nginx/html
-
-    CMD ["nginx", "-g", "daemon off;"]
-  \end{lstlisting}
-  \caption{Front End Dockerfile}
-\end{figure}
-
 \subsubsection{Back End Container}
-The back end container consisted of a Node.js runtime, Express framework and the Socket.io
-engine capable of pushing messages to clients using Sockets. The following Dockerfile illustrates
+The back end container included in the \autoref{chap:codesamples} of this report
+as the \autoref{sample:serverdocker} consisted of a Node.js runtime, the Express framework and the Socket.io
+engine capable of pushing messages to clients using Sockets. The \texttt{Dockerfile} illustrates
 the very basic Node container.
-
-\begin{figure}[ht]
-    \begin{lstlisting}[basicstyle=\small]
-    FROM node:carbon
-    WORKDIR /usr/src/app
-    COPY package*.json ./
-    RUN npm install
-    COPY . .
-    EXPOSE 3000
-    CMD [ "npm", "start" ]
-  \end{lstlisting}
-  \caption{Back End Dockerfile}
-\end{figure}
 
 \subsubsection{Database Container}
 Finally, the MongoDB Docker image has been pulled automatically from the official mongo
@@ -140,50 +90,8 @@ reporting if the build was successfull back to GitHub.
     \label{fig:ci}
 \end{figure}
 
-\begin{figure}[h!]
-  \begin{lstlisting}[basicstyle=\tiny, breaklines=true]
-  version: 2
-  jobs:
-    build:
-      machine: true
-
-      working_directory: ~/repo
-
-      steps:
-        - checkout
-
-        - run:
-            name: install docker-compose
-            command: |
-              set -x
-              sudo chown -R $(whoami) /usr/local/bin
-              curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-              chmod +x /usr/local/bin/docker-compose
-
-        - run:
-            name: docker compose build image
-            command: |
-              set -x
-              docker-compose build
-              docker-compose up
-
-        - run:
-            name: unit tests
-            command: |
-              curl localhost
-
-        # deploy only master branch
-        - deploy:
-            command: |
-              if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                chmod +x scripts/deploy.sh
-                ./scripts/deploy.sh
-              fi
-  \end{lstlisting}
-  \caption{Initial Build Config File}
-\end{figure}
-
-The \texttt{.circleci/config.yml} file above, describes the initial build steps of the Quiz Tool.
+The \texttt{.circleci/config.yml} file included in the \autoref{chap:codesamples} of this report
+as the \autoref{sample:circleci}, describes the initial build steps of the Quiz Tool.
 Code is checked out from the version control, all the dependencies necessary to perform following
 steps are installed, the project is then built and started using docker-compose, before the
 \texttt{curl localhost} command checks if the application is up and running. Finally, if
@@ -209,97 +117,19 @@ would behave similarly on developer's machine, in testing and in production.
 
 \texttt{docker-compose.yml} files define how docker-compose should run Docker containers together.
 \texttt{Dockerrun.aws.json} is the equivalent configuration file to specify relationships between Docker
-containers running in the Multicontainer Elastic Beanstalk environment. The format of the config file below is very
+containers running in the Multicontainer Elastic Beanstalk environment. The format of the config file
+included in the \autoref{chap:codesamples} of this report
+as the \autoref{sample:dockerrunaws} is very
 similar to the docker-compose configuration files. The major
 difference is that the AWS Elastic Beanstalk does not build Docker images itself, and images have
 to be pulled dynamically from Docker registries. Docker registries are simply servers used for storage and
 distribution of Docker images.
 
-\begin{figure}[ht]
-  \begin{lstlisting}[basicstyle=\tiny, breaklines=true]
-  {
-      "AWSEBDockerrunVersion": 2,
-      "containerDefinitions": [
-          {
-              "name": "client",
-              "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-client:latest",
-              "memory": 128,
-              "essential": true,
-              "portMappings": [
-                  {
-                      "hostPort": 80,
-                      "containerPort": 80
-                  }
-              ],
-              "links": [
-                  "server_node"
-              ]
-          },
-          {
-              "name": "server_node",
-              "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-server:latest",
-              "memory": 128,
-              "essential": true,
-              "links": [
-                "database"
-              ]
-          },
-          {
-            "name": "database",
-            "image": "mongo",
-            "memory": 128,
-            "essential": true,
-            "portMappings": [
-                {
-                    "hostPort": 27017,
-                    "containerPort": 27017
-                }
-            ]
-          }
-      ]
-  }
-  \end{lstlisting}
-  \caption{Dockerrun.aws.json}
-\end{figure}
-\newpage
-
 \subsubsection{Circle CI and AWS Integration}
-% - Circle CI <-> AWS Integration - deploy.sh file and Circle CI SSH setup
-% - graph showing how containers are pulled from the docker repositories before deployment
 The build agent automatically deploys the tool to production when the \texttt{master}
-branch is being built. The following bash script performs the actual deployment, and the
+branch is being built. The bash script included in the \autoref{chap:codesamples} of this report
+as the \autoref{sample:deploy} performs the actual deployment, and the
 approach is based on the examples\cite{41}\cite{42}.
-
-\begin{figure}[h!]
-  \begin{lstlisting}[basicstyle=\tiny, breaklines=true]
-  #!/bin/bash
-  set -x
-  set -e
-
-  AWS_CONFIG_FILE=$HOME/.aws/config
-
-  mkdir $HOME/.aws
-  touch $AWS_CONFIG_FILE
-  chmod 600 $AWS_CONFIG_FILE
-
-  echo "[default]"                                     > $AWS_CONFIG_FILE
-  echo "aws_access_key_id=$AWS_ACCESS_KEY_ID"         >> $AWS_CONFIG_FILE
-  echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> $AWS_CONFIG_FILE
-
-  $(aws ecr get-login --no-include-email --region eu-west-2)
-
-  docker tag repo_client:latest 993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-client:latest
-  docker tag repo_server_node:latest 993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-server:latest
-
-  docker push 993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-client:latest
-  docker push 993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-server:latest
-
-  eb deploy prod-env
-  \end{lstlisting}
-  \caption{Production Deployment Script}
-\end{figure}
-
-\newpage
 The \texttt{\$AWS\_ACCESS\_KEY\_ID} and the \texttt{\$AWS\_SECRET\_ACCESS\_KEY} environment
 variables have been added to the build configuration using the Circle CI web panel.
 The integration has been achieved by creating an AWS profile config file and installing
@@ -353,6 +183,7 @@ back to her in a form of a bar chart.
     \label{fig:storystudent}
 \end{figure}
 
+\newpage
 \subsection{Sprint Retrospective}
 The first sprint proved it was possible to deploy a MEAN stack, containerised application
 to production using Circle CI. Crucial DevOps has been successfully put in place, and the

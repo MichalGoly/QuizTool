@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  14 APR 2018 11:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  14 APR 2018 15:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -528,7 +528,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.51 ...er}{\numberline {4}Testing}{19}{chapter.4}
+l.51 ...er}{\numberline {4}Testing}{17}{chapter.4}
                                                    [1
 
 ])
@@ -567,7 +567,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 [1
 
 
-] [2] <images/qwizdom.png, id=418, 348.30125pt x 293.095pt>
+] [2] <images/qwizdom.png, id=443, 348.30125pt x 293.095pt>
 File: images/qwizdom.png Graphic file (type png)
 
 <use images/qwizdom.png>
@@ -585,7 +585,7 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 
 (./Chapter2/chapter2.tex
 Chapter 2.
-<images/../../design/app_structure.jpg, id=477, 2600.71625pt x 2515.3975pt>
+<images/../../design/app_structure.jpg, id=503, 2600.71625pt x 2515.3975pt>
 File: images/../../design/app_structure.jpg Graphic file (type jpg)
 
 <use images/../../design/app_structure.jpg>
@@ -601,86 +601,78 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ] [8 <./images/../../design/app_structure.jpg>]
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 97.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
-File: omsptm.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <6> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 97.
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 116.
- [9]
-<images/circleci.jpg, id=562, 963.6pt x 542.025pt>
+<images/circleci.jpg, id=540, 963.6pt x 542.025pt>
 File: images/circleci.jpg Graphic file (type jpg)
  <use images/circleci.jpg>
-Package pdftex.def Info: images/circleci.jpg used on input line 138.
+Package pdftex.def Info: images/circleci.jpg used on input line 88.
 (pdftex.def)             Requested size: 341.43436pt x 192.05217pt.
-LaTeX Font Info:    Try loading font information for OML+ptm on input line 160.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlptm.fd
-File: omlptm.fd 
-)
-LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <6> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 160.
- [10 <./images/circleci.jpg>] <images/elasticbeanstalk.jpg, id=612, 963.6pt x 5
-42.025pt>
+[9 <./images/circleci.jpg>]
+<images/elasticbeanstalk.jpg, id=556, 963.6pt x 542.025pt>
 File: images/elasticbeanstalk.jpg Graphic file (type jpg)
 
 <use images/elasticbeanstalk.jpg>
-Package pdftex.def Info: images/elasticbeanstalk.jpg used on input line 205.
+Package pdftex.def Info: images/elasticbeanstalk.jpg used on input line 113.
 (pdftex.def)             Requested size: 341.43436pt x 192.05217pt.
- [11 <./images/elasticbeanstalk.jpg>] [12]
-<images/deployment.jpg, id=700, 963.6pt x 542.025pt>
+
+Overfull \hbox (1.78854pt too wide) in paragraph at lines 129--143
+\OT1/ptm/m/n/10.95 tual de-ploy-ment, and the ap-proach is based on the example
+s[[]][[]]. The \OT1/pcr/m/n/10.95 $AWS[]ACCESS[]KEY[]ID
+ []
+
+<images/deployment.jpg, id=563, 963.6pt x 542.025pt>
 File: images/deployment.jpg Graphic file (type jpg)
 
 <use images/deployment.jpg>
-Package pdftex.def Info: images/deployment.jpg used on input line 316.
+Package pdftex.def Info: images/deployment.jpg used on input line 146.
 (pdftex.def)             Requested size: 341.43436pt x 192.05217pt.
 
-<images/../../design/story_board_lecturer.jpg, id=703, 2619.7875pt x 3840.3475p
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[10 <./images/elasticbeanstalk.jpg>]
+<images/../../design/story_board_lecturer.jpg, id=578, 2619.7875pt x 3840.3475p
 t>
 File: images/../../design/story_board_lecturer.jpg Graphic file (type jpg)
  <use images/../../design/story_board_lecturer.jpg>
 Package pdftex.def Info: images/../../design/story_board_lecturer.jpg used on i
-nput line 344.
+nput line 174.
 (pdftex.def)             Requested size: 384.10959pt x 563.01833pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-<images/../../design/story_board_student.jpg, id=704, 2619.7875pt x 2705.10625p
+<images/../../design/story_board_student.jpg, id=579, 2619.7875pt x 2705.10625p
 t>
 File: images/../../design/story_board_student.jpg Graphic file (type jpg)
  <use images/../../design/story_board_student.jpg>
 Package pdftex.def Info: images/../../design/story_board_student.jpg used on in
-put line 351.
+put line 181.
 (pdftex.def)             Requested size: 384.10959pt x 396.58504pt.
- [13 <./images/deployment.jpg>] [14 <./images/../../design/story_board_lecturer
+ [11 <./images/deployment.jpg>] [12 <./images/../../design/story_board_lecturer
 .jpg>]
-<images/burn1.jpg, id=716, 723.45282pt x 470.50781pt>
+<images/burn1.jpg, id=592, 723.45282pt x 470.50781pt>
 File: images/burn1.jpg Graphic file (type jpg)
  <use images/burn1.jpg>
-Package pdftex.def Info: images/burn1.jpg used on input line 364.
+Package pdftex.def Info: images/burn1.jpg used on input line 195.
 (pdftex.def)             Requested size: 426.79134pt x 277.56848pt.
 
-[15 <./images/../../design/story_board_student.jpg>] [16 <./images/burn1.jpg>]
-[17]
+[13 <./images/../../design/story_board_student.jpg>] [14 <./images/burn1.jpg>]
+[15]
 Chapter 3.
-[18
+[16
 
 ]
 Chapter 4.
-) [19
+) [17
 
 ]
 \openout2 = `Chapter3/chapter3.aux'.
 
  (./Chapter3/chapter3.tex
 Chapter 5.
-) [20
+) [18
 
 
 
@@ -690,13 +682,13 @@ Chapter 5.
  (./Appendix1/appendix1.tex
 Appendix A.
 
-LaTeX Warning: Citation `apache_poi' on page 21 undefined on input line 15.
+LaTeX Warning: Citation `apache_poi' on page 19 undefined on input line 15.
 
 
-LaTeX Warning: Citation `apache_license' on page 21 undefined on input line 16.
+LaTeX Warning: Citation `apache_license' on page 19 undefined on input line 16.
 
 
-) [21
+) [19
 
 
 
@@ -705,7 +697,7 @@ LaTeX Warning: Citation `apache_license' on page 21 undefined on input line 16.
 
  (./Appendix2/appendix2.tex
 Appendix B.
-<Appendix2/9563.pdf, id=757, 614.295pt x 794.97pt>
+<Appendix2/9563.pdf, id=634, 614.295pt x 794.97pt>
 File: Appendix2/9563.pdf Graphic file (type pdf)
  <use Appendix2/9563.pdf>
 Package pdftex.def Info: Appendix2/9563.pdf used on input line 6.
@@ -716,7 +708,7 @@ File: Appendix2/9563.pdf Graphic file (type pdf)
 Package pdftex.def Info: Appendix2/9563.pdf used on input line 6.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 
-<Appendix2/9563.pdf, id=760, page=1, 614.295pt x 794.97pt>
+<Appendix2/9563.pdf, id=637, page=1, 614.295pt x 794.97pt>
 File: Appendix2/9563.pdf Graphic file (type pdf)
 
 <use Appendix2/9563.pdf, page 1>
@@ -726,7 +718,7 @@ File: Appendix2/9563.pdf Graphic file (type pdf)
  <use Appendix2/9563.pdf, page 1>
 Package pdftex.def Info: Appendix2/9563.pdf, page1 used on input line 6.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [22
+ [20
 
 
 
@@ -745,8 +737,8 @@ File: Appendix2/9563.pdf Graphic file (type pdf)
 <use Appendix2/9563.pdf, page 1>
 Package pdftex.def Info: Appendix2/9563.pdf, page1 used on input line 6.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [23 <./Appendix2/9563.pdf>]
-<Appendix2/9563.pdf, id=774, page=2, 614.295pt x 794.97pt>
+ [21 <./Appendix2/9563.pdf>]
+<Appendix2/9563.pdf, id=650, page=2, 614.295pt x 794.97pt>
 File: Appendix2/9563.pdf Graphic file (type pdf)
 
 <use Appendix2/9563.pdf, page 2>
@@ -761,28 +753,28 @@ File: Appendix2/9563.pdf Graphic file (type pdf)
 <use Appendix2/9563.pdf, page 2>
 Package pdftex.def Info: Appendix2/9563.pdf, page2 used on input line 6.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [24 <./Appendix2/9563.pdf>])
+ [22 <./Appendix2/9563.pdf>])
 \openout2 = `Appendix3/appendix3.aux'.
 
 
 (./Appendix3/appendix3.tex
 Appendix C.
-<Appendix3/1.jpg, id=780, 737.00343pt x 674.52pt>
+<Appendix3/1.jpg, id=655, 737.00343pt x 674.52pt>
 File: Appendix3/1.jpg Graphic file (type jpg)
  <use Appendix3/1.jpg>
 Package pdftex.def Info: Appendix3/1.jpg used on input line 9.
 (pdftex.def)             Requested size: 384.10959pt x 351.54492pt.
 )
-[25
+[23
 
 
 
- <./Appendix3/1.jpg>] [26]
+ <./Appendix3/1.jpg>] [24]
 \openout2 = `Appendix4/appendix4.aux'.
 
  (./Appendix4/appendix4.tex
 Appendix D.
-<Appendix4/1.pdf, id=791, 614.295pt x 794.97pt>
+<Appendix4/1.pdf, id=667, 614.295pt x 794.97pt>
 File: Appendix4/1.pdf Graphic file (type pdf)
  <use Appendix4/1.pdf>
 Package pdftex.def Info: Appendix4/1.pdf used on input line 7.
@@ -792,7 +784,7 @@ File: Appendix4/1.pdf Graphic file (type pdf)
 <use Appendix4/1.pdf>
 Package pdftex.def Info: Appendix4/1.pdf used on input line 7.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
- <Appendix4/1.pdf, id=794, page=1, 614.295pt x 794.97pt>
+ <Appendix4/1.pdf, id=670, page=1, 614.295pt x 794.97pt>
 File: Appendix4/1.pdf Graphic file (type pdf)
 
 <use Appendix4/1.pdf, page 1>
@@ -802,7 +794,7 @@ File: Appendix4/1.pdf Graphic file (type pdf)
  <use Appendix4/1.pdf, page 1>
 Package pdftex.def Info: Appendix4/1.pdf, page1 used on input line 7.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [27
+ [25
 
 
 
@@ -821,7 +813,7 @@ File: Appendix4/1.pdf Graphic file (type pdf)
 <use Appendix4/1.pdf, page 1>
 Package pdftex.def Info: Appendix4/1.pdf, page1 used on input line 7.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [28 <./Appendix4/1.pdf
+ [26 <./Appendix4/1.pdf
 
 pdfTeX warning: pdflatex (file ./Appendix4/1.pdf): PDF inclusion: invalid other
  resource which is no dict (key 'ProcSets', type <array>); ignored.
@@ -830,11 +822,26 @@ pdfTeX warning: pdflatex (file ./Appendix4/1.pdf): PDF inclusion: invalid other
 
  (./Appendix5/appendix5.tex
 Appendix E.
-) [29
+[27
 
 
 
 ]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 41.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 41.
+ [28] [29]
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 92.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlptm.fd
+File: omlptm.fd 
+)
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 92.
+ [30] [31]) [32]
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ú in font ptmr7t!
@@ -868,7 +875,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 147--148
  Avail-able:
  []
 
-[30
+[33
 
 
 ]
@@ -912,7 +919,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 198--199
 line] Avail-able:
  []
 
-[31]
+[34]
 Underfull \hbox (badness 10000) in paragraph at lines 210--211
 []\OT1/ptm/m/n/10.95 docker-compose, "docker-compose home-page", [On-line] Avai
 l-able:
@@ -924,7 +931,7 @@ Missing character: There is no ú in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
-[32]
+[35]
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ú in font ptmr7t!
@@ -979,7 +986,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 298--299
 e[]deploy[]docker[]ecs.html,
  []
 
-[33]
+[36]
 Underfull \hbox (badness 2080) in paragraph at lines 310--311
 []\OT1/ptm/m/n/10.95 How to setup Elas-tic Beanstalk De-ploy-ment, "cir-cleci f
 o-rum", [On-line] Avail-able:
@@ -993,7 +1000,7 @@ k-deployment/6154/4, [Ac-cessed:
 
 
 AED: lastpage setting LastPage
-[34]
+[37]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 320.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 320.
  (./mwg2_finalreport.aux (./cover.aux) (./declaration.aux)
@@ -1004,7 +1011,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 320.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 320.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 320.
 Package rerunfilecheck Info: File `mwg2_finalreport.out' has not changed.
-(rerunfilecheck)             Checksum: 03560D15AC72A3B23A067069735455BB;3981.
+(rerunfilecheck)             Checksum: 0BA9618FE96E465B18E6582B866F5610;4369.
 
 
 LaTeX Warning: There were undefined references.
@@ -1012,25 +1019,24 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 320.
  ) 
 Here is how much of TeX's memory you used:
- 10432 strings out of 493029
- 153925 string characters out of 6136234
- 356531 words of memory out of 5000000
- 13372 multiletter control sequences out of 15000+600000
- 30874 words of font info for 69 fonts, out of 8000000 for 9000
+ 10449 strings out of 493029
+ 154167 string characters out of 6136234
+ 334854 words of memory out of 5000000
+ 13382 multiletter control sequences out of 15000+600000
+ 29289 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 49i,18n,48p,568b,1287s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,18n,48p,568b,1298s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
-s/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on mwg2_finalreport.pdf (42 pages, 3211711 bytes).
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8
+a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on mwg2_finalreport.pdf (45 pages, 3207940 bytes).
 PDF statistics:
- 944 PDF objects out of 1000 (max. 8388607)
- 863 compressed objects within 9 object streams
- 329 named destinations out of 1000 (max. 500000)
- 563 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 995 PDF objects out of 1000 (max. 8388607)
+ 911 compressed objects within 10 object streams
+ 337 named destinations out of 1000 (max. 500000)
+ 603 words of extra memory for PDF output out of 10000 (max. 10000000)
 
