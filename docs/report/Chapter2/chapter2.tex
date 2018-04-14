@@ -366,20 +366,60 @@ The full sprint retrospective document produced can be found in the \autoref{cha
     \label{fig:burn1}
 \end{figure}
 
+\newpage
 \section{Sprint 2 - Bare Bone Application}
 \subsection{Sprint Planning}
+This sprint focused on converting the proof of concept chat application created in the previous
+week and converting it into a basic Quiz Tool. Simple login page for both students and lectuers
+would be developed based on the paper prototypes from the previous sprint and Google Single Sign
+On would be added. Once logged in, lectuers could upload their PDF lecture slides and broadcast
+them to all students, as session generation was not implemented yet. The entire list of estimated stories
+can be found in the \autoref{chap:spintstories} of this report.
+
+\subsection{Back End Application Structure}
+
+\subsection{Front End Application Structure}
+
+\subsection{Login Page and Authorisation}
+- JWT tokens
+- JWT interceptor
+- Google single sign on
+- session cookies
+
+\subsection{Persistence Layer}
+- mongoose
+
+\subsection{Lecture Upload}
+
+\subsection{Lecture Broadcast}
 
 \subsection{Sprint Retrospective}
+
+
 \section{Sprint 3 - Add Quizes}
 \subsection{Sprint Planning}
+This iteration focused on the ability to create quizzes, embed them into slides and
+broadcast only to people who have the appropriate session key. The entire list of estimated stories
+can be found in the \autoref{chap:spintstories} of this report.
 
 \subsection{Sprint Retrospective}
+
+
 \section{Sprint 4 - Fancy Quizes and Defect Fixing}
 \subsection{Sprint Planning}
+This sprint focused on addressing a critial bug in the production environment
+concerning the PDF to PNG conversion. Extra types of quizzes would also be added
+to complement the single choice ones availble at the moment. The entire list of estimated stories
+can be found in the \autoref{chap:spintstories} of this report.
 
 \subsection{Sprint Retrospective}
 \section{Sprint 5 - Persistence, Report Generation and Testing}
 \subsection{Sprint Planning}
+The final sprint focused on the persistence of students' answers in the database and
+generation of PDF reports based on these answers. User friendly error handler has
+also been added, and the application has been polished before the Quiz Tool implementation
+was over. As always, the entire list of estimated stories
+can be found in the \autoref{chap:spintstories} of this report.
 
 \subsection{Sprint Retrospective}
 

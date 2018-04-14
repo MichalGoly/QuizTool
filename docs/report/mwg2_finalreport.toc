@@ -29,9 +29,15 @@
 \contentsline {subsubsection}{\numberline {2.1.4.1}Circle CI and AWS Integration}{12}{subsubsection.2.1.4.1}
 \contentsline {subsection}{\numberline {2.1.5}Story Boards}{13}{subsection.2.1.5}
 \contentsline {subsection}{\numberline {2.1.6}Sprint Retrospective}{15}{subsection.2.1.6}
-\contentsline {section}{\numberline {2.2}Sprint 2 - Bare Bone Application}{17}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Sprint Planning}{17}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Sprint Retrospective}{17}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.2}Sprint 2 - Bare Bone Application}{16}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Sprint Planning}{16}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Back End Application Structure}{16}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Front End Application Structure}{16}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Login Page and Authorisation}{16}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Persistence Layer}{16}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Lecture Upload}{17}{subsection.2.2.6}
+\contentsline {subsection}{\numberline {2.2.7}Lecture Broadcast}{17}{subsection.2.2.7}
+\contentsline {subsection}{\numberline {2.2.8}Sprint Retrospective}{17}{subsection.2.2.8}
 \contentsline {section}{\numberline {2.3}Sprint 3 - Add Quizes}{17}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Sprint Planning}{17}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Sprint Retrospective}{17}{subsection.2.3.2}
