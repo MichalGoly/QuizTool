@@ -201,24 +201,62 @@ The full sprint retrospective document produced can be found in the \autoref{cha
 \section{Sprint 2 - Bare Bone Application}
 \subsection{Sprint Planning}
 This sprint focused on converting the proof of concept chat application created in the previous
-week and converting it into a basic Quiz Tool. Simple login page for both students and lectuers
-would be developed based on the paper prototypes from the previous sprint and Google Single Sign
+week into a basic Quiz Tool. Simple login page for both students and lectuers
+would be developed based on the paper prototypes from the previous sprint, and Google Single Sign
 On would be added. Once logged in, lectuers could upload their PDF lecture slides and broadcast
 them to all students, as session generation was not implemented yet. The entire list of estimated stories
 can be found in the \autoref{chap:spintstories} of this report.
 
-\subsection{Back End Application Structure}
-
-\subsection{Front End Application Structure}
-
+\newpage
 \subsection{Login Page and Authorisation}
-- JWT tokens
-- JWT interceptor
-- Google single sign on
-- session cookies
+% - JWT tokens
+% - JWT interceptor
+% - Google single sign on
+% - session cookies
+The login page has been created based on the low fidelity prototypes, and allowed
+lecturers to log into the tool, and students to join ongoing lectures with a session key.
+The Materialize\cite{43} CSS framework has been added to achieve a modern user interface.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{student_login.jpg}
+    \caption{Student Login Page}
+    \label{fig:studentlogin}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lecturer_login.jpg}
+    \caption{Lecturer Login Page}
+    \label{fig:lecturerlogin}
+\end{figure}
+
+Angular has a concept of guards, which allow specified routes to be only accessible to
+authrorised users. The code extracted from the \texttt{client/src/app/app.routing.ts} below
+shows how the desired behaviour has been achieved. All undefined routes redirect to the \texttt{/}
+which has a \texttt{canActivate: [AuthGuard]} protection. The guard checks if current user has a
+valid session cookie with a JWT token\cite{44} present as described in the subsection below, before allowing
+the user to navigate to his dashboard.
+
+\begin{figure}[h!]
+    \begin{lstlisting}[basicstyle=\small]
+    const routes: Routes = [
+      { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'login', component: LoginComponent },
+      { path: 'lecture/:code', component: LectureComponent },
+      { path: '**', redirectTo: '' }
+    ];
+    \end{lstlisting}
+    \caption{Angular Routing With Guards}
+    \label{fig:auth}
+\end{figure}
+
+\subsubsection{Google Single Sign On and JWT Tokens}
+
 
 \subsection{Persistence Layer}
 - mongoose
+- models
 
 \subsection{Lecture Upload}
 

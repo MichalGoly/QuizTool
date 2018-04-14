@@ -9,17 +9,20 @@
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Story Board Lecturer Interaction\relax }}{12}{figure.caption.10}
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Story Board Student Interaction\relax }}{13}{figure.caption.11}
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Burndown Chart Sprint 1\relax }}{14}{figure.caption.12}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Student Login Page\relax }}{15}{figure.caption.13}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Lecturer Login Page\relax }}{15}{figure.caption.14}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Angular Routing With Guards\relax }}{16}{figure.caption.15}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Stories Sprint 1\relax }}{23}{figure.caption.13}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Stories Sprint 1\relax }}{25}{figure.caption.16}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {E.1}{\ignorespaces Intial Front End Dockerfile\relax }}{28}{figure.caption.14}
-\contentsline {figure}{\numberline {E.2}{\ignorespaces Back End Dockerfile\relax }}{29}{figure.caption.15}
-\contentsline {figure}{\numberline {E.3}{\ignorespaces Initial Build Config File\relax }}{30}{figure.caption.16}
-\contentsline {figure}{\numberline {E.4}{\ignorespaces Dockerrun.aws.json\relax }}{31}{figure.caption.17}
-\contentsline {figure}{\numberline {E.5}{\ignorespaces Production Deployment Script\relax }}{32}{figure.caption.18}
+\contentsline {figure}{\numberline {E.1}{\ignorespaces Intial Front End Dockerfile\relax }}{30}{figure.caption.17}
+\contentsline {figure}{\numberline {E.2}{\ignorespaces Back End Dockerfile\relax }}{31}{figure.caption.18}
+\contentsline {figure}{\numberline {E.3}{\ignorespaces Initial Build Config File\relax }}{32}{figure.caption.19}
+\contentsline {figure}{\numberline {E.4}{\ignorespaces Dockerrun.aws.json\relax }}{33}{figure.caption.20}
+\contentsline {figure}{\numberline {E.5}{\ignorespaces Production Deployment Script\relax }}{34}{figure.caption.21}
