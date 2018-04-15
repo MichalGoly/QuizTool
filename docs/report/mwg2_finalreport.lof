@@ -18,17 +18,19 @@
 \contentsline {figure}{\numberline {2.15}{\ignorespaces Lecture Uploaded View\relax }}{19}{figure.caption.19}
 \contentsline {figure}{\numberline {2.16}{\ignorespaces Initial Broadcast View\relax }}{20}{figure.caption.20}
 \contentsline {figure}{\numberline {2.17}{\ignorespaces Initial Slide Broadcast Flow\relax }}{20}{figure.caption.21}
+\contentsline {figure}{\numberline {2.18}{\ignorespaces Burndown Chart Sprint 2\relax }}{21}{figure.caption.22}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Stories Sprint 1\relax }}{29}{figure.caption.22}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Stories Sprint 1\relax }}{30}{figure.caption.23}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Stories Sprint 2\relax }}{31}{figure.caption.24}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {E.1}{\ignorespaces Intial Front End Dockerfile\relax }}{34}{figure.caption.23}
-\contentsline {figure}{\numberline {E.2}{\ignorespaces Back End Dockerfile\relax }}{35}{figure.caption.24}
-\contentsline {figure}{\numberline {E.3}{\ignorespaces Initial Build Config File\relax }}{36}{figure.caption.25}
-\contentsline {figure}{\numberline {E.4}{\ignorespaces Dockerrun.aws.json\relax }}{37}{figure.caption.26}
-\contentsline {figure}{\numberline {E.5}{\ignorespaces Production Deployment Script\relax }}{38}{figure.caption.27}
+\contentsline {figure}{\numberline {E.1}{\ignorespaces Intial Front End Dockerfile\relax }}{37}{figure.caption.25}
+\contentsline {figure}{\numberline {E.2}{\ignorespaces Back End Dockerfile\relax }}{38}{figure.caption.26}
+\contentsline {figure}{\numberline {E.3}{\ignorespaces Initial Build Config File\relax }}{39}{figure.caption.27}
+\contentsline {figure}{\numberline {E.4}{\ignorespaces Dockerrun.aws.json\relax }}{40}{figure.caption.28}
+\contentsline {figure}{\numberline {E.5}{\ignorespaces Production Deployment Script\relax }}{41}{figure.caption.29}
