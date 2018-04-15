@@ -414,7 +414,17 @@ arrived.
 
 \subsection{Embedding Quizzes}
 Each \texttt{Slide} in the system consisted of a PNG image and text extracted
-from the PDF presentation uploaded by a lecturer.
+from the PDF presentation uploaded by a lecturer. It also had a boolean flag
+\texttt{isQuiz} specifying if given slide was supposed to be rendered as a quiz
+or not. An edit panel visible below has been added, to allow lecturers specify
+which slides should be treated as quizzes.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{editinitial.jpg}
+    \caption{Initial Edit Page}
+    \label{fig:editinitial}
+\end{figure}
 
 \subsection{Sprint Retrospective}
 
