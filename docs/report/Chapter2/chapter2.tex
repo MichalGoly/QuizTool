@@ -426,13 +426,14 @@ which slides should be treated as quizzes.
     \label{fig:editinitial}
 \end{figure}
 
+\newpage
 \autoref{fig:editinitial} shows two radio buttons for each slide of a lecture.
 These radio buttons could be used to mark certain slides as quizzes, by toggling
 the boolean flag underneath. Text extracted from each slide would decide if a given
-slide can become a quiz. If slide was not eligible to become a quizz, the radio button
+slide can become a quiz. If slide was not eligible to become a quiz, the radio button
 to make it one would be greyed out. The initial implementation of the eligibility
 algorithm checked if given slide contained at least two strings "A)" and "B)".
-This was enough to make a slide eligible to be marked as a single choice quiz and rendered as one,
+This was enough to make a slide eligible to be marked as a single choice quiz, and be rendered as one,
 as described in the next subsection.
 
 \subsection{Quiz Rendering}
@@ -453,7 +454,7 @@ for the duration of the session.
 \end{figure}
 
 \autoref{fig:quizstudent} on the other hand, shows the view rendered on students'
-clients. They would be able to select one of the options and submit their answer
+clients. They would be able to select one of the options and submit their answers
 only once. The "A", "B", "C", "D", "E" buttons are generated automatically based
 on the text of the slide.
 
@@ -465,8 +466,20 @@ on the text of the slide.
 \end{figure}
 
 \subsection{Sprint Retrospective}
+Following this iteration, Quiz Tool was able to handle quiz embedding which was a major
+step towards the final implementation. Slides were no longer sent to everyone,
+and multiple lectures could run at the same time.
+The full sprint retrospective document produced can be found in the
+\autoref{chap:spintretrospectives} of this report.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{burn3.jpg}
+    \caption{Burndown Chart Sprint 3}
+    \label{fig:burn3}
+\end{figure}
 
+\newpage
 \section{Sprint 4 - Fancy Quizes and Defect Fixing}
 \subsection{Sprint Planning}
 This sprint focused on addressing a critial bug in the production environment
@@ -475,6 +488,9 @@ to complement the single choice ones availble at the moment. The entire list of 
 can be found in the \autoref{chap:spintstories} of this report.
 
 \subsection{Sprint Retrospective}
+The full sprint retrospective document produced can be found in the
+\autoref{chap:spintretrospectives} of this report.
+
 \section{Sprint 5 - Persistence, Report Generation and Testing}
 \subsection{Sprint Planning}
 The final sprint focused on the persistence of students' answers in the database and
@@ -484,6 +500,8 @@ was over. As always, the entire list of estimated stories
 can be found in the \autoref{chap:spintstories} of this report.
 
 \subsection{Sprint Retrospective}
+The full sprint retrospective document produced can be found in the
+\autoref{chap:spintretrospectives} of this report.
 
 \chapter{Final Design}
 

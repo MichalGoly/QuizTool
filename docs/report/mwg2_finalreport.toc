@@ -43,31 +43,31 @@
 \contentsline {subsection}{\numberline {2.3.3}Embedding Quizzes}{22}{subsection.2.3.3}
 \contentsline {subsection}{\numberline {2.3.4}Quiz Rendering}{23}{subsection.2.3.4}
 \contentsline {subsection}{\numberline {2.3.5}Sprint Retrospective}{24}{subsection.2.3.5}
-\contentsline {section}{\numberline {2.4}Sprint 4 - Fancy Quizes and Defect Fixing}{24}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Sprint Planning}{24}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Sprint Retrospective}{24}{subsection.2.4.2}
-\contentsline {section}{\numberline {2.5}Sprint 5 - Persistence, Report Generation and Testing}{24}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Sprint Planning}{24}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Sprint Retrospective}{25}{subsection.2.5.2}
-\contentsline {chapter}{\numberline {3}Final Design}{26}{chapter.3}
-\contentsline {chapter}{\numberline {4}Testing}{27}{chapter.4}
-\contentsline {section}{\numberline {4.1}Server Side Unit Tests}{27}{section.4.1}
-\contentsline {section}{\numberline {4.2}Client Side Unit Tests}{27}{section.4.2}
-\contentsline {section}{\numberline {4.3}Selenium Integration Tests}{27}{section.4.3}
-\contentsline {chapter}{\numberline {5}Evaluation}{28}{chapter.5}
-\contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{29}{appendix.A}
-\contentsline {chapter}{\numberline {B}Ethics Submission}{30}{appendix.B}
-\contentsline {chapter}{\numberline {C}Sprint Stories}{33}{appendix.C}
-\contentsline {section}{\numberline {3.1}Sprint 1}{33}{section.C.1}
-\contentsline {section}{\numberline {3.2}Sprint 2}{34}{section.C.2}
-\contentsline {section}{\numberline {3.3}Sprint 3}{34}{section.C.3}
-\contentsline {section}{\numberline {3.4}Sprint 4}{34}{section.C.4}
-\contentsline {section}{\numberline {3.5}Sprint 5}{34}{section.C.5}
-\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{35}{appendix.D}
-\contentsline {chapter}{\numberline {E}Code Examples}{39}{appendix.E}
-\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{40}{section.E.1}
-\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{41}{section.E.2}
-\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{42}{section.E.3}
-\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{43}{section.E.4}
-\contentsline {section}{\numberline {5.5}Production Deployment Script}{44}{section.E.5}
-\contentsline {chapter}{Bibliography}{45}{figure.caption.33}
+\contentsline {section}{\numberline {2.4}Sprint 4 - Fancy Quizes and Defect Fixing}{25}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Sprint Planning}{25}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Sprint Retrospective}{25}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}Sprint 5 - Persistence, Report Generation and Testing}{25}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Sprint Planning}{25}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Sprint Retrospective}{26}{subsection.2.5.2}
+\contentsline {chapter}{\numberline {3}Final Design}{27}{chapter.3}
+\contentsline {chapter}{\numberline {4}Testing}{28}{chapter.4}
+\contentsline {section}{\numberline {4.1}Server Side Unit Tests}{28}{section.4.1}
+\contentsline {section}{\numberline {4.2}Client Side Unit Tests}{28}{section.4.2}
+\contentsline {section}{\numberline {4.3}Selenium Integration Tests}{28}{section.4.3}
+\contentsline {chapter}{\numberline {5}Evaluation}{29}{chapter.5}
+\contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{30}{appendix.A}
+\contentsline {chapter}{\numberline {B}Ethics Submission}{31}{appendix.B}
+\contentsline {chapter}{\numberline {C}Sprint Stories}{34}{appendix.C}
+\contentsline {section}{\numberline {3.1}Sprint 1}{34}{section.C.1}
+\contentsline {section}{\numberline {3.2}Sprint 2}{35}{section.C.2}
+\contentsline {section}{\numberline {3.3}Sprint 3}{36}{section.C.3}
+\contentsline {section}{\numberline {3.4}Sprint 4}{36}{section.C.4}
+\contentsline {section}{\numberline {3.5}Sprint 5}{36}{section.C.5}
+\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{37}{appendix.D}
+\contentsline {chapter}{\numberline {E}Code Examples}{42}{appendix.E}
+\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{43}{section.E.1}
+\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{44}{section.E.2}
+\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{45}{section.E.3}
+\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{46}{section.E.4}
+\contentsline {section}{\numberline {5.5}Production Deployment Script}{47}{section.E.5}
+\contentsline {chapter}{Bibliography}{48}{figure.caption.35}
