@@ -66,10 +66,10 @@
 \contentsline {section}{\numberline {3.4}Sprint 4}{38}{section.C.4}
 \contentsline {section}{\numberline {3.5}Sprint 5}{38}{section.C.5}
 \contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{39}{appendix.D}
-\contentsline {chapter}{\numberline {E}Code Examples}{44}{appendix.E}
-\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{45}{section.E.1}
-\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{46}{section.E.2}
-\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{47}{section.E.3}
-\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{48}{section.E.4}
-\contentsline {section}{\numberline {5.5}Production Deployment Script}{49}{section.E.5}
-\contentsline {chapter}{Bibliography}{50}{figure.caption.39}
+\contentsline {chapter}{\numberline {E}Code Examples}{45}{appendix.E}
+\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{46}{section.E.1}
+\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{47}{section.E.2}
+\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{48}{section.E.3}
+\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{49}{section.E.4}
+\contentsline {section}{\numberline {5.5}Production Deployment Script}{50}{section.E.5}
+\contentsline {chapter}{Bibliography}{51}{figure.caption.41}
