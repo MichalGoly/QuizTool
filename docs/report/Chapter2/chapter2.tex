@@ -400,7 +400,8 @@ with each broadcast.
   \begin{lstlisting}[basicstyle=\small]
   {
     "img": "base64encodedImage",
-    "sessionCode": "ABCD1234"
+    "sessionCode": "ABCD1234",
+    "isQuiz": "false"
   }
   \end{lstlisting}
   \caption{The JSON Message Broadcasted on Slide Change}
@@ -456,7 +457,9 @@ for the duration of the session.
 \autoref{fig:quizstudent} on the other hand, shows the view rendered on students'
 clients. They would be able to select one of the options and submit their answers
 only once. The "A", "B", "C", "D", "E" buttons were generated automatically based
-on the text of the slide.
+on the text of the slide. Students submitting their answers would emit a \textit{answer-received}
+Socket.io event, bundled a message in the format \texttt{\{"sessionCode": "ABCD1234", "option": "B"\}},
+which would be then received by lecturer's client and rendered appropriately.
 
 \begin{figure}[h!]
     \centering
@@ -484,7 +487,7 @@ The full sprint retrospective document produced can be found in the
 \subsection{Sprint Planning}
 This sprint focused on addressing a critial bug in the production environment
 concerning the PDF to PNG conversion. Extra types of quizzes would also be added
-to complement the single choice ones availble at the moment. The entire list of estimated stories
+to complement the single choice ones available at the moment. The entire list of estimated stories
 can be found in the \autoref{chap:spintstories} of this report.
 
 \subsection{Production Environment Bug}
@@ -526,8 +529,50 @@ single PDFtk call. The algorithm could stay asynchronous, and the file access ha
 
 \newpage
 \subsection{Extra Types of Quizzes}
+The \texttt{isQuiz} boolean flag was no longer appropriate if extra types of quizzes were
+to be supported. Every slide could be made into a true/false quiz, and quizzes eligible
+to become single choice, could also be marked as multi choice. Changing the slide eligibility
+algorithm was the first step towards having support for all three quizzes. The initial version
+checked if slide's text contained at least "A)" and "B)". The improved version would make a
+slide eligible to become a quiz if one of the following was true:
 
+\begin{itemize}
+  \item "A)" and "B)" was found in the slide's text
+  \item "A." and "B." was found in the slide's text
+  \item At least two bullet characters were found
+\end{itemize}
 
+The \texttt{isQuiz} flag of the \texttt{Slide} schema object has been changed to a \texttt{quizType}
+of type \texttt{string}. It could take the value of \texttt{null}, \texttt{"truefalse"}, \texttt{"single"}
+and \texttt{"multi"}. Furthermore, the JSON message bundled with the \texttt{slide-change} Socket.io
+event was changed to:
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small]
+  {
+    "img": "base64encodedImage",
+    "text": "textOfTheSlide"
+    "quizType": "truefalse"
+    "sessionCode": "ABCD1234"
+  }
+  \end{lstlisting}
+  \caption{The Final JSON Message Broadcasted on Slide Change}
+\end{figure}
+
+This enabled the student's client to know how to render the quiz appropriately. For example if
+the current slide was marked as a multi choice, the client would use the text of the slide,
+extract the answers buttons e.g. "A", "B" and "C", and let student submit their answer.
+The answer could no longer be a single option. It was therefore changed to an array of options.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small]
+  {
+    "sessionCode": "ABCD1234",
+    "options": ["A", "C"]
+  }
+  \end{lstlisting}
+  \caption{The Final JSON Message Emitted when Student Submitted his Answer}
+\end{figure}
 
 \subsection{Sprint Retrospective}
 The full sprint retrospective document produced can be found in the
