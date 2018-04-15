@@ -339,7 +339,32 @@ temporary files would be cleaned from disk.
 \end{figure}
 
 \subsection{Lecture Broadcast}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{broadcast.jpg}
+    \caption{Initial Broadcast View}
+    \label{fig:broadcast}
+\end{figure}
+Lectures could be broadcasted using the \textit{BROADCAST} action button located on the bottom
+of each lecture card in the dashboard. \autoref{fig:broadcast} depicts the lecturer's view,
+once the lecture starts. The initial implementation added in this sprint, did not have the
+concept of a session yet, therefore slides were sent to all students who used any session key
+to log into the tool.
 
+Once the lecture was started, lecturer's client would pull all slides from the back end and emit the very
+first one to all the students. Socket.io would be used to emit a simple event \textit{slide-change} containing
+a JSON message in the following format: \texttt{\{"img": "base64img"\}}. PNG representations of each slide
+were stored in the BSON format internally, but they were sent to clients using the Base64 binary-to-text format.
+Students' clients would be then easily able to render such images using HTML \texttt{<img>} tags. Finally,
+once the lecture was over, a \texttt{null} image would be sent to everyone and students' clients would
+handle it by ending the lecture. The flow has been depicted in the \autoref{fig:sockets}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{sockets.jpg}
+    \caption{Initial Slide Broadcast Flow}
+    \label{fig:sockets}
+\end{figure}
 
 \subsection{Sprint Retrospective}
 
