@@ -273,8 +273,20 @@ checks if the token provided exists in the database, is valid and has not expire
 against the Quiz Tool.
 
 \subsection{Persistence Layer}
-- mongoose
-- models
+MongoDB is a document storage, enabling persistence of JSON-like documents with extra metadata
+including internal object ids. Mongoose\cite{48} is a popular MongoDB object modelling library which has
+been integrated with the server side of the Quiz Tool. It removes the need to write boilerplate code and
+allows developers to focus on getting things done quickly. Schemas describing objects have been created
+and can be found in the \texttt{server/models} directory. They allow mongoose to validate data before
+it is allowed to be persisted in the database. Even though mongo is not a relational database, an
+entity relationship diagram depicted in \autoref{fig:initialERD} has been created to make the design more concrete.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{initialERD.jpg}
+    \caption{Initial Entity Relationship Diagram}
+    \label{fig:initialERD}
+\end{figure}
 
 \subsection{Lecture Upload}
 
