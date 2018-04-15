@@ -33,32 +33,33 @@
 \BOOKMARK [2][-]{subsection.2.3.1}{Sprint Planning}{section.2.3}% 33
 \BOOKMARK [2][-]{subsection.2.3.2}{Session Keys}{section.2.3}% 34
 \BOOKMARK [2][-]{subsection.2.3.3}{Embedding Quizzes}{section.2.3}% 35
-\BOOKMARK [2][-]{subsection.2.3.4}{Sprint Retrospective}{section.2.3}% 36
-\BOOKMARK [1][-]{section.2.4}{Sprint 4 - Fancy Quizes and Defect Fixing}{chapter.2}% 37
-\BOOKMARK [2][-]{subsection.2.4.1}{Sprint Planning}{section.2.4}% 38
-\BOOKMARK [2][-]{subsection.2.4.2}{Sprint Retrospective}{section.2.4}% 39
-\BOOKMARK [1][-]{section.2.5}{Sprint 5 - Persistence, Report Generation and Testing}{chapter.2}% 40
-\BOOKMARK [2][-]{subsection.2.5.1}{Sprint Planning}{section.2.5}% 41
-\BOOKMARK [2][-]{subsection.2.5.2}{Sprint Retrospective}{section.2.5}% 42
-\BOOKMARK [0][-]{chapter.3}{Final Design}{}% 43
-\BOOKMARK [0][-]{chapter.4}{Testing}{}% 44
-\BOOKMARK [1][-]{section.4.1}{Server Side Unit Tests}{chapter.4}% 45
-\BOOKMARK [1][-]{section.4.2}{Client Side Unit Tests}{chapter.4}% 46
-\BOOKMARK [1][-]{section.4.3}{Selenium Integration Tests}{chapter.4}% 47
-\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 48
-\BOOKMARK [0][-]{appendix.A}{Third-Party Code and Libraries}{}% 49
-\BOOKMARK [0][-]{appendix.B}{Ethics Submission}{}% 50
-\BOOKMARK [0][-]{appendix.C}{Sprint Stories}{}% 51
-\BOOKMARK [1][-]{section.C.1}{Sprint 1}{appendix.C}% 52
-\BOOKMARK [1][-]{section.C.2}{Sprint 2}{appendix.C}% 53
-\BOOKMARK [1][-]{section.C.3}{Sprint 3}{appendix.C}% 54
-\BOOKMARK [1][-]{section.C.4}{Sprint 4}{appendix.C}% 55
-\BOOKMARK [1][-]{section.C.5}{Sprint 5}{appendix.C}% 56
-\BOOKMARK [0][-]{appendix.D}{Sprint Retrospective Documents}{}% 57
-\BOOKMARK [0][-]{appendix.E}{Code Examples}{}% 58
-\BOOKMARK [1][-]{section.E.1}{Intial Front End Dockerfile}{appendix.E}% 59
-\BOOKMARK [1][-]{section.E.2}{Initial Back End Dockerfile}{appendix.E}% 60
-\BOOKMARK [1][-]{section.E.3}{Intial Circle CI Config File}{appendix.E}% 61
-\BOOKMARK [1][-]{section.E.4}{Initial Dockerrun.aws.json file}{appendix.E}% 62
-\BOOKMARK [1][-]{section.E.5}{Production Deployment Script}{appendix.E}% 63
-\BOOKMARK [0][-]{figure.caption.31}{Bibliography}{}% 64
+\BOOKMARK [2][-]{subsection.2.3.4}{Quiz Rendering}{section.2.3}% 36
+\BOOKMARK [2][-]{subsection.2.3.5}{Sprint Retrospective}{section.2.3}% 37
+\BOOKMARK [1][-]{section.2.4}{Sprint 4 - Fancy Quizes and Defect Fixing}{chapter.2}% 38
+\BOOKMARK [2][-]{subsection.2.4.1}{Sprint Planning}{section.2.4}% 39
+\BOOKMARK [2][-]{subsection.2.4.2}{Sprint Retrospective}{section.2.4}% 40
+\BOOKMARK [1][-]{section.2.5}{Sprint 5 - Persistence, Report Generation and Testing}{chapter.2}% 41
+\BOOKMARK [2][-]{subsection.2.5.1}{Sprint Planning}{section.2.5}% 42
+\BOOKMARK [2][-]{subsection.2.5.2}{Sprint Retrospective}{section.2.5}% 43
+\BOOKMARK [0][-]{chapter.3}{Final Design}{}% 44
+\BOOKMARK [0][-]{chapter.4}{Testing}{}% 45
+\BOOKMARK [1][-]{section.4.1}{Server Side Unit Tests}{chapter.4}% 46
+\BOOKMARK [1][-]{section.4.2}{Client Side Unit Tests}{chapter.4}% 47
+\BOOKMARK [1][-]{section.4.3}{Selenium Integration Tests}{chapter.4}% 48
+\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 49
+\BOOKMARK [0][-]{appendix.A}{Third-Party Code and Libraries}{}% 50
+\BOOKMARK [0][-]{appendix.B}{Ethics Submission}{}% 51
+\BOOKMARK [0][-]{appendix.C}{Sprint Stories}{}% 52
+\BOOKMARK [1][-]{section.C.1}{Sprint 1}{appendix.C}% 53
+\BOOKMARK [1][-]{section.C.2}{Sprint 2}{appendix.C}% 54
+\BOOKMARK [1][-]{section.C.3}{Sprint 3}{appendix.C}% 55
+\BOOKMARK [1][-]{section.C.4}{Sprint 4}{appendix.C}% 56
+\BOOKMARK [1][-]{section.C.5}{Sprint 5}{appendix.C}% 57
+\BOOKMARK [0][-]{appendix.D}{Sprint Retrospective Documents}{}% 58
+\BOOKMARK [0][-]{appendix.E}{Code Examples}{}% 59
+\BOOKMARK [1][-]{section.E.1}{Intial Front End Dockerfile}{appendix.E}% 60
+\BOOKMARK [1][-]{section.E.2}{Initial Back End Dockerfile}{appendix.E}% 61
+\BOOKMARK [1][-]{section.E.3}{Intial Circle CI Config File}{appendix.E}% 62
+\BOOKMARK [1][-]{section.E.4}{Initial Dockerrun.aws.json file}{appendix.E}% 63
+\BOOKMARK [1][-]{section.E.5}{Production Deployment Script}{appendix.E}% 64
+\BOOKMARK [0][-]{figure.caption.33}{Bibliography}{}% 65

@@ -426,6 +426,44 @@ which slides should be treated as quizzes.
     \label{fig:editinitial}
 \end{figure}
 
+\autoref{fig:editinitial} shows two radio buttons for each slide of a lecture.
+These radio buttons could be used to mark certain slides as quizzes, by toggling
+the boolean flag underneath. Text extracted from each slide would decide if a given
+slide can become a quiz. If slide was not eligible to become a quizz, the radio button
+to make it one would be greyed out. The initial implementation of the eligibility
+algorithm checked if given slide contained at least two strings "A)" and "B)".
+This was enough to make a slide eligible to be marked as a single choice quiz and rendered as one,
+as described in the next subsection.
+
+\subsection{Quiz Rendering}
+\autoref{fig:quizlecturer} shows the split screen view for a lecturer when a slide marked as a quiz was rendered
+during a lecture broadcast. The left side shows the currently broadcasted slide, whereas the right
+side shows a bar chart cabaple of displaying students' answers as they come in. Lecturer can
+click the \textit{RETRY} button to wipe students' answers for current question and
+ask again. Once he is happy with the results, he can select the correct answer which will
+be shown to all people in the session, and then render the following slide, or even
+the previous one if necessary. Students' answers were only stored in memory at this point
+for the duration of the session.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{quiz_lecturer.jpg}
+    \caption{Quiz Rendering Lecturer}
+    \label{fig:quizlecturer}
+\end{figure}
+
+\autoref{fig:quizstudent} on the other hand, shows the view rendered on students'
+clients. They would be able to select one of the options and submit their answer
+only once. The "A", "B", "C", "D", "E" buttons are generated automatically based
+on the text of the slide.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{quiz_student.jpg}
+    \caption{Quiz Rendering Student}
+    \label{fig:quizstudent}
+\end{figure}
+
 \subsection{Sprint Retrospective}
 
 
