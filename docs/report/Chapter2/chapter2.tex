@@ -279,7 +279,7 @@ been integrated with the server side of the Quiz Tool. It removes the need to wr
 allows developers to focus on getting things done quickly. Schemas describing objects have been created
 and can be found in the \texttt{server/models} directory. They allow mongoose to validate data before
 it is allowed to be persisted in the database. Even though mongo is not a relational database, an
-entity relationship diagram depicted in \autoref{fig:initialERD} has been created to make the design more concrete.
+entity relationship diagram depicted in the \autoref{fig:initialERD} has been created to make the design more concrete.
 
 \begin{figure}[h!]
     \centering
@@ -290,6 +290,48 @@ entity relationship diagram depicted in \autoref{fig:initialERD} has been create
 
 \subsection{Lecture Upload}
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{dashboard.jpg}
+    \caption{Dashboard View}
+    \label{fig:dashboard}
+\end{figure}
+
+Once lecturer logs into the system he is presented with a dashboard view visible in the \autoref{fig:dashboard}.
+The action button in the bottom right corner of the screen, allows PDF lecture slides to be uploaded.
+The tool does not work with other presentation file formats for simplicity reasons. This could however
+be extended in the future. Binary files can be stored in three major ways in MongoDB:
+
+\begin{enumerate}
+  \item Using the Mongoose BSON (Binary JSON)\cite{49} data type and setting it as type of a property of the document.
+    This limits the file size to 16 MB.
+  \item Using GridFS\cite{50} which relies on the client to have a driver capable of splitting the data into 255 KB
+    chunks, and then streaming them into the database. This allows a binary file of any size to be persisted
+    in MongoDB.
+  \item Storing a file on an external storage, and persisting the reference to the file in the database.
+\end{enumerate}
+
+The BSON approach has been chosen for Quiz Tool, as it significantly simplified the implementation and it is
+unlikely PDF presentations over 16 MB would be commonly used. Again, this is something that could be changed
+in the future if the lifespan of the tool extended beyond the final project submission.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fileupload.jpg}
+    \caption{Initial File Upload}
+    \label{fig:initialfileupload}
+\end{figure}
+
+The initial implementation of the file upload, took the PDF file, stored it directly as BSON in the
+\texttt{Lecture} schema object and split the lecture into slides storing them in MongoDB using
+the \texttt{Slide} schema object. Once the file has been uploaded using the ng2-file-upload\cite{51},
+and persisted in the database, it has been stored temporarly on disk. Text would be extracted from
+each slide using the pdf-extract\cite{52} library, which would be instructed to leave single paged
+PDFs for each slide on disk. These PDFs would be then converted to PNG images using the scissors\cite{53}
+library. Finally, slides' text and images would be grouped together and stored in MongoDB, before the
+temporary files would be cleaned from disk.
+
+\newpage
 \subsection{Lecture Broadcast}
 
 \subsection{Sprint Retrospective}
