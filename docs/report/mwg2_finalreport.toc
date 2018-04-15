@@ -39,7 +39,8 @@
 \contentsline {subsection}{\numberline {2.2.6}Sprint Retrospective}{21}{subsection.2.2.6}
 \contentsline {section}{\numberline {2.3}Sprint 3 - Add Quizes}{21}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Sprint Planning}{21}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Sprint Retrospective}{22}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.2}Session Keys}{21}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Sprint Retrospective}{22}{subsection.2.3.3}
 \contentsline {section}{\numberline {2.4}Sprint 4 - Fancy Quizes and Defect Fixing}{22}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Sprint Planning}{22}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Sprint Retrospective}{22}{subsection.2.4.2}
@@ -67,4 +68,4 @@
 \contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{39}{section.E.3}
 \contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{40}{section.E.4}
 \contentsline {section}{\numberline {5.5}Production Deployment Script}{41}{section.E.5}
-\contentsline {chapter}{Bibliography}{42}{figure.caption.29}
+\contentsline {chapter}{Bibliography}{42}{figure.caption.30}

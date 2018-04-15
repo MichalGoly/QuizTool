@@ -388,7 +388,33 @@ This iteration focused on the ability to create quizzes, embed them into slides 
 broadcast only to people who have the appropriate session key. The entire list of estimated stories
 can be found in the \autoref{chap:spintstories} of this report.
 
+\subsection{Session Keys}
+Every time lecturer started a new broadcast, a random session code would be generated.
+It would consist of eight alphanumerical characters, and the random generator would
+be seeded with the current time, to decrease the probability of generating two idential
+keys for two sessions running at the same time. The \textit{slide-change} Socket.io event
+described in the previous sprint, has been extended to carry the appropriate session key
+with each broadcast.
 
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small]
+  {
+    "img": "base64encodedImage",
+    "sessionCode": "ABCD1234"
+  }
+  \end{lstlisting}
+  \caption{The JSON Message Broadcasted on Slide Change}
+\end{figure}
+
+Students' clients are not uniquely identified by the Quiz Tool, therefore slides would
+be broadcasted to all clients participating in the broadcast. Each client would
+then know whether they have to update their \texttt{<img>} tag, by checking
+if the session key entered by the student matches the key bundled with the image slide
+arrived.
+
+\subsection{Embedding Quizzes}
+Each \texttt{Slide} in the system consisted of a PNG image and text extracted
+from the PDF presentation uploaded by a lecturer.
 
 \subsection{Sprint Retrospective}
 
