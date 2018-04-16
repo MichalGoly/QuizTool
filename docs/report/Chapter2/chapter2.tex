@@ -372,7 +372,7 @@ This was a very important sprint as it shaped the overall structure of the tool.
 of the Quiz Tool have been designed and implemented on both the front and the back end.
 Schemas have been introduced to handle persistence, file uploads were implemented and
 lecture slides could be emitted to all students using sockets in real time. The sprint
-took two weeks, instead of one, as it was over filled with too many issues.
+took two weeks, instead of one, as it was overfilled with too many issues.
 The full sprint retrospective document produced can be found in the \autoref{chap:spintretrospectives} of this report.
 
 \begin{figure}[h!]
@@ -385,7 +385,7 @@ The full sprint retrospective document produced can be found in the \autoref{cha
 \section{Sprint 3 - Add Quizes}
 \subsection{Sprint Planning}
 This iteration focused on the ability to create quizzes, embed them into slides and
-broadcast only to people who have the appropriate session key. The entire list of estimated stories
+broadcast only to people who had the appropriate session key. The entire list of estimated stories
 can be found in the \autoref{chap:spintstories} of this report.
 
 \subsection{Session Keys}
@@ -457,8 +457,8 @@ for the duration of the session.
 \autoref{fig:quizstudent} on the other hand, shows the view rendered on students'
 clients. They would be able to select one of the options and submit their answers
 only once. The "A", "B", "C", "D", "E" buttons were generated automatically based
-on the text of the slide. Students submitting their answers would emit a \textit{answer-received}
-Socket.io event, bundled a message in the format \texttt{\{"sessionCode": "ABCD1234", "option": "B"\}},
+on the text of the slide. Students submitting their answers would emit an \textit{answer-received}
+Socket.io event, bundled with a message in the format \texttt{\{"sessionCode": "ABCD1234", "option": "B"\}},
 which would be then received by lecturer's client and rendered appropriately.
 
 \begin{figure}[h!]
@@ -518,7 +518,7 @@ to upload a larger test PDF crashed the production environment in the same manne
 Finally, the algorithm has been changed to no longer use single paged PDFs, and convert them
 one by one to PNGs. The scissors library has been removed, and the node-pdf2img\cite{56} used
 instead to take the whole PDF presentation, and extract all the PNG files from it using a
-single PDFtk call. The algorithm could stay asynchronous, and the file access has been almost halved.
+single PDFtk call. The algorithm could stay asynchronous, and the file system access has been almost halved.
 
 \begin{figure}[h!]
     \centering
