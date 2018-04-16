@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  16 APR 2018 14:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  16 APR 2018 14:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -561,11 +561,11 @@ s been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.69 \newpage
-              [3] (./mwg2_finalreport.lot)
+              [3] [4] (./mwg2_finalreport.lot)
 \tf@lot=\write6
 \openout6 = `mwg2_finalreport.lot'.
 
- [4]
+ [5]
 \openout2 = `Chapter1/chapter1.aux'.
 
  (./Chapter1/chapter1.tex
@@ -579,7 +579,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 [1
 
 
-] [2] <images/qwizdom.png, id=543, 348.30125pt x 293.095pt>
+] [2] <images/qwizdom.png, id=551, 348.30125pt x 293.095pt>
 File: images/qwizdom.png Graphic file (type png)
 
 <use images/qwizdom.png>
@@ -597,7 +597,7 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 
 (./Chapter2/chapter2.tex
 Chapter 2.
-<images/../../design/app_structure.jpg, id=602, 2600.71625pt x 2515.3975pt>
+<images/../../design/app_structure.jpg, id=610, 2600.71625pt x 2515.3975pt>
 File: images/../../design/app_structure.jpg Graphic file (type jpg)
 
 <use images/../../design/app_structure.jpg>
@@ -613,14 +613,14 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ] [8 <./images/../../design/app_structure.jpg>]
-<images/circleci.jpg, id=640, 963.6pt x 542.025pt>
+<images/circleci.jpg, id=648, 963.6pt x 542.025pt>
 File: images/circleci.jpg Graphic file (type jpg)
  <use images/circleci.jpg>
 Package pdftex.def Info: images/circleci.jpg used on input line 88.
 (pdftex.def)             Requested size: 341.43436pt x 192.05217pt.
 
 [9 <./images/circleci.jpg>]
-<images/elasticbeanstalk.jpg, id=656, 963.6pt x 542.025pt>
+<images/elasticbeanstalk.jpg, id=664, 963.6pt x 542.025pt>
 File: images/elasticbeanstalk.jpg Graphic file (type jpg)
 
 <use images/elasticbeanstalk.jpg>
@@ -632,7 +632,7 @@ Overfull \hbox (1.78854pt too wide) in paragraph at lines 129--143
 s[[]][[]]. The \OT1/pcr/m/n/10.95 $AWS[]ACCESS[]KEY[]ID
  []
 
-<images/deployment.jpg, id=663, 963.6pt x 542.025pt>
+<images/deployment.jpg, id=671, 963.6pt x 542.025pt>
 File: images/deployment.jpg Graphic file (type jpg)
 
 <use images/deployment.jpg>
@@ -643,7 +643,7 @@ Package pdftex.def Info: images/deployment.jpg used on input line 146.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [10 <./images/elasticbeanstalk.jpg>]
-<images/../../design/story_board_lecturer.jpg, id=678, 2619.7875pt x 3840.3475p
+<images/../../design/story_board_lecturer.jpg, id=687, 2619.7875pt x 3840.3475p
 t>
 File: images/../../design/story_board_lecturer.jpg Graphic file (type jpg)
  <use images/../../design/story_board_lecturer.jpg>
@@ -655,7 +655,7 @@ nput line 174.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-<images/../../design/story_board_student.jpg, id=679, 2619.7875pt x 2705.10625p
+<images/../../design/story_board_student.jpg, id=688, 2619.7875pt x 2705.10625p
 t>
 File: images/../../design/story_board_student.jpg Graphic file (type jpg)
  <use images/../../design/story_board_student.jpg>
@@ -664,21 +664,21 @@ put line 181.
 (pdftex.def)             Requested size: 384.10959pt x 396.58504pt.
  [11 <./images/deployment.jpg>] [12 <./images/../../design/story_board_lecturer
 .jpg>]
-<images/burn1.jpg, id=692, 723.45282pt x 470.50781pt>
+<images/burn1.jpg, id=700, 723.45282pt x 470.50781pt>
 File: images/burn1.jpg Graphic file (type jpg)
  <use images/burn1.jpg>
 Package pdftex.def Info: images/burn1.jpg used on input line 195.
 (pdftex.def)             Requested size: 426.79134pt x 277.56848pt.
 
 [13 <./images/../../design/story_board_student.jpg>] [14 <./images/burn1.jpg>]
-<images/student_login.jpg, id=705, 451.6875pt x 300.3722pt>
+<images/student_login.jpg, id=713, 451.6875pt x 300.3722pt>
 File: images/student_login.jpg Graphic file (type jpg)
 
 <use images/student_login.jpg>
 Package pdftex.def Info: images/student_login.jpg used on input line 222.
 (pdftex.def)             Requested size: 341.43436pt x 227.06607pt.
 
-<images/lecturer_login.jpg, id=706, 451.6875pt x 301.125pt>
+<images/lecturer_login.jpg, id=714, 451.6875pt x 301.125pt>
 File: images/lecturer_login.jpg Graphic file (type jpg)
 
 <use images/lecturer_login.jpg>
@@ -710,7 +710,7 @@ Overfull \hbox (41.48315pt too wide) in paragraph at lines 266--274
 /m/n/10.95 client/src/app/services/auth.service.ts
  []
 
-<images/initialERD.jpg, id=719, 3493.05pt x 2456.17625pt>
+<images/initialERD.jpg, id=727, 3493.05pt x 2456.17625pt>
 File: images/initialERD.jpg Graphic file (type jpg)
 
 <use images/initialERD.jpg>
@@ -720,28 +720,28 @@ Package pdftex.def Info: images/initialERD.jpg used on input line 286.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<images/dashboard.jpg, id=720, 721.94719pt x 630.10406pt>
+<images/dashboard.jpg, id=728, 721.94719pt x 630.10406pt>
 File: images/dashboard.jpg Graphic file (type jpg)
 
 <use images/dashboard.jpg>
 Package pdftex.def Info: images/dashboard.jpg used on input line 295.
 (pdftex.def)             Requested size: 341.43436pt x 297.99495pt.
  [16] [17 <./images/initialERD.jpg> <./images/dashboard.jpg>] <images/fileuploa
-d.jpg, id=748, 963.6pt x 542.025pt>
+d.jpg, id=757, 963.6pt x 542.025pt>
 File: images/fileupload.jpg Graphic file (type jpg)
 
 <use images/fileupload.jpg>
 Package pdftex.def Info: images/fileupload.jpg used on input line 320.
 (pdftex.def)             Requested size: 341.43436pt x 192.05217pt.
 
-<images/dashboard_upload.jpg, id=752, 721.19438pt x 630.85687pt>
+<images/dashboard_upload.jpg, id=761, 721.19438pt x 630.85687pt>
 File: images/dashboard_upload.jpg Graphic file (type jpg)
 
 <use images/dashboard_upload.jpg>
 Package pdftex.def Info: images/dashboard_upload.jpg used on input line 336.
 (pdftex.def)             Requested size: 341.43436pt x 298.65901pt.
 
-<images/broadcast.jpg, id=753, 721.94719pt x 630.85687pt>
+<images/broadcast.jpg, id=762, 721.94719pt x 630.85687pt>
 File: images/broadcast.jpg Graphic file (type jpg)
 
 <use images/broadcast.jpg>
@@ -761,7 +761,7 @@ File: omspcr.fd
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 356.
 
-<images/sockets.jpg, id=772, 963.6pt x 542.025pt>
+<images/sockets.jpg, id=780, 963.6pt x 542.025pt>
 File: images/sockets.jpg Graphic file (type jpg)
  <use images/sockets.jpg>
 Package pdftex.def Info: images/sockets.jpg used on input line 364.
@@ -771,35 +771,35 @@ Package pdftex.def Info: images/sockets.jpg used on input line 364.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [19 <./images/dashboard_upload.jpg>] [20 <./images/broadcast.jpg> <./images/soc
-kets.jpg>] <images/burn2.jpg, id=785, 723.45282pt x 471.26062pt>
+kets.jpg>] <images/burn2.jpg, id=793, 723.45282pt x 471.26062pt>
 File: images/burn2.jpg Graphic file (type jpg)
 
 <use images/burn2.jpg>
 Package pdftex.def Info: images/burn2.jpg used on input line 380.
 (pdftex.def)             Requested size: 426.79134pt x 278.01259pt.
  [21 <./images/burn2.jpg>]
-<images/editinitial.jpg, id=792, 704.6325pt x 628.59843pt>
+<images/editinitial.jpg, id=800, 704.6325pt x 628.59843pt>
 File: images/editinitial.jpg Graphic file (type jpg)
 
 <use images/editinitial.jpg>
 Package pdftex.def Info: images/editinitial.jpg used on input line 425.
 (pdftex.def)             Requested size: 341.43436pt x 304.5917pt.
  [22 <./images/editinitial.jpg>]
-<images/quiz_lecturer.jpg, id=806, 721.19438pt x 630.10406pt>
+<images/quiz_lecturer.jpg, id=815, 721.19438pt x 630.10406pt>
 File: images/quiz_lecturer.jpg Graphic file (type jpg)
 
 <use images/quiz_lecturer.jpg>
 Package pdftex.def Info: images/quiz_lecturer.jpg used on input line 452.
 (pdftex.def)             Requested size: 341.43436pt x 298.30261pt.
 
-<images/quiz_student.jpg, id=808, 721.94719pt x 630.10406pt>
+<images/quiz_student.jpg, id=817, 721.94719pt x 630.10406pt>
 File: images/quiz_student.jpg Graphic file (type jpg)
 
 <use images/quiz_student.jpg>
 Package pdftex.def Info: images/quiz_student.jpg used on input line 466.
 (pdftex.def)             Requested size: 341.43436pt x 297.99495pt.
  [23 <./images/quiz_lecturer.jpg>]
-<images/burn3.jpg, id=816, 721.94719pt x 469.755pt>
+<images/burn3.jpg, id=824, 721.94719pt x 469.755pt>
 File: images/burn3.jpg Graphic file (type jpg)
  <use images/burn3.jpg>
 Package pdftex.def Info: images/burn3.jpg used on input line 480.
@@ -809,7 +809,7 @@ Package pdftex.def Info: images/burn3.jpg used on input line 480.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [24 <./images/quiz_student.jpg>]
-<images/split1.jpg, id=824, 963.6pt x 542.025pt>
+<images/split1.jpg, id=832, 963.6pt x 542.025pt>
 File: images/split1.jpg Graphic file (type jpg)
  <use images/split1.jpg>
 Package pdftex.def Info: images/split1.jpg used on input line 507.
@@ -818,14 +818,14 @@ Package pdftex.def Info: images/split1.jpg used on input line 507.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[25 <./images/burn3.jpg>] <images/split2.jpg, id=832, 963.6pt x 542.025pt>
+[25 <./images/burn3.jpg>] <images/split2.jpg, id=840, 963.6pt x 542.025pt>
 File: images/split2.jpg Graphic file (type jpg)
 
 <use images/split2.jpg>
 Package pdftex.def Info: images/split2.jpg used on input line 525.
 (pdftex.def)             Requested size: 341.43436pt x 192.05217pt.
  [26 <./images/split1.jpg> <./images/split2.jpg>]
-<images/burn4.jpg, id=840, 723.45282pt x 473.51906pt>
+<images/burn4.jpg, id=848, 723.45282pt x 473.51906pt>
 File: images/burn4.jpg Graphic file (type jpg)
  <use images/burn4.jpg>
 Package pdftex.def Info: images/burn4.jpg used on input line 586.
@@ -835,24 +835,31 @@ Package pdftex.def Info: images/burn4.jpg used on input line 586.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [27] [28 <./images/burn4.jpg>] [29]
-<images/finalERD.jpg, id=900, 3467.95625pt x 2658.93375pt>
+<images/finalERD.jpg, id=908, 3467.95625pt x 2658.93375pt>
 File: images/finalERD.jpg Graphic file (type jpg)
 
 <use images/finalERD.jpg>
 Package pdftex.def Info: images/finalERD.jpg used on input line 679.
 (pdftex.def)             Requested size: 341.43436pt x 261.7706pt.
 
-<images/sessions.jpg, id=904, 718.93594pt x 630.10406pt>
+<images/sessions.jpg, id=912, 718.93594pt x 378.66469pt>
 File: images/sessions.jpg Graphic file (type jpg)
 
 <use images/sessions.jpg>
 Package pdftex.def Info: images/sessions.jpg used on input line 697.
-(pdftex.def)             Requested size: 341.43436pt x 299.25447pt.
+(pdftex.def)             Requested size: 341.43436pt x 179.8387pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[30 <./images/finalERD.jpg>] [31 <./images/sessions.jpg>]
+[30 <./images/finalERD.jpg>]
+<images/burn5.jpg, id=920, 719.68875pt x 471.26062pt>
+File: images/burn5.jpg Graphic file (type jpg)
+ <use images/burn5.jpg>
+Package pdftex.def Info: images/burn5.jpg used on input line 713.
+(pdftex.def)             Requested size: 426.79134pt x 279.47952pt.
+
+[31 <./images/sessions.jpg> <./images/burn5.jpg>]
 Chapter 3.
 [32
 
@@ -890,7 +897,7 @@ LaTeX Warning: Citation `apache_license' on page 35 undefined on input line 16.
 
  (./Appendix2/appendix2.tex
 Appendix B.
-<Appendix2/9563.pdf, id=938, 614.295pt x 794.97pt>
+<Appendix2/9563.pdf, id=947, 614.295pt x 794.97pt>
 File: Appendix2/9563.pdf Graphic file (type pdf)
  <use Appendix2/9563.pdf>
 Package pdftex.def Info: Appendix2/9563.pdf used on input line 6.
@@ -901,7 +908,7 @@ File: Appendix2/9563.pdf Graphic file (type pdf)
 Package pdftex.def Info: Appendix2/9563.pdf used on input line 6.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 
-<Appendix2/9563.pdf, id=941, page=1, 614.295pt x 794.97pt>
+<Appendix2/9563.pdf, id=950, page=1, 614.295pt x 794.97pt>
 File: Appendix2/9563.pdf Graphic file (type pdf)
 
 <use Appendix2/9563.pdf, page 1>
@@ -931,7 +938,7 @@ File: Appendix2/9563.pdf Graphic file (type pdf)
 Package pdftex.def Info: Appendix2/9563.pdf, page1 used on input line 6.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
  [37 <./Appendix2/9563.pdf>]
-<Appendix2/9563.pdf, id=954, page=2, 614.295pt x 794.97pt>
+<Appendix2/9563.pdf, id=964, page=2, 614.295pt x 794.97pt>
 File: Appendix2/9563.pdf Graphic file (type pdf)
 
 <use Appendix2/9563.pdf, page 2>
@@ -952,7 +959,7 @@ Package pdftex.def Info: Appendix2/9563.pdf, page2 used on input line 6.
 
 (./Appendix3/appendix3.tex
 Appendix C.
-<Appendix3/1.jpg, id=960, 737.00343pt x 674.52pt>
+<Appendix3/1.jpg, id=969, 737.00343pt x 674.52pt>
 File: Appendix3/1.jpg Graphic file (type jpg)
  <use Appendix3/1.jpg>
 Package pdftex.def Info: Appendix3/1.jpg used on input line 9.
@@ -962,31 +969,38 @@ Package pdftex.def Info: Appendix3/1.jpg used on input line 9.
 
 
 
- <./Appendix3/1.jpg>] <Appendix3/2.jpg, id=966, 737.75626pt x 662.475pt>
+ <./Appendix3/1.jpg>] <Appendix3/2.jpg, id=975, 737.75626pt x 662.475pt>
 File: Appendix3/2.jpg Graphic file (type jpg)
 
 <use Appendix3/2.jpg>
 Package pdftex.def Info: Appendix3/2.jpg used on input line 18.
 (pdftex.def)             Requested size: 384.10959pt x 344.91354pt.
  [40 <./Appendix3/2.jpg>]
-<Appendix3/3.jpg, id=972, 735.49782pt x 472.01344pt>
+<Appendix3/3.jpg, id=982, 735.49782pt x 472.01344pt>
 File: Appendix3/3.jpg Graphic file (type jpg)
  <use Appendix3/3.jpg>
 Package pdftex.def Info: Appendix3/3.jpg used on input line 27.
 (pdftex.def)             Requested size: 384.10959pt x 246.51434pt.
 
-<Appendix3/4.jpg, id=973, 738.50906pt x 317.68687pt>
+<Appendix3/4.jpg, id=983, 738.50906pt x 317.68687pt>
 File: Appendix3/4.jpg Graphic file (type jpg)
  <use Appendix3/4.jpg>
 Package pdftex.def Info: Appendix3/4.jpg used on input line 35.
 (pdftex.def)             Requested size: 384.10959pt x 165.23204pt.
-)
+
 [41 <./Appendix3/3.jpg> <./Appendix3/4.jpg>]
+<Appendix3/5.jpg, id=989, 738.50906pt x 547.2947pt>
+File: Appendix3/5.jpg Graphic file (type jpg)
+ <use Appendix3/5.jpg>
+Package pdftex.def Info: Appendix3/5.jpg used on input line 44.
+(pdftex.def)             Requested size: 384.10959pt x 284.65334pt.
+)
+[42 <./Appendix3/5.jpg>]
 \openout2 = `Appendix4/appendix4.aux'.
 
  (./Appendix4/appendix4.tex
 Appendix D.
-<Appendix4/1.pdf, id=980, 614.295pt x 794.97pt>
+<Appendix4/1.pdf, id=995, 614.295pt x 794.97pt>
 File: Appendix4/1.pdf Graphic file (type pdf)
  <use Appendix4/1.pdf>
 Package pdftex.def Info: Appendix4/1.pdf used on input line 7.
@@ -996,7 +1010,7 @@ File: Appendix4/1.pdf Graphic file (type pdf)
 <use Appendix4/1.pdf>
 Package pdftex.def Info: Appendix4/1.pdf used on input line 7.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
- <Appendix4/1.pdf, id=983, page=1, 614.295pt x 794.97pt>
+ <Appendix4/1.pdf, id=998, page=1, 614.295pt x 794.97pt>
 File: Appendix4/1.pdf Graphic file (type pdf)
 
 <use Appendix4/1.pdf, page 1>
@@ -1006,7 +1020,7 @@ File: Appendix4/1.pdf Graphic file (type pdf)
  <use Appendix4/1.pdf, page 1>
 Package pdftex.def Info: Appendix4/1.pdf, page1 used on input line 7.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [42
+ [43
 
 
 
@@ -1025,11 +1039,11 @@ File: Appendix4/1.pdf Graphic file (type pdf)
 <use Appendix4/1.pdf, page 1>
 Package pdftex.def Info: Appendix4/1.pdf, page1 used on input line 7.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [43 <./Appendix4/1.pdf
+ [44 <./Appendix4/1.pdf
 
 pdfTeX warning: pdflatex (file ./Appendix4/1.pdf): PDF inclusion: invalid other
  resource which is no dict (key 'ProcSets', type <array>); ignored.
->] <Appendix4/2.pdf, id=1000, 614.295pt x 794.97pt>
+>] <Appendix4/2.pdf, id=1015, 614.295pt x 794.97pt>
 File: Appendix4/2.pdf Graphic file (type pdf)
  <use Appendix4/2.pdf>
 Package pdftex.def Info: Appendix4/2.pdf used on input line 8.
@@ -1039,7 +1053,7 @@ File: Appendix4/2.pdf Graphic file (type pdf)
 <use Appendix4/2.pdf>
 Package pdftex.def Info: Appendix4/2.pdf used on input line 8.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
- <Appendix4/2.pdf, id=1003, page=1, 614.295pt x 794.97pt>
+ <Appendix4/2.pdf, id=1018, page=1, 614.295pt x 794.97pt>
 File: Appendix4/2.pdf Graphic file (type pdf)
 
 <use Appendix4/2.pdf, page 1>
@@ -1063,11 +1077,11 @@ File: Appendix4/2.pdf Graphic file (type pdf)
 <use Appendix4/2.pdf, page 1>
 Package pdftex.def Info: Appendix4/2.pdf, page1 used on input line 8.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [44 <./Appendix4/2.pdf
+ [45 <./Appendix4/2.pdf
 
 pdfTeX warning: pdflatex (file ./Appendix4/2.pdf): PDF inclusion: invalid other
  resource which is no dict (key 'ProcSets', type <array>); ignored.
->] <Appendix4/2_5.pdf, id=1015, 614.295pt x 794.97pt>
+>] <Appendix4/2_5.pdf, id=1030, 614.295pt x 794.97pt>
 File: Appendix4/2_5.pdf Graphic file (type pdf)
  <use Appendix4/2_5.pdf>
 Package pdftex.def Info: Appendix4/2_5.pdf used on input line 9.
@@ -1078,7 +1092,7 @@ File: Appendix4/2_5.pdf Graphic file (type pdf)
 Package pdftex.def Info: Appendix4/2_5.pdf used on input line 9.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 
-<Appendix4/2_5.pdf, id=1018, page=1, 614.295pt x 794.97pt>
+<Appendix4/2_5.pdf, id=1033, page=1, 614.295pt x 794.97pt>
 File: Appendix4/2_5.pdf Graphic file (type pdf)
 
 <use Appendix4/2_5.pdf, page 1>
@@ -1102,11 +1116,11 @@ File: Appendix4/2_5.pdf Graphic file (type pdf)
 <use Appendix4/2_5.pdf, page 1>
 Package pdftex.def Info: Appendix4/2_5.pdf, page1 used on input line 9.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [45 <./Appendix4/2_5.pdf
+ [46 <./Appendix4/2_5.pdf
 
 pdfTeX warning: pdflatex (file ./Appendix4/2_5.pdf): PDF inclusion: invalid oth
 er resource which is no dict (key 'ProcSets', type <array>); ignored.
->] <Appendix4/3.pdf, id=1030, 614.295pt x 794.97pt>
+>] <Appendix4/3.pdf, id=1046, 614.295pt x 794.97pt>
 File: Appendix4/3.pdf Graphic file (type pdf)
  <use Appendix4/3.pdf>
 Package pdftex.def Info: Appendix4/3.pdf used on input line 10.
@@ -1116,7 +1130,7 @@ File: Appendix4/3.pdf Graphic file (type pdf)
 <use Appendix4/3.pdf>
 Package pdftex.def Info: Appendix4/3.pdf used on input line 10.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
- <Appendix4/3.pdf, id=1033, page=1, 614.295pt x 794.97pt>
+ <Appendix4/3.pdf, id=1049, page=1, 614.295pt x 794.97pt>
 File: Appendix4/3.pdf Graphic file (type pdf)
 
 <use Appendix4/3.pdf, page 1>
@@ -1140,11 +1154,11 @@ File: Appendix4/3.pdf Graphic file (type pdf)
 <use Appendix4/3.pdf, page 1>
 Package pdftex.def Info: Appendix4/3.pdf, page1 used on input line 10.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [46 <./Appendix4/3.pdf
+ [47 <./Appendix4/3.pdf
 
 pdfTeX warning: pdflatex (file ./Appendix4/3.pdf): PDF inclusion: invalid other
  resource which is no dict (key 'ProcSets', type <array>); ignored.
->] <Appendix4/4.pdf, id=1045, 614.295pt x 794.97pt>
+>] <Appendix4/4.pdf, id=1061, 614.295pt x 794.97pt>
 File: Appendix4/4.pdf Graphic file (type pdf)
  <use Appendix4/4.pdf>
 Package pdftex.def Info: Appendix4/4.pdf used on input line 11.
@@ -1154,7 +1168,7 @@ File: Appendix4/4.pdf Graphic file (type pdf)
 <use Appendix4/4.pdf>
 Package pdftex.def Info: Appendix4/4.pdf used on input line 11.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
- <Appendix4/4.pdf, id=1048, page=1, 614.295pt x 794.97pt>
+ <Appendix4/4.pdf, id=1064, page=1, 614.295pt x 794.97pt>
 File: Appendix4/4.pdf Graphic file (type pdf)
 
 <use Appendix4/4.pdf, page 1>
@@ -1178,20 +1192,58 @@ File: Appendix4/4.pdf Graphic file (type pdf)
 <use Appendix4/4.pdf, page 1>
 Package pdftex.def Info: Appendix4/4.pdf, page1 used on input line 11.
 (pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
- [47 <./Appendix4/4.pdf
+ [48 <./Appendix4/4.pdf
 
 pdfTeX warning: pdflatex (file ./Appendix4/4.pdf): PDF inclusion: invalid other
+ resource which is no dict (key 'ProcSets', type <array>); ignored.
+>] <Appendix4/5.pdf, id=1076, 614.295pt x 794.97pt>
+File: Appendix4/5.pdf Graphic file (type pdf)
+ <use Appendix4/5.pdf>
+Package pdftex.def Info: Appendix4/5.pdf used on input line 12.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+File: Appendix4/5.pdf Graphic file (type pdf)
+
+<use Appendix4/5.pdf>
+Package pdftex.def Info: Appendix4/5.pdf used on input line 12.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+ <Appendix4/5.pdf, id=1079, page=1, 614.295pt x 794.97pt>
+File: Appendix4/5.pdf Graphic file (type pdf)
+
+<use Appendix4/5.pdf, page 1>
+Package pdftex.def Info: Appendix4/5.pdf, page1 used on input line 12.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+File: Appendix4/5.pdf Graphic file (type pdf)
+ <use Appendix4/5.pdf, page 1>
+Package pdftex.def Info: Appendix4/5.pdf, page1 used on input line 12.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+File: Appendix4/5.pdf Graphic file (type pdf)
+
+<use Appendix4/5.pdf, page 1>
+Package pdftex.def Info: Appendix4/5.pdf, page1 used on input line 12.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+File: Appendix4/5.pdf Graphic file (type pdf)
+ <use Appendix4/5.pdf, page 1>
+Package pdftex.def Info: Appendix4/5.pdf, page1 used on input line 12.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+File: Appendix4/5.pdf Graphic file (type pdf)
+
+<use Appendix4/5.pdf, page 1>
+Package pdftex.def Info: Appendix4/5.pdf, page1 used on input line 12.
+(pdftex.def)             Requested size: 597.78697pt x 773.60669pt.
+ [49 <./Appendix4/5.pdf
+
+pdfTeX warning: pdflatex (file ./Appendix4/5.pdf): PDF inclusion: invalid other
  resource which is no dict (key 'ProcSets', type <array>); ignored.
 >])
 \openout2 = `Appendix5/appendix5.aux'.
 
  (./Appendix5/appendix5.tex
 Appendix E.
-[48
+[50
 
 
 
-] [49] [50]
+] [51] [52]
 LaTeX Font Info:    Try loading font information for OML+ptm on input line 92.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlptm.fd
 File: omlptm.fd 
@@ -1199,15 +1251,15 @@ File: omlptm.fd
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 92.
 
-[51] [52] [53]
+[53] [54] [55]
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <6> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 213.
-) [54]
+) [56]
 \openout2 = `Appendix6/appendix6.aux'.
 
  (./Appendix6/appendix6.tex
 Appendix F.
-<Appendix6/example.pdf, id=1304, 597.51233pt x 845.0471pt>
+<Appendix6/example.pdf, id=1334, 597.51233pt x 845.0471pt>
 File: Appendix6/example.pdf Graphic file (type pdf)
 
 <use Appendix6/example.pdf>
@@ -1218,7 +1270,7 @@ File: Appendix6/example.pdf Graphic file (type pdf)
 Package pdftex.def Info: Appendix6/example.pdf used on input line 6.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
 
-<Appendix6/example.pdf, id=1307, page=1, 597.51233pt x 845.0471pt>
+<Appendix6/example.pdf, id=1337, page=1, 597.51233pt x 845.0471pt>
 File: Appendix6/example.pdf Graphic file (type pdf)
 
 <use Appendix6/example.pdf, page 1>
@@ -1229,7 +1281,7 @@ File: Appendix6/example.pdf Graphic file (type pdf)
 Package pdftex.def Info: Appendix6/example.pdf, page1 used on input line 6.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
-[55
+[57
 
 
 
@@ -1247,7 +1299,7 @@ File: Appendix6/example.pdf Graphic file (type pdf)
 <use Appendix6/example.pdf, page 1>
 Package pdftex.def Info: Appendix6/example.pdf, page1 used on input line 6.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
- [56 <./Appendix6/example.pdf>])
+ [58 <./Appendix6/example.pdf>])
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no œ in font ptmr7t!
@@ -1281,7 +1333,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 148--149
  Avail-able:
  []
 
-[57
+[59
 
 
 ]
@@ -1325,7 +1377,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 199--200
 line] Avail-able:
  []
 
-[58]
+[60]
 Underfull \hbox (badness 10000) in paragraph at lines 211--212
 []\OT1/ptm/m/n/10.95 docker-compose, "docker-compose home-page", [On-line] Avai
 l-able:
@@ -1337,7 +1389,7 @@ Missing character: There is no œ in font ptmr7t!
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no  in font ptmr7t!
-[59]
+[61]
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no œ in font ptmr7t!
@@ -1392,7 +1444,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 299--300
 e[]deploy[]docker[]ecs.html,
  []
 
-[60]
+[62]
 Underfull \hbox (badness 2080) in paragraph at lines 311--312
 []\OT1/ptm/m/n/10.95 How to setup Elas-tic Beanstalk De-ploy-ment, "cir-cleci f
 o-rum", [On-line] Avail-able:
@@ -1416,7 +1468,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 336--337
  Avail-able:
  []
 
-[61]
+[63]
 Underfull \hbox (badness 10000) in paragraph at lines 353--354
 []\OT1/ptm/m/n/10.95 ng2-file-upload, "ng2-file-upload home-page", [On-line] Av
 ail-able: https://valor-
@@ -1441,7 +1493,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 374--375
 
 
 AED: lastpage setting LastPage
-[62]
+[64]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 384.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 384.
  (./mwg2_finalreport.aux (./cover.aux) (./declaration.aux)
@@ -1464,10 +1516,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 384.
  ) 
 Here is how much of TeX's memory you used:
- 10859 strings out of 493029
- 161101 string characters out of 6136234
- 337186 words of memory out of 5000000
- 13566 multiletter control sequences out of 15000+600000
+ 10884 strings out of 493029
+ 161523 string characters out of 6136234
+ 337296 words of memory out of 5000000
+ 13583 multiletter control sequences out of 15000+600000
  30874 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  49i,18n,48p,568b,1297s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1479,10 +1531,10 @@ type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on mwg2_finalreport.pdf (70 pages, 6541600 bytes).
+Output written on mwg2_finalreport.pdf (73 pages, 6838470 bytes).
 PDF statistics:
- 1503 PDF objects out of 1728 (max. 8388607)
- 1338 compressed objects within 14 object streams
- 522 named destinations out of 1000 (max. 500000)
- 877 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1536 PDF objects out of 1728 (max. 8388607)
+ 1360 compressed objects within 14 object streams
+ 527 named destinations out of 1000 (max. 500000)
+ 907 words of extra memory for PDF output out of 10000 (max. 10000000)
 

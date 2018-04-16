@@ -67,14 +67,14 @@
 \contentsline {section}{\numberline {3.2}Sprint 2}{40}{section.C.2}
 \contentsline {section}{\numberline {3.3}Sprint 3}{41}{section.C.3}
 \contentsline {section}{\numberline {3.4}Sprint 4}{41}{section.C.4}
-\contentsline {section}{\numberline {3.5}Sprint 5}{41}{section.C.5}
-\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{42}{appendix.D}
-\contentsline {chapter}{\numberline {E}Code Examples}{48}{appendix.E}
-\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{49}{section.E.1}
-\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{50}{section.E.2}
-\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{51}{section.E.3}
-\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{52}{section.E.4}
-\contentsline {section}{\numberline {5.5}Production Deployment Script}{53}{section.E.5}
-\contentsline {section}{\numberline {5.6}Final Dockerrun.aws.json file}{54}{section.E.6}
-\contentsline {chapter}{\numberline {F}PDF Report Examples}{55}{appendix.F}
-\contentsline {chapter}{Bibliography}{57}{appendix.F}
+\contentsline {section}{\numberline {3.5}Sprint 5}{42}{section.C.5}
+\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{43}{appendix.D}
+\contentsline {chapter}{\numberline {E}Code Examples}{50}{appendix.E}
+\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{51}{section.E.1}
+\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{52}{section.E.2}
+\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{53}{section.E.3}
+\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{54}{section.E.4}
+\contentsline {section}{\numberline {5.5}Production Deployment Script}{55}{section.E.5}
+\contentsline {section}{\numberline {5.6}Final Dockerrun.aws.json file}{56}{section.E.6}
+\contentsline {chapter}{\numberline {F}PDF Report Examples}{57}{appendix.F}
+\contentsline {chapter}{Bibliography}{59}{appendix.F}

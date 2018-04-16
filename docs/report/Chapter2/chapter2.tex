@@ -590,7 +590,7 @@ The full sprint retrospective document produced can be found in the
 
 \section{Sprint 5 - Persistence, Report Generation and Testing}
 \subsection{Sprint Planning}
-The final sprint focused on the persistence of students' answers in the database and
+The final sprint focused on the persistence of students' answers in the database, and
 generation of PDF reports based on these answers. User friendly error handler has
 also been added, and the application has been polished before the Quiz Tool implementation
 was over. As always, the entire list of estimated stories
@@ -646,7 +646,7 @@ The \texttt{correct} answers array would be added to the object, if the lecturer
 display the correct answer to all the students. \texttt{liveAnswers} objects for each
 slide containing a quiz would be added to a hash map of type \texttt{Map<string, Object>}, where
 the key would be the \texttt{\_id} of a given \texttt{Slide} schema object. A potential
-final state of the \texttt{answers} hash map is visualised in \autoref{fig:answers}.
+final state of the \texttt{answers} hash map is visualised in the \autoref{fig:answers}.
 
 \begin{figure}[h!]
   \begin{lstlisting}[basicstyle=\small]
@@ -701,8 +701,19 @@ tool can be found in \autoref{chap:pdfreports} of this document.
 
 \newpage
 \subsection{Sprint Retrospective}
+The final sprint brought the implementation of final requirements of the Quiz Tool.
+Persistence has been addressed, the ability to generate PDF reports added, and
+the overall look and feel of the tool has been polished. The sprint took two weeks,
+as opposed to one, as some issues proved more challenging than initially anticipated.
 The full sprint retrospective document produced can be found in the
 \autoref{chap:spintretrospectives} of this report.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{burn5.jpg}
+    \caption{Burndown Chart Sprint 5}
+    \label{fig:burn5}
+\end{figure}
 
 \chapter{Final Design}
 
