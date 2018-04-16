@@ -35,14 +35,15 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Stories Sprint 1\relax }}{36}{figure.caption.33}
-\contentsline {figure}{\numberline {C.2}{\ignorespaces Stories Sprint 2\relax }}{37}{figure.caption.34}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces Stories Sprint 3\relax }}{38}{figure.caption.35}
-\contentsline {figure}{\numberline {C.4}{\ignorespaces Stories Sprint 4\relax }}{38}{figure.caption.36}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Stories Sprint 1\relax }}{37}{figure.caption.33}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Stories Sprint 2\relax }}{38}{figure.caption.34}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Stories Sprint 3\relax }}{39}{figure.caption.35}
+\contentsline {figure}{\numberline {C.4}{\ignorespaces Stories Sprint 4\relax }}{39}{figure.caption.36}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {E.1}{\ignorespaces Intial Front End Dockerfile\relax }}{46}{figure.caption.37}
-\contentsline {figure}{\numberline {E.2}{\ignorespaces Back End Dockerfile\relax }}{47}{figure.caption.38}
-\contentsline {figure}{\numberline {E.3}{\ignorespaces Initial Build Config File\relax }}{48}{figure.caption.39}
-\contentsline {figure}{\numberline {E.4}{\ignorespaces Dockerrun.aws.json\relax }}{49}{figure.caption.40}
-\contentsline {figure}{\numberline {E.5}{\ignorespaces Production Deployment Script\relax }}{50}{figure.caption.41}
+\contentsline {figure}{\numberline {E.1}{\ignorespaces Intial Front End Dockerfile\relax }}{47}{figure.caption.37}
+\contentsline {figure}{\numberline {E.2}{\ignorespaces Back End Dockerfile\relax }}{48}{figure.caption.38}
+\contentsline {figure}{\numberline {E.3}{\ignorespaces Initial Build Config File\relax }}{49}{figure.caption.39}
+\contentsline {figure}{\numberline {E.4}{\ignorespaces Dockerrun.aws.json\relax }}{50}{figure.caption.40}
+\contentsline {figure}{\numberline {E.5}{\ignorespaces Production Deployment Script\relax }}{51}{figure.caption.41}
+\contentsline {figure}{\numberline {E.6}{\ignorespaces Final Dockerrun.aws.json\relax }}{52}{figure.caption.42}

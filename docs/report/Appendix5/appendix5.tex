@@ -119,7 +119,7 @@ The initial \texttt{.circleci/config.yml} added in the first sprint of the devel
 \newpage
 \section{Initial Dockerrun.aws.json file}
 The initial version of the file specifying how containers should be linked together when running
-on the production environment on AWS.
+in the production environment on AWS.
 
 \begin{figure}[h!]
   \begin{lstlisting}[basicstyle=\small, breaklines=true]
@@ -202,4 +202,70 @@ hosted on AWS.
   \end{lstlisting}
   \caption{Production Deployment Script}
   \label{sample:deploy}
+\end{figure}
+
+\newpage
+\section{Final Dockerrun.aws.json file}
+The final version of the file specifying how Docker containers should be link with each other
+when running in the production environment provided by AWS.
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\tiny, breaklines=true]
+{
+    "AWSEBDockerrunVersion": 2,
+    "volumes": [
+      {
+        "name": "mongo",
+        "host": {
+          "sourcePath": "/var/app/database"
+        }
+      }
+    ],
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-client:latest",
+            "memory": 300,
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": [
+                "server_node"
+            ]
+        },
+        {
+            "name": "server_node",
+            "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-server:latest",
+            "memory": 300,
+            "essential": true,
+            "links": [
+              "database"
+            ]
+        },
+        {
+          "name": "database",
+          "image": "mongo",
+          "memory": 300,
+          "essential": true,
+          "mountPoints": [
+              {
+                "sourceVolume": "mongo",
+                "containerPath": "/data/db"
+              }
+          ],
+          "portMappings": [
+              {
+                  "hostPort": 27017,
+                  "containerPort": 27017
+              }
+          ]
+        }
+    ]
+}
+\end{lstlisting}
+\caption{Final Dockerrun.aws.json}
+\label{sample:dockerrunawsfinal}
 \end{figure}

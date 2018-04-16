@@ -50,26 +50,30 @@
 \contentsline {subsection}{\numberline {2.4.4}Sprint Retrospective}{27}{subsection.2.4.4}
 \contentsline {section}{\numberline {2.5}Sprint 5 - Persistence, Report Generation and Testing}{28}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}Sprint Planning}{28}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Sprint Retrospective}{28}{subsection.2.5.2}
-\contentsline {chapter}{\numberline {3}Final Design}{29}{chapter.3}
-\contentsline {chapter}{\numberline {4}Testing}{30}{chapter.4}
-\contentsline {section}{\numberline {4.1}Server Side Unit Tests}{30}{section.4.1}
-\contentsline {section}{\numberline {4.2}Client Side Unit Tests}{30}{section.4.2}
-\contentsline {section}{\numberline {4.3}Selenium Integration Tests}{30}{section.4.3}
-\contentsline {chapter}{\numberline {5}Evaluation}{31}{chapter.5}
-\contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{32}{appendix.A}
-\contentsline {chapter}{\numberline {B}Ethics Submission}{33}{appendix.B}
-\contentsline {chapter}{\numberline {C}Sprint Stories}{36}{appendix.C}
-\contentsline {section}{\numberline {3.1}Sprint 1}{36}{section.C.1}
-\contentsline {section}{\numberline {3.2}Sprint 2}{37}{section.C.2}
-\contentsline {section}{\numberline {3.3}Sprint 3}{38}{section.C.3}
-\contentsline {section}{\numberline {3.4}Sprint 4}{38}{section.C.4}
-\contentsline {section}{\numberline {3.5}Sprint 5}{38}{section.C.5}
-\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{39}{appendix.D}
-\contentsline {chapter}{\numberline {E}Code Examples}{45}{appendix.E}
-\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{46}{section.E.1}
-\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{47}{section.E.2}
-\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{48}{section.E.3}
-\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{49}{section.E.4}
-\contentsline {section}{\numberline {5.5}Production Deployment Script}{50}{section.E.5}
-\contentsline {chapter}{Bibliography}{51}{figure.caption.41}
+\contentsline {subsection}{\numberline {2.5.2}Database Container Persistence}{28}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Lecture Answers Persistence}{29}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.4}Report Generataion}{29}{subsection.2.5.4}
+\contentsline {subsection}{\numberline {2.5.5}Sprint Retrospective}{29}{subsection.2.5.5}
+\contentsline {chapter}{\numberline {3}Final Design}{30}{chapter.3}
+\contentsline {chapter}{\numberline {4}Testing}{31}{chapter.4}
+\contentsline {section}{\numberline {4.1}Server Side Unit Tests}{31}{section.4.1}
+\contentsline {section}{\numberline {4.2}Client Side Unit Tests}{31}{section.4.2}
+\contentsline {section}{\numberline {4.3}Selenium Integration Tests}{31}{section.4.3}
+\contentsline {chapter}{\numberline {5}Evaluation}{32}{chapter.5}
+\contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{33}{appendix.A}
+\contentsline {chapter}{\numberline {B}Ethics Submission}{34}{appendix.B}
+\contentsline {chapter}{\numberline {C}Sprint Stories}{37}{appendix.C}
+\contentsline {section}{\numberline {3.1}Sprint 1}{37}{section.C.1}
+\contentsline {section}{\numberline {3.2}Sprint 2}{38}{section.C.2}
+\contentsline {section}{\numberline {3.3}Sprint 3}{39}{section.C.3}
+\contentsline {section}{\numberline {3.4}Sprint 4}{39}{section.C.4}
+\contentsline {section}{\numberline {3.5}Sprint 5}{39}{section.C.5}
+\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{40}{appendix.D}
+\contentsline {chapter}{\numberline {E}Code Examples}{46}{appendix.E}
+\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{47}{section.E.1}
+\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{48}{section.E.2}
+\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{49}{section.E.3}
+\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{50}{section.E.4}
+\contentsline {section}{\numberline {5.5}Production Deployment Script}{51}{section.E.5}
+\contentsline {section}{\numberline {5.6}Final Dockerrun.aws.json file}{52}{section.E.6}
+\contentsline {chapter}{Bibliography}{53}{figure.caption.42}

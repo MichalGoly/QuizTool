@@ -596,6 +596,28 @@ also been added, and the application has been polished before the Quiz Tool impl
 was over. As always, the entire list of estimated stories
 can be found in the \autoref{chap:spintstories} of this report.
 
+\subsection{Database Container Persistence}
+Docker containers do not persist data by design. Every time the \texttt{database}
+container has been brought up and down, by both docker-compose and the
+Milticontainer Elastic Beanstalk environment, any data stored in the MongoDB
+would be lost. This behaviour is perfect for running tests, where the starting
+environment is expected to be the same between tests. It was however unacceptable
+for the production environment.
+
+The \texttt{Dockerrun.aws.json} file included in the \autoref{chap:codesamples} of this report
+as the \autoref{sample:dockerrunawsfinal}, shows the final configuration of the production
+environment running on AWS. The volume mount called "mongo" has been added, which maps the
+\texttt{/data/db} directory in the \texttt{database} container onto the \texttt{/var/app/database}
+directory on the underlying EC2 instance running the container cluster. This causes the database
+to persist its data even when the application is re-deployed. The only time the data could
+be lost, is when the EC2 instance is destroyed, when for example more RAM has been requested
+for the environment.
+
+\subsection{Lecture Answers Persistence}
+
+\subsection{Report Generataion}
+
+
 \subsection{Sprint Retrospective}
 The full sprint retrospective document produced can be found in the
 \autoref{chap:spintretrospectives} of this report.

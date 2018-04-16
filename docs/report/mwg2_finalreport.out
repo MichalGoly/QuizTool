@@ -42,26 +42,30 @@
 \BOOKMARK [2][-]{subsection.2.4.4}{Sprint Retrospective}{section.2.4}% 42
 \BOOKMARK [1][-]{section.2.5}{Sprint 5 - Persistence, Report Generation and Testing}{chapter.2}% 43
 \BOOKMARK [2][-]{subsection.2.5.1}{Sprint Planning}{section.2.5}% 44
-\BOOKMARK [2][-]{subsection.2.5.2}{Sprint Retrospective}{section.2.5}% 45
-\BOOKMARK [0][-]{chapter.3}{Final Design}{}% 46
-\BOOKMARK [0][-]{chapter.4}{Testing}{}% 47
-\BOOKMARK [1][-]{section.4.1}{Server Side Unit Tests}{chapter.4}% 48
-\BOOKMARK [1][-]{section.4.2}{Client Side Unit Tests}{chapter.4}% 49
-\BOOKMARK [1][-]{section.4.3}{Selenium Integration Tests}{chapter.4}% 50
-\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 51
-\BOOKMARK [0][-]{appendix.A}{Third-Party Code and Libraries}{}% 52
-\BOOKMARK [0][-]{appendix.B}{Ethics Submission}{}% 53
-\BOOKMARK [0][-]{appendix.C}{Sprint Stories}{}% 54
-\BOOKMARK [1][-]{section.C.1}{Sprint 1}{appendix.C}% 55
-\BOOKMARK [1][-]{section.C.2}{Sprint 2}{appendix.C}% 56
-\BOOKMARK [1][-]{section.C.3}{Sprint 3}{appendix.C}% 57
-\BOOKMARK [1][-]{section.C.4}{Sprint 4}{appendix.C}% 58
-\BOOKMARK [1][-]{section.C.5}{Sprint 5}{appendix.C}% 59
-\BOOKMARK [0][-]{appendix.D}{Sprint Retrospective Documents}{}% 60
-\BOOKMARK [0][-]{appendix.E}{Code Examples}{}% 61
-\BOOKMARK [1][-]{section.E.1}{Intial Front End Dockerfile}{appendix.E}% 62
-\BOOKMARK [1][-]{section.E.2}{Initial Back End Dockerfile}{appendix.E}% 63
-\BOOKMARK [1][-]{section.E.3}{Intial Circle CI Config File}{appendix.E}% 64
-\BOOKMARK [1][-]{section.E.4}{Initial Dockerrun.aws.json file}{appendix.E}% 65
-\BOOKMARK [1][-]{section.E.5}{Production Deployment Script}{appendix.E}% 66
-\BOOKMARK [0][-]{figure.caption.41}{Bibliography}{}% 67
+\BOOKMARK [2][-]{subsection.2.5.2}{Database Container Persistence}{section.2.5}% 45
+\BOOKMARK [2][-]{subsection.2.5.3}{Lecture Answers Persistence}{section.2.5}% 46
+\BOOKMARK [2][-]{subsection.2.5.4}{Report Generataion}{section.2.5}% 47
+\BOOKMARK [2][-]{subsection.2.5.5}{Sprint Retrospective}{section.2.5}% 48
+\BOOKMARK [0][-]{chapter.3}{Final Design}{}% 49
+\BOOKMARK [0][-]{chapter.4}{Testing}{}% 50
+\BOOKMARK [1][-]{section.4.1}{Server Side Unit Tests}{chapter.4}% 51
+\BOOKMARK [1][-]{section.4.2}{Client Side Unit Tests}{chapter.4}% 52
+\BOOKMARK [1][-]{section.4.3}{Selenium Integration Tests}{chapter.4}% 53
+\BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 54
+\BOOKMARK [0][-]{appendix.A}{Third-Party Code and Libraries}{}% 55
+\BOOKMARK [0][-]{appendix.B}{Ethics Submission}{}% 56
+\BOOKMARK [0][-]{appendix.C}{Sprint Stories}{}% 57
+\BOOKMARK [1][-]{section.C.1}{Sprint 1}{appendix.C}% 58
+\BOOKMARK [1][-]{section.C.2}{Sprint 2}{appendix.C}% 59
+\BOOKMARK [1][-]{section.C.3}{Sprint 3}{appendix.C}% 60
+\BOOKMARK [1][-]{section.C.4}{Sprint 4}{appendix.C}% 61
+\BOOKMARK [1][-]{section.C.5}{Sprint 5}{appendix.C}% 62
+\BOOKMARK [0][-]{appendix.D}{Sprint Retrospective Documents}{}% 63
+\BOOKMARK [0][-]{appendix.E}{Code Examples}{}% 64
+\BOOKMARK [1][-]{section.E.1}{Intial Front End Dockerfile}{appendix.E}% 65
+\BOOKMARK [1][-]{section.E.2}{Initial Back End Dockerfile}{appendix.E}% 66
+\BOOKMARK [1][-]{section.E.3}{Intial Circle CI Config File}{appendix.E}% 67
+\BOOKMARK [1][-]{section.E.4}{Initial Dockerrun.aws.json file}{appendix.E}% 68
+\BOOKMARK [1][-]{section.E.5}{Production Deployment Script}{appendix.E}% 69
+\BOOKMARK [1][-]{section.E.6}{Final Dockerrun.aws.json file}{appendix.E}% 70
+\BOOKMARK [0][-]{figure.caption.42}{Bibliography}{}% 71
