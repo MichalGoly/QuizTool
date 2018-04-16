@@ -44,7 +44,7 @@
 \BOOKMARK [2][-]{subsection.2.5.1}{Sprint Planning}{section.2.5}% 44
 \BOOKMARK [2][-]{subsection.2.5.2}{Database Container Persistence}{section.2.5}% 45
 \BOOKMARK [2][-]{subsection.2.5.3}{Lecture Answers Persistence}{section.2.5}% 46
-\BOOKMARK [2][-]{subsection.2.5.4}{Report Generataion}{section.2.5}% 47
+\BOOKMARK [2][-]{subsection.2.5.4}{Report Generation}{section.2.5}% 47
 \BOOKMARK [2][-]{subsection.2.5.5}{Sprint Retrospective}{section.2.5}% 48
 \BOOKMARK [0][-]{chapter.3}{Final Design}{}% 49
 \BOOKMARK [0][-]{chapter.4}{Testing}{}% 50
@@ -68,4 +68,4 @@
 \BOOKMARK [1][-]{section.E.4}{Initial Dockerrun.aws.json file}{appendix.E}% 68
 \BOOKMARK [1][-]{section.E.5}{Production Deployment Script}{appendix.E}% 69
 \BOOKMARK [1][-]{section.E.6}{Final Dockerrun.aws.json file}{appendix.E}% 70
-\BOOKMARK [0][-]{figure.caption.42}{Bibliography}{}% 71
+\BOOKMARK [0][-]{figure.caption.45}{Bibliography}{}% 71

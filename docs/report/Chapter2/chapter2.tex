@@ -614,8 +614,74 @@ be lost, is when the EC2 instance is destroyed, when for example more RAM has be
 for the environment.
 
 \subsection{Lecture Answers Persistence}
+The final top level requirement \textbf{FR-6} identified by the client before the
+development had started, was the ability to export lecture sessions results in some format
+for future analysis. Regardless of the final format, session answers given by students
+during lectures had to be persisted in some fashion.
 
-\subsection{Report Generataion}
+Every time a new lecture broadcast
+started, an empty \texttt{liveAnswers} object has been instantiated in memory on the lecturer's
+client. This object would be responsible for the storage of answers for the given slide
+being broadcasted at the moment. It was therefore reinstantiated to \texttt{\{\}} every time
+lecturer emitted a new slide. Once students' answers started to come in, the object would be treated
+like a dictionary. \autoref{fig:liveAnswers} depicts a possible state of the \texttt{liveAnswers}
+object once a few answers came in.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small]
+  {
+    "A": 3,
+    "C": 1,
+    "D": 19,
+    "correct": [
+      "D"
+    ]
+  }
+  \end{lstlisting}
+  \caption{The liveAnswers Object}
+  \label{fig:liveAnswers}
+\end{figure}
+
+The \texttt{correct} answers array would be added to the object, if the lecturer decided to
+display the correct answer to all the students. \texttt{liveAnswers} objects for each
+slide containing a quiz would be added to a hash map of type \texttt{Map<string, Object>}, where
+the key would be the \texttt{\_id} of a given \texttt{Slide} schema object. A potential
+final state of the \texttt{answers} hash map is visualised in \autoref{fig:answers}.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small]
+  answers: {
+    slideId123: {
+        "A": 3,
+        "C": 1,
+        "D": 19,
+        "correct": [
+          "D"
+        ]
+      },
+    slideId42424: {
+      "true": 20,
+      "false": 1
+    }
+  }
+  \end{lstlisting}
+  \caption{The liveAnswers Object}
+  \label{fig:answers}
+\end{figure}
+
+\newpage
+Finally, a new schema object \texttt{Session} has been added to the database models,
+to enable persistence of answers in the database. \autoref{fig:finalERD} shows the
+updated ERD of the system.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{finalERD.jpg}
+    \caption{Final Entity Relationship Diagram}
+    \label{fig:finalERD}
+\end{figure}
+
+\subsection{Report Generation}
 
 
 \subsection{Sprint Retrospective}
@@ -626,6 +692,16 @@ The full sprint retrospective document produced can be found in the
 
 This chapter follows on the discussion of the individual sprints and summarises
 the final design of the tool.
+
+- diagrams
+- build
+- deployment
+- JSON schema validation
+- authentication
+- ERD
+- containers architecture
+- JWT and google single sing on
+- Socket.io slides broadcasts
 
 \chapter{Testing}
 
