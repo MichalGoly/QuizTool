@@ -32,21 +32,23 @@
 \contentsline {figure}{\numberline {2.29}{\ignorespaces The liveAnswers Object\relax }}{29}{figure.caption.33}
 \contentsline {figure}{\numberline {2.30}{\ignorespaces The liveAnswers Object\relax }}{29}{figure.caption.34}
 \contentsline {figure}{\numberline {2.31}{\ignorespaces Final Entity Relationship Diagram\relax }}{30}{figure.caption.35}
+\contentsline {figure}{\numberline {2.32}{\ignorespaces Session View\relax }}{31}{figure.caption.36}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Stories Sprint 1\relax }}{38}{figure.caption.36}
-\contentsline {figure}{\numberline {C.2}{\ignorespaces Stories Sprint 2\relax }}{39}{figure.caption.37}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces Stories Sprint 3\relax }}{40}{figure.caption.38}
-\contentsline {figure}{\numberline {C.4}{\ignorespaces Stories Sprint 4\relax }}{40}{figure.caption.39}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Stories Sprint 1\relax }}{39}{figure.caption.37}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Stories Sprint 2\relax }}{40}{figure.caption.38}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Stories Sprint 3\relax }}{41}{figure.caption.39}
+\contentsline {figure}{\numberline {C.4}{\ignorespaces Stories Sprint 4\relax }}{41}{figure.caption.40}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {E.1}{\ignorespaces Intial Front End Dockerfile\relax }}{48}{figure.caption.40}
-\contentsline {figure}{\numberline {E.2}{\ignorespaces Back End Dockerfile\relax }}{49}{figure.caption.41}
-\contentsline {figure}{\numberline {E.3}{\ignorespaces Initial Build Config File\relax }}{50}{figure.caption.42}
-\contentsline {figure}{\numberline {E.4}{\ignorespaces Dockerrun.aws.json\relax }}{51}{figure.caption.43}
-\contentsline {figure}{\numberline {E.5}{\ignorespaces Production Deployment Script\relax }}{52}{figure.caption.44}
-\contentsline {figure}{\numberline {E.6}{\ignorespaces Final Dockerrun.aws.json\relax }}{53}{figure.caption.45}
+\contentsline {figure}{\numberline {E.1}{\ignorespaces Intial Front End Dockerfile\relax }}{49}{figure.caption.41}
+\contentsline {figure}{\numberline {E.2}{\ignorespaces Back End Dockerfile\relax }}{50}{figure.caption.42}
+\contentsline {figure}{\numberline {E.3}{\ignorespaces Initial Build Config File\relax }}{51}{figure.caption.43}
+\contentsline {figure}{\numberline {E.4}{\ignorespaces Dockerrun.aws.json\relax }}{52}{figure.caption.44}
+\contentsline {figure}{\numberline {E.5}{\ignorespaces Production Deployment Script\relax }}{53}{figure.caption.45}
+\contentsline {figure}{\numberline {E.6}{\ignorespaces Final Dockerrun.aws.json\relax }}{54}{figure.caption.46}
+\addvspace {10\p@ }
