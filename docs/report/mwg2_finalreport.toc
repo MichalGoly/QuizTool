@@ -58,41 +58,44 @@
 \contentsline {section}{\numberline {3.1}Application Architecture}{32}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Technology Overview}{32}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Application Structure}{33}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Back End Container}{34}{section.3.2}
-\contentsline {section}{\numberline {3.3}Front End Container}{34}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Nginx Reverse Proxy}{34}{subsection.3.3.1}
-\contentsline {section}{\numberline {3.4}Database Container}{34}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}MongoDB}{34}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Entity Relationship Diagram}{34}{subsection.3.4.2}
-\contentsline {section}{\numberline {3.5}Environments}{34}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Development}{34}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Testing}{34}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Production}{34}{subsection.3.5.3}
-\contentsline {section}{\numberline {3.6}Build}{34}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Version Control}{34}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}Continous Integration}{34}{subsection.3.6.2}
-\contentsline {chapter}{\numberline {4}Testing}{35}{chapter.4}
-\contentsline {section}{\numberline {4.1}Testing Strategy}{35}{section.4.1}
-\contentsline {section}{\numberline {4.2}Server Side Unit Tests}{35}{section.4.2}
-\contentsline {section}{\numberline {4.3}Client Side Unit Tests}{35}{section.4.3}
-\contentsline {section}{\numberline {4.4}Selenium Integration Tests}{35}{section.4.4}
-\contentsline {section}{\numberline {4.5}User Tests}{35}{section.4.5}
-\contentsline {chapter}{\numberline {5}Evaluation}{36}{chapter.5}
-\contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{37}{appendix.A}
-\contentsline {chapter}{\numberline {B}Ethics Submission}{38}{appendix.B}
-\contentsline {chapter}{\numberline {C}Sprint Stories}{41}{appendix.C}
-\contentsline {section}{\numberline {3.1}Sprint 1}{41}{section.C.1}
-\contentsline {section}{\numberline {3.2}Sprint 2}{42}{section.C.2}
-\contentsline {section}{\numberline {3.3}Sprint 3}{43}{section.C.3}
-\contentsline {section}{\numberline {3.4}Sprint 4}{43}{section.C.4}
-\contentsline {section}{\numberline {3.5}Sprint 5}{44}{section.C.5}
-\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{45}{appendix.D}
-\contentsline {chapter}{\numberline {E}Code Examples}{52}{appendix.E}
-\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{53}{section.E.1}
-\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{54}{section.E.2}
-\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{55}{section.E.3}
-\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{56}{section.E.4}
-\contentsline {section}{\numberline {5.5}Production Deployment Script}{57}{section.E.5}
-\contentsline {section}{\numberline {5.6}Final Dockerrun.aws.json file}{58}{section.E.6}
-\contentsline {chapter}{\numberline {F}PDF Report Examples}{59}{appendix.F}
-\contentsline {chapter}{Bibliography}{61}{appendix.F}
+\contentsline {section}{\numberline {3.2}Back End Container}{33}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Docker Container}{33}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Back End Overview}{34}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Front End Container}{35}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Nginx Reverse Proxy}{35}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}Database Container}{35}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}MongoDB}{35}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Entity Relationship Diagram}{35}{subsection.3.4.2}
+\contentsline {section}{\numberline {3.5}Environments}{35}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Development}{35}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Testing}{35}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Production}{35}{subsection.3.5.3}
+\contentsline {section}{\numberline {3.6}Build}{35}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Version Control}{35}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Continous Integration}{35}{subsection.3.6.2}
+\contentsline {chapter}{\numberline {4}Testing}{36}{chapter.4}
+\contentsline {section}{\numberline {4.1}Testing Strategy}{36}{section.4.1}
+\contentsline {section}{\numberline {4.2}Server Side Unit Tests}{36}{section.4.2}
+\contentsline {section}{\numberline {4.3}Client Side Unit Tests}{36}{section.4.3}
+\contentsline {section}{\numberline {4.4}Selenium Integration Tests}{36}{section.4.4}
+\contentsline {section}{\numberline {4.5}User Tests}{36}{section.4.5}
+\contentsline {chapter}{\numberline {5}Evaluation}{37}{chapter.5}
+\contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{38}{appendix.A}
+\contentsline {chapter}{\numberline {B}Ethics Submission}{39}{appendix.B}
+\contentsline {chapter}{\numberline {C}Sprint Stories}{42}{appendix.C}
+\contentsline {section}{\numberline {3.1}Sprint 1}{42}{section.C.1}
+\contentsline {section}{\numberline {3.2}Sprint 2}{43}{section.C.2}
+\contentsline {section}{\numberline {3.3}Sprint 3}{44}{section.C.3}
+\contentsline {section}{\numberline {3.4}Sprint 4}{44}{section.C.4}
+\contentsline {section}{\numberline {3.5}Sprint 5}{45}{section.C.5}
+\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{46}{appendix.D}
+\contentsline {chapter}{\numberline {E}Code Examples}{53}{appendix.E}
+\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{54}{section.E.1}
+\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{55}{section.E.2}
+\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{56}{section.E.3}
+\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{57}{section.E.4}
+\contentsline {section}{\numberline {5.5}Production Deployment Script}{58}{section.E.5}
+\contentsline {section}{\numberline {5.6}Final Dockerrun.aws.json file}{59}{section.E.6}
+\contentsline {section}{\numberline {5.7}Final Back End Dockerfile}{60}{section.E.7}
+\contentsline {chapter}{\numberline {F}PDF Report Examples}{61}{appendix.F}
+\contentsline {chapter}{Bibliography}{63}{appendix.F}

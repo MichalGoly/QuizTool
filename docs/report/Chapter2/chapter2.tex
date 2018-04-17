@@ -753,6 +753,56 @@ the MongoDB database.
 \end{figure}
 
 \section{Back End Container}
+\subsection{Docker Container}
+The \texttt{server/} directory contains the back end code of the tool. The \texttt{Dockerfile}
+included in the \autoref{chap:codesamples} of this report as the \autoref{sample:finalserverdocker},
+describes the steps performed to build the \texttt{server\_node} container. The image is
+based on the official \texttt{node:carbon} Docker image, dependencies are installed and
+the container is started with \texttt{npm start}, after the port 3000 has been exposed.
+
+\subsection{Back End Overview}
+Express.js is an unopinionated web development framework, meaning the structure of the application
+has to be decided by the developer. The \texttt{index.js} file is the starting point of the
+application. The summary of the routes handled by four controllers located in the \texttt{server/controllers/}
+directory is listed in \autoref{tab:routes}.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Request Method} & \textbf{Route} & \textbf{Purpose} \\ \hline
+GET   & \texttt{/lecturers/logged-in} & Returns the currently logged in lecturer \\ \hline
+
+GET   & \texttt{/lectures}            & Returns a list of lectures of current lecturer \\ \hline
+GET   & \texttt{/lectures/:\_id} & Returns the lecture by id \\ \hline
+GET   & \texttt{/lectures/:\_id/file} & Returns original presentation file \\ \hline
+DELETE   & \texttt{/lectures/:\_id} & Removes lecture by id \\ \hline
+POST   & \texttt{/lectures} & Uploads a new lecture \\ \hline
+
+GET   & \texttt{/slides/:lecture\_id} & Returns slides for lecture by its id \\ \hline
+PUT   & \texttt{/slides} & Updates slides in bulk \\ \hline
+
+GET   & \texttt{/sessions/:\_id} & Returns sessions for lecture by its id \\ \hline
+POST   & \texttt{/sessions} & Creates a new session \\ \hline
+
+\end{tabular}
+\caption{Back End Routes}
+\label{tab:routes}
+\end{table}
+
+Directory structure of the tool is self-explanatory:
+\begin{itemize}
+  \item \texttt{db/} contains database access code
+  \item \texttt{helpers/} contains utility functions concering authentication and the Socket.io handler
+  \item \texttt{models/} contains mongoose schema objects describing valid models which can be persisted in the database.
+  \item \texttt{schemas/} contains JSON validator schemas
+  \item \texttt{test/} contains server side unit tests
+\end{itemize}
+
+\subsection{Authentication and Validation Middleware}
+
+
+
 
 \section{Front End Container}
 \subsection{Nginx Reverse Proxy}
