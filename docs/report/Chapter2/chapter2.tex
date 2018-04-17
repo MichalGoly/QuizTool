@@ -719,6 +719,64 @@ The full sprint retrospective document produced can be found in the
 This chapter follows on the discussion of the individual sprints and summarises
 the final design of the tool.
 
+\section{Application Architecture}
+\subsection{Technology Overview}
+Quiz Tool is a MEAN stack application developed using JavaScript based technologies. \textbf{M}ongoDB has been used
+as the persistence layer, \textbf{E}xpress.js has been used to develop the back end of the
+application, \textbf{A}ngular 4 to develop the front end, and the back end is running on
+a \textbf{N}ode.js runtime. Quiz Tool consists of three subsystems, each containerised
+using Docker. Docker image definitions of both the back and the front end components
+have been defined using Dockerfiles, the database container on the other hand is
+built using the official MongoDB image from the Docker Hub registry. Quiz Tool is
+a multi-container Docker application, and containers are configured to run together
+using docker-compose both in the development and testing environments. The Multicontainer
+Elastic Beanstalk orchestrates containers to run together in the production environment
+hosted on AWS.
+
+\newpage
+\subsection{Application Structure}
+\autoref{fig:finalappstrucure} shows the overall structure of the multi-container
+tool. The structure is formally defined in both the \texttt{docker-compose.yml} and
+the \texttt{Dockerrun.aws.json} files located in the root directory of the project.
+The front end container \texttt{client} consists of an nginx reverse proxy routing
+the traffic of the application, and the front end compiled using Angular. The
+back end container \texttt{server\_node} contains the Express.js server side logic,
+accompanied with the Socket.io engine which uses the the WebSocket protocol to enable
+the application to work in real time. Finally, the \texttt{database} container contains
+the MongoDB database.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../../design/app_structure.jpg}
+    \caption{Final Application Structure}
+    \label{fig:finalappstrucure}
+\end{figure}
+
+\section{Back End Container}
+
+\section{Front End Container}
+\subsection{Nginx Reverse Proxy}
+
+\section{Database Container}
+\subsection{MongoDB}
+
+\subsection{Entity Relationship Diagram}
+
+
+\section{Environments}
+\subsection{Development}
+
+\subsection{Testing}
+
+\subsection{Production}
+
+\section{Build}
+\subsection{Version Control}
+
+\subsection{Continous Integration}
+
+
+
 % - diagrams
 % - build
 % - deployment
@@ -730,13 +788,19 @@ the final design of the tool.
 % - Socket.io slides broadcasts
 
 \chapter{Testing}
-
+% Detailed descriptions of every test case are definitely not what is required here. What is important is to show that you adopted a sensible strategy that was, in principle, capable of testing the system adequately even if you did not have the time to test the system fully.
+%
+% Provide information in the body of your report and the appendix to explain the testing that has been performed. How does this testing address the requirements and design for the project?
+%
+% How comprehensive is the testing within the constraints of the project?  Are you testing the normal working behaviour? Are you testing the exceptional behaviour, e.g. error conditions? Are you testing security issues if they are relevant for your project?
+%
+% Have you tested your system on ``real users''? For example, if your system is supposed to solve a problem for a business, then it would be appropriate to present your approach to involve the users in the testing process and to record the results that you obtained. Depending on the level of detail, it is likely that you would put any detailed results in an appendix.
+%
+% The following sections indicate some areas you might include. Other sections may be more appropriate to your project.
 \section{Testing Strategy}
 \section{Server Side Unit Tests}
 \section{Client Side Unit Tests}
 \section{Selenium Integration Tests}
-
-
 \section{User Tests}
 This section will include a discussion of a live session with students.
 
