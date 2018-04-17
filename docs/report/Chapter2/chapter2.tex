@@ -903,21 +903,50 @@ CI has been described in the \autoref{subsection:ci} of this report. The final C
 file has been included in the \autoref{chap:codesamples} of this report as \autoref{sample:circlecifinal}.
 
 \chapter{Testing}
-% Detailed descriptions of every test case are definitely not what is required here. What is important is to show that you adopted a sensible strategy that was, in principle, capable of testing the system adequately even if you did not have the time to test the system fully.
+% Detailed descriptions of every test case are definitely not what is required here.
+% What is important is to show that you adopted a sensible strategy that was, in principle,
+% capable of testing the system adequately even if you did not have the time to test the system fully.
 %
-% Provide information in the body of your report and the appendix to explain the testing that has been performed. How does this testing address the requirements and design for the project?
+% Provide information in the body of your report and the appendix to explain the testing that
+% has been performed. How does this testing address the requirements and design for the project?
 %
-% How comprehensive is the testing within the constraints of the project?  Are you testing the normal working behaviour? Are you testing the exceptional behaviour, e.g. error conditions? Are you testing security issues if they are relevant for your project?
+% How comprehensive is the testing within the constraints of the project?  Are you testing the normal working behaviour?
+% Are you testing the exceptional behaviour, e.g. error conditions? Are you testing security issues if they are relevant for your project?
 %
-% Have you tested your system on ``real users''? For example, if your system is supposed to solve a problem for a business, then it would be appropriate to present your approach to involve the users in the testing process and to record the results that you obtained. Depending on the level of detail, it is likely that you would put any detailed results in an appendix.
+% Have you tested your system on ``real users''? For example, if your system is supposed
+% to solve a problem for a business, then it would be appropriate to present your approach
+% to involve the users in the testing process and to record the results that you obtained.
+% Depending on the level of detail, it is likely that you would put any detailed results in an appendix.
 %
 % The following sections indicate some areas you might include. Other sections may be more appropriate to your project.
 \section{Testing Strategy}
+% - automation
+% - incremently adding tests
+% - edge cases
+% - running tests as part of the build
+% - user acceptance testing
+A combination of white box and black box testing strategies have been incorporated
+into Quiz Tool testing, in order to test the system reasonably in depth
+given the amount of time available. Test automation is essential when software is developed
+using an agile methodology. The application has been developed using single person adjusted
+SCRUM as described in the \autoref{subsection:scrum} of this report. Certain tests have been
+added incrementally over the sprints, while others have been added towards the end of the
+project development. Automated tests have been incorporated into the Circle CI build,
+which decreased the likelyhood of regression defects being introduced with new features implementations.
+The Circle CI build agent would checkout the code, and run all the tests before allowing
+new pull requests being merged into the production branch. Tests made sure the
+top level functional requirements listed in \autoref{subsection:toplevel} were met.
+It was important to test both the expected behaviour, and the edge cases to make the
+tool less likely to fail in the production environment. Finally, acceptance testing
+has been performed by running a real life lecture with the end users, once the first version of the
+tool has been implemented.
+
 \section{Server Side Unit Tests}
 \section{Client Side Unit Tests}
 \section{Selenium Integration Tests}
 \section{User Tests}
-This section will include a discussion of a live session with students.
+- Continuous Client Feedback
+- This section will include a discussion of a live session with students.
 
 % You should concentrate on the more important aspects of the design. It is essential that an overview is presented before going into detail. As well as describing the design adopted it must also explain what other designs were considered and why they were rejected.%% The design should describe what you expected to do, and might also explain areas that you had to revise after some investigation.%% Typically, for an object-oriented design, the discussion will focus on the choice of objects and classes and the allocation of methods to classes. The use made of reusable components should be described and their source referenced. Particularly important decisions concerning data structures usually affect the architecture of a system and so should be described here.%% How much material you include on detailed design and implementation will depend very much on the nature of the project. It should not be padded out. Think about the significant aspects of your system. For example, describe the design of the user interface if it is a critical aspect of your system, or provide detail about methods and data structures that are not trivial. Do not spend time on long lists of trivial items and repetitive descriptions. If in doubt about what is appropriate, speak to your supervisor.%% You should also identify any support tools that you used. You should discuss your choice of implementation tools - programming language, compilers, database management system, program development environment, etc.%% Some example sub-sections may be as follows, but the specific sections are for you to define.
 
