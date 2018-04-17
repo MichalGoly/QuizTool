@@ -16,6 +16,7 @@ cover the most important aspects of the sprint, and the entire list of estimated
 stories can be found in the \autoref{chap:spintstories} of this report.
 
 \subsection{Application Structure}
+\label{subsection:appstructure}
 The main goal of using docker-compose, was to have the whole application running in
 the same manner locally on the developer's machine, during testing on Circle CI, and
 in the production environment. This meant the application had to be containerised
@@ -78,6 +79,7 @@ Finally, the MongoDB Docker image has been pulled automatically from the officia
 Docker Hub registry\cite{36}.
 
 \subsection{Continuous Integration}
+\label{subsection:ci}
 Circle CI has been integrated with the GitHub repository containing the source code of the
 Quiz Tool. Every time a pull request was made, Circle CI would be notified. It would then
 assign a virtual machine build agent from a pool, and spin up a clean build environment.
@@ -100,6 +102,7 @@ the current branch being built is \texttt{master}, the \texttt{deploy.sh} bash s
 deploys the application to production.
 
 \subsection{Production Environment}
+\label{subsection:productionenv}
 The production environment of the tool is hosted on the AWS cloud. The AWS Elastic Beanstalk
 has been chosen specificaly, as applications in
 various programming languages can be deployed with ease, wihout having to worry about
@@ -876,34 +879,28 @@ The structure of the \texttt{client/src/app} directory is straightforward to fol
 \end{itemize}
 
 \section{Database Container}
-\subsection{MongoDB}
+The database container is pulled directly from the official MongoDB Docker Hub registry.
+The \texttt{database} container uses a volume mount in production to persist the data
+between deployments.
 
 \subsection{Entity Relationship Diagram}
-
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{finalERD.jpg}
+    \caption{Final Entity Relationship Diagram}
+\end{figure}
 
 \section{Environments}
-\subsection{Development}
-
-\subsection{Testing}
-
-\subsection{Production}
+Development and testing environments have been described in the \autoref{subsection:appstructure} of this report.
+Production environment on the other hand, has been described in the \autoref{subsection:productionenv} of this report.
 
 \section{Build}
 \subsection{Version Control}
+Version control has been described in the \autoref{subsection:versioncontrol} of this report.
 
 \subsection{Continous Integration}
-
-
-
-% - diagrams
-% - build
-% - deployment
-% - JSON schema validation
-% - authentication
-% - ERD
-% - containers architecture
-% - JWT and google single sing on
-% - Socket.io slides broadcasts
+CI has been described in the \autoref{subsection:ci} of this report. The final Circle CI config
+file has been included in the \autoref{chap:codesamples} of this report as \autoref{sample:circlecifinal}.
 
 \chapter{Testing}
 % Detailed descriptions of every test case are definitely not what is required here. What is important is to show that you adopted a sensible strategy that was, in principle, capable of testing the system adequately even if you did not have the time to test the system fully.

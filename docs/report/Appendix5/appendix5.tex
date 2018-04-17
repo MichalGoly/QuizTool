@@ -372,3 +372,82 @@ application and preventing people from uploading files over 15 MB.
   \caption{Final Nginx Config File}
   \label{sample:nginx}
 \end{figure}
+
+\newpage
+\section{Final Circle CI Config File}
+The final \texttt{.circleci/config.yml} which evolved over the iterations.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\tiny, breaklines=true]
+  # Javascript Node CircleCI 2.0 configuration file
+  #
+  # Check https://circleci.com/docs/2.0/language-javascript/ for more details
+  #
+  version: 2
+  jobs:
+    build:
+      machine: true
+
+      working_directory: ~/repo
+
+      steps:
+        - checkout
+
+        - run:
+            name: AWS integration
+            command: |
+              sudo apt-get -y -qq update
+              sudo apt-get install python-pip python-dev build-essential
+              sudo pip install awsebcli --upgrade
+              eb --version
+
+        - run:
+            name: install docker-compose
+            command: |
+              set -x
+              sudo chown -R $(whoami) /usr/local/bin
+              curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+              chmod +x /usr/local/bin/docker-compose
+
+        - run:
+            name: docker compose build image
+            command: |
+              touch .env
+              set -x
+              docker-compose build
+
+        - run:
+            name: run client unit tests
+            command: |
+              cd client
+              docker build -t clienttest --file Dockerfile.test .
+              docker run -it clienttest
+              cd ..
+
+        - run:
+            name: run server unit tests
+            command: |
+              echo "GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" >> .env
+              echo "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> .env
+              echo "GOOGLE_CALLBACK_URL=$GOOGLE_CALLBACK_URL" >> .env
+              docker-compose -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from server_node
+              docker-compose -f docker-compose.test.yml down
+
+        - run:
+            name: run integration tests
+            command: |
+              docker-compose -f docker-compose.integration.yml build
+              docker-compose -f docker-compose.integration.yml up --abort-on-container-exit --exit-code-from tester
+              docker-compose -f docker-compose.integration.yml down
+
+        # deploy only master and develop branch
+        - deploy:
+            command: |
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                chmod +x scripts/deploy.sh
+                ./scripts/deploy.sh
+              fi
+  \end{lstlisting}
+  \caption{Final Build Config File}
+  \label{sample:circlecifinal}
+\end{figure}
