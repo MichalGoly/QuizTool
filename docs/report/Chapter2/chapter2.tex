@@ -932,7 +932,7 @@ using an agile methodology. The application has been developed using single pers
 SCRUM as described in the \autoref{subsection:scrum} of this report. Certain tests have been
 added incrementally over the sprints, while others have been added towards the end of the
 project development. Automated tests have been incorporated into the Circle CI build,
-which decreased the likelyhood of regression defects being introduced with new features implementations.
+which decreased the likelihood of regression defects being introduced with new features implementations.
 The Circle CI build agent would checkout the code, and run all the tests before allowing
 new pull requests being merged into the production branch. Tests made sure the
 top level functional requirements listed in \autoref{subsection:toplevel} were met.
@@ -942,60 +942,56 @@ has been performed by running a real life lecture with the end users, once the f
 tool has been implemented.
 
 \section{Server Side Unit Tests}
+The \texttt{server\_node} container has been tested using mocha\cite{59}, chai\cite{60} and chai-http\cite{61}
+libraries following the tutorial \textit{Test a Node RESTful API with Mocha and Chai}\cite{62}.
+Mocha is a JavaScript test framework running the test cases, chai is an assertion framework allowing to check if
+variables have expected values, and chai-http can be used to call endpoints exposed by Node.js
+applications. The automated tests added to test the back end of the application, could arguably
+also be called integration tests, as endpoints are called and responses examined to assess if
+the Quiz Tool works as expected. However the state of the database is also examined directly
+during some tests, therefore all tests are referred to as server side unit tests in this report.
+
+Server side tests are located in the \texttt{server/test} directory, and are started with the
+\texttt{mocha --recursive 'test/**/*.js' --timeout 60000 --exit} command located in the \texttt{server/package.json}
+file. The \texttt{docker-compose.test.yml}, located in the root directory of the project, is used to define
+how containers should be linked together for server side testing. The major difference of this file, compared
+to the \texttt{docker-compose.yml}, is that an extra \texttt{NODE\_ENV} environment variable is set
+in the \texttt{server\_node} container to make sure the application is aware it is being tested.
+For example a special test database is created for testing. The entrypoint of the Docker container
+is also overriden to \texttt{npm test} to start the mocha tests.
+
+Server side tests cover the major requirements of the tool, and also make sure the common errors
+are handled appropriately by the application. Authorisation has been tested, or actually attempts
+to call endpoints without an appropriate authorisation header, or a header containing a malformed
+JWT token. Other tests relying on the user being authenticated, use a special \texttt{AUTH\_DISABLED}
+environment variable to use a mocked lectuer called Bob for testing. Database is also
+cleaned before a new set of tests runs. Lecture creation is tested by uploading a test PDF
+presentation as part of the tests. Tests also make sure slides are created as expected, slides
+can be marked as quizes, lectures be removed, sessions associated with lectures and reports
+generated. Finally, one of the good things about the mocha tests combined
+with the chai assertion library, is that they are incredibily easy to read even for non technical
+people.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small, breaklines=true]
+  it('should return 401 for a fake JWT token', (done) => {
+      chai.request(app).get('/lecturers/logged-in')
+        .set('Authorization', 'Bearer verySecureJwtToken123').end((err, res) => {
+          res.should.have.status(401);
+          done();
+        });
+    });
+  \end{lstlisting}
+  \caption{Server Side Test Example}
+  \label{sample:servertest}
+\end{figure}
+
 \section{Client Side Unit Tests}
 \section{Selenium Integration Tests}
 \section{User Tests}
 - Continuous Client Feedback
 - This section will include a discussion of a live session with students.
 
-% You should concentrate on the more important aspects of the design. It is essential that an overview is presented before going into detail. As well as describing the design adopted it must also explain what other designs were considered and why they were rejected.%% The design should describe what you expected to do, and might also explain areas that you had to revise after some investigation.%% Typically, for an object-oriented design, the discussion will focus on the choice of objects and classes and the allocation of methods to classes. The use made of reusable components should be described and their source referenced. Particularly important decisions concerning data structures usually affect the architecture of a system and so should be described here.%% How much material you include on detailed design and implementation will depend very much on the nature of the project. It should not be padded out. Think about the significant aspects of your system. For example, describe the design of the user interface if it is a critical aspect of your system, or provide detail about methods and data structures that are not trivial. Do not spend time on long lists of trivial items and repetitive descriptions. If in doubt about what is appropriate, speak to your supervisor.%% You should also identify any support tools that you used. You should discuss your choice of implementation tools - programming language, compilers, database management system, program development environment, etc.%% Some example sub-sections may be as follows, but the specific sections are for you to define.
 
-% \section{Overall Architecture}
-%
-% \section{Some detailed design}
-%
-% \subsection{Even more detail}
-%
-% \section{User Interface}
-%
-% \section{Other relevant sections}
 
-% \chapter{Implementation}
-% The implementation should look at any issues you encountered as you tried to implement your
-% design. During the work, you might have found that elements of your design were unnecessary or
-% overly complex; perhaps third party libraries were available that simplified some of the functions
-% that you intended to implement. If things were easier in some areas, then how did you adapt your
-% project to take account of your findings?
-% It is more likely that things were more complex than you first thought. In particular, were there
-% any problems or difficulties that you found during implementation that you had to address? Did
-% such problems simply delay you or were they more significant?
-% You can conclude this section by reviewing the end of the implementation stage against the
-% planned requirements
-
-% \chapter{Testing}
-%
-% Detailed descriptions of every test case are definitely not what is required here. What is important is to show that you adopted a sensible strategy that was, in principle, capable of testing the system adequately even if you did not have the time to test the system fully.
-%
-% Provide information in the body of your report and the appendix to explain the testing that has been performed. How does this testing address the requirements and design for the project?
-%
-% How comprehensive is the testing within the constraints of the project?  Are you testing the normal working behaviour? Are you testing the exceptional behaviour, e.g. error conditions? Are you testing security issues if they are relevant for your project?
-%
-% Have you tested your system on ``real users''? For example, if your system is supposed to solve a problem for a business, then it would be appropriate to present your approach to involve the users in the testing process and to record the results that you obtained. Depending on the level of detail, it is likely that you would put any detailed results in an appendix.
-%
-% The following sections indicate some areas you might include. Other sections may be more appropriate to your project.
-
-% \section{Overall Approach to Testing}
-%
-% \section{Automated Testing}
-%
-% \subsection{Unit Tests}
-%
-% \subsection{User Interface Testing}
-%
-% \subsection{Stress Testing}
-%
-% \subsection{Other types of testing}
-%
-% \section{Integration Testing}
-%
-% \section{User Testing}
+% You should concentrate on the more important aspects of the design. It is essential that an overview is presented before going into detail. As well as describing the design adopted it must also explain what other designs were considered and why they were rejected.% dsa

@@ -77,28 +77,28 @@
 \contentsline {chapter}{\numberline {4}Testing}{38}{chapter.4}
 \contentsline {section}{\numberline {4.1}Testing Strategy}{38}{section.4.1}
 \contentsline {section}{\numberline {4.2}Server Side Unit Tests}{38}{section.4.2}
-\contentsline {section}{\numberline {4.3}Client Side Unit Tests}{38}{section.4.3}
-\contentsline {section}{\numberline {4.4}Selenium Integration Tests}{38}{section.4.4}
-\contentsline {section}{\numberline {4.5}User Tests}{38}{section.4.5}
-\contentsline {chapter}{\numberline {5}Evaluation}{39}{chapter.5}
-\contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{40}{appendix.A}
-\contentsline {chapter}{\numberline {B}Ethics Submission}{41}{appendix.B}
-\contentsline {chapter}{\numberline {C}Sprint Stories}{44}{appendix.C}
-\contentsline {section}{\numberline {3.1}Sprint 1}{44}{section.C.1}
-\contentsline {section}{\numberline {3.2}Sprint 2}{45}{section.C.2}
-\contentsline {section}{\numberline {3.3}Sprint 3}{46}{section.C.3}
-\contentsline {section}{\numberline {3.4}Sprint 4}{46}{section.C.4}
-\contentsline {section}{\numberline {3.5}Sprint 5}{47}{section.C.5}
-\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{48}{appendix.D}
-\contentsline {chapter}{\numberline {E}Code Examples}{55}{appendix.E}
-\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{56}{section.E.1}
-\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{57}{section.E.2}
-\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{58}{section.E.3}
-\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{59}{section.E.4}
-\contentsline {section}{\numberline {5.5}Production Deployment Script}{60}{section.E.5}
-\contentsline {section}{\numberline {5.6}Final Dockerrun.aws.json file}{61}{section.E.6}
-\contentsline {section}{\numberline {5.7}Final Back End Dockerfile}{62}{section.E.7}
-\contentsline {section}{\numberline {5.8}Final Nginx Config File}{63}{section.E.8}
-\contentsline {section}{\numberline {5.9}Final Circle CI Config File}{64}{section.E.9}
-\contentsline {chapter}{\numberline {F}PDF Report Examples}{65}{appendix.F}
-\contentsline {chapter}{Bibliography}{67}{appendix.F}
+\contentsline {section}{\numberline {4.3}Client Side Unit Tests}{39}{section.4.3}
+\contentsline {section}{\numberline {4.4}Selenium Integration Tests}{39}{section.4.4}
+\contentsline {section}{\numberline {4.5}User Tests}{39}{section.4.5}
+\contentsline {chapter}{\numberline {5}Evaluation}{40}{chapter.5}
+\contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{41}{appendix.A}
+\contentsline {chapter}{\numberline {B}Ethics Submission}{42}{appendix.B}
+\contentsline {chapter}{\numberline {C}Sprint Stories}{45}{appendix.C}
+\contentsline {section}{\numberline {3.1}Sprint 1}{45}{section.C.1}
+\contentsline {section}{\numberline {3.2}Sprint 2}{46}{section.C.2}
+\contentsline {section}{\numberline {3.3}Sprint 3}{47}{section.C.3}
+\contentsline {section}{\numberline {3.4}Sprint 4}{47}{section.C.4}
+\contentsline {section}{\numberline {3.5}Sprint 5}{48}{section.C.5}
+\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{49}{appendix.D}
+\contentsline {chapter}{\numberline {E}Code Examples}{56}{appendix.E}
+\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{57}{section.E.1}
+\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{58}{section.E.2}
+\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{59}{section.E.3}
+\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{60}{section.E.4}
+\contentsline {section}{\numberline {5.5}Production Deployment Script}{61}{section.E.5}
+\contentsline {section}{\numberline {5.6}Final Dockerrun.aws.json file}{62}{section.E.6}
+\contentsline {section}{\numberline {5.7}Final Back End Dockerfile}{63}{section.E.7}
+\contentsline {section}{\numberline {5.8}Final Nginx Config File}{64}{section.E.8}
+\contentsline {section}{\numberline {5.9}Final Circle CI Config File}{65}{section.E.9}
+\contentsline {chapter}{\numberline {F}PDF Report Examples}{66}{appendix.F}
+\contentsline {chapter}{Bibliography}{68}{appendix.F}
