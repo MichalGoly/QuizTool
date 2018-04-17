@@ -61,6 +61,8 @@
 \contentsline {section}{\numberline {3.2}Back End Container}{33}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Docker Container}{33}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Back End Overview}{34}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Authentication and Validation Middleware}{34}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Socket.io Engine}{35}{subsection.3.2.4}
 \contentsline {section}{\numberline {3.3}Front End Container}{35}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Nginx Reverse Proxy}{35}{subsection.3.3.1}
 \contentsline {section}{\numberline {3.4}Database Container}{35}{section.3.4}

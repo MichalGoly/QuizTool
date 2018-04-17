@@ -252,6 +252,7 @@ the user to navigate to his dashboard.
 \end{figure}
 
 \subsubsection{Google Single Sign On and JWT Tokens}
+\label{subsection:google}
 Once the lecturer clicks on the Google Sign-In button, he is redirected to Google
 and asked to provide his Google credentials, and authorise the Quiz Tool to get
 basic information about him. The passport.js\cite{45} Node.js middleware, together
@@ -339,6 +340,7 @@ temporary files would be cleaned from disk.
 \end{figure}
 
 \subsection{Lecture Broadcast}
+\label{subsection:lecturebroadcast}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{broadcast.jpg}
@@ -800,9 +802,38 @@ Directory structure of the tool is self-explanatory:
 \end{itemize}
 
 \subsection{Authentication and Validation Middleware}
+Lecturers can login into the tool using their Google credentials. The authentication
+flow has been described in the \autoref{subsection:google} of this report. Each route
+listed in \autoref{tab:routes} is protected by the authentication middleware defined
+in the \texttt{helpers/auth.helper.js} file. At a very high level, the middleware
+checks if the HTTP request contains an authorisation header containing a Google access
+token unique to each lecturer in the system, before autenticating and authorising them
+to access a given resource. Please refer to the implementation for more details.
 
+Furthermore, routes \textbf{PUT} \texttt{/slides} and \textbf{POST} \texttt{/sessions} expect
+a JSON doument to be submitted with each request. The validity of the JSON provided is
+checked using the JSON schema validation provided by the jsonschema\cite{58} JavaScript module.
 
+\subsection{Socket.io Engine}
+The Socket.io engine running in the \texttt{server\_node} container, is used to allow slides to be broadcasted in real time to students
+participating in a lecture. Students can also submit their answers using the
+Socket.io client running on their machines, and lectuer can emit events indicating
+slide changes during a presentation. Lecture broadcast has been described in the \autoref{subsection:lecturebroadcast}
+of this report, and table \autoref{tab:socket} lists Socket.io events managed by the tool.
 
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Event} & \textbf{Purpose} \\ \hline
+\texttt{slide-update} & Emitted by a lecturer when lecture slide is changed \\ \hline
+\texttt{answer-sent} & Emitted by a student when quiz answer submitted \\ \hline
+\texttt{correct-answer} & Emitted by a lecturer when correct answer shown \\ \hline
+\texttt{current-slide-request} & Emitted by a student to request current slide on joining a lecture \\ \hline
+\end{tabular}
+\caption{Socket.io Events Summary}
+\label{tab:socket}
+\end{table}
 
 \section{Front End Container}
 \subsection{Nginx Reverse Proxy}
