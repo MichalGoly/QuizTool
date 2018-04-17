@@ -57,6 +57,7 @@ and use Socket.io to prove it was possible to make all technologies work togethe
 
 \newpage
 \subsubsection{Front End Container}
+\label{section:frontendcontainer}
 The front end container consisted of Angular 4 and nginx reverse proxy. The structure
 has been based on the \textit{Dockerized Angular 4 App (with Angular CLI)} repository\cite{35}.
 The Socket.io client dependency has been added to allow sending messages to the back end
@@ -209,6 +210,7 @@ can be found in the \autoref{chap:spintstories} of this report.
 
 \newpage
 \subsection{Login Page and Authorisation}
+\label{sub:loginauth}
 % - JWT tokens
 % - JWT interceptor
 % - Google single sign on
@@ -817,7 +819,7 @@ checked using the JSON schema validation provided by the jsonschema\cite{58} Jav
 \subsection{Socket.io Engine}
 The Socket.io engine running in the \texttt{server\_node} container, is used to allow slides to be broadcasted in real time to students
 participating in a lecture. Students can also submit their answers using the
-Socket.io client running on their machines, and lectuer can emit events indicating
+Socket.io client running on their machines, and lecturer can emit events indicating
 slide changes during a presentation. Lecture broadcast has been described in the \autoref{subsection:lecturebroadcast}
 of this report, and table \autoref{tab:socket} lists Socket.io events managed by the tool.
 
@@ -836,7 +838,42 @@ of this report, and table \autoref{tab:socket} lists Socket.io events managed by
 \end{table}
 
 \section{Front End Container}
-\subsection{Nginx Reverse Proxy}
+\subsection{Docker Container}
+The \texttt{client/} directory contains the front end code of the tool. The \texttt{Dockerfile}
+included in the \autoref{chap:codesamples} of this report as the \autoref{sample:clientdocker},
+has not changed since the first sprint. The container steps have been explained
+in the \autoref{section:frontendcontainer} of this report.
+
+\subsection{Front End Overview}
+\subsubsection{Nginx Reverse Proxy}
+The nginx reverse proxy routes traffic within the application. The \texttt{client/nginx/default.conf}
+file contains the web server's configuration. There are two notable aspects of the file, included
+in the \autoref{chap:codesamples} of this report as \autoref{sample:nginx}.
+
+\begin{enumerate}
+  \item All HTTP traffic going through the \texttt{/express} route is navigated to the \texttt{server\_node}
+    container
+  \item All Socket.io traffic is also rerouted to the \texttt{server\_node} container
+\end{enumerate}
+
+\subsubsection{Angular Code}
+Angular 4 has been used to develop the front end. It focuses on development of reusable
+components, consisting of enchanced HTML and logic written in TypeScript. Code ready for
+production is compiled down to HTML, CSS and JavaScript, which can be then served by
+the nginx web server to all the clients. Components can
+be embedded in each other, and the example could be the \texttt{NavbarComponent} which has
+been used across the application.
+
+The structure of the \texttt{client/src/app} directory is straightforward to follow:
+\begin{itemize}
+  \item \texttt{components/} contains all the components in the application
+  \item \texttt{guards/} contains the authentication guard preventing unauthenticated people
+    from accessing certain components, as discussed in the \autoref{sub:loginauth} of this report
+  \item \texttt{models/} contains the models which mimic the mongoose schema objects on the server side
+  \item \texttt{services/} contains services which consume endpoints exposed by the \texttt{server\_node},
+    and offline services containing utility methods
+  \item \texttt{utils/} contains the JWT interceptor discussed in the \autoref{sub:loginauth} of this report
+\end{itemize}
 
 \section{Database Container}
 \subsection{MongoDB}
