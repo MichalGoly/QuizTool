@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  17 APR 2018 12:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.29)  17 APR 2018 12:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1271,12 +1271,7 @@ LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <10> not available
 [56] [57] [58]
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <6> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 213.
- [59]
-Overfull \hbox (83.21385pt too wide) in paragraph at lines 285--286
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-) [60]
+ [59]) [60]
 \openout2 = `Appendix6/appendix6.aux'.
 
  (./Appendix6/appendix6.tex
@@ -1559,7 +1554,7 @@ type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on mwg2_finalreport.pdf (78 pages, 6853565 bytes).
+Output written on mwg2_finalreport.pdf (78 pages, 6853572 bytes).
 PDF statistics:
  1734 PDF objects out of 2073 (max. 8388607)
  1551 compressed objects within 16 object streams
