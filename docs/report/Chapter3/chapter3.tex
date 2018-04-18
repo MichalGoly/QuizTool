@@ -1,20 +1,96 @@
 \chapter{Evaluation}
 
-Examiners expect to find in your dissertation a section addressing such questions as:
+The final chapter, critically evaluates the work done over the course of the project.
 
-\begin{itemize}
-   \item Were the requirements correctly identified? 
-   \item Were the design decisions correct?
-   \item Could a more suitable set of tools have been chosen?
-   \item How well did the software meet the needs of those who were expecting to use it?
-   \item How well were any other project aims achieved?
-   \item If you were starting again, what would you do differently?
-\end{itemize}
+\subsection{What Went Well}
+Every software has its strengths and weaknesses, which also applies to the Quiz Tool.
+The application has been developed by putting the importance on implementing
+features in the simplest way possible. The ambition of making Qwizdom redundant
+in the future, and making Quiz Tool the main tool Aberystwyth University uses
+for running interactive lectures, forced me to think about the future maintainability
+of the application at all stages of the design and development.
 
-Other questions can be addressed as appropriate for a project. 
+All of the proposed tasks identified in the outline project specification have been
+completed, and the tool has been successfully implemented to address all of the
+top level functional requirements identified in the early stages of the development.
+The single person adjusted SCRUM methodology proved to be successfull in helping
+to structure the work over the weeks. Weekly sprints enabled me to stay on track
+and deliver the working software on time before the deadline. Being able to discuss
+my choices with the client was also enormously helpful, and complemented the
+SCRUM methodology chosen.
 
-Such material is regarded as an important part of the dissertation; it should demonstrate that you are capable not only of carrying out a piece of work but also of thinking critically about how you did it and how you might have done it better. This is seen as an important part of an honours degree. 
+Choosing to implement the tool as a web application, using entirely JavaScript
+based technologies was a good decision. If the mobile application approach has
+been chosen as intially proposed, it would be unlikely for the application to be
+as well developed as using the MEAN stack. The initial high learning curve of
+understanding Angular, and deciding how to structure the back end of the application
+written in Express, paid off later on as the development was fairly straightforward.
+If on the other hand, extra frameworks would have to be learnt before the development
+could started, the amount of time for the technical part of the project would most
+likely not be enough to finish it on time. Furthermore, the decision to tackle the most technically
+difficult issues first, by prototyping during the early stages of the development
+was a smart move. If easy tasks were tackled first, there could have been the
+danger of having multiple, unclear requirements towards the end of the process, which
+could lead to going over the deadline.
 
-There will be good things and room for improvement with any project. As you write this section, identify and discuss the parts of the work that went well and also consider ways in which the work could be improved. 
+Putting the DevOps infrastructure in place during the very first sprint, and structuring
+the application using docker-compose, and then automatically deploying it to the
+production environment provided by AWS was also a good choice. The build agent
+could give reassurance the software was not degrading in quality by running tests
+whenever a pull request was made on GitHub. Having Docker containers running in a
+similar fashion during all development, testing and production, made the development
+much more enjoyable and productive.
 
-In the latter stages of the module, we will discuss the evaluation. That will probably be around week 9, although that differs each year. 
+A decent amount of time have been put into the development of the tool. The time
+commitment has been tracked on daily basis using the spreadsheet\cite{}, which
+made sprint planning easier, as the velocity of the development could be monitored.
+GitHub issues could be then estimated with a greater accuracy, although some
+sprints did go over a single week. Other than the two sprints which lasted two weeks,
+the amount of work allocated into each sprint was optimal.
+
+Finally, the testing strategy was mainly correct. Adding tests lead to defects being
+found and fixed, which improved the overall quality of the tool, and the confidence
+of its suitability to run in the production. A successful lecture has been run using
+the tool, and the application successfully handled a real world scenario of handling
+over fifty users. The user feedback was also mainly positive. 
+
+\subsection{What Could Have Been Improved}
+% - File upload over 15 MB
+% - File upload and splitting to slides takes a decent amount of time before
+% the user can use the tool. User interface could have been improved to let the
+% user know everything is fine, or submit the task to split lecture slides and then
+% let the lecturer
+% - LDAP vs Google Single Sign On unfortunate lack of resources
+%  - nothing really stops students, or malicios users from loggin in and attempting to crash the software
+% - Two sprints were overestimated and resulted in two weeks long sprints as opposed to
+% one week
+% - Angular unit tests could be extended
+% - Front end and integration tests should have been added earlier. They were added in the
+% last iteration which was a risky strategy
+% - potentially more comments
+
+% Examiners expect to find in your dissertation a section addressing such questions as:
+%
+% \begin{itemize}
+%    \item Were the requirements correctly identified?
+%    \item Were the design decisions correct?
+%    \item Could a more suitable set of tools have been chosen?
+%    \item How well did the software meet the needs of those who were expecting to use it?
+%    \item How well were any other project aims achieved?
+%    \item If you were starting again, what would you do differently?
+% \end{itemize}
+%
+% Other questions can be addressed as appropriate for a project.
+%
+% Such material is regarded as an important part of the dissertation; it should demonstrate
+% that you are capable not only of carrying out a piece of work but also of thinking critically
+%  about how you did it and how you might have done it better. This is seen as an important part of an honours degree.
+%
+% There will be good things and room for improvement with any project. As you write this section,
+%  identify and discuss the parts of the work that went well and also consider ways in which the work could be improved.
+%
+% In the latter stages of the module, we will discuss the evaluation. That will probably
+% be around week 9, although that differs each year.
+%
+% Could have been improved:
+% - file uplaod

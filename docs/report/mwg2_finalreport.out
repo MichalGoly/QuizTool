@@ -73,27 +73,29 @@
 \BOOKMARK [2][-]{subsection.4.5.1}{Client Feedback}{section.4.5}% 73
 \BOOKMARK [2][-]{subsection.4.5.2}{End Users Evaluation}{section.4.5}% 74
 \BOOKMARK [0][-]{chapter.5}{Evaluation}{}% 75
-\BOOKMARK [0][-]{appendix.A}{Third-Party Code and Libraries}{}% 76
-\BOOKMARK [0][-]{appendix.B}{Ethics Submission}{}% 77
-\BOOKMARK [0][-]{appendix.C}{Sprint Stories}{}% 78
-\BOOKMARK [1][-]{section.C.1}{Sprint 1}{appendix.C}% 79
-\BOOKMARK [1][-]{section.C.2}{Sprint 2}{appendix.C}% 80
-\BOOKMARK [1][-]{section.C.3}{Sprint 3}{appendix.C}% 81
-\BOOKMARK [1][-]{section.C.4}{Sprint 4}{appendix.C}% 82
-\BOOKMARK [1][-]{section.C.5}{Sprint 5}{appendix.C}% 83
-\BOOKMARK [0][-]{appendix.D}{Sprint Retrospective Documents}{}% 84
-\BOOKMARK [0][-]{appendix.E}{Code Examples}{}% 85
-\BOOKMARK [1][-]{section.E.1}{Intial Front End Dockerfile}{appendix.E}% 86
-\BOOKMARK [1][-]{section.E.2}{Initial Back End Dockerfile}{appendix.E}% 87
-\BOOKMARK [1][-]{section.E.3}{Intial Circle CI Config File}{appendix.E}% 88
-\BOOKMARK [1][-]{section.E.4}{Initial Dockerrun.aws.json file}{appendix.E}% 89
-\BOOKMARK [1][-]{section.E.5}{Production Deployment Script}{appendix.E}% 90
-\BOOKMARK [1][-]{section.E.6}{Final Dockerrun.aws.json file}{appendix.E}% 91
-\BOOKMARK [1][-]{section.E.7}{Final Back End Dockerfile}{appendix.E}% 92
-\BOOKMARK [1][-]{section.E.8}{Final Nginx Config File}{appendix.E}% 93
-\BOOKMARK [1][-]{section.E.9}{Final Circle CI Config File}{appendix.E}% 94
-\BOOKMARK [1][-]{section.E.10}{Front End Dockerfile for Testing}{appendix.E}% 95
-\BOOKMARK [1][-]{section.E.11}{Integration Testing Docker Environment}{appendix.E}% 96
-\BOOKMARK [0][-]{appendix.F}{PDF Report Examples}{}% 97
-\BOOKMARK [0][-]{appendix.G}{User Survey Results}{}% 98
-\BOOKMARK [0][-]{appendix.G}{Bibliography}{}% 99
+\BOOKMARK [1][-]{subsection.5.0.1}{What Went Well}{chapter.5}% 76
+\BOOKMARK [2][-]{subsection.5.0.2}{What Could Have Been Improved}{subsection.5.0.1}% 77
+\BOOKMARK [0][-]{appendix.A}{Third-Party Code and Libraries}{}% 78
+\BOOKMARK [0][-]{appendix.B}{Ethics Submission}{}% 79
+\BOOKMARK [0][-]{appendix.C}{Sprint Stories}{}% 80
+\BOOKMARK [1][-]{section.C.1}{Sprint 1}{appendix.C}% 81
+\BOOKMARK [1][-]{section.C.2}{Sprint 2}{appendix.C}% 82
+\BOOKMARK [1][-]{section.C.3}{Sprint 3}{appendix.C}% 83
+\BOOKMARK [1][-]{section.C.4}{Sprint 4}{appendix.C}% 84
+\BOOKMARK [1][-]{section.C.5}{Sprint 5}{appendix.C}% 85
+\BOOKMARK [0][-]{appendix.D}{Sprint Retrospective Documents}{}% 86
+\BOOKMARK [0][-]{appendix.E}{Code Examples}{}% 87
+\BOOKMARK [1][-]{section.E.1}{Intial Front End Dockerfile}{appendix.E}% 88
+\BOOKMARK [1][-]{section.E.2}{Initial Back End Dockerfile}{appendix.E}% 89
+\BOOKMARK [1][-]{section.E.3}{Intial Circle CI Config File}{appendix.E}% 90
+\BOOKMARK [1][-]{section.E.4}{Initial Dockerrun.aws.json file}{appendix.E}% 91
+\BOOKMARK [1][-]{section.E.5}{Production Deployment Script}{appendix.E}% 92
+\BOOKMARK [1][-]{section.E.6}{Final Dockerrun.aws.json file}{appendix.E}% 93
+\BOOKMARK [1][-]{section.E.7}{Final Back End Dockerfile}{appendix.E}% 94
+\BOOKMARK [1][-]{section.E.8}{Final Nginx Config File}{appendix.E}% 95
+\BOOKMARK [1][-]{section.E.9}{Final Circle CI Config File}{appendix.E}% 96
+\BOOKMARK [1][-]{section.E.10}{Front End Dockerfile for Testing}{appendix.E}% 97
+\BOOKMARK [1][-]{section.E.11}{Integration Testing Docker Environment}{appendix.E}% 98
+\BOOKMARK [0][-]{appendix.F}{PDF Report Examples}{}% 99
+\BOOKMARK [0][-]{appendix.G}{User Survey Results}{}% 100
+\BOOKMARK [0][-]{appendix.G}{Bibliography}{}% 101
