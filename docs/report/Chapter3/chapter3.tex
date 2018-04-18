@@ -48,13 +48,69 @@ GitHub issues could be then estimated with a greater accuracy, although some
 sprints did go over a single week. Other than the two sprints which lasted two weeks,
 the amount of work allocated into each sprint was optimal.
 
+Quiz Tool's main selling point, compared to Qwizdom is the ability to help lecturers
+in the creation of quizzes. Because the text of each slide is extracted, and the tool
+knows how to render eligible slides as quizzes, the lecturer only has to mark
+slides as multi choice quizzes and the rest is handled automatically. It is very quick
+to upload a set of slides, and as long as slides follow the expected format of having
+A, B, C letters, or bullet points, the tool can make life easier for the end user.
+
 Finally, the testing strategy was mainly correct. Adding tests lead to defects being
 found and fixed, which improved the overall quality of the tool, and the confidence
 of its suitability to run in the production. A successful lecture has been run using
 the tool, and the application successfully handled a real world scenario of handling
-over fifty users. The user feedback was also mainly positive. 
+over fifty users. The user feedback was also mainly positive.
 
 \subsection{What Could Have Been Improved}
+Looking back, certain parts of the Quiz Tool could have been implemented differently,
+or perhaps should be improved if the tool outlived the final project submission, and was
+to be actually used by the university.
+
+The main limitation of the tool in its current state is that the file upload
+is limited to 15 MB. This means that no PDF presentation over 15MB can be uploaded
+and used successfully with the tool. The problem comes down to the choice of
+focusing on making the design as simple as possible, while still delivering a
+product to the desired standard. Files are stored in the MongoDB database directly
+in the BSON format. The maximum size of the BSON property stored in an object in
+MongoDB is 16MB, but the upload limit has been set to 15MB, to be extra safe the tool could
+handle the uploaded file. I wanted to avoid introducing GridFS, capable of
+splitting binary files into small chunks and storing them in the database, due
+to the significant increase in the complexity of the design and implementation.
+The third approach which I should have probably chosen instead, was to store files
+on disk, and keep references to these files in the database. If I could go back
+and re-implement this part of the system, I would have gone with the third option.
+This could be still re-implemented if enough time was availble, and the use case
+of uploading files over 15MB was necessary.
+
+The final discussion with the client highlighted certain improvements that could
+be made to the tool to make it more usable. For example when the lecturer edits
+a lecture to mark certain lectures as quizzes, he has to scroll all the way up to
+save or discard his changes. An extra set of buttons on the bottom of the screen
+could address this issue. Or perhaps having the buttons fixed on the screen
+in one position could be the answer. Another issue, is the way slides are broadcasted
+to the audience, or actually how the answers to quizzes are stored in memory.
+As long as the lecturer does not go back in the presentation, the tool works
+as expected. The problem could appear when answers were collected, and then the
+lectuer decides to navigate to the first slide of the presentation having shown half
+of it before. The design of the tool, resets previously submitted answers if
+the lecturer decides to go back past the previously answered quiz. This could be addressed by
+keeping previous questions, and making the lecturer to explicitly reset the
+quiz if he wants to.
+
+Even though the development method chosen worked well for the project, two
+sprints were overestimated, as too many issues were allocated to a single week.
+This was not too problematic, as the sprints were simply extended to last an extra
+week.
+
+Finally, the overall testing strategy was correct. However the front end Angular
+tests should have probably been more extensive. The UI could have been tested
+using the Angular tests to complement the selenium tests, rather than relying
+on the selenium tests to test the front end. Both Angular unit tests, and integration
+tests should have been added in the early sprints of the development, as opposed
+the very last one. This would have made the continuous integration able to
+spot defects earlier, and give more confidence into the correctness of the implementation
+early on.
+
 % - File upload over 15 MB
 % - File upload and splitting to slides takes a decent amount of time before
 % the user can use the tool. User interface could have been improved to let the

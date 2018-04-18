@@ -85,27 +85,27 @@
 \contentsline {chapter}{\numberline {5}Evaluation}{42}{chapter.5}
 \contentsline {subsection}{\numberline {5.0.1}What Went Well}{42}{subsection.5.0.1}
 \contentsline {subsection}{\numberline {5.0.2}What Could Have Been Improved}{43}{subsection.5.0.2}
-\contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{44}{appendix.A}
-\contentsline {chapter}{\numberline {B}Ethics Submission}{45}{appendix.B}
-\contentsline {chapter}{\numberline {C}Sprint Stories}{48}{appendix.C}
-\contentsline {section}{\numberline {3.1}Sprint 1}{48}{section.C.1}
-\contentsline {section}{\numberline {3.2}Sprint 2}{49}{section.C.2}
-\contentsline {section}{\numberline {3.3}Sprint 3}{50}{section.C.3}
-\contentsline {section}{\numberline {3.4}Sprint 4}{50}{section.C.4}
-\contentsline {section}{\numberline {3.5}Sprint 5}{51}{section.C.5}
-\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{52}{appendix.D}
-\contentsline {chapter}{\numberline {E}Code Examples}{59}{appendix.E}
-\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{60}{section.E.1}
-\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{61}{section.E.2}
-\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{62}{section.E.3}
-\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{63}{section.E.4}
-\contentsline {section}{\numberline {5.5}Production Deployment Script}{64}{section.E.5}
-\contentsline {section}{\numberline {5.6}Final Dockerrun.aws.json file}{65}{section.E.6}
-\contentsline {section}{\numberline {5.7}Final Back End Dockerfile}{66}{section.E.7}
-\contentsline {section}{\numberline {5.8}Final Nginx Config File}{67}{section.E.8}
-\contentsline {section}{\numberline {5.9}Final Circle CI Config File}{68}{section.E.9}
-\contentsline {section}{\numberline {5.10}Front End Dockerfile for Testing}{69}{section.E.10}
-\contentsline {section}{\numberline {5.11}Integration Testing Docker Environment}{70}{section.E.11}
-\contentsline {chapter}{\numberline {F}PDF Report Examples}{72}{appendix.F}
-\contentsline {chapter}{\numberline {G}User Survey Results}{74}{appendix.G}
-\contentsline {chapter}{Bibliography}{75}{appendix.G}
+\contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{45}{appendix.A}
+\contentsline {chapter}{\numberline {B}Ethics Submission}{46}{appendix.B}
+\contentsline {chapter}{\numberline {C}Sprint Stories}{49}{appendix.C}
+\contentsline {section}{\numberline {3.1}Sprint 1}{49}{section.C.1}
+\contentsline {section}{\numberline {3.2}Sprint 2}{50}{section.C.2}
+\contentsline {section}{\numberline {3.3}Sprint 3}{51}{section.C.3}
+\contentsline {section}{\numberline {3.4}Sprint 4}{51}{section.C.4}
+\contentsline {section}{\numberline {3.5}Sprint 5}{52}{section.C.5}
+\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{53}{appendix.D}
+\contentsline {chapter}{\numberline {E}Code Examples}{60}{appendix.E}
+\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{61}{section.E.1}
+\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{62}{section.E.2}
+\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{63}{section.E.3}
+\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{64}{section.E.4}
+\contentsline {section}{\numberline {5.5}Production Deployment Script}{65}{section.E.5}
+\contentsline {section}{\numberline {5.6}Final Dockerrun.aws.json file}{66}{section.E.6}
+\contentsline {section}{\numberline {5.7}Final Back End Dockerfile}{67}{section.E.7}
+\contentsline {section}{\numberline {5.8}Final Nginx Config File}{68}{section.E.8}
+\contentsline {section}{\numberline {5.9}Final Circle CI Config File}{69}{section.E.9}
+\contentsline {section}{\numberline {5.10}Front End Dockerfile for Testing}{70}{section.E.10}
+\contentsline {section}{\numberline {5.11}Integration Testing Docker Environment}{71}{section.E.11}
+\contentsline {chapter}{\numberline {F}PDF Report Examples}{73}{appendix.F}
+\contentsline {chapter}{\numberline {G}User Survey Results}{75}{appendix.G}
+\contentsline {chapter}{Bibliography}{76}{appendix.G}
