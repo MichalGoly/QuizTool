@@ -80,6 +80,8 @@
 \contentsline {section}{\numberline {4.3}Client Side Unit Tests}{39}{section.4.3}
 \contentsline {section}{\numberline {4.4}Selenium Integration Tests}{40}{section.4.4}
 \contentsline {section}{\numberline {4.5}User Tests}{41}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Client Feedback}{41}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}End Users Evaluation}{41}{subsection.4.5.2}
 \contentsline {chapter}{\numberline {5}Evaluation}{42}{chapter.5}
 \contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{43}{appendix.A}
 \contentsline {chapter}{\numberline {B}Ethics Submission}{44}{appendix.B}
