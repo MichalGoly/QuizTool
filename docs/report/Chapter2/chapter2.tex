@@ -999,23 +999,17 @@ a distribution folder which is exposed via nginx to all the clients. This means 
 and other test dependencies are no longer present in the container, therefore a special \texttt{Dockerfile.test}
 file, included in the \autoref{chap:codesamples} of this report as \autoref{sample:clientdockertest},
 has been added to address this problem. The major difference is the lack of nginx, and the entrypoint
-changed to \texttt{npm test}.
+changed to \texttt{npm test}. Every time tests are run, a headless PhantomJS\cite{65} web browser
+is started to make sure code works as expected.
 
-
-
-% - Angular front test support
-% - adding the extra Dockerfile.test to run the tests. The Dockerfile could not be used as it's a production ready
-% file. npm does not exists as files are compiled so Karma tests could not be started.
-% - PhantomJS headless browser is started and runs tests
-% - Components UI is not tested
-% - Componentes private methods are being tested
-% - Offline services are being unit tested
-% - HTTP services are not being tested, as the endpoint would have to be mocked and
-% there was a plan of adding end-to-end selenium tests which would test both
-% the UI and the HTTP services at the same time. Given the time contraints the choice was made to
-% go with extra selenium tests, but angular unit tests should certainly be extended if the
-% application lifespan exceeded the final project submission.
-
+Client side tests focus on making sure the offline, helper methods and services work as intended.
+Tests developed are true unit tests, as they make sure code works well in isolation. Services
+are tested, as long as they do not make HTTP calls to the back end. In order to produce such
+tests, the back end would have had to be mocked for testing purposes, and selenium\cite{66} tests described
+in the next subsection make sure HTTP services work as expected instead. Code responsible for
+options extraction from slides' text have been tested, and every Components' internally
+used methods have been tested. Finally, the UI of the application is not tested, as selenium
+tests cover UI requirements as well.
 
 \section{Selenium Integration Tests}
 % - extra container
