@@ -987,10 +987,50 @@ people.
 \end{figure}
 
 \section{Client Side Unit Tests}
+The client side of the application has been tested using testing dependencies which come
+preinstalled with every Angular application. Karma\cite{63} testing framework, and
+Jasmine\cite{64} to actually define the test cases. Each Angular component consists of a HTML
+template, a stylesheet file, a file describing the logic of a component written in TypeScript,
+and finally a \texttt{*.component.spec.ts} file including tests of the component. Each Angular
+Service file also has an associated test file. Angular applications can be tested by running
+the \texttt{npm test} command. The \texttt{client} container's production \texttt{Dockerfile}, shown
+in the \autoref{sample:clientdocker} of this report, uses the multi stage Docker build. Angular is compiled down to
+a distribution folder which is exposed via nginx to all the clients. This means \texttt{npm},
+and other test dependencies are no longer present in the container, therefore a special \texttt{Dockerfile.test}
+file, included in the \autoref{chap:codesamples} of this report as \autoref{sample:clientdockertest},
+has been added to address this problem. The major difference is the lack of nginx, and the entrypoint
+changed to \texttt{npm test}.
+
+
+
+% - Angular front test support
+% - adding the extra Dockerfile.test to run the tests. The Dockerfile could not be used as it's a production ready
+% file. npm does not exists as files are compiled so Karma tests could not be started.
+% - PhantomJS headless browser is started and runs tests
+% - Components UI is not tested
+% - Componentes private methods are being tested
+% - Offline services are being unit tested
+% - HTTP services are not being tested, as the endpoint would have to be mocked and
+% there was a plan of adding end-to-end selenium tests which would test both
+% the UI and the HTTP services at the same time. Given the time contraints the choice was made to
+% go with extra selenium tests, but angular unit tests should certainly be extended if the
+% application lifespan exceeded the final project submission.
+
+
 \section{Selenium Integration Tests}
+% - extra container
+% - selenium hub
+% - 2 headless browsers
+% - massive docker-compose file for integration
+% - what's being tested
+% - pros and cons
+% - build slowed down considerably
+% - tests difficult to write
+
+
 \section{User Tests}
-- Continuous Client Feedback
-- This section will include a discussion of a live session with students.
+% - Continuous Client Feedback
+% - This section will include a discussion of a live session with students.
 
 
 

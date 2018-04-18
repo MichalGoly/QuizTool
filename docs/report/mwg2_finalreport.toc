@@ -100,5 +100,6 @@
 \contentsline {section}{\numberline {5.7}Final Back End Dockerfile}{63}{section.E.7}
 \contentsline {section}{\numberline {5.8}Final Nginx Config File}{64}{section.E.8}
 \contentsline {section}{\numberline {5.9}Final Circle CI Config File}{65}{section.E.9}
-\contentsline {chapter}{\numberline {F}PDF Report Examples}{66}{appendix.F}
-\contentsline {chapter}{Bibliography}{68}{appendix.F}
+\contentsline {section}{\numberline {5.10}Front End Dockerfile for Testing}{66}{section.E.10}
+\contentsline {chapter}{\numberline {F}PDF Report Examples}{67}{appendix.F}
+\contentsline {chapter}{Bibliography}{69}{appendix.F}

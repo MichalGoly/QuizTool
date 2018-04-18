@@ -451,3 +451,32 @@ The final \texttt{.circleci/config.yml} which evolved over the iterations.
   \caption{Final Build Config File}
   \label{sample:circlecifinal}
 \end{figure}
+
+\newpage
+\section{Front End Dockerfile for Testing}
+\texttt{Dockerfile.test} used for front end unit tests to address the lack of \texttt{npm}
+in the production container shown in the \autoref{sample:clientdocker}.
+
+\begin{figure}[ht]
+  \begin{lstlisting}[basicstyle=\small, breaklines=true]
+  # Dockerfile for client side unit tests
+  FROM node:8
+
+  COPY package.json package-lock.json ./
+
+  RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
+
+  ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
+  RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
+
+  WORKDIR /ng-app
+
+  COPY . .
+
+  RUN $(npm bin)/ng build
+
+  CMD npm test
+  \end{lstlisting}
+  \caption{Dockerfile.test Used For Front End Testing}
+  \label{sample:clientdockertest}
+\end{figure}
