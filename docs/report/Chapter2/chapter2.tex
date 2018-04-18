@@ -1020,7 +1020,61 @@ tests cover UI requirements as well.
 % - pros and cons
 % - build slowed down considerably
 % - tests difficult to write
+Selenium can be used to automate browsers interaction. Selenium integration tests,
+which could also be thought of as end-to-end tests, have been added to test
+the behaviour of the entire system. These tests focused on making sure these parts
+of the systems which has not been tested with other approaches, would be tested
+using selenium. Specifically user interface and client - server communication
+has been tested.
 
+Quiz Tool is a multi container Docker application. It was therefore crucial to test
+the application in an environment as close to the production as possible.
+Selenium-grid\cite{67} can be used to run tests against multiple web browsers in
+parallel. A special \texttt{docker-compose.integration.yml} file, included in the
+\autoref{chap:codesamples} of this report as \autoref{sample:dockercomposeintegration},
+has been added, following the tutorial\cite{68}, to define the selenium testing
+environment visualised in \autoref{fig:seleniumtesting}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{selenium.jpg}
+    \caption{Selenium Testing Environment Visualised}
+    \label{fig:seleniumtesting}
+\end{figure}
+
+An extra \texttt{tester} Node.js container has been added, to drive the integration
+tests using the selenium-webdriver\cite{69}. The \texttt{tester/} directory contains
+the source code of the container, which has been specifically designed to run
+selenium tests. Test suites run using mocha, and the chai assertion library has been
+used to make sure variables have expected values.
+
+There are five test files
+located in the \texttt{tester/test\_integration/} directory. Most groups of
+tests start by starting two, headless web browsers (firefox and chrome), by
+connecting to the selenium-hub. The selenium-webdriver is then used to
+find elements by CSS selectors, click on them, and wait for the Quiz
+Tool to render expected views. Common functionality, like logging into the
+system as a lectuer, has been moved to the \texttt{tester/common} directory,
+and avoids having to write redundant code. Google prevents people from using
+browser automation tools to interact with their websites. Therefore the Google
+Single Sign On has been disabled during selenium testing.
+
+\newpage
+Logging in as both students and lecturers have been tested, file uploads,
+file removal, editing lectures, running sessions, generating session
+reports, and other likely interactions with each web view have been tested.
+The most notable test, located in the file \texttt{4\_broadcast-test.js}, logs
+in as a lecturer, uploads a file, marks some slides as quizzes, spins up
+three extra web browsers to log into the tool as students, runs the session
+and lets students submit their answers before ending the broadcast. Admittedly, the test
+is so large it gets to the point where if it fails, it does not really offer
+much help in finding where the failure actually occured, as the whole application
+is tested in a single test. It is however very useful to limit regressions
+as the test runs with each pull request on Circle CI. It also increases
+the productivity, as all the steps which were automated, used to be performed
+manually to make sure nothing was broken with a new feature implementation.
+Selenium tests also take a considerate amount of time to finish, and increased
+the average build time from 8 to 15 minutes. 
 
 \section{User Tests}
 % - Continuous Client Feedback
