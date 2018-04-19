@@ -84,7 +84,7 @@ Circle CI has been integrated with the GitHub repository containing the source c
 Quiz Tool. Every time a pull request was made, Circle CI would be notified. It would then
 assign a virtual machine build agent from a pool, and spin up a clean build environment.
 It would then checkout the code and run the steps specified in the build config file, before
-reporting if the build was successfull back to GitHub.
+reporting if the build was successful back to GitHub.
 
 \begin{figure}[ht]
     \centering
@@ -104,8 +104,8 @@ deploys the application to production.
 \subsection{Production Environment}
 \label{subsection:productionenv}
 The production environment of the tool is hosted on the AWS cloud. The AWS Elastic Beanstalk
-has been chosen specificaly, as applications in
-various programming languages can be deployed with ease, wihout having to worry about
+has been chosen specifically, as applications in
+various programming languages can be deployed with ease, without having to worry about
 the infrastructure running these applications\cite{37}. The Multicontainer Docker AWS Elastic
 Beanstalk\cite{38} environment, creates a single Amazon EC2\cite{39}
 instance and uses ECS (Amazon Elastic Container Service)\cite{40} to coordinate container deployments to
@@ -158,7 +158,7 @@ early in the development and design process allows teams to stay on track and re
 their design if necessary. The story boards below have been produced to gain feedback
 from the client, and ease the front end development in future iterations.
 
-\autoref{fig:storylecturer} shows how the lectuer would login into the tool using
+\autoref{fig:storylecturer} shows how the lecturer would login into the tool using
 Google Single Sign On. He could then upload his lecture slides using an action
 button in the bottom right corner of the screen, be able to edit his slides and
 mark certain slides as quizzes. A list of cards would be presented showing all
@@ -205,9 +205,9 @@ The full sprint retrospective document produced can be found in the \autoref{cha
 \section{Sprint 2 - Bare Bone Application}
 \subsection{Sprint Planning}
 This sprint focused on converting the proof of concept chat application created in the previous
-week into a basic Quiz Tool. Simple login page for both students and lectuers
+week into a basic Quiz Tool. Simple login page for both students and lecturers
 would be developed based on the paper prototypes from the previous sprint, and Google Single Sign
-On would be added. Once logged in, lectuers could upload their PDF lecture slides and broadcast
+On would be added. Once logged in, lecturers could upload their PDF lecture slides and broadcast
 them to all students, as session generation was not implemented yet. The entire list of estimated stories
 can be found in the \autoref{chap:spintstories} of this report.
 
@@ -331,7 +331,7 @@ in the future if the lifespan of the tool extended beyond the final project subm
 The initial implementation of the file upload, took the PDF file, stored it directly as BSON in the
 \texttt{Lecture} schema object and split the lecture into slides storing them in MongoDB using
 the \texttt{Slide} schema object. Once the file has been uploaded using the ng2-file-upload\cite{51},
-and persisted in the database, it has been stored temporarly on disk. Text would be extracted from
+and persisted in the database, it has been stored temporarily on disk. Text would be extracted from
 each slide using the pdf-extract\cite{52} library, which would be instructed to leave single paged
 PDFs for each slide on disk. These PDFs would be then converted to PNG images using the scissors\cite{53}
 library. Finally, slides' text and images would be grouped together and stored in MongoDB, before the
@@ -397,8 +397,8 @@ can be found in the \autoref{chap:spintstories} of this report.
 
 \subsection{Session Keys}
 Every time lecturer started a new broadcast, a random session code would be generated.
-It would consist of eight alphanumerical characters, and the random generator would
-be seeded with the current time, to decrease the probability of generating two idential
+It would consist of eight alphanumeric characters, and the random generator would
+be seeded with the current time, to decrease the probability of generating two identical
 keys for two sessions running at the same time. The \textit{slide-change} Socket.io event
 described in the previous sprint, has been extended to carry the appropriate session key
 with each broadcast.
@@ -492,7 +492,7 @@ The full sprint retrospective document produced can be found in the
 \newpage
 \section{Sprint 4 - Fancy Quizes and Defect Fixing}
 \subsection{Sprint Planning}
-This sprint focused on addressing a critial bug in the production environment
+This sprint focused on addressing a critical bug in the production environment
 concerning the PDF to PNG conversion. Extra types of quizzes would also be added
 to complement the single choice ones available at the moment. The entire list of estimated stories
 can be found in the \autoref{chap:spintstories} of this report.
@@ -502,7 +502,7 @@ The presentation file upload and splitting of slides into PNG images persisted
 together with text implemented in sprint 2, worked as expected in both development and testing environments.
 The production environment on the other hand, would randomly crash and the underlying cause had
 to be investigated before any other work could progress. The process of splitting the
-PDF presentations uploaded relied on splitting the intial file into separate, single
+PDF presentations uploaded relied on splitting the initial file into separate, single
 paged PDF files, extracting their text, converting them to PNG images, before grouping
 together and persisting in the database. The final part of asynchronously trying
 to convert single paged PDF files into PNG files, failed with an IO exception, where
@@ -696,7 +696,7 @@ make more sense, as this data was ultimately supposed to be consumed by humans.
 An extra view shown in \autoref{fig:sessionsview} has been added to allow PDF report generation.
 Lecturers would be presented with a list of all sessions they run for the particular
 lecture in the system. Finally, the jsPDF\cite{57} library has been added, which allowed
-lectuers to export PDF reports for each session. An example PDF generated by the
+lecturers to export PDF reports for each session. An example PDF generated by the
 tool can be found in \autoref{chap:pdfreports} of this document.
 
 \begin{figure}[h!]
@@ -800,7 +800,7 @@ POST   & \texttt{/sessions} & Creates a new session \\ \hline
 Directory structure of the tool is self-explanatory:
 \begin{itemize}
   \item \texttt{db/} contains database access code
-  \item \texttt{helpers/} contains utility functions concering authentication and the Socket.io handler
+  \item \texttt{helpers/} contains utility functions concerning authentication and the Socket.io handler
   \item \texttt{models/} contains mongoose schema objects describing valid models which can be persisted in the database.
   \item \texttt{schemas/} contains JSON validator schemas
   \item \texttt{test/} contains server side unit tests
@@ -812,11 +812,11 @@ flow has been described in the \autoref{subsection:google} of this report. Each 
 listed in \autoref{tab:routes} is protected by the authentication middleware defined
 in the \texttt{helpers/auth.helper.js} file. At a very high level, the middleware
 checks if the HTTP request contains an authorisation header containing a Google access
-token unique to each lecturer in the system, before autenticating and authorising them
+token unique to each lecturer in the system, before authenticating and authorising them
 to access a given resource. Please refer to the implementation for more details.
 
 Furthermore, routes \textbf{PUT} \texttt{/slides} and \textbf{POST} \texttt{/sessions} expect
-a JSON doument to be submitted with each request. The validity of the JSON provided is
+a JSON document to be submitted with each request. The validity of the JSON provided is
 checked using the JSON schema validation provided by the jsonschema\cite{58} JavaScript module.
 
 \subsection{Socket.io Engine}
@@ -861,7 +861,7 @@ in the \autoref{chap:codesamples} of this report as \autoref{sample:nginx}.
 
 \subsubsection{Angular Code}
 Angular 4 has been used to develop the front end. It focuses on development of reusable
-components, consisting of enchanced HTML and logic written in TypeScript. Code ready for
+components, consisting of enhanced HTML and logic written in TypeScript. Code ready for
 production is compiled down to HTML, CSS and JavaScript, which can be then served by
 the nginx web server to all the clients. Components can
 be embedded in each other, and the example could be the \texttt{NavbarComponent} which has
@@ -964,12 +964,12 @@ Server side tests cover the major requirements of the tool, and also make sure t
 are handled appropriately by the application. Authorisation has been tested, or actually attempts
 to call endpoints without an appropriate authorisation header, or a header containing a malformed
 JWT token. Other tests relying on the user being authenticated, use a special \texttt{AUTH\_DISABLED}
-environment variable to use a mocked lectuer called Bob for testing. Database is also
+environment variable to use a mocked lecturer called Bob for testing. Database is also
 cleaned before a new set of tests runs. Lecture creation is tested by uploading a test PDF
 presentation as part of the tests. Tests also make sure slides are created as expected, slides
 can be marked as quizes, lectures be removed, sessions associated with lectures and reports
 generated. Finally, one of the good things about the mocha tests combined
-with the chai assertion library, is that they are incredibily easy to read even for non technical
+with the chai assertion library, is that they are incredibly easy to read even for non technical
 people.
 
 \begin{figure}[h!]
@@ -988,7 +988,7 @@ people.
 
 \section{Client Side Unit Tests}
 The client side of the application has been tested using testing dependencies which come
-preinstalled with every Angular application. Karma\cite{63} testing framework, and
+pre-installed with every Angular application. Karma\cite{63} testing framework, and
 Jasmine\cite{64} to actually define the test cases. Each Angular component consists of a HTML
 template, a stylesheet file, a file describing the logic of a component written in TypeScript,
 and finally a \texttt{*.component.spec.ts} file including tests of the component. Each Angular
@@ -1054,7 +1054,7 @@ tests start by starting two, headless web browsers (firefox and chrome), by
 connecting to the selenium-hub. The selenium-webdriver is then used to
 find elements by CSS selectors, click on them, and wait for the Quiz
 Tool to render expected views. Common functionality, like logging into the
-system as a lectuer, has been moved to the \texttt{tester/common} directory,
+system as a lecturer, has been moved to the \texttt{tester/common} directory,
 and avoids having to write redundant code. Google prevents people from using
 browser automation tools to interact with their websites. Therefore the Google
 Single Sign On has been disabled during selenium testing.
@@ -1068,7 +1068,7 @@ in as a lecturer, uploads a file, marks some slides as quizzes, spins up
 three extra web browsers to log into the tool as students, runs the session
 and lets students submit their answers before ending the broadcast. Admittedly, the test
 is so large it gets to the point where if it fails, it does not really offer
-much help in finding where the failure actually occured, as the whole application
+much help in finding where the failure actually occurred, as the whole application
 is tested in a single test. It is however very useful to limit regressions
 as the test runs with each pull request on Circle CI. It also increases
 the productivity, as all the steps which were automated, used to be performed
@@ -1096,10 +1096,10 @@ Quiz Tool has been used to successfully run a real lecture, with real students o
 development of the tool had finished. The overall performance of the tool has
 also been tested, as this was the first time the tool has been used by
 approximately 50 users at once. Lecture started by explaining to students,
-participation was voluntry, and their anonymous answers would be used to
+participation was voluntary, and their anonymous answers would be used to
 generate a session report using the tool report generation functionality.
-The two hour lecture ended with a voluntry user evaluation, where students
-were asked to provide their feedback on their experiece of using the tool,
+The two hour lecture ended with a voluntary user evaluation, where students
+were asked to provide their feedback on their experience of using the tool,
 and their thoughts on how it compared to Qwizdom. The session report generated
 using the tool can be found in the \autoref{chap:pdfreports} of this report, the anonymous
 user survey results on the other hand, in the \autoref{chap:usersurvey}.
