@@ -1,16 +1,158 @@
 \chapter{Third-Party Code and Libraries}
+%
+% If you have made use of any third party code or software libraries, i.e. any code
+% that you have not designed and written yourself, then you must include this appendix.
+%
+% As has been said in lectures, it is acceptable and likely that you will make use of
+%  third-party code and software libraries. If third party code or libraries are used,
+%   your work will build on that to produce notable new work. The key requirement is that we
+%   understand what is your original work and what work is based on that of other people.
+%
+% Therefore, you need to clearly state what you have used and where the original material can be
+% found. Also, if you have made any changes to the original versions, you must explain what you have changed.
+%
+% As an example, you might include a definition such as:
+%
+% Apache POI library - The project has been used to read and write Microsoft Excel files (XLS) as
+%  part of the interaction with the client's existing system for processing data. Version 3.10-FINAL
+%   was used. The library is open source and it is available from the Apache Software Foundation
+% \cite{apache_poi}. The library is released using the Apache License
+% \cite{apache_license}. This library was used without modification.
 
-If you have made use of any third party code or software libraries, i.e. any code
-that you have not designed and written yourself, then you must include this appendix.
+% server package.json
+\subparagraph{body-parser v1.18.2}
+MIT licensed Node.js middleware for parsing bodies of incoming HTTP requests. Used as part of the
+\texttt{server\_node} container. [Online] Available: https://github.com/expressjs/body-parser, [Accessed: Apr. 20, 2018].
 
-As has been said in lectures, it is acceptable and likely that you will make use of
- third-party code and software libraries. If third party code or libraries are used,
-  your work will build on that to produce notable new work. The key requirement is that we understand what is your original work and what work is based on that of other people.
+\subparagraph{express v4.15.2}
+MIT licensed Node.js web development framework used to develop the back end of the Quiz Tool.
+[Online] Available: https://github.com/expressjs/body-parser, [Accessed: Apr. 20, 2018].
 
-Therefore, you need to clearly state what you have used and where the original material can be found. Also, if you have made any changes to the original versions, you must explain what you have changed.
+\subparagraph{eyes v0.1.8}
 
-As an example, you might include a definition such as:
+\subparagraph{fs v0.0.1-security}
+\subparagraph{jsonschema v1.2.2}
+\subparagraph{mongoose v5.0.7}
+\subparagraph{multer v1.3.0}
+\subparagraph{passport v0.4.0}
+\subparagraph{passport-google-oauth v1.0.0}
+\subparagraph{pdf-extract v1.0.11}
+\subparagraph{pdf2img v0.5.0}
+\subparagraph{request-promise v4.2.2}
+\subparagraph{request v2.83.0}
+\subparagraph{socket.io v2.0.4}
+\subparagraph{mocha v5.0.4}
+\subparagraph{chai v4.1.2}
+\subparagraph{chai-http v3.0.0}
+\subparagraph{selenium-webdriver v4.0.0-alpha.1}
 
-Apache POI library - The project has been used to read and write Microsoft Excel files (XLS) as part of the interaction with the client's existing system for processing data. Version 3.10-FINAL was used. The library is open source and it is available from the Apache Software Foundation
-\cite{apache_poi}. The library is released using the Apache License
-\cite{apache_license}. This library was used without modification.
+% server Dockerfile
+\subparagraph{ghostscript}
+\subparagraph{poppler-utils}
+\subparagraph{pdftk}
+\subparagraph{graphicsmagick}
+
+% client package.json
+\subparagraph{@angular/animations v4.4.4}
+\subparagraph{@angular/common v4.3.5}
+\subparagraph{@angular/compiler v4.3.5}
+\subparagraph{@angular/core v4.3.5}
+\subparagraph{@angular/forms v4.3.5}
+\subparagraph{@angular/http v4.3.5}
+\subparagraph{@angular/platform-browser v4.3.5}
+\subparagraph{@angular/platform-browser-dynamic v4.3.5}
+\subparagraph{@angular/router v4.3.5}
+\subparagraph{@types/jspdf v1.1.31}
+\subparagraph{@types/socket.io-client v1.4.32}
+\subparagraph{chart.js v2.7.2}
+\subparagraph{file-saver v1.3.8}
+\subparagraph{core-js v2.5.0}
+\subparagraph{font-awesome v4.7.0}
+\subparagraph{intl v1.2.5}
+\subparagraph{jspdf v1.3.5}
+\subparagraph{jspdf-autotable v2.3.2}
+\subparagraph{mdi v2.1.19}
+\subparagraph{ng2-charts v1.6.0}
+\subparagraph{ng2-file-upload v1.3.0}
+\subparagraph{ng2-materialize v1.8.0}
+\subparagraph{ngx-cookie-service v1.0.10}
+\subparagraph{rxjs v5.4.3}
+\subparagraph{socket.io-client v2.0.4}
+\subparagraph{zone.js v0.8.16}
+\subparagraph{@angular/cli v1.3.1}
+\subparagraph{@angular/compiler-cli v4.3.5}
+\subparagraph{@types/jasmine v2.5.38}
+\subparagraph{codelyzer v3.1.2}
+\subparagraph{jasmine-core v2.5.2}
+\subparagraph{jasmine-spec-reporter v3.2.0}
+\subparagraph{karma v1.4.1}
+\subparagraph{karma-cli v1.0.1}
+\subparagraph{karma-coverage-istanbul-reporter v0.2.0}
+\subparagraph{karma-jasmine v1.1.0}
+\subparagraph{karma-jasmine-html-reporter v0.2.2}
+\subparagraph{karma-phantomjs-launcher v1.0.4}
+\subparagraph{protractor v5.1.0}
+\subparagraph{ts-node v3.3.0}
+\subparagraph{tslint v5.6.0}
+\subparagraph{typescript v2.4.2}
+
+% tutorials
+\subparagraph{Building Chat Application using MEAN Stack (Angular 4) and Socket.io}
+Step by step tutorial of building a simple chat application using MEAN stack and Socket.io. It helped me
+to understand how to use MEAN with Socket.io together, and the initial structure of the application
+was inspired by it.
+[Online] Available: https://www.djamware.com/post/58e0d15280aca75cdc948e4e/building-chat-applicationusing-mean-stack-angular-4-and-socketio,
+[Accessed: Apr. 11, 2018].
+
+\subparagraph{Docker Compose | Containerizing MEAN Stack Application | DevOps Tutorial | Edureka}
+A YouTube tutorial explaining how to containerise a MEAN stack web application. The \texttt{docker-compose.yml}
+file has been based on the one showed in the video. [Online] Available: https://www.youtube.com/watch?v=WZa7GsqyS3w,
+[Accessed: Apr. 20, 2018].
+
+\subparagraph{Dockerized Angular 4 App (with Angular CLI)}
+MIT licensed GitHub repository showing a starter Angular application, containerised with nginx
+using Docker. The structure of \texttt{client} container is based on a fork of the repository.
+[Online] Available: https://github.com/avatsaev/angular4-docker-example, [Accessed: Apr. 20, 2018].
+
+\subparagraph{Multicontainer Docker Environments}
+An official AWS tutorial showing how to deploy an application to the Multicontainer Elasticbeanstalk Docker
+Environment. [Online] Available: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create\_deploy\_docker\_ecs.html, [Accessed: Apr. 20, 2018].
+
+\subparagraph{Test a Node RESTful API with Mocha and Chai}
+A tutorial showing how to tests Node.js applications with Mocha and Chai. The structure of the server side
+unit tests has been inspired by the tutorial. [Online] Available: https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai,
+[Accessed: Apr. 20, 2018].
+
+\subparagraph{MEAN with Angular 2/5 - User Registration and Login Example \& Tutorial}
+The authentication of the Quiz Tool has been inspired by this tutorial. Especially the Angular
+JWT interceptor used in the application to append authentication tokens to each HTTP requests is based on the
+code presented in the tutorial. [Online] Available: http://jasonwatmore.com/post/2017/02/22/mean-with-angular-2-user-registration-and-login-example-tutorial,
+[Accessed: Apr. 20, 2018].
+
+\subparagraph{6 16 integrating with google oauth with passport js in a MEAN app undergrad webdev summer 1 2017}
+A YouTube tutorial explaining how to configure google authentication with the passport Node.js
+authentication middleware, in a MEAN stack application. The Google Sign-In implemented in Quiz Tool
+has been based on this tutorial. [Online] Available: https://www.youtube.com/watch?v=rc6zYV4jShQ,
+[Accessed: Apr. 20, 2018].
+
+\subparagraph{How to setup Elastic Beanstalk Deployment?}
+A topic in the official Circle CI discussion forum describing how to setup Circle CI to automatically
+deploy to the Elastic Beanstalk environment hosted on AWS. [Online] Available: https://discuss.circleci.com/t/how-to-setup-elastic-beanstalk-deployment/6154/4,
+[Accessed: Apr. 20, 2018].
+
+\subparagraph{Getting Started with Docker Compose}
+A step-by-step introduction to using the official Selenium Docker images using docker-compose. The tutorial
+was used when integration selenium tests were added to test the application.
+[Online] Available: https://github.com/SeleniumHQ/docker-selenium/wiki/Getting-Started-with-Docker-Compose,
+[Accessed: Apr. 20, 2018].
+
+
+
+
+
+
+
+
+
+
+%
