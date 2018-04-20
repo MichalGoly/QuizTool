@@ -88,98 +88,84 @@
 \contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{45}{appendix.A}
 \contentsline {subparagraph}{body-parser v1.18.2}{45}{section*.44}
 \contentsline {subparagraph}{express v4.15.2}{45}{section*.45}
-\contentsline {subparagraph}{eyes v0.1.8}{45}{section*.46}
-\contentsline {subparagraph}{fs v0.0.1-security}{45}{section*.47}
-\contentsline {subparagraph}{jsonschema v1.2.2}{45}{section*.48}
-\contentsline {subparagraph}{mongoose v5.0.7}{45}{section*.49}
-\contentsline {subparagraph}{multer v1.3.0}{45}{section*.50}
-\contentsline {subparagraph}{passport v0.4.0}{45}{section*.51}
-\contentsline {subparagraph}{passport-google-oauth v1.0.0}{45}{section*.52}
-\contentsline {subparagraph}{pdf-extract v1.0.11}{45}{section*.53}
-\contentsline {subparagraph}{pdf2img v0.5.0}{45}{section*.54}
-\contentsline {subparagraph}{request-promise v4.2.2}{45}{section*.55}
-\contentsline {subparagraph}{request v2.83.0}{46}{section*.56}
-\contentsline {subparagraph}{socket.io v2.0.4}{46}{section*.57}
-\contentsline {subparagraph}{mocha v5.0.4}{46}{section*.58}
-\contentsline {subparagraph}{chai v4.1.2}{46}{section*.59}
-\contentsline {subparagraph}{chai-http v3.0.0}{46}{section*.60}
-\contentsline {subparagraph}{selenium-webdriver v4.0.0-alpha.1}{46}{section*.61}
-\contentsline {subparagraph}{ghostscript}{46}{section*.62}
-\contentsline {subparagraph}{poppler-utils}{46}{section*.63}
-\contentsline {subparagraph}{pdftk}{46}{section*.64}
-\contentsline {subparagraph}{graphicsmagick}{46}{section*.65}
-\contentsline {subparagraph}{@angular/animations v4.4.4}{46}{section*.66}
-\contentsline {subparagraph}{@angular/common v4.3.5}{46}{section*.67}
-\contentsline {subparagraph}{@angular/compiler v4.3.5}{46}{section*.68}
-\contentsline {subparagraph}{@angular/core v4.3.5}{46}{section*.69}
-\contentsline {subparagraph}{@angular/forms v4.3.5}{46}{section*.70}
-\contentsline {subparagraph}{@angular/http v4.3.5}{46}{section*.71}
-\contentsline {subparagraph}{@angular/platform-browser v4.3.5}{46}{section*.72}
-\contentsline {subparagraph}{@angular/platform-browser-dynamic v4.3.5}{46}{section*.73}
-\contentsline {subparagraph}{@angular/router v4.3.5}{46}{section*.74}
-\contentsline {subparagraph}{@types/jspdf v1.1.31}{47}{section*.75}
-\contentsline {subparagraph}{@types/socket.io-client v1.4.32}{47}{section*.76}
-\contentsline {subparagraph}{chart.js v2.7.2}{47}{section*.77}
-\contentsline {subparagraph}{file-saver v1.3.8}{47}{section*.78}
-\contentsline {subparagraph}{core-js v2.5.0}{47}{section*.79}
-\contentsline {subparagraph}{font-awesome v4.7.0}{47}{section*.80}
-\contentsline {subparagraph}{intl v1.2.5}{47}{section*.81}
-\contentsline {subparagraph}{jspdf v1.3.5}{47}{section*.82}
-\contentsline {subparagraph}{jspdf-autotable v2.3.2}{47}{section*.83}
-\contentsline {subparagraph}{mdi v2.1.19}{47}{section*.84}
-\contentsline {subparagraph}{ng2-charts v1.6.0}{47}{section*.85}
-\contentsline {subparagraph}{ng2-file-upload v1.3.0}{47}{section*.86}
-\contentsline {subparagraph}{ng2-materialize v1.8.0}{47}{section*.87}
-\contentsline {subparagraph}{ngx-cookie-service v1.0.10}{47}{section*.88}
-\contentsline {subparagraph}{rxjs v5.4.3}{47}{section*.89}
-\contentsline {subparagraph}{socket.io-client v2.0.4}{47}{section*.90}
-\contentsline {subparagraph}{zone.js v0.8.16}{47}{section*.91}
-\contentsline {subparagraph}{@angular/cli v1.3.1}{47}{section*.92}
-\contentsline {subparagraph}{@angular/compiler-cli v4.3.5}{47}{section*.93}
-\contentsline {subparagraph}{@types/jasmine v2.5.38}{48}{section*.94}
-\contentsline {subparagraph}{codelyzer v3.1.2}{48}{section*.95}
-\contentsline {subparagraph}{jasmine-core v2.5.2}{48}{section*.96}
-\contentsline {subparagraph}{jasmine-spec-reporter v3.2.0}{48}{section*.97}
-\contentsline {subparagraph}{karma v1.4.1}{48}{section*.98}
-\contentsline {subparagraph}{karma-cli v1.0.1}{48}{section*.99}
-\contentsline {subparagraph}{karma-coverage-istanbul-reporter v0.2.0}{48}{section*.100}
-\contentsline {subparagraph}{karma-jasmine v1.1.0}{48}{section*.101}
-\contentsline {subparagraph}{karma-jasmine-html-reporter v0.2.2}{48}{section*.102}
-\contentsline {subparagraph}{karma-phantomjs-launcher v1.0.4}{48}{section*.103}
-\contentsline {subparagraph}{protractor v5.1.0}{48}{section*.104}
-\contentsline {subparagraph}{ts-node v3.3.0}{48}{section*.105}
-\contentsline {subparagraph}{tslint v5.6.0}{48}{section*.106}
-\contentsline {subparagraph}{typescript v2.4.2}{48}{section*.107}
-\contentsline {subparagraph}{Building Chat Application using MEAN Stack (Angular 4) and Socket.io}{48}{section*.108}
-\contentsline {subparagraph}{Docker Compose | Containerizing MEAN Stack Application | DevOps Tutorial | Edureka}{48}{section*.109}
-\contentsline {subparagraph}{Dockerized Angular 4 App (with Angular CLI)}{49}{section*.110}
-\contentsline {subparagraph}{Multicontainer Docker Environments}{49}{section*.111}
-\contentsline {subparagraph}{Test a Node RESTful API with Mocha and Chai}{49}{section*.112}
-\contentsline {subparagraph}{MEAN with Angular 2/5 - User Registration and Login Example \& Tutorial}{49}{section*.113}
-\contentsline {subparagraph}{6 16 integrating with google oauth with passport js in a MEAN app undergrad webdev summer 1 2017}{49}{section*.114}
-\contentsline {subparagraph}{How to setup Elastic Beanstalk Deployment?}{49}{section*.115}
-\contentsline {subparagraph}{Getting Started with Docker Compose}{49}{section*.116}
-\contentsline {chapter}{\numberline {B}Ethics Submission}{50}{appendix.B}
-\contentsline {chapter}{\numberline {C}Sprint Stories}{53}{appendix.C}
-\contentsline {section}{\numberline {3.1}Sprint 1}{53}{section.C.1}
-\contentsline {section}{\numberline {3.2}Sprint 2}{54}{section.C.2}
-\contentsline {section}{\numberline {3.3}Sprint 3}{55}{section.C.3}
-\contentsline {section}{\numberline {3.4}Sprint 4}{55}{section.C.4}
-\contentsline {section}{\numberline {3.5}Sprint 5}{56}{section.C.5}
-\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{57}{appendix.D}
-\contentsline {chapter}{\numberline {E}Code Examples}{64}{appendix.E}
-\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{65}{section.E.1}
-\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{66}{section.E.2}
-\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{67}{section.E.3}
-\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{68}{section.E.4}
-\contentsline {section}{\numberline {5.5}Production Deployment Script}{69}{section.E.5}
-\contentsline {section}{\numberline {5.6}Final Dockerrun.aws.json file}{70}{section.E.6}
-\contentsline {section}{\numberline {5.7}Final Back End Dockerfile}{71}{section.E.7}
-\contentsline {section}{\numberline {5.8}Final Nginx Config File}{72}{section.E.8}
-\contentsline {section}{\numberline {5.9}Final Circle CI Config File}{73}{section.E.9}
-\contentsline {section}{\numberline {5.10}Front End Dockerfile for Testing}{74}{section.E.10}
-\contentsline {section}{\numberline {5.11}Integration Testing Docker Environment}{75}{section.E.11}
-\contentsline {chapter}{\numberline {F}PDF Report Examples}{77}{appendix.F}
-\contentsline {chapter}{\numberline {G}User Survey Results}{79}{appendix.G}
-\contentsline {chapter}{\numberline {H}Project Timesheet}{80}{appendix.H}
-\contentsline {chapter}{Bibliography}{83}{appendix.H}
+\contentsline {subparagraph}{jsonschema v1.2.2}{45}{section*.46}
+\contentsline {subparagraph}{mongoose v5.0.7}{45}{section*.47}
+\contentsline {subparagraph}{multer v1.3.0}{45}{section*.48}
+\contentsline {subparagraph}{passport v0.4.0}{45}{section*.49}
+\contentsline {subparagraph}{passport-google-oauth v1.0.0}{45}{section*.50}
+\contentsline {subparagraph}{pdf-extract v1.0.11}{45}{section*.51}
+\contentsline {subparagraph}{pdf2img v0.5.0}{46}{section*.52}
+\contentsline {subparagraph}{request-promise v4.2.2}{46}{section*.53}
+\contentsline {subparagraph}{request v2.83.0}{46}{section*.54}
+\contentsline {subparagraph}{socket.io v2.0.4}{46}{section*.55}
+\contentsline {subparagraph}{mocha v5.0.4}{46}{section*.56}
+\contentsline {subparagraph}{chai v4.1.2}{46}{section*.57}
+\contentsline {subparagraph}{chai-http v3.0.0}{46}{section*.58}
+\contentsline {subparagraph}{selenium-webdriver v4.0.0-alpha.1}{46}{section*.59}
+\contentsline {subparagraph}{ghostscript}{46}{section*.60}
+\contentsline {subparagraph}{poppler-utils}{46}{section*.61}
+\contentsline {subparagraph}{pdftk}{47}{section*.62}
+\contentsline {subparagraph}{graphicsmagick}{47}{section*.63}
+\contentsline {subparagraph}{angular v4.3.5}{47}{section*.64}
+\contentsline {subparagraph}{chart.js v2.7.2}{47}{section*.65}
+\contentsline {subparagraph}{file-saver v1.3.8}{47}{section*.66}
+\contentsline {subparagraph}{core-js v2.5.0}{47}{section*.67}
+\contentsline {subparagraph}{font-awesome v4.7.0}{47}{section*.68}
+\contentsline {subparagraph}{intl v1.2.5}{47}{section*.69}
+\contentsline {subparagraph}{jspdf v1.3.5}{47}{section*.70}
+\contentsline {subparagraph}{jspdf-autotable v2.3.2}{47}{section*.71}
+\contentsline {subparagraph}{mdi v2.1.19}{47}{section*.72}
+\contentsline {subparagraph}{ng2-charts v1.6.0}{47}{section*.73}
+\contentsline {subparagraph}{ng2-file-upload v1.3.0}{47}{section*.74}
+\contentsline {subparagraph}{ng2-materialize v1.8.0}{47}{section*.75}
+\contentsline {subparagraph}{ngx-cookie-service v1.0.10}{48}{section*.76}
+\contentsline {subparagraph}{rxjs v5.4.3}{48}{section*.77}
+\contentsline {subparagraph}{socket.io-client v2.0.4}{48}{section*.78}
+\contentsline {subparagraph}{zone.js v0.8.16}{48}{section*.79}
+\contentsline {subparagraph}{codelyzer v3.1.2}{48}{section*.80}
+\contentsline {subparagraph}{jasmine-core v2.5.2}{48}{section*.81}
+\contentsline {subparagraph}{jasmine-spec-reporter v3.2.0}{48}{section*.82}
+\contentsline {subparagraph}{karma v1.4.1}{48}{section*.83}
+\contentsline {subparagraph}{karma-cli v1.0.1}{48}{section*.84}
+\contentsline {subparagraph}{karma-coverage-istanbul-reporter v0.2.0}{48}{section*.85}
+\contentsline {subparagraph}{karma-jasmine v1.1.0}{48}{section*.86}
+\contentsline {subparagraph}{karma-jasmine-html-reporter v0.2.2}{48}{section*.87}
+\contentsline {subparagraph}{karma-phantomjs-launcher v1.0.4}{48}{section*.88}
+\contentsline {subparagraph}{protractor v5.1.0}{48}{section*.89}
+\contentsline {subparagraph}{ts-node v3.3.0}{48}{section*.90}
+\contentsline {subparagraph}{tslint v5.6.0}{48}{section*.91}
+\contentsline {subparagraph}{typescript v2.4.2}{48}{section*.92}
+\contentsline {subparagraph}{Building Chat Application using MEAN Stack (Angular 4) and Socket.io}{49}{section*.93}
+\contentsline {subparagraph}{Docker Compose | Containerizing MEAN Stack Application | DevOps Tutorial | Edureka}{49}{section*.94}
+\contentsline {subparagraph}{Dockerized Angular 4 App (with Angular CLI)}{49}{section*.95}
+\contentsline {subparagraph}{Multicontainer Docker Environments}{49}{section*.96}
+\contentsline {subparagraph}{Test a Node RESTful API with Mocha and Chai}{49}{section*.97}
+\contentsline {subparagraph}{MEAN with Angular 2/5 - User Registration and Login Example \& Tutorial}{49}{section*.98}
+\contentsline {subparagraph}{6 16 integrating with google oauth with passport js in a MEAN app undergrad webdev summer 1 2017}{49}{section*.99}
+\contentsline {subparagraph}{How to setup Elastic Beanstalk Deployment?}{49}{section*.100}
+\contentsline {subparagraph}{Getting Started with Docker Compose}{50}{section*.101}
+\contentsline {subparagraph}{Authorization type support}{50}{section*.102}
+\contentsline {chapter}{\numberline {B}Ethics Submission}{51}{appendix.B}
+\contentsline {chapter}{\numberline {C}Sprint Stories}{54}{appendix.C}
+\contentsline {section}{\numberline {3.1}Sprint 1}{54}{section.C.1}
+\contentsline {section}{\numberline {3.2}Sprint 2}{55}{section.C.2}
+\contentsline {section}{\numberline {3.3}Sprint 3}{56}{section.C.3}
+\contentsline {section}{\numberline {3.4}Sprint 4}{56}{section.C.4}
+\contentsline {section}{\numberline {3.5}Sprint 5}{57}{section.C.5}
+\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{58}{appendix.D}
+\contentsline {chapter}{\numberline {E}Code Examples}{65}{appendix.E}
+\contentsline {section}{\numberline {5.1}Intial Front End Dockerfile}{66}{section.E.1}
+\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{67}{section.E.2}
+\contentsline {section}{\numberline {5.3}Intial Circle CI Config File}{68}{section.E.3}
+\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{69}{section.E.4}
+\contentsline {section}{\numberline {5.5}Production Deployment Script}{70}{section.E.5}
+\contentsline {section}{\numberline {5.6}Final Dockerrun.aws.json file}{71}{section.E.6}
+\contentsline {section}{\numberline {5.7}Final Back End Dockerfile}{72}{section.E.7}
+\contentsline {section}{\numberline {5.8}Final Nginx Config File}{73}{section.E.8}
+\contentsline {section}{\numberline {5.9}Final Circle CI Config File}{74}{section.E.9}
+\contentsline {section}{\numberline {5.10}Front End Dockerfile for Testing}{75}{section.E.10}
+\contentsline {section}{\numberline {5.11}Integration Testing Docker Environment}{76}{section.E.11}
+\contentsline {chapter}{\numberline {F}PDF Report Examples}{78}{appendix.F}
+\contentsline {chapter}{\numberline {G}User Survey Results}{80}{appendix.G}
+\contentsline {chapter}{\numberline {H}Project Timesheet}{81}{appendix.H}
+\contentsline {chapter}{Bibliography}{84}{appendix.H}
