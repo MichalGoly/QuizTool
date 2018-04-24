@@ -60,7 +60,7 @@ Finally, the testing strategy was mainly correct. Adding tests lead to defects b
 found and fixed, which improved the overall quality of the tool, and the confidence
 of its suitability to run in the production. A successful lecture has been run using
 the tool, and the application successfully handled a real world scenario of handling
-over fifty users. The user feedback was also mainly positive.
+over 20 users. The user feedback was also very positive.
 
 \subsection{What Could Have Been Improved}
 Looking back, certain parts of the Quiz Tool could have been implemented differently,
@@ -97,6 +97,15 @@ of it before. The design of the tool, resets previously submitted answers if
 the lecturer decides to go back past the previously answered quiz. This could be addressed by
 keeping previous questions, and making the lecturer to explicitly reset the
 quiz if he wants to.
+
+Adding the ability to broadcast lectures in a full screen mode on the lecturer's
+machine should also be added. The use case of displaying the lecturer's screen
+on a projector was not considered, which means the actual lecture slides visible
+on the lectuer's machine are relatively small due to the non lecture specific components, like the navbar,
+taking some space. Having the ability to switch lecturer's view to a full screen mode,
+would also prevent students from being able to see answers as they come in,
+and give the lecturer a better indication of whether they understood the topic, as they
+could not base their opinions on other students' answers.
 
 Even though the development method chosen worked well for the project, two
 sprints were overestimated, as too many issues were allocated to a single week.
