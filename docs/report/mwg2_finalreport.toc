@@ -166,6 +166,6 @@
 \contentsline {section}{\numberline {5.10}Front End Dockerfile for Testing}{76}{section.E.10}
 \contentsline {section}{\numberline {5.11}Integration Testing Docker Environment}{77}{section.E.11}
 \contentsline {chapter}{\numberline {F}PDF Report Examples}{79}{appendix.F}
-\contentsline {chapter}{\numberline {G}User Survey Results}{81}{appendix.G}
-\contentsline {chapter}{\numberline {H}Project Timesheet}{82}{appendix.H}
-\contentsline {chapter}{Bibliography}{85}{appendix.H}
+\contentsline {chapter}{\numberline {G}User Survey Results}{82}{appendix.G}
+\contentsline {chapter}{\numberline {H}Project Timesheet}{83}{appendix.H}
+\contentsline {chapter}{Bibliography}{86}{appendix.H}
