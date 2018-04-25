@@ -1,73 +1,73 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Qwizdom web view for the audience\relax }}{3}{figure.caption.4}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces The proof of concept application structure\relax }}{8}{figure.caption.5}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces The docker-compose.yml file describing the tool's structure\relax }}{8}{figure.caption.6}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Continuous Integration and Deployment\relax }}{9}{figure.caption.7}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Quiz Tool Production Environment\relax }}{10}{figure.caption.8}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Production Deployment Visualised\relax }}{11}{figure.caption.9}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Story Board Lecturer Interaction\relax }}{12}{figure.caption.10}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Story Board Student Interaction\relax }}{13}{figure.caption.11}
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Burndown Chart Sprint 1\relax }}{14}{figure.caption.12}
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Student Login Page\relax }}{15}{figure.caption.13}
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Lecturer Login Page\relax }}{15}{figure.caption.14}
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Angular Routing With Guards\relax }}{16}{figure.caption.15}
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Initial Entity Relationship Diagram\relax }}{17}{figure.caption.16}
-\contentsline {figure}{\numberline {2.13}{\ignorespaces Dashboard View\relax }}{17}{figure.caption.17}
-\contentsline {figure}{\numberline {2.14}{\ignorespaces Initial File Upload\relax }}{18}{figure.caption.18}
-\contentsline {figure}{\numberline {2.15}{\ignorespaces Lecture Uploaded View\relax }}{19}{figure.caption.19}
-\contentsline {figure}{\numberline {2.16}{\ignorespaces Initial Broadcast View\relax }}{20}{figure.caption.20}
-\contentsline {figure}{\numberline {2.17}{\ignorespaces Initial Slide Broadcast Flow\relax }}{20}{figure.caption.21}
-\contentsline {figure}{\numberline {2.18}{\ignorespaces Burndown Chart Sprint 2\relax }}{21}{figure.caption.22}
-\contentsline {figure}{\numberline {2.19}{\ignorespaces The JSON Message Broadcasted on Slide Change\relax }}{22}{figure.caption.23}
-\contentsline {figure}{\numberline {2.20}{\ignorespaces Initial Edit Page\relax }}{22}{figure.caption.24}
-\contentsline {figure}{\numberline {2.21}{\ignorespaces Quiz Rendering Lecturer\relax }}{23}{figure.caption.25}
-\contentsline {figure}{\numberline {2.22}{\ignorespaces Quiz Rendering Student\relax }}{24}{figure.caption.26}
-\contentsline {figure}{\numberline {2.23}{\ignorespaces Burndown Chart Sprint 3\relax }}{25}{figure.caption.27}
-\contentsline {figure}{\numberline {2.24}{\ignorespaces Initial Slide Extraction\relax }}{26}{figure.caption.28}
-\contentsline {figure}{\numberline {2.25}{\ignorespaces Final Slide Extraction\relax }}{26}{figure.caption.29}
-\contentsline {figure}{\numberline {2.26}{\ignorespaces The Final JSON Message Broadcasted on Slide Change\relax }}{27}{figure.caption.30}
-\contentsline {figure}{\numberline {2.27}{\ignorespaces The Final JSON Message Emitted when Student Submitted his Answer\relax }}{27}{figure.caption.31}
-\contentsline {figure}{\numberline {2.28}{\ignorespaces Burndown Chart Sprint 4\relax }}{28}{figure.caption.32}
-\contentsline {figure}{\numberline {2.29}{\ignorespaces The liveAnswers Object\relax }}{29}{figure.caption.33}
-\contentsline {figure}{\numberline {2.30}{\ignorespaces The liveAnswers Object\relax }}{29}{figure.caption.34}
-\contentsline {figure}{\numberline {2.31}{\ignorespaces Final Entity Relationship Diagram\relax }}{30}{figure.caption.35}
-\contentsline {figure}{\numberline {2.32}{\ignorespaces Session View\relax }}{31}{figure.caption.36}
-\contentsline {figure}{\numberline {2.33}{\ignorespaces Burndown Chart Sprint 5\relax }}{31}{figure.caption.37}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces The proof of concept application structure\relax }}{9}{figure.caption.5}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces The docker-compose.yml file describing the tool's structure\relax }}{9}{figure.caption.6}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Continuous Integration and Deployment\relax }}{10}{figure.caption.7}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Quiz Tool Production Environment\relax }}{11}{figure.caption.8}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Production Deployment Visualised\relax }}{12}{figure.caption.9}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Story Board Lecturer Interaction\relax }}{13}{figure.caption.10}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Story Board Student Interaction\relax }}{14}{figure.caption.11}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Burndown Chart Sprint 1\relax }}{15}{figure.caption.12}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Student Login Page\relax }}{16}{figure.caption.13}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Lecturer Login Page\relax }}{16}{figure.caption.14}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Angular Routing With Guards\relax }}{17}{figure.caption.15}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Initial Entity Relationship Diagram\relax }}{18}{figure.caption.16}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Dashboard View\relax }}{18}{figure.caption.17}
+\contentsline {figure}{\numberline {2.14}{\ignorespaces Initial File Upload\relax }}{19}{figure.caption.18}
+\contentsline {figure}{\numberline {2.15}{\ignorespaces Lecture Uploaded View\relax }}{20}{figure.caption.19}
+\contentsline {figure}{\numberline {2.16}{\ignorespaces Initial Broadcast View\relax }}{21}{figure.caption.20}
+\contentsline {figure}{\numberline {2.17}{\ignorespaces Initial Slide Broadcast Flow\relax }}{21}{figure.caption.21}
+\contentsline {figure}{\numberline {2.18}{\ignorespaces Burndown Chart Sprint 2\relax }}{22}{figure.caption.22}
+\contentsline {figure}{\numberline {2.19}{\ignorespaces The JSON Message Broadcasted on Slide Change\relax }}{23}{figure.caption.23}
+\contentsline {figure}{\numberline {2.20}{\ignorespaces Initial Edit Page\relax }}{23}{figure.caption.24}
+\contentsline {figure}{\numberline {2.21}{\ignorespaces Quiz Rendering Lecturer\relax }}{24}{figure.caption.25}
+\contentsline {figure}{\numberline {2.22}{\ignorespaces Quiz Rendering Student\relax }}{25}{figure.caption.26}
+\contentsline {figure}{\numberline {2.23}{\ignorespaces Burndown Chart Sprint 3\relax }}{26}{figure.caption.27}
+\contentsline {figure}{\numberline {2.24}{\ignorespaces Initial Slide Extraction\relax }}{27}{figure.caption.28}
+\contentsline {figure}{\numberline {2.25}{\ignorespaces Final Slide Extraction\relax }}{27}{figure.caption.29}
+\contentsline {figure}{\numberline {2.26}{\ignorespaces The Final JSON Message Broadcasted on Slide Change\relax }}{28}{figure.caption.30}
+\contentsline {figure}{\numberline {2.27}{\ignorespaces The Final JSON Message Emitted when Student Submitted his Answer\relax }}{28}{figure.caption.31}
+\contentsline {figure}{\numberline {2.28}{\ignorespaces Burndown Chart Sprint 4\relax }}{29}{figure.caption.32}
+\contentsline {figure}{\numberline {2.29}{\ignorespaces The liveAnswers Object\relax }}{30}{figure.caption.33}
+\contentsline {figure}{\numberline {2.30}{\ignorespaces The liveAnswers Object\relax }}{30}{figure.caption.34}
+\contentsline {figure}{\numberline {2.31}{\ignorespaces Final Entity Relationship Diagram\relax }}{31}{figure.caption.35}
+\contentsline {figure}{\numberline {2.32}{\ignorespaces Session View\relax }}{32}{figure.caption.36}
+\contentsline {figure}{\numberline {2.33}{\ignorespaces Burndown Chart Sprint 5\relax }}{32}{figure.caption.37}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Final Application Structure\relax }}{33}{figure.caption.38}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Final Entity Relationship Diagram\relax }}{36}{figure.caption.41}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Final Application Structure\relax }}{34}{figure.caption.38}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Final Entity Relationship Diagram\relax }}{37}{figure.caption.41}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Server Side Test Example\relax }}{39}{figure.caption.42}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Selenium Testing Environment Visualised\relax }}{40}{figure.caption.43}
-\addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Server Side Test Example\relax }}{40}{figure.caption.42}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Selenium Testing Environment Visualised\relax }}{41}{figure.caption.43}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {C.1}{\ignorespaces Stories Sprint 1\relax }}{55}{figure.caption.103}
-\contentsline {figure}{\numberline {C.2}{\ignorespaces Stories Sprint 2\relax }}{56}{figure.caption.104}
-\contentsline {figure}{\numberline {C.3}{\ignorespaces Stories Sprint 3\relax }}{57}{figure.caption.105}
-\contentsline {figure}{\numberline {C.4}{\ignorespaces Stories Sprint 4\relax }}{57}{figure.caption.106}
-\contentsline {figure}{\numberline {C.5}{\ignorespaces Stories Sprint 5\relax }}{58}{figure.caption.107}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {E.1}{\ignorespaces Intial Front End Dockerfile\relax }}{67}{figure.caption.108}
-\contentsline {figure}{\numberline {E.2}{\ignorespaces Back End Dockerfile\relax }}{68}{figure.caption.109}
-\contentsline {figure}{\numberline {E.3}{\ignorespaces Initial Build Config File\relax }}{69}{figure.caption.110}
-\contentsline {figure}{\numberline {E.4}{\ignorespaces Dockerrun.aws.json\relax }}{70}{figure.caption.111}
-\contentsline {figure}{\numberline {E.5}{\ignorespaces Production Deployment Script\relax }}{71}{figure.caption.112}
-\contentsline {figure}{\numberline {E.6}{\ignorespaces Final Dockerrun.aws.json\relax }}{72}{figure.caption.113}
-\contentsline {figure}{\numberline {E.7}{\ignorespaces Back End Dockerfile\relax }}{73}{figure.caption.114}
-\contentsline {figure}{\numberline {E.8}{\ignorespaces Final Nginx Config File\relax }}{74}{figure.caption.115}
-\contentsline {figure}{\numberline {E.9}{\ignorespaces Final Build Config File\relax }}{75}{figure.caption.116}
-\contentsline {figure}{\numberline {E.10}{\ignorespaces Dockerfile.test Used For Front End Testing\relax }}{76}{figure.caption.117}
-\contentsline {figure}{\numberline {E.11}{\ignorespaces docker-compose.integration.yml Used For Selenium Testing\relax }}{78}{figure.caption.118}
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Stories Sprint 1\relax }}{56}{figure.caption.103}
+\contentsline {figure}{\numberline {C.2}{\ignorespaces Stories Sprint 2\relax }}{57}{figure.caption.104}
+\contentsline {figure}{\numberline {C.3}{\ignorespaces Stories Sprint 3\relax }}{58}{figure.caption.105}
+\contentsline {figure}{\numberline {C.4}{\ignorespaces Stories Sprint 4\relax }}{58}{figure.caption.106}
+\contentsline {figure}{\numberline {C.5}{\ignorespaces Stories Sprint 5\relax }}{59}{figure.caption.107}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {G.1}{\ignorespaces Question 1\relax }}{83}{figure.caption.119}
-\contentsline {figure}{\numberline {G.2}{\ignorespaces Question 2\relax }}{83}{figure.caption.120}
-\contentsline {figure}{\numberline {G.3}{\ignorespaces Question 3\relax }}{84}{figure.caption.121}
-\contentsline {figure}{\numberline {G.4}{\ignorespaces Question 4\relax }}{84}{figure.caption.122}
-\contentsline {figure}{\numberline {G.5}{\ignorespaces Question 5\relax }}{85}{figure.caption.123}
-\contentsline {figure}{\numberline {G.6}{\ignorespaces Question 6\relax }}{85}{figure.caption.124}
+\contentsline {figure}{\numberline {E.1}{\ignorespaces Intial Front End Dockerfile\relax }}{68}{figure.caption.108}
+\contentsline {figure}{\numberline {E.2}{\ignorespaces Back End Dockerfile\relax }}{69}{figure.caption.109}
+\contentsline {figure}{\numberline {E.3}{\ignorespaces Initial Build Config File\relax }}{70}{figure.caption.110}
+\contentsline {figure}{\numberline {E.4}{\ignorespaces Dockerrun.aws.json\relax }}{71}{figure.caption.111}
+\contentsline {figure}{\numberline {E.5}{\ignorespaces Production Deployment Script\relax }}{72}{figure.caption.112}
+\contentsline {figure}{\numberline {E.6}{\ignorespaces Final Dockerrun.aws.json\relax }}{73}{figure.caption.113}
+\contentsline {figure}{\numberline {E.7}{\ignorespaces Back End Dockerfile\relax }}{74}{figure.caption.114}
+\contentsline {figure}{\numberline {E.8}{\ignorespaces Final Nginx Config File\relax }}{75}{figure.caption.115}
+\contentsline {figure}{\numberline {E.9}{\ignorespaces Final Build Config File\relax }}{76}{figure.caption.116}
+\contentsline {figure}{\numberline {E.10}{\ignorespaces Dockerfile.test Used For Front End Testing\relax }}{77}{figure.caption.117}
+\contentsline {figure}{\numberline {E.11}{\ignorespaces docker-compose.integration.yml Used For Selenium Testing\relax }}{79}{figure.caption.118}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {G.1}{\ignorespaces Question 1\relax }}{84}{figure.caption.119}
+\contentsline {figure}{\numberline {G.2}{\ignorespaces Question 2\relax }}{84}{figure.caption.120}
+\contentsline {figure}{\numberline {G.3}{\ignorespaces Question 3\relax }}{85}{figure.caption.121}
+\contentsline {figure}{\numberline {G.4}{\ignorespaces Question 4\relax }}{85}{figure.caption.122}
+\contentsline {figure}{\numberline {G.5}{\ignorespaces Question 5\relax }}{86}{figure.caption.123}
+\contentsline {figure}{\numberline {G.6}{\ignorespaces Question 6\relax }}{86}{figure.caption.124}
 \addvspace {10\p@ }
