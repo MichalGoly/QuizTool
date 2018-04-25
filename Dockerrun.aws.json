@@ -12,7 +12,7 @@
         {
             "name": "client",
             "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-client:latest",
-            "memory": 1100,
+            "memory": 300,
             "essential": true,
             "portMappings": [
                 {
@@ -27,7 +27,7 @@
         {
             "name": "server_node",
             "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-server:latest",
-            "memory": 1900,
+            "memory": 300,
             "essential": true,
             "links": [
               "database"
@@ -36,7 +36,7 @@
         {
           "name": "database",
           "image": "mongo",
-          "memory": 700,
+          "memory": 300,
           "essential": true,
           "mountPoints": [
               {

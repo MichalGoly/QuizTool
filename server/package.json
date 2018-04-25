@@ -13,7 +13,6 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.15.2",
-    "eyes": "^0.1.8",
     "fs": "0.0.1-security",
     "jsonschema": "^1.2.2",
     "mongoose": "^5.0.7",

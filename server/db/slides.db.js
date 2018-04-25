@@ -1,9 +1,6 @@
 var fs = require('fs');
 var path = require('path');
 var Duplex = require('stream').Duplex;
-var inspect = require('eyes').inspector({
-  maxLength: 20000
-});
 var pdf_extract = require('pdf-extract');
 var pdf2img = require('pdf2img');
 pdf2img.setOptions({
