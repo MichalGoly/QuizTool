@@ -194,6 +194,7 @@ The first sprint proved it was possible to deploy a MEAN stack, containerised ap
 to production using Circle CI. Crucial DevOps has been successfully put in place, and the
 initial feedback has been gathered from the client thanks to the low fidelity prototypes.
 The full sprint retrospective document produced can be found in the \autoref{chap:spintretrospectives} of this report.
+\autoref{fig:burn1} shows how 14 issues worth 16 story points have been implemented over the course of the sprint.
 
 \begin{figure}[ht]
     \centering
@@ -281,7 +282,10 @@ against the Quiz Tool.
 
 \subsection{Persistence Layer}
 MongoDB is a document storage, enabling persistence of JSON-like documents with extra metadata
-including internal object ids. Mongoose\cite{48} is a popular MongoDB object modelling library which has
+including internal object ids. Working with JSON objects is very easy in JavaScript applications,
+and because MongoDB has a wider support than traditional database engines in the Node.js
+community, MongoDB has been chosen over a relational database.
+Mongoose\cite{48} is a popular MongoDB object modelling library which has
 been integrated with the server side of the Quiz Tool. It removes the need to write boilerplate code and
 allows developers to focus on getting things done quickly. Schemas describing objects have been created
 and can be found in the \texttt{server/models} directory. They allow mongoose to validate data before
@@ -627,7 +631,7 @@ development had started, was the ability to export lecture sessions results in s
 for future analysis. Regardless of the final format, session answers given by students
 during lectures had to be persisted in some fashion.
 
-Every time a new lecture broadcast
+Every time a new lecture broadcast is
 started, an empty \texttt{liveAnswers} object has been instantiated in memory on the lecturer's
 client. This object would be responsible for the storage of answers for the given slide
 being broadcasted at the moment. It was therefore reinstantiated to \texttt{\{\}} every time
@@ -773,7 +777,8 @@ the container is started with \texttt{npm start}, after the port 3000 has been e
 Express.js is an unopinionated web development framework, meaning the structure of the application
 has to be decided by the developer. The \texttt{index.js} file is the starting point of the
 application. The summary of the routes handled by four controllers located in the \texttt{server/controllers/}
-directory is listed in \autoref{tab:routes}.
+directory is listed in \autoref{tab:routes}. An example of a controller implementation has
+been included in the \autoref{chap:codesamples} of this report as the \autoref{sample:controller}.
 
 \begin{table}[h!]
 \centering
@@ -940,7 +945,8 @@ new pull requests being merged into the production branch. Tests made sure the
 top level functional requirements listed in \autoref{subsection:toplevel} were met.
 It was important to test both the expected behaviour, and the edge cases to make the
 tool less likely to fail in the production environment. Finally, acceptance testing
-has been performed by running a real life lecture with the end users, once the first version of the
+has been performed by showing progress to the client on weekly basis, and running a
+real life lecture with the end users, once the first version of the
 tool has been implemented.
 
 \section{Server Side Unit Tests}

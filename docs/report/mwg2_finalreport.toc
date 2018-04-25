@@ -162,11 +162,12 @@
 \contentsline {section}{\numberline {5.5}Production Deployment Script}{72}{section.E.5}
 \contentsline {section}{\numberline {5.6}Final Dockerrun.aws.json file}{73}{section.E.6}
 \contentsline {section}{\numberline {5.7}Final Back End Dockerfile}{74}{section.E.7}
-\contentsline {section}{\numberline {5.8}Final Nginx Config File}{75}{section.E.8}
-\contentsline {section}{\numberline {5.9}Final Circle CI Config File}{76}{section.E.9}
-\contentsline {section}{\numberline {5.10}Front End Dockerfile for Testing}{77}{section.E.10}
-\contentsline {section}{\numberline {5.11}Integration Testing Docker Environment}{78}{section.E.11}
-\contentsline {chapter}{\numberline {F}PDF Report Examples}{80}{appendix.F}
-\contentsline {chapter}{\numberline {G}User Survey Results}{83}{appendix.G}
-\contentsline {chapter}{\numberline {H}Project Timesheet}{87}{appendix.H}
-\contentsline {chapter}{Bibliography}{90}{appendix.H}
+\contentsline {section}{\numberline {5.8}Controller Example}{75}{section.E.8}
+\contentsline {section}{\numberline {5.9}Final Nginx Config File}{77}{section.E.9}
+\contentsline {section}{\numberline {5.10}Final Circle CI Config File}{78}{section.E.10}
+\contentsline {section}{\numberline {5.11}Front End Dockerfile for Testing}{79}{section.E.11}
+\contentsline {section}{\numberline {5.12}Integration Testing Docker Environment}{80}{section.E.12}
+\contentsline {chapter}{\numberline {F}PDF Report Examples}{82}{appendix.F}
+\contentsline {chapter}{\numberline {G}User Survey Results}{85}{appendix.G}
+\contentsline {chapter}{\numberline {H}Project Timesheet}{89}{appendix.H}
+\contentsline {chapter}{Bibliography}{92}{appendix.H}
