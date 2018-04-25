@@ -43,12 +43,27 @@ choice would be to use React\cite{8} to keep the learning curve as low as possib
 The final alternative considered, was to develop the whole tool as a web application. This way both the
 front end for lecturers and students could be developed using the same framework. Members of the audience
 could participate in lectures by accessing the web application using web browsers installed
-both on their mobile phones, regardless of the operating system, and their laptops. I considered
-both React and Angular 4\cite{9}, since I have already briefly used it before. React is a library
-for developing user interface, whereas Angular is a web development framework. The only caveat with
-using Angular is that the developer needs to learn TypeScript\cite{10}, which compiles down to JavaScript.
+both on their mobile phones, regardless of the operating system, and their laptops.
 
 % Mention alternative web development approaches/frameworks
+\subsubsection{Web Development Frameworks}
+There are various web development frameworks available, and the tool could be developed using
+any of them. JavaScript based technologies are very popular, as they allow developers to
+rapidly build prototypes by cutting down on the boilerplate code. Projects are often developed
+entirely in JavaScript, which decreases the learning curve significantly, and makes software
+more maintainable in the future. Both React and Angular 4\cite{9} have been considered,
+since I have already briefly used them before. React is a library
+for developing user interface, whereas Angular is a front end, web development framework. The only caveat with
+using Angular is that the developer needs to learn TypeScript\cite{10}, which compiles down to JavaScript.
+The back end could be developed in any programming language, however pairing either React or
+Angular with a back end written in JavaScript would be the most sensible, due to the benefits
+mentioned above.
+
+The server side could also be implemented using Python Flask\cite{flask}, or a more
+traditional MVC(Model View Controller)\cite{mvc} framework like Spring MVC\cite{spring},
+ASP.NET\cite{asp}, Laravel\cite{laravel} or Ruby on Rails\cite{ror}. These frameworks could be used
+to either serve HTML to clients by populating template views, or be paired
+with a JavaScript, front-end development framework like Angular.
 
 \subsubsection{The WebSocket Protocol}
 The Quiz Tool was supposed to allow a lecturer to broadcast his slides to all the students

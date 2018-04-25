@@ -3,19 +3,20 @@
 \contentsline {subsection}{\numberline {1.1.1}Motivation}{1}{subsection.1.1.1}
 \contentsline {subsection}{\numberline {1.1.2}Technology Considerations}{1}{subsection.1.1.2}
 \contentsline {subsubsection}{\numberline {1.1.2.1}Programming Languages}{1}{subsubsection.1.1.2.1}
-\contentsline {subsubsection}{\numberline {1.1.2.2}The WebSocket Protocol}{2}{subsubsection.1.1.2.2}
-\contentsline {subsubsection}{\numberline {1.1.2.3}Prototyping}{2}{subsubsection.1.1.2.3}
-\contentsline {subsection}{\numberline {1.1.3}On-site vs External Hosting}{2}{subsection.1.1.3}
-\contentsline {subsection}{\numberline {1.1.4}Similar Tools}{2}{subsection.1.1.4}
-\contentsline {section}{\numberline {1.2}Analysis}{3}{section.1.2}
-\contentsline {subsection}{\numberline {1.2.1}MEAN Stack}{3}{subsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.1.2.2}Web Development Frameworks}{2}{subsubsection.1.1.2.2}
+\contentsline {subsubsection}{\numberline {1.1.2.3}The WebSocket Protocol}{2}{subsubsection.1.1.2.3}
+\contentsline {subsubsection}{\numberline {1.1.2.4}Prototyping}{2}{subsubsection.1.1.2.4}
+\contentsline {subsection}{\numberline {1.1.3}On-site vs External Hosting}{3}{subsection.1.1.3}
+\contentsline {subsection}{\numberline {1.1.4}Similar Tools}{3}{subsection.1.1.4}
+\contentsline {section}{\numberline {1.2}Analysis}{4}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}MEAN Stack}{4}{subsection.1.2.1}
 \contentsline {subsection}{\numberline {1.2.2}Docker}{4}{subsection.1.2.2}
 \contentsline {subsection}{\numberline {1.2.3}AWS Production Environment}{4}{subsection.1.2.3}
 \contentsline {subsection}{\numberline {1.2.4}Build}{4}{subsection.1.2.4}
-\contentsline {subsection}{\numberline {1.2.5}Authentication and Security}{4}{subsection.1.2.5}
+\contentsline {subsection}{\numberline {1.2.5}Authentication and Security}{5}{subsection.1.2.5}
 \contentsline {subsection}{\numberline {1.2.6}Top Level Requirements}{5}{subsection.1.2.6}
-\contentsline {section}{\numberline {1.3}Process}{5}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}Version Control}{5}{subsection.1.3.1}
+\contentsline {section}{\numberline {1.3}Process}{6}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Version Control}{6}{subsection.1.3.1}
 \contentsline {subsection}{\numberline {1.3.2}Development Methodology}{6}{subsection.1.3.2}
 \contentsline {chapter}{\numberline {2}Design \& Implementation}{7}{chapter.2}
 \contentsline {section}{\numberline {2.1}Sprint 1 - Hello Quiz Tool}{7}{section.2.1}
