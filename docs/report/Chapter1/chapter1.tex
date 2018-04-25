@@ -142,11 +142,12 @@ They can then use the key to join the lecture and answer questions once they bec
 % - Top level requirements of the system
 \subsection{MEAN Stack}
 Having considered various methods of developing the Quiz Tool, I have decided to
-choose the web application approach. Allowing students to access the tool using both
+choose the web application approach, specifically to develop the application entirely
+in JavaScript based technologies using the MEAN stack\cite{18}.
+Allowing students to access the tool using both
 their mobile devices and laptops, combined with the relatively low learning curve
 both for me, and for anyone maintaining the software in the future, made it the best
-option in my opinion. Furthermore, I have decided to develop the application entirely
-in JavaScript based technologies using the MEAN stack\cite{18}.
+option in my opinion.
 
 MEAN stack consists of four elements:
 \begin{itemize}
@@ -167,7 +168,10 @@ using docker-compose\cite{20} container orchestration tool. Docker is an open so
 engine which can be used to wrap an application and all its dependencies into a
 lightweight container that can run on any machine capable of running containers\cite{21}.
 Docker-compose on the other hand, is a tool for defining and running multi-container
-Docker applications.
+Docker applications. Using Docker would make the development and testing of the Quiz
+Tool easier, as any machine capable of running Docker containers, could run the tool.
+It would also allow to easily change the production environment provider if necessary,
+making it easier to maintain in the future.
 
 \subsection{AWS Production Environment}
 Unfortunately, the on-site hosting provided by the university to students to deploy
@@ -210,6 +214,11 @@ Due to the fact that the interaction of the Docker containers making up the Quiz
 be managed by docker-compose, the MongoDB container could be hidden from the outside world
 and could be only accessed from the server container running the back end code. This would
 make the database more secure.
+
+Facebook and Twitter Single Sign On strategies\cite{facebook}\cite{twitter} were also
+considered, however even though most people have a Facebook account, it is unlikely they
+would like to use it to sign into a work related system. Twitter on the other hand,
+was immediately rejected, as it is less common for people to use this platform. 
 
 \subsection{Top Level Requirements}
 \label{subsection:toplevel}
