@@ -168,10 +168,10 @@ split the screen in half to show a bar chart with answers as they come in. Final
 lecture would end once he clicks the end button.
 
 \autoref{fig:storystudent} on the other hand, shows how students could interact with
-the tool. Student could join an ongoing lecture using a session key provided by the
-lecturer. She could then participate in the lecture by watching the slides, and
+the tool. Students could join an ongoing lecture using a session key provided by the
+lecturer. They could then participate in the lecture by watching the slides, and
 submitting answers to quizzes as they come in. The correct answer could be presented
-back to her in a form of a bar chart.
+back to them in a form of a bar chart.
 
 \begin{figure}[h!]
     \centering
@@ -240,7 +240,7 @@ Angular has a concept of guards, which allow specified routes to be only accessi
 authorised users. The code extracted from the \texttt{client/src/app/app.routing.ts} below
 shows how the desired behaviour has been achieved. All undefined routes redirect to the \texttt{/}
 which has a \texttt{canActivate: [AuthGuard]} protection. The guard checks if the current user has a
-valid session cookie with a JWT token\cite{44} present as described in the subsection below, before allowing
+valid session cookie with a JWT (JSON Web Token)\cite{44} present as described in the subsection below, before allowing
 the user to navigate to his dashboard.
 
 \begin{figure}[h!]
@@ -333,7 +333,7 @@ The initial implementation of the file upload, took the PDF file, stored it dire
 the \texttt{Slide} schema object. Once the file has been uploaded using the ng2-file-upload\cite{51},
 and persisted in the database, it has been stored temporarily on disk. Text would be extracted from
 each slide using the pdf-extract\cite{52} library, which would be instructed to leave single paged
-PDFs for each slide on disk. These PDFs would be then converted to PNG images using the scissors\cite{53}
+PDFs for each slide on disk. These PDFs would be then converted to PNG(Portable Network Graphics) images using the scissors\cite{53}
 library. Finally, slides' text and images would be grouped together and stored in MongoDB, before the
 temporary files would be cleaned from disk.
 
@@ -1115,6 +1115,6 @@ make the actual slide smaller, and therefore likely illegible for people sitting
 far back in a lecture hall. Having a full screen mode would also prevent
 students from being able to see how others are answering in real time,
 and not thinking about the correct answer on their own. Finally, the tool
-proved to be noticeably faster than Qwizdom. 
+proved to be noticeably faster than Qwizdom.
 
 % You should concentrate on the more important aspects of the design. It is essential that an overview is presented before going into detail. As well as describing the design adopted it must also explain what other designs were considered and why they were rejected.% dsa
