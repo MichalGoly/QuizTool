@@ -394,7 +394,7 @@ The full sprint retrospective document produced can be found in the \autoref{cha
     \label{fig:burn1}
 \end{figure}
 
-\section{Sprint 3 - Add Quizes}
+\section{Sprint 3 - Add Quizzes}
 \subsection{Sprint Planning}
 This iteration focused on the ability to create quizzes, embed them into slides and
 broadcast only to people who had the appropriate session key. The entire list of estimated stories
@@ -495,7 +495,7 @@ The full sprint retrospective document produced can be found in the
 \end{figure}
 
 \newpage
-\section{Sprint 4 - Fancy Quizes and Defect Fixing}
+\section{Sprint 4 - Fancy Quizzes and Defect Fixing}
 \subsection{Sprint Planning}
 This sprint focused on addressing a critical bug in the production environment
 concerning the PDF to PNG conversion. Extra types of quizzes would also be added
@@ -611,7 +611,7 @@ can be found in the \autoref{chap:spintstories} of this report.
 \subsection{Database Container Persistence}
 Docker containers do not persist data by design. Every time the \texttt{database}
 container has been brought up and down, by both docker-compose and the
-Milticontainer Elastic Beanstalk environment, any data stored in the MongoDB
+Multicontainer Elastic Beanstalk environment, any data stored in the MongoDB
 would be lost. This behaviour is perfect for running tests, where the starting
 environment is expected to be the same between tests. It was however unacceptable
 for the production environment.
@@ -905,7 +905,7 @@ Production environment on the other hand, has been described in the \autoref{sub
 \subsection{Version Control}
 Version control has been described in the \autoref{subsection:versioncontrol} of this report.
 
-\subsection{Continous Integration}
+\subsection{Continuous Integration}
 CI has been described in the \autoref{subsection:ci} of this report. The final Circle CI config
 file has been included in the \autoref{chap:codesamples} of this report as \autoref{sample:circlecifinal}.
 
@@ -966,7 +966,7 @@ how containers should be linked together for server side testing. The major diff
 to the \texttt{docker-compose.yml}, is that an extra \texttt{NODE\_ENV} environment variable is set
 in the \texttt{server\_node} container to make sure the application is aware it is being tested.
 For example a special test database is created for testing. The entrypoint of the Docker container
-is also overriden to \texttt{npm test} to start the mocha tests.
+is also overridden to \texttt{npm test} to start the mocha tests.
 
 Server side tests cover the major requirements of the tool, and also make sure the common errors
 are handled appropriately by the application. Authorisation has been tested, or actually attempts
@@ -975,7 +975,7 @@ JWT token. Other tests relying on the user being authenticated, use a special \t
 environment variable to use a mocked lecturer called Bob for testing. Database is also
 cleaned before a new set of tests runs. Lecture creation is tested by uploading a test PDF
 presentation as part of the tests. Tests also make sure slides are created as expected, slides
-can be marked as quizes, lectures be removed, sessions associated with lectures and reports
+can be marked as quizzes, lectures be removed, sessions associated with lectures and reports
 generated. Finally, one of the good things about the mocha tests combined
 with the chai assertion library, is that they are incredibly easy to read even for non technical
 people.

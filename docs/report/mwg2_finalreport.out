@@ -29,13 +29,13 @@
 \BOOKMARK [2][-]{subsection.2.2.4}{Lecture Upload}{section.2.2}% 29
 \BOOKMARK [2][-]{subsection.2.2.5}{Lecture Broadcast}{section.2.2}% 30
 \BOOKMARK [2][-]{subsection.2.2.6}{Sprint Retrospective}{section.2.2}% 31
-\BOOKMARK [1][-]{section.2.3}{Sprint 3 - Add Quizes}{chapter.2}% 32
+\BOOKMARK [1][-]{section.2.3}{Sprint 3 - Add Quizzes}{chapter.2}% 32
 \BOOKMARK [2][-]{subsection.2.3.1}{Sprint Planning}{section.2.3}% 33
 \BOOKMARK [2][-]{subsection.2.3.2}{Session Keys}{section.2.3}% 34
 \BOOKMARK [2][-]{subsection.2.3.3}{Embedding Quizzes}{section.2.3}% 35
 \BOOKMARK [2][-]{subsection.2.3.4}{Quiz Rendering}{section.2.3}% 36
 \BOOKMARK [2][-]{subsection.2.3.5}{Sprint Retrospective}{section.2.3}% 37
-\BOOKMARK [1][-]{section.2.4}{Sprint 4 - Fancy Quizes and Defect Fixing}{chapter.2}% 38
+\BOOKMARK [1][-]{section.2.4}{Sprint 4 - Fancy Quizzes and Defect Fixing}{chapter.2}% 38
 \BOOKMARK [2][-]{subsection.2.4.1}{Sprint Planning}{section.2.4}% 39
 \BOOKMARK [2][-]{subsection.2.4.2}{Production Environment Bug}{section.2.4}% 40
 \BOOKMARK [2][-]{subsection.2.4.3}{Extra Types of Quizzes}{section.2.4}% 41
@@ -63,7 +63,7 @@
 \BOOKMARK [1][-]{section.3.5}{Environments}{chapter.3}% 63
 \BOOKMARK [1][-]{section.3.6}{Build}{chapter.3}% 64
 \BOOKMARK [2][-]{subsection.3.6.1}{Version Control}{section.3.6}% 65
-\BOOKMARK [2][-]{subsection.3.6.2}{Continous Integration}{section.3.6}% 66
+\BOOKMARK [2][-]{subsection.3.6.2}{Continuous Integration}{section.3.6}% 66
 \BOOKMARK [0][-]{chapter.4}{Testing}{}% 67
 \BOOKMARK [1][-]{section.4.1}{Testing Strategy}{chapter.4}% 68
 \BOOKMARK [1][-]{section.4.2}{Server Side Unit Tests}{chapter.4}% 69
@@ -85,9 +85,9 @@
 \BOOKMARK [1][-]{section.C.5}{Sprint 5}{appendix.C}% 85
 \BOOKMARK [0][-]{appendix.D}{Sprint Retrospective Documents}{}% 86
 \BOOKMARK [0][-]{appendix.E}{Code Examples}{}% 87
-\BOOKMARK [1][-]{section.E.1}{Intial Front End Dockerfile}{appendix.E}% 88
+\BOOKMARK [1][-]{section.E.1}{Initial Front End Dockerfile}{appendix.E}% 88
 \BOOKMARK [1][-]{section.E.2}{Initial Back End Dockerfile}{appendix.E}% 89
-\BOOKMARK [1][-]{section.E.3}{Intial Circle CI Config File}{appendix.E}% 90
+\BOOKMARK [1][-]{section.E.3}{Initial Circle CI Config File}{appendix.E}% 90
 \BOOKMARK [1][-]{section.E.4}{Initial Dockerrun.aws.json file}{appendix.E}% 91
 \BOOKMARK [1][-]{section.E.5}{Production Deployment Script}{appendix.E}% 92
 \BOOKMARK [1][-]{section.E.6}{Final Dockerrun.aws.json file}{appendix.E}% 93
