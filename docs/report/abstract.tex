@@ -1,0 +1,38 @@
+\thispagestyle{empty}
+
+\begin{center}
+    {\LARGE\bf Abstract}
+\end{center}
+Student engagement and live knowledge monitoring are vital in the provision of good quality
+lecture content in 2018. It is important to make sure audience understands concepts presented,
+and quizzes can help lecturers judge students' understanding in real time.
+
+Aberystwyth University currently uses Qwizdom\cite{1} live polling tool during the provision
+of some lectures and practical sessions. The university operates under a single license
+forcing lecturers to book sessions before they can use the tool. Due to human nature,
+session hijacking occasionally occurs to the bemusement of both students and lecturers.
+For example, students could be shown biology slides half way through their geography
+lecture.
+
+This project focused on the design and development of an in-house built Quiz Tool,
+enabling multiple lecturers to use it at the same time and potentially making Qwizdom
+redundant in the future. This ambition could only be achieved if the project was of
+high quality and its future maintainability was considered at all stages of the design
+and development.
+
+The Quiz Tool allows lecturers to login using their Google Single Sign-on\cite{2} credentials,
+upload their PDF lecture slides and create \textit{Lectures} in the system.
+Each \textit{Lecture} can be then edited, and eligible slides can be marked as quizzes.
+True/false, single and multi choice style quizzes are supported. Once a lecturer is happy with their
+\textit{Lecture}, he can broadcast it and receive a session key which can be
+shared with students. Lecture slides will be shown to all students and the
+lecture can be delivered in a traditional fashion up to the moment a slide has been marked as a quiz.
+Students will then be able to answer
+the question and polling results will be presented in real time to the lecturer.
+Lecture sessions broadcasted in the past are kept, and students' answers can be exported
+as a PDF report for future analysis.
+
+The tool is composed of a back-end with an associated database, and two
+front-ends. One for lecturers and one for students. Finally, the tool has been
+successfully developed using an agile methodology, adjusted for a single person
+project.

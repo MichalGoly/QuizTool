@@ -22,7 +22,6 @@ environment variables set for Google Single Sign on purposes.
 GOOGLE_CLIENT_ID=<GOOGLE_CLIENT_ID>
 GOOGLE_CLIENT_SECRET=<GOOGLE_CLIENT_SECRET>
 GOOGLE_CALLBACK_URL=<GOOGLE_CALLBACK_URL>
-
 ```
 
 To run the app locally using docker-compose:
@@ -36,6 +35,31 @@ To run front-end unit tests, back-end unit tests and integration tests locally:
 $ chmod +x testRestart.sh
 $ ./testRestart.sh
 ```
+
+## Structure of the application
+- `.circleci/` contains the Circle CI build definition
+- `.elasticbeanstalk/` contains the Multicontainer AWS Elasticbeanstalk config file
+- `client/` contains the definition of the `client` Docker container, composed of
+an Angular front end, and an nginx reverse proxy
+- `docs/` contains the documents produced during the development of the final project
+- `scripts/` contains the production deployment script
+- `server/` contains the definition of the `server_node` Docker container, composed of
+the back end of the application written in Express.js
+- `tester/` contains the definition of the `tester` Docker container, used for running
+Selenium tests during integration tests
+- `.env` file (not checked into the GitHub repository), contains the environment variables
+necessary for Google Single Sign On integration
+- `.gitignore` file specifies which files should not be commited to the git repository
+- `docker-compose.integration.yml` file defines the containers interactions during
+integration testing
+- `docker-compose.test.yml` file defines the containers interactions during server side
+unit tests
+- `docker-compose.yml` file deifnes the containers interactions when the Quiz Tool is run
+locally
+- `Dockerrun.aws.json` file defines the containers interactions when the Quiz Tool runs
+in production on AWS
+- `restart.sh` is a bash script used for running the application locally
+- `testRestart.sh` is a bash script used for running all tests of the application
 
 ## Project Description
 Student engagement and live knowledge monitoring are vital in the provision of good quality
@@ -68,7 +92,7 @@ the question and polling results will be presented in real time to the lecturer.
 It is also possible to export the quiz answers as a PDF report for future analysis,
 by accessing sessions history page of each lecture.
 
-The toolis composed of the back-end with an associated database, and two
+The tool is composed of the back-end with an associated database, and two
 front-ends. One for lecturers and one for students. Finally, the tool will be
 developed using an agile methodology, adjusted for a single person project.
 
@@ -141,20 +165,4 @@ Low fidelity prototypes are available in files `docs/design/story_board_lecturer
 
 ## LICENSE
 The source code is licensed under GPLv2, due to the PDFtk dependency licensed under
-GPLv2. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.
+GPLv2.

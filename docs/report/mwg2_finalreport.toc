@@ -1,0 +1,173 @@
+\contentsline {chapter}{\numberline {1}Background \& Objectives}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Background}{1}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Motivation}{1}{subsection.1.1.1}
+\contentsline {subsection}{\numberline {1.1.2}Technology Considerations}{1}{subsection.1.1.2}
+\contentsline {subsubsection}{\numberline {1.1.2.1}Programming Languages}{1}{subsubsection.1.1.2.1}
+\contentsline {subsubsection}{\numberline {1.1.2.2}Web Development Frameworks}{2}{subsubsection.1.1.2.2}
+\contentsline {subsubsection}{\numberline {1.1.2.3}The WebSocket Protocol}{2}{subsubsection.1.1.2.3}
+\contentsline {subsubsection}{\numberline {1.1.2.4}Prototyping}{2}{subsubsection.1.1.2.4}
+\contentsline {subsection}{\numberline {1.1.3}On-site vs External Hosting}{3}{subsection.1.1.3}
+\contentsline {subsection}{\numberline {1.1.4}Similar Tools}{3}{subsection.1.1.4}
+\contentsline {section}{\numberline {1.2}Analysis}{4}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}MEAN Stack}{4}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}Docker}{4}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}AWS Production Environment}{4}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Build}{5}{subsection.1.2.4}
+\contentsline {subsection}{\numberline {1.2.5}Authentication and Security}{5}{subsection.1.2.5}
+\contentsline {subsection}{\numberline {1.2.6}Top Level Requirements}{5}{subsection.1.2.6}
+\contentsline {section}{\numberline {1.3}Process}{6}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Version Control}{6}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Development Methodology}{6}{subsection.1.3.2}
+\contentsline {chapter}{\numberline {2}Design \& Implementation}{8}{chapter.2}
+\contentsline {section}{\numberline {2.1}Sprint 1 - Hello Quiz Tool}{8}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Sprint Planning}{8}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Application Structure}{8}{subsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.2.1}Front End Container}{9}{subsubsection.2.1.2.1}
+\contentsline {subsubsection}{\numberline {2.1.2.2}Back End Container}{10}{subsubsection.2.1.2.2}
+\contentsline {subsubsection}{\numberline {2.1.2.3}Database Container}{10}{subsubsection.2.1.2.3}
+\contentsline {subsection}{\numberline {2.1.3}Continuous Integration}{10}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}Production Environment}{11}{subsection.2.1.4}
+\contentsline {subsubsection}{\numberline {2.1.4.1}Circle CI and AWS Integration}{11}{subsubsection.2.1.4.1}
+\contentsline {subsection}{\numberline {2.1.5}Story Boards}{12}{subsection.2.1.5}
+\contentsline {subsection}{\numberline {2.1.6}Sprint Retrospective}{14}{subsection.2.1.6}
+\contentsline {section}{\numberline {2.2}Sprint 2 - Bare Bone Application}{15}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Sprint Planning}{15}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Login Page and Authorisation}{16}{subsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.2.1}Google Single Sign On and JWT Tokens}{17}{subsubsection.2.2.2.1}
+\contentsline {subsection}{\numberline {2.2.3}Persistence Layer}{17}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Lecture Upload}{18}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Lecture Broadcast}{20}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Sprint Retrospective}{22}{subsection.2.2.6}
+\contentsline {section}{\numberline {2.3}Sprint 3 - Add Quizzes}{22}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Sprint Planning}{22}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Session Keys}{22}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Embedding Quizzes}{23}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Quiz Rendering}{24}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}Sprint Retrospective}{25}{subsection.2.3.5}
+\contentsline {section}{\numberline {2.4}Sprint 4 - Fancy Quizzes and Defect Fixing}{26}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Sprint Planning}{26}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Production Environment Bug}{26}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Extra Types of Quizzes}{28}{subsection.2.4.3}
+\contentsline {subsection}{\numberline {2.4.4}Sprint Retrospective}{28}{subsection.2.4.4}
+\contentsline {section}{\numberline {2.5}Sprint 5 - Persistence, Report Generation and Testing}{29}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Sprint Planning}{29}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Database Container Persistence}{29}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Lecture Answers Persistence}{30}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.4}Report Generation}{31}{subsection.2.5.4}
+\contentsline {subsection}{\numberline {2.5.5}Sprint Retrospective}{32}{subsection.2.5.5}
+\contentsline {chapter}{\numberline {3}Final Design}{33}{chapter.3}
+\contentsline {section}{\numberline {3.1}Application Architecture}{33}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Technology Overview}{33}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Application Structure}{34}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Back End Container}{34}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Docker Container}{34}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Back End Overview}{35}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Authentication and Validation Middleware}{35}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Socket.io Engine}{36}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}Front End Container}{36}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Docker Container}{36}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Front End Overview}{36}{subsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.2.1}Nginx Reverse Proxy}{36}{subsubsection.3.3.2.1}
+\contentsline {subsubsection}{\numberline {3.3.2.2}Angular Code}{36}{subsubsection.3.3.2.2}
+\contentsline {section}{\numberline {3.4}Database Container}{37}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Entity Relationship Diagram}{37}{subsection.3.4.1}
+\contentsline {section}{\numberline {3.5}Environments}{37}{section.3.5}
+\contentsline {section}{\numberline {3.6}Build}{38}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Version Control}{38}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Continuous Integration}{38}{subsection.3.6.2}
+\contentsline {chapter}{\numberline {4}Testing}{39}{chapter.4}
+\contentsline {section}{\numberline {4.1}Testing Strategy}{39}{section.4.1}
+\contentsline {section}{\numberline {4.2}Server Side Unit Tests}{39}{section.4.2}
+\contentsline {section}{\numberline {4.3}Client Side Unit Tests}{40}{section.4.3}
+\contentsline {section}{\numberline {4.4}Selenium Integration Tests}{41}{section.4.4}
+\contentsline {section}{\numberline {4.5}User Tests}{42}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Client Feedback}{42}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}End Users Evaluation}{42}{subsection.4.5.2}
+\contentsline {chapter}{\numberline {5}Evaluation}{43}{chapter.5}
+\contentsline {subsection}{\numberline {5.0.1}What Went Well}{43}{subsection.5.0.1}
+\contentsline {subsection}{\numberline {5.0.2}What Could Have Been Improved}{44}{subsection.5.0.2}
+\contentsline {chapter}{\numberline {A}Third-Party Code and Libraries}{46}{appendix.A}
+\contentsline {subparagraph}{body-parser v1.18.2}{46}{section*.44}
+\contentsline {subparagraph}{express v4.15.2}{46}{section*.45}
+\contentsline {subparagraph}{jsonschema v1.2.2}{46}{section*.46}
+\contentsline {subparagraph}{mongoose v5.0.7}{46}{section*.47}
+\contentsline {subparagraph}{multer v1.3.0}{46}{section*.48}
+\contentsline {subparagraph}{passport v0.4.0}{46}{section*.49}
+\contentsline {subparagraph}{passport-google-oauth v1.0.0}{46}{section*.50}
+\contentsline {subparagraph}{pdf-extract v1.0.11}{46}{section*.51}
+\contentsline {subparagraph}{pdf2img v0.5.0}{47}{section*.52}
+\contentsline {subparagraph}{request-promise v4.2.2}{47}{section*.53}
+\contentsline {subparagraph}{request v2.83.0}{47}{section*.54}
+\contentsline {subparagraph}{socket.io v2.0.4}{47}{section*.55}
+\contentsline {subparagraph}{mocha v5.0.4}{47}{section*.56}
+\contentsline {subparagraph}{chai v4.1.2}{47}{section*.57}
+\contentsline {subparagraph}{chai-http v3.0.0}{47}{section*.58}
+\contentsline {subparagraph}{selenium-webdriver v4.0.0-alpha.1}{47}{section*.59}
+\contentsline {subparagraph}{ghostscript}{47}{section*.60}
+\contentsline {subparagraph}{poppler-utils}{47}{section*.61}
+\contentsline {subparagraph}{pdftk}{48}{section*.62}
+\contentsline {subparagraph}{graphicsmagick}{48}{section*.63}
+\contentsline {subparagraph}{angular v4.3.5}{48}{section*.64}
+\contentsline {subparagraph}{chart.js v2.7.2}{48}{section*.65}
+\contentsline {subparagraph}{file-saver v1.3.8}{48}{section*.66}
+\contentsline {subparagraph}{core-js v2.5.0}{48}{section*.67}
+\contentsline {subparagraph}{font-awesome v4.7.0}{48}{section*.68}
+\contentsline {subparagraph}{intl v1.2.5}{48}{section*.69}
+\contentsline {subparagraph}{jspdf v1.3.5}{48}{section*.70}
+\contentsline {subparagraph}{jspdf-autotable v2.3.2}{48}{section*.71}
+\contentsline {subparagraph}{mdi v2.1.19}{48}{section*.72}
+\contentsline {subparagraph}{ng2-charts v1.6.0}{49}{section*.73}
+\contentsline {subparagraph}{ng2-file-upload v1.3.0}{49}{section*.74}
+\contentsline {subparagraph}{ng2-materialize v1.8.0}{49}{section*.75}
+\contentsline {subparagraph}{ngx-cookie-service v1.0.10}{49}{section*.76}
+\contentsline {subparagraph}{rxjs v5.4.3}{49}{section*.77}
+\contentsline {subparagraph}{socket.io-client v2.0.4}{49}{section*.78}
+\contentsline {subparagraph}{zone.js v0.8.16}{49}{section*.79}
+\contentsline {subparagraph}{codelyzer v3.1.2}{49}{section*.80}
+\contentsline {subparagraph}{jasmine-core v2.5.2}{49}{section*.81}
+\contentsline {subparagraph}{jasmine-spec-reporter v3.2.0}{49}{section*.82}
+\contentsline {subparagraph}{karma v1.4.1}{49}{section*.83}
+\contentsline {subparagraph}{karma-cli v1.0.1}{50}{section*.84}
+\contentsline {subparagraph}{karma-coverage-istanbul-reporter v0.2.0}{50}{section*.85}
+\contentsline {subparagraph}{karma-jasmine v1.1.0}{50}{section*.86}
+\contentsline {subparagraph}{karma-jasmine-html-reporter v0.2.2}{50}{section*.87}
+\contentsline {subparagraph}{karma-phantomjs-launcher v1.0.4}{50}{section*.88}
+\contentsline {subparagraph}{protractor v5.1.0}{50}{section*.89}
+\contentsline {subparagraph}{ts-node v3.3.0}{50}{section*.90}
+\contentsline {subparagraph}{tslint v5.6.0}{50}{section*.91}
+\contentsline {subparagraph}{typescript v2.4.2}{50}{section*.92}
+\contentsline {subparagraph}{Building Chat Application using MEAN Stack (Angular 4) and Socket.io}{50}{section*.93}
+\contentsline {subparagraph}{Docker Compose | Containerizing MEAN Stack Application | DevOps Tutorial | Edureka}{51}{section*.94}
+\contentsline {subparagraph}{Dockerized Angular 4 App (with Angular CLI)}{51}{section*.95}
+\contentsline {subparagraph}{Multicontainer Docker Environments}{51}{section*.96}
+\contentsline {subparagraph}{Test a Node RESTful API with Mocha and Chai}{51}{section*.97}
+\contentsline {subparagraph}{MEAN with Angular 2/5 - User Registration and Login Example \& Tutorial}{51}{section*.98}
+\contentsline {subparagraph}{6 16 integrating with google oauth with passport js in a MEAN app undergrad webdev summer 1 2017}{51}{section*.99}
+\contentsline {subparagraph}{How to setup Elastic Beanstalk Deployment?}{51}{section*.100}
+\contentsline {subparagraph}{Getting Started with Docker Compose}{51}{section*.101}
+\contentsline {subparagraph}{Authorization type support}{52}{section*.102}
+\contentsline {chapter}{\numberline {B}Ethics Submission}{53}{appendix.B}
+\contentsline {chapter}{\numberline {C}Sprint Stories}{56}{appendix.C}
+\contentsline {section}{\numberline {3.1}Sprint 1}{56}{section.C.1}
+\contentsline {section}{\numberline {3.2}Sprint 2}{57}{section.C.2}
+\contentsline {section}{\numberline {3.3}Sprint 3}{58}{section.C.3}
+\contentsline {section}{\numberline {3.4}Sprint 4}{58}{section.C.4}
+\contentsline {section}{\numberline {3.5}Sprint 5}{59}{section.C.5}
+\contentsline {chapter}{\numberline {D}Sprint Retrospective Documents}{60}{appendix.D}
+\contentsline {chapter}{\numberline {E}Code Examples}{67}{appendix.E}
+\contentsline {section}{\numberline {5.1}Initial Front End Dockerfile}{68}{section.E.1}
+\contentsline {section}{\numberline {5.2}Initial Back End Dockerfile}{69}{section.E.2}
+\contentsline {section}{\numberline {5.3}Initial Circle CI Config File}{70}{section.E.3}
+\contentsline {section}{\numberline {5.4}Initial Dockerrun.aws.json file}{71}{section.E.4}
+\contentsline {section}{\numberline {5.5}Production Deployment Script}{72}{section.E.5}
+\contentsline {section}{\numberline {5.6}Final Dockerrun.aws.json file}{73}{section.E.6}
+\contentsline {section}{\numberline {5.7}Final Back End Dockerfile}{74}{section.E.7}
+\contentsline {section}{\numberline {5.8}Controller Example}{75}{section.E.8}
+\contentsline {section}{\numberline {5.9}Final Nginx Config File}{77}{section.E.9}
+\contentsline {section}{\numberline {5.10}Final Circle CI Config File}{78}{section.E.10}
+\contentsline {section}{\numberline {5.11}Front End Dockerfile for Testing}{79}{section.E.11}
+\contentsline {section}{\numberline {5.12}Integration Testing Docker Environment}{80}{section.E.12}
+\contentsline {chapter}{\numberline {F}PDF Report Examples}{82}{appendix.F}
+\contentsline {chapter}{\numberline {G}User Survey Results}{85}{appendix.G}
+\contentsline {chapter}{\numberline {H}Project Timesheet}{89}{appendix.H}
+\contentsline {chapter}{Bibliography}{92}{appendix.H}

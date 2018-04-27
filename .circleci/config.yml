@@ -59,7 +59,7 @@ jobs:
             docker-compose -f docker-compose.integration.yml up --abort-on-container-exit --exit-code-from tester
             docker-compose -f docker-compose.integration.yml down
 
-      # deploy only master and develop branch
+      # deploy only master branch
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then

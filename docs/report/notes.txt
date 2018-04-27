@@ -1,0 +1,95 @@
+# Manual Testing
+Have a look at my comments in MMP_S11. The table is one way to report tests,
+but not the only way. If you have automated tests, then discuss what you have
+done and why - but you don't need to produce a table equivalent of those tests.
+
+You might want a test table to talk about areas that aren't automated. In that
+case, the test table could go in an appendix and discussion of the approach and
+any particularly interesting items in the body of the report.
+
+# Structure
+1 Background, Analysis, Process (2189 words)
+1.1 Background
+
+- Introduction to the problem
+- Background preperation for the project
+- Reading about the competitor Quizdom
+- Considering about technology options -> native mobile app vs cross platform app vs web app. Cons and pros
+- Motivation and interest in project -> one of the very few software engineering project offered by the department,
+  doing a software engineering degree, interesting problem where a non trivial system could be built using
+  modern technologies I wanted to learn, possibility to apply and extend my DevOps knowledge and dive more
+  into the JavaScript based technologies landspace which is the de facto way of developing web applications
+  these days, cutting edge
+- OPS material?
+- Reading about real time systems
+- Reading on Sockets
+- Prototyping a chat app using socket.io
+
+1.2 Analysis
+
+deployment, build, authentication considerations, internal vs external,
+choice of development methodology, Which technology chosen, AWS hosting chosen, Elastibeanstalk, docker-compose,
+Circle CI, Socket.io, MEAN stack, GitHub, identification of major problems, objectives of the work,
+
+1.3 Process
+
+single person adjusted agile methodology, weekly sprint planning and sprint retrospectives,
+drafting work for the next iteration, storing code on GitHub, master branch protection,
+pull requests, continuous integration, passing tests before pull requests merged into master,
+master build auto deploys to production, adding value quickly, ability to rapidly adapt to
+customers' feedback to change project's direction, keeping track of time and velocity using
+google sheets
+
+2. Design, development and testing
+2.1 Sprint 1 (~1200 words each)
+  - Sprint planning
+  - vary -
+  - Sprint retrospective
+2.2 Sprint 2
+  - Sprint planning
+  - vary -
+  - Sprint retrospective
+2.3 Sprint 3
+  - Sprint planning
+  - vary -
+  - Sprint retrospective
+2.4 Sprint 4
+  - Sprint planning
+  - vary -
+  - Sprint retrospective
+2.5 Sprint 5
+  - Sprint planning
+  - vary -
+  - Sprint retrospective
+
+3. final design of the system? <<< (1500 words)
+4. TESTING (maybe) (1000 words)
+  -
+  -
+  -
+5. Critical evaluation (1000 words)
+Appendices
+  A. 3rd party code and libraries
+  B. Ethics form
+  C. Code Examples
+  D. Sprint retrospective documents
+  E. Sprint burndown charts
+  F. Google timesheet
+Bibliography
+
+Chris's notes
+
+Chapter 5:
+- going back without resetting the ansers
+- save button on the bottom of the page
+- chart.js tweaks
+- For some reason a session has been created when no answers were given
+
+
+Add introduction at the start of the report
+  - the top level purpose of various chapters
+  -
+
+Tesing
+- introduciton - > justify why the approach was taken. Why this kind of testing, what to gain
+

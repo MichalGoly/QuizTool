@@ -1,0 +1,662 @@
+\chapter{Code Examples}
+\label{chap:codesamples}
+
+This appendix contains code examples relevant to the discussion in the main body of the
+report.
+
+\newpage
+\section{Initial Front End Dockerfile}
+The initial \texttt{Dockerfile} of the client container added in the first sprint of
+the development of the tool.
+
+\begin{figure}[ht]
+  \begin{lstlisting}[basicstyle=\small, breaklines=true]
+    ### STAGE 1: Build ###
+
+    # We label our stage as 'builder'
+    FROM node:8-alpine as builder
+
+    COPY package.json package-lock.json ./
+
+    RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
+
+    ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
+    RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
+
+    WORKDIR /ng-app
+
+    COPY . .
+
+    ## Build the angular app in production mode and store the artifacts in dist folder
+    RUN $(npm bin)/ng build --prod --build-optimizer
+
+    ### STAGE 2: Setup ###
+
+    FROM nginx:1.13.3-alpine
+
+    ## Copy our default nginx config
+    COPY nginx/default.conf /etc/nginx/conf.d/
+
+    ## Remove default nginx website
+    RUN rm -rf /usr/share/nginx/html/*
+
+    ## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
+    COPY --from=builder /ng-app/dist /usr/share/nginx/html
+
+    CMD ["nginx", "-g", "daemon off;"]
+  \end{lstlisting}
+  \caption{Initial Front End Dockerfile}
+  \label{sample:clientdocker}
+\end{figure}
+
+\newpage
+\section{Initial Back End Dockerfile}
+The initial \texttt{Dockerfile} of the server\_node container added in the first sprint of
+the development of the tool.
+
+\begin{figure}[h!]
+    \begin{lstlisting}[basicstyle=\small]
+    FROM node:carbon
+    WORKDIR /usr/src/app
+    COPY package*.json ./
+    RUN npm install
+    COPY . .
+    EXPOSE 3000
+    CMD [ "npm", "start" ]
+  \end{lstlisting}
+  \caption{Back End Dockerfile}
+  \label{sample:serverdocker}
+\end{figure}
+
+\newpage
+\section{Initial Circle CI Config File}
+The initial \texttt{.circleci/config.yml} added in the first sprint of the development.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small, breaklines=true]
+  version: 2
+  jobs:
+    build:
+      machine: true
+
+      working_directory: ~/repo
+
+      steps:
+        - checkout
+
+        - run:
+            name: install docker-compose
+            command: |
+              set -x
+              sudo chown -R $(whoami) /usr/local/bin
+              curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+              chmod +x /usr/local/bin/docker-compose
+
+        - run:
+            name: docker compose build image
+            command: |
+              set -x
+              docker-compose build
+              docker-compose up
+
+        - run:
+            name: unit tests
+            command: |
+              curl localhost
+
+        # deploy only master branch
+        - deploy:
+            command: |
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                chmod +x scripts/deploy.sh
+                ./scripts/deploy.sh
+              fi
+  \end{lstlisting}
+  \caption{Initial Build Config File}
+  \label{sample:circleci}
+\end{figure}
+
+\newpage
+\section{Initial Dockerrun.aws.json file}
+The initial version of the file specifying how containers should be linked together when running
+in the production environment on AWS.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small, breaklines=true]
+  {
+      "AWSEBDockerrunVersion": 2,
+      "containerDefinitions": [
+          {
+              "name": "client",
+              "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-client:latest",
+              "memory": 128,
+              "essential": true,
+              "portMappings": [
+                  {
+                      "hostPort": 80,
+                      "containerPort": 80
+                  }
+              ],
+              "links": [
+                  "server_node"
+              ]
+          },
+          {
+              "name": "server_node",
+              "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-server:latest",
+              "memory": 128,
+              "essential": true,
+              "links": [
+                "database"
+              ]
+          },
+          {
+            "name": "database",
+            "image": "mongo",
+            "memory": 128,
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 27017,
+                    "containerPort": 27017
+                }
+            ]
+          }
+      ]
+  }
+  \end{lstlisting}
+  \caption{Dockerrun.aws.json}
+  \label{sample:dockerrunaws}
+\end{figure}
+
+\newpage
+\section{Production Deployment Script}
+The bash script performing the deployment from Circle CI to the production environment
+hosted on AWS.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small, breaklines=true]
+  #!/bin/bash
+  set -x
+  set -e
+
+  AWS_CONFIG_FILE=$HOME/.aws/config
+
+  mkdir $HOME/.aws
+  touch $AWS_CONFIG_FILE
+  chmod 600 $AWS_CONFIG_FILE
+
+  echo "[default]"                                     > $AWS_CONFIG_FILE
+  echo "aws_access_key_id=$AWS_ACCESS_KEY_ID"         >> $AWS_CONFIG_FILE
+  echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> $AWS_CONFIG_FILE
+
+  $(aws ecr get-login --no-include-email --region eu-west-2)
+
+  docker tag repo_client:latest 993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-client:latest
+  docker tag repo_server_node:latest 993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-server:latest
+
+  docker push 993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-client:latest
+  docker push 993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-server:latest
+
+  eb deploy prod-env
+  \end{lstlisting}
+  \caption{Production Deployment Script}
+  \label{sample:deploy}
+\end{figure}
+
+\newpage
+\section{Final Dockerrun.aws.json file}
+The final version of the file specifying how Docker containers should be link with each other
+when running in the production environment provided by AWS.
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\tiny, breaklines=true]
+{
+    "AWSEBDockerrunVersion": 2,
+    "volumes": [
+      {
+        "name": "mongo",
+        "host": {
+          "sourcePath": "/var/app/database"
+        }
+      }
+    ],
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-client:latest",
+            "memory": 300,
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": [
+                "server_node"
+            ]
+        },
+        {
+            "name": "server_node",
+            "image": "993389244112.dkr.ecr.eu-west-2.amazonaws.com/quiz-tool-server:latest",
+            "memory": 300,
+            "essential": true,
+            "links": [
+              "database"
+            ]
+        },
+        {
+          "name": "database",
+          "image": "mongo",
+          "memory": 300,
+          "essential": true,
+          "mountPoints": [
+              {
+                "sourceVolume": "mongo",
+                "containerPath": "/data/db"
+              }
+          ],
+          "portMappings": [
+              {
+                  "hostPort": 27017,
+                  "containerPort": 27017
+              }
+          ]
+        }
+    ]
+}
+\end{lstlisting}
+\caption{Final Dockerrun.aws.json}
+\label{sample:dockerrunawsfinal}
+\end{figure}
+
+\newpage
+\section{Final Back End Dockerfile}
+The final \texttt{Dockerfile} of the server\_node container.
+
+\begin{figure}[h!]
+    \begin{lstlisting}[basicstyle=\small, breaklines=true]
+    FROM node:carbon
+
+    # Create app directory
+    WORKDIR /usr/src/app
+
+    # Install app dependencies
+    # A wildcard is used to ensure both package.json AND package-lock.json are copied
+    # where available (npm@5+)
+    COPY package*.json ./
+
+    # Install system dependencies
+    RUN apt-get update && apt-get install -y --no-install-recommends \
+    		ghostscript \
+    		pdftk \
+    		poppler-utils \
+    		graphicsmagick
+
+    RUN npm install
+    # If you are building your code for production
+    # RUN npm install --only=production
+
+    # Bundle app source
+    COPY . .
+
+    EXPOSE 3000
+    CMD [ "npm", "start" ]
+  \end{lstlisting}
+  \caption{Back End Dockerfile}
+  \label{sample:finalserverdocker}
+\end{figure}
+
+\newpage
+\section{Controller Example}
+The final implementation of the \texttt{slides.controller.js}.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\tiny, breaklines=true]
+  var express = require('express');
+  var router = express.Router();
+  var authHelper = require('../helpers/auth.helper');
+  var lecturesDb = require('../db/lectures.db');
+  var slidesDb = require('../db/slides.db');
+  var Slide = require('../models/slide');
+  var Validator = require('jsonschema').Validator;
+  var validator = new Validator();
+  var BulkSlideUpdateSchema = require('../schemas/bulkSlideUpdate');
+
+  router.get('/:lecture_id', getSlides);
+  router.put('/', bulkUpdateQuiz);
+
+  module.exports = router;
+
+  function getSlides(req, res) {
+    authHelper.check(req, res).then((lecturer) => {
+      lecturesDb.getOne(req.params.lecture_id).then((lecture) => {
+        if (lecturer._id == lecture.lecturerId) {
+          slidesDb.getByLectureId(lecture._id).then((slides) => {
+            var out = [];
+            for (var i = 0; i < slides.length; i++) {
+              out.push({
+                _id: slides[i]._id,
+                lectureId: slides[i].lectureId,
+                image: slides[i].image.toString('base64'),
+                text: slides[i].text,
+                quizType: slides[i].quizType,
+                slideNumber: slides[i].slideNumber
+              });
+            }
+            res.send(out);
+          }).catch((err) => {
+            console.error("An error has occurred: " + err);
+            res.status(500).send({
+              error: err
+            });
+          });
+        } else {
+          res.status(401).send({
+            error: "Unauthorized"
+          });
+        }
+      }).catch((err) => {
+        if (err === 400) {
+          res.status(400).send({
+            error: "Bad request, lectureId malformed"
+          });
+        } else {
+          console.error("An error has occurred: " + err);
+          res.status(500).send({
+            error: err
+          });
+        }
+      });
+    }).catch((err) => {
+      res.status(401).send({
+        error: "Unauthorized"
+      });
+    });
+  }
+
+  // Bulk updates quizType of the slides provided
+  function bulkUpdateQuiz(req, res) {
+    if (validator.validate(req.body, BulkSlideUpdateSchema).valid) {
+      authHelper.check(req, res).then((lecturer) => {
+        slidesDb.bulkUpdateQuiz(req.body).then(() => {
+          res.sendStatus(200);
+        }).catch((err) => {
+          console.error("An error has occurred: " + err);
+          res.status(500).send({
+            error: "Internal server error"
+          });
+        });
+      }).catch((err) => {
+        res.status(401).send({
+          error: "Unauthorized"
+        });
+      });
+    } else {
+      res.status(400).send({
+        error: "Bad request"
+      });
+    }
+  }
+  \end{lstlisting}
+  \caption{Example of a controller implementation}
+  \label{sample:controller}
+\end{figure}
+
+\newpage
+\section{Final Nginx Config File}
+The final \texttt{default.conf} nginx configuration file, enabling routing within the
+application and preventing people from uploading files over 15 MB.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\tiny, breaklines=true]
+  server
+  {
+    listen 80;
+    sendfile on;
+    default_type application/octet-stream;
+
+    gzip on;
+    gzip_http_version 1.1;
+    gzip_disable "MSIE [1-6]\.";
+    gzip_min_length 256;
+    gzip_vary on;
+    gzip_proxied expired no-cache no-store private auth;
+    gzip_types text/plain text/css application/json application/javascript application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+    gzip_comp_level 9;
+
+    root /usr/share/nginx/html;
+
+    location /
+    {
+      try_files $uri $uri/ /index.html =404;
+    }
+
+    location /express/
+    {
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_set_header X-NginX-Proxy true;
+
+      proxy_pass http://server_node:3000/;
+
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "upgrade";
+
+      client_max_body_size 15M;
+    }
+
+    location ~* \.io
+    {
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_set_header X-NginX-Proxy true;
+
+      proxy_pass http://server_node:3000;
+      proxy_redirect off;
+
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection "upgrade";
+    }
+
+  }
+  \end{lstlisting}
+  \caption{Final Nginx Config File}
+  \label{sample:nginx}
+\end{figure}
+
+\newpage
+\section{Final Circle CI Config File}
+The final \texttt{.circleci/config.yml} which evolved over the iterations.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\tiny, breaklines=true]
+  # Javascript Node CircleCI 2.0 configuration file
+  #
+  # Check https://circleci.com/docs/2.0/language-javascript/ for more details
+  #
+  version: 2
+  jobs:
+    build:
+      machine: true
+
+      working_directory: ~/repo
+
+      steps:
+        - checkout
+
+        - run:
+            name: AWS integration
+            command: |
+              sudo apt-get -y -qq update
+              sudo apt-get install python-pip python-dev build-essential
+              sudo pip install awsebcli --upgrade
+              eb --version
+
+        - run:
+            name: install docker-compose
+            command: |
+              set -x
+              sudo chown -R $(whoami) /usr/local/bin
+              curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+              chmod +x /usr/local/bin/docker-compose
+
+        - run:
+            name: docker compose build image
+            command: |
+              touch .env
+              set -x
+              docker-compose build
+
+        - run:
+            name: run client unit tests
+            command: |
+              cd client
+              docker build -t clienttest --file Dockerfile.test .
+              docker run -it clienttest
+              cd ..
+
+        - run:
+            name: run server unit tests
+            command: |
+              echo "GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID" >> .env
+              echo "GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET" >> .env
+              echo "GOOGLE_CALLBACK_URL=$GOOGLE_CALLBACK_URL" >> .env
+              docker-compose -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from server_node
+              docker-compose -f docker-compose.test.yml down
+
+        - run:
+            name: run integration tests
+            command: |
+              docker-compose -f docker-compose.integration.yml build
+              docker-compose -f docker-compose.integration.yml up --abort-on-container-exit --exit-code-from tester
+              docker-compose -f docker-compose.integration.yml down
+
+        # deploy only master and develop branch
+        - deploy:
+            command: |
+              if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                chmod +x scripts/deploy.sh
+                ./scripts/deploy.sh
+              fi
+  \end{lstlisting}
+  \caption{Final Build Config File}
+  \label{sample:circlecifinal}
+\end{figure}
+
+\newpage
+\section{Front End Dockerfile for Testing}
+\texttt{Dockerfile.test} used for front end unit tests to address the lack of \texttt{npm}
+in the production container shown in the \autoref{sample:clientdocker}.
+
+\begin{figure}[ht]
+  \begin{lstlisting}[basicstyle=\small, breaklines=true]
+  # Dockerfile for client side unit tests
+  FROM node:8
+
+  COPY package.json package-lock.json ./
+
+  RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
+
+  ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
+  RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
+
+  WORKDIR /ng-app
+
+  COPY . .
+
+  RUN $(npm bin)/ng build
+
+  CMD npm test
+  \end{lstlisting}
+  \caption{Dockerfile.test Used For Front End Testing}
+  \label{sample:clientdockertest}
+\end{figure}
+
+\newpage
+\section{Integration Testing Docker Environment}
+\texttt{docker-compose.integration.yml} file added to define how containers should be
+linked together for selenium integration testing.
+
+\begin{figure}[ht]
+  \begin{lstlisting}[basicstyle=\tiny, breaklines=true]
+  version: '2.0'
+  services:
+    # Quiz Tool to be tested
+    client:
+      build: client
+      ports:
+        - "80:80"
+      links:
+        - server_node
+      depends_on:
+        - chrome
+        - firefox
+    server_node:
+      build: server
+      environment:
+        - NODE_ENV=test
+        - AUTH_DISABLED=true
+        - GOOGLE_AUTH_DISABLED=true
+      env_file:
+        - .env
+      links:
+        - database
+      depends_on:
+        - chrome
+        - firefox
+    database:
+      image: mongo
+      ports:
+        - "27017:27017"
+      depends_on:
+        - chrome
+        - firefox
+    # Integration tests runner
+    tester:
+      build: tester
+      depends_on:
+        - chrome
+        - firefox
+        - selenium-hub
+      env_file:
+        - .env
+      entrypoint: npm test
+    # Selenium hub for integration testing
+    selenium-hub:
+      image: selenium/hub
+      container_name: selenium-hub
+      ports:
+        - "4444:4444"
+      environment:
+        - GRID_MAX_SESSION=10
+    chrome:
+      image: selenium/node-chrome
+      depends_on:
+        - selenium-hub
+      volumes:
+        - /dev/shm:/dev/shm
+      environment:
+        - HUB_PORT_4444_TCP_ADDR=selenium-hub
+        - HUB_PORT_4444_TCP_PORT=4444
+        - NODE_MAX_SESSION=10
+        - NODE_MAX_INSTANCES=10
+    firefox:
+      image: selenium/node-firefox
+      depends_on:
+        - selenium-hub
+      volumes:
+        - /dev/shm:/dev/shm
+      environment:
+        - HUB_PORT_4444_TCP_ADDR=selenium-hub
+        - HUB_PORT_4444_TCP_PORT=4444
+        - NODE_MAX_SESSION=10
+        - NODE_MAX_INSTANCES=10
+  \end{lstlisting}
+  \caption{docker-compose.integration.yml Used For Selenium Testing}
+  \label{sample:dockercomposeintegration}
+\end{figure}

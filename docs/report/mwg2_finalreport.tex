@@ -1,0 +1,497 @@
+\documentclass[11pt,a4paper]{report}
+
+% Aberstwyth dissertation LaTeX Template
+% Authors: Dr. Hannah Dee (hmd1@aber.ac.uk), Neil Taylor (nst@aber.ac.uk)
+% This has been adapted from the Leeds Thesis template and the
+% Group Project template for Computer Science in Aberystywth University.
+%
+% All comments and suggestions welcome.
+%
+% Template designed to be used with pdflatex: it may need alteration to
+% run with a different LaTeX engine.
+%
+% Note - this is offered as a starting point for your work. You are not
+% required to use this template and can choose to create your own document
+% without it.
+
+% To build document on the unix command line, run four commands:
+
+% pdflatex dissertation
+% bibtex dissertation
+% pdflatex dissertation
+% pdflatex dissertation
+
+% you will end up with dissertation.pdf
+\usepackage{mmp}
+\usepackage{pdfpages}
+
+% the following packages are used for citations - You only need to include one.
+%
+% Use the cite package if you are using the numeric style (e.g. IEEEannot).
+% Use the natbib package if you are using the author-date style (e.g. authordate2annot).
+% Only use one of these and comment out the other one.
+% \usepackage{cite}
+%\usepackage{natbib}
+
+% Use the following to selectively exclude chapters
+%\includeonly{cover,abstract,acknowledge,declare,chapter1,chapter2}
+
+\begin{document}
+
+% all of the include directives below refer to tex files
+% so \include{cover} includes cover.tex - to change the content,
+% edit the tex file
+
+\pagenumbering{roman}
+
+% This is the front page
+\include{cover}
+
+% Set up page numbering
+\pagestyle{empty}
+
+% declarations of originality
+\include{declaration}
+
+\include{acknowledgements} % Acknowledgements
+\include{abstract}                 % Abstract
+
+\pagenumbering{roman}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0 pt}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\newpage
+
+% Set up page numbering
+\pagenumbering{arabic}
+
+\setchapterheaderfooter
+
+% include the chapters
+\include{Chapter1/chapter1}
+\include{Chapter2/chapter2}
+\include{Chapter3/chapter3}
+% add any additional chapters here
+
+\setemptyheader
+% start the appendix - sets up different numbering
+\fancypagestyle{plain}{%
+%\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{\textsl{Appendix\ \thechapter}}
+\fancyhead[R]{\textsl{\leftmark}}}
+
+\appendix
+\fancyhead[L]{\textsl{Appendix\ \thechapter}}
+\fancyhead[R]{\textsl{\leftmark}}
+\fancyhead[C]{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\fancyhead[L]{\textsl{Appendix\ \thechapter}}
+\fancyhead[R]{\textsl{\leftmark}}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+% include any appendices here
+\include{Appendix1/appendix1}
+\include{Appendix2/appendix2}
+\include{Appendix3/appendix3}
+\include{Appendix4/appendix4}
+\include{Appendix5/appendix5}
+\include{Appendix6/appendix6}
+\include{Appendix7/appendix7}
+\include{Appendix8/appendix8}
+
+\fancypagestyle{plain}{%
+   \fancyhead{} %[C]{Annotated Bibliography}
+   \fancyfoot[C]{{\thepage} of \pageref{LastPage}} % except the center
+   \renewcommand{\headrulewidth}{0pt}
+   \renewcommand{\footrulewidth}{0pt}
+}
+
+\setemptyheader
+
+% the following line is included so that the bibliography is also shown in the table of contents. There is the possibility that this is added to the previous page for the bibliography. To address this, a newline is added so that it appears on the first page for the bibliography.
+\addcontentsline{toc}{chapter}{Bibliography} % Adds References to contents page
+
+\begin{thebibliography}{1}
+
+\bibitem{1} Qwizdom, “Qwizdom homepage,” 2018. [Online] Available: https://qwizdom.com/, [Accessed: Apr. 9, 2018].
+
+  Qwizdom is the tool currently used by the univeristy and will be replaced with this project.
+
+\bibitem{2} Google Sign-In, "Google Identity homepage", 2018. [Online] Available: https://developers.google.com/identity/, [Accessed: Apr. 10, 2018].
+
+  Google Sign-In is a secure authentication system that reduces the burden of login for your users, by enabling them
+  to sign in with their Google account. The same account they already use with Gmail, Play, Google+, and other Google services.
+  Google Single Sign On has been used to authenticate lecturers logging into the Quiz Tool.
+
+\bibitem{3} Java Programming Language, "Java homepage", 2018. [Online] Available:
+  https://docs.oracle.com/javase/8/docs/technotes/guides/language/index.html, [Accessed: Apr. 11, 2018].
+
+  The Java™ Programming Language is a general-purpose, concurrent, strongly typed, class-based object-oriented language.
+  It is normally compiled to the bytecode instruction set and binary format defined in the Java Virtual Machine Specification.
+  Java would have been used if the Quiz Tool were to be developed for Android.
+
+\bibitem{4} Android, "Android homepage", 2018. [Online] Available: https://www.android.com/, [Accessed: Apr. 11, 2018].
+
+  Android is a mobile operating system developed by Google. The initial idea was to develop the Quiz Tool as a native, Android app.
+
+\bibitem{5} iOS, "Apple homepage", 2018. [Online] Available: https://www.apple.com/uk/ios/ios-11/, [Accessed: Apr. 11, 2018].
+
+  iOS is a mobile operating system created and developed by Apple Inc. The initial idea of developing Quiz Tool as a native
+  Android app would prevent people owning iOS phones from using the tool.
+
+\bibitem{6} React Native, "React Native homepage", 2018. [Online] Available: https://facebook.github.io/react-native/, [Accessed: Apr. 11, 2018].
+
+  React Native lets you build mobile apps for both iOS and Android using only JavaScript. React Native has been
+  considered as one of the alternatives to develop the tool.
+
+\bibitem{7} JavaScript Programming Language, "JavaScript Mozilla docs", 2018. [Online]
+  Available: https://developer.mozilla.org/bm/docs/Web/JavaScript, [Accessed: Apr. 11, 2018].
+
+  JavaScript is a lightweight, interpreted, programming language, best known for being the scripting
+  language of the web. MongoDB, Express.js, Angular and Node.js technologies used to develop the Quiz Tool are
+  JavaScript based.
+
+\bibitem{8} React, "React homepage", 2018. [Online] Available: https://reactjs.org/, [Accessed: Apr. 11, 2018].
+
+  A JavaScript library for building user interfaces. It was one of the alternatives of developing the front
+  end of the Quiz Tool.
+
+\bibitem{9} Angular, "Angular homepage", 2018. [Online] Available: https://angular.io/, [Accessed: Apr. 11, 2018].
+
+  Angular is a TypeScript-based front end development framework supported by Google. The front end of the Quiz Tool
+  has been developed using Angular.
+
+\bibitem{10} TypeScript Programming Language, "TypeScript homepage", 2018. [Online] Available: https://www.typescriptlang.org/, [Accessed: Apr. 11, 2018].
+
+  TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. TypeScript is used to write
+  Angular applications, and the front end of the tool has been written using TypeScript.
+
+  % 11 - 16
+\bibitem{flask} Python Flask, "Flask homepage", 2018. [Online] Available: http://flask.pocoo.org/, [Accessed: Apr. 25, 2018].
+
+  Flask is a micro web development framework for Python. It was considered as one of the alternative approaches to develop
+  the back end of the Quiz Tool.
+
+\bibitem{mvc} T. Reebskaug, J. Coplien, "The DCI Architecture: A New Vision of Object-Oriented Programming", 2009.
+  [Online] Available: https://www.artima.com/articles/dci\_vision.html, [Accessed: Apr. 25, 2018].
+
+  MVC is an architectural pattern which can be used for developing web applications. It was considered as one of the approaches
+  of developing the Quiz Tool as a web application.
+
+\bibitem{spring} Spring MVC, "Spring.io docs", 2018. [Online] Available: https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html\#mvc, [Accessed: Apr. 25, 2018].
+
+  Spring Web MVC is a web development framework build on the Servlet API using Java. It was considered as one of the alternative approaches to develop
+  the back end of the Quiz Tool.
+
+\bibitem{asp} ASP.NET, "ASP homepage", 2018. [Online] Available: https://www.asp.net/, [Accessed: Apr. 25, 2018].
+
+    ASP.NET is an MVC web development framework, allowing web applications to be developed using the C\# programming language.
+    It was considered as one of the alternative approaches to develop the back end of the Quiz Tool.
+
+\bibitem{laravel} Laravel, "Laravel homepage", 2018. [Online] Available: https://laravel.com/, [Accessed: Apr. 25, 2018].
+
+    Laravel is a PHP web development framework, considered as one of the alternative approaches to develop the Quiz Tool.
+
+\bibitem{ror} Ruby on Rails, "Ruby on Rails homepage", 2018. [Online] Available: http://rubyonrails.org/, [Accessed: Apr. 25, 2018].
+
+    Ruby on Rails is a convention over configuration web development framework, allowing applications to be written in the Ruby programming
+    language. It was considered as one of the alternative approaches to develop the back end of the Quiz Tool.
+  %
+
+\bibitem{11} I. Fette, A. Melnikov, "The WebSocket Protocol", [Online] Available: https://tools.ietf.org/html/rfc6455, [Accessed: Apr. 11, 2018].
+
+  The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host
+  that has opted-in to communications from that code. Sockets are used to enable the Quiz Tool to serve lecture slides in real time to
+  the audience.
+
+\bibitem{12} Socket.io, "Socket.io homepage", 2018. [Online] Available: https://socket.io/, [Accessed: Apr. 11, 2018].
+
+  Socket.io is a JavaScript library enabling bidirectional event-based communication. Socket.io is used to enable the Quiz Tool
+  to serve lecture slides in real time to the audience.
+
+\bibitem{13} Chat Application Tutorial, "Socket.io homepage", 2018. [Online] Available: https://socket.io/get-started/chat/, [Accessed: Apr. 11, 2018].
+
+  A Socket.io tutorial guiding the student in developing a basic chat application using Socket.io, which was helpful during the early
+  stages of Quiz Tool development.
+
+\bibitem{14} Tour of Heroes Tutorial, "Angular homepage", 2018. [Online] Available: https://angular.io/tutorial, [Accessed: Apr. 11, 2018].
+
+  The Tour of Heroes tutorial covers the fundamentals of Angular, by building an app that helps staffing agency manage its stable of heroes.
+  The tutorial enabled me to learn Angular basics before developing the Quiz Tool.
+
+\bibitem{15} Building Chat Application using MEAN Stack (Angular 4) and Socket.io, "djamware.com", 2018.
+  [Online] Available: https://www.djamware.com/post/58e0d15280aca75cdc948e4e/building-chat-application-using-mean-stack-angular-4-and-socketio,
+  [Accessed: Apr. 11, 2018].
+
+  Step by step tutorial of building a simple chat application using MEAN stack (Angular 4) and Socket.io, which was useful
+  during the early stages of the development of the Quiz Tool.
+
+\bibitem{16} J. Sermersheim, Ed. Novell, "Lightweight Directory Access Protocol (LDAP): The Protocol", [Online]
+    Available: https://tools.ietf.org/html/rfc4511, [Accessed: Apr. 11, 2018].
+
+    Aberystwyth University directory of users could be checked using the Bind operation
+    to authenticate lecturers once they provide their email and password.
+
+\bibitem{17} Microsoft PowerPoint, "products.office.com", 2018. [Online] Available: https://products.office.com/en-gb/powerpoint, [Accessed: Apr. 11, 2018].
+
+  A proprietary tool owned by Microsoft to create presentations. Qwizdom supports it, Quiz Tool does not.
+
+\bibitem{18} MEAN stack, [Online] Available: https://github.com/linnovate/mean, [Accessed: Apr. 11, 2018].
+
+    The MEAN stack uses Mongo, Express, Angular(4) and Node for simple and scalable fullstack js applications. The Quiz Tool
+    has been written using the MEAN stack.
+
+\bibitem{19} Docker, "Docker homepage", [Online] Available: https://www.docker.com/, [Accessed: Apr. 11, 2018].
+
+    Docker allows apps to be containerised and run on multiple hosts in the same fashion. Quiz Tool has been containerised
+    using Docker.
+
+\bibitem{20} docker-compose, "docker-compose homepage", [Online] Available: https://docs.docker.com/compose/, [Accessed: Apr. 11, 2018].
+
+    Compose is a tool for defining and running multi-container Docker applications, including the Quiz Tool.
+
+\bibitem{21}  M. O\'Gara, "Ben Golub, Who Sold Gluster to Red Hat, Now Running dotCloud", 26th July 2013.
+  [Online] Available: http://maureenogara.sys-con.com/node/2747331, [Accessed: Apr. 11, 2018].
+
+  A journal article mentioning what Docker does, which helped me to understand what Docker was.
+
+\bibitem{22} LXC, "LXC", [Online] Available: https://wiki.debian.org/LXC, [Accessed: Apr. 11, 2018].
+
+  Linux Containers (LXC) provide a Free Software virtualization system for computers running GNU/Linux. They are inappropriate
+  for the task at hand, as they do not allow running docker-compose due to the lack of system permissions.
+
+\bibitem{23} Jenkins, "Jenkins homepage", [Online] Available: https://jenkins.io/, [Accessed: Apr. 11, 2018].
+
+  Jenkins is an industry proven automation tool. It is typically deployed
+  on premises as a Java web application and gives developers more control over the build agents compared to its
+  competitors. It was considered as one of the continuous integration build agents for the Quiz Tool development.
+
+\bibitem{24} Amazon Web Services, "AWS homepage", [Online] Available: https://aws.amazon.com/, [Accessed: Apr. 11, 2018].
+
+  AWS provides cloud computing plaftoms to individuals, companies and governments. The production environment of the Quiz Tool is
+  hosted on AWS.
+
+\bibitem{25} GitHub, "Student Developer Pack", [Online] Available: https://education.github.com/pack, [Accessed: Apr. 11, 2018].
+
+  GitHub partners with top companies to allow students gain experience with real world tools. It funded the production
+  environment hosting on AWS of the Quiz Tool.
+
+\bibitem{26} Circle CI, "Circle CI  homepage", [Online] Available: https://circleci.com/, [Accessed: Apr. 12, 2018].
+
+  Circle CI is very similar to Travis, but it allows a certain amount of free build hours per month for private
+  repositories. Circle CI has been used to test and deploy the Quiz Tool to production.
+
+\bibitem{27} Travis, "Travis homepage", [Online] Available: https://travis-ci.org/, [Accessed: Apr. 12, 2018].
+
+  Travis is a popular continuos integration tool hosted typically on an external cloud. Free to use for open source
+  projects, hosted publicly on GitHub. It was therefore not appropriate for the Quiz Tool hosted in a private repository.
+
+\bibitem{28} M. Shahin, M. Ali Babar, and L. Zhu, "Continuous Integration, Delivery and Deployment: A Systematic Review on
+    Approaches, Tools, Challenges and Practices", 2017, [Online] Available: https://arxiv.org/pdf/1703.07019.pdf, [Accessed: Apr. 12, 2018].
+
+    This paper describes what continuos integration and delivery are, which was helpful during the Quiz Tool development.
+
+\bibitem{facebook} Facebook login, "developers.facebook.com", [Online] Available: https://developers.facebook.com/docs/facebook-login, [Accessed: Apr. 25, 2018].
+
+  Facebook Single Sign On provides a secure, fast and convenient way for people to log into applications using their Facebook accounts.
+  It was considered as one of the Single Sign On providers, before Google was chosen.
+
+\bibitem{twitter} Sign in with Twitter, "dev.twitter.com", [Online] Available: https://dev.twitter.com/web/sign-in, [Accessed: Apr. 25, 2018].
+
+  Twitter Single Sign On provides a secure, fast and convenient way for people to log into applications using their Twitter accounts.
+  It was considered as one of the Single Sign On providers, before Google was chosen.
+
+\bibitem{29} Git, “Git homepage,” 2018, [Online] Available: https://git-scm.com/, [Accessed: Apr. 12, 2018].
+
+    Version control system used for the Quiz Tool development.
+
+\bibitem{30} GitHub, Inc., “GitHub homepage,” 2018, [Online] Available: http://github.com/, [Accessed: Apr. 12, 2018].
+
+    A popular version control web hosting offering private repositories to students. Code will be stored there and checkout by CI for
+    testing and deployment.
+
+\bibitem{31} Git Feature Branch Workflow, [Online] Available: https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow,
+  [Accessed: Apr. 12, 2018].
+
+    Each issue has an associated feature branch, and code necessary to develop the issue is commited to the appropriate feature branch.
+    Then a pull request is made between the feature branch and development/master, and once all tests pass the feature branch can
+    be merged to development/master. The workflow has been used during the tool development.
+
+\bibitem{32} ZenHub, "ZenHub homepage", [Online] Available: https://www.zenhub.com/, [Accessed: Apr. 12, 2018].
+
+    ZenHub is an agile project management chrome extension for GitHub. It provides the ability to assign points
+    to issues, create epics, provides velocity tracing burndown charts for milestones, and a Kanban board to
+    better manage work at hand. The kanban board has been used during the Quiz Tool development.
+
+\bibitem{33} Google Sheets, "Google docs homepage", [Online] Available: https://www.google.co.uk/sheets/about/, [Accessed: Apr. 12, 2018].
+
+  A SaaS tool for creating spreadsheets owned by Google. A spreadsheet has been used to track time commitment on day to day basis during
+  the development of the Quiz Tool.
+
+\bibitem{34} nginx, "nginx homepage", [Online] Available: https://www.nginx.com/, [Accessed: Apr. 12, 2018].
+
+  Nginx is a web server which is used as a reverse proxy in the Quiz Tool.
+
+\bibitem{35} avatsaev, "Dockerized Angular 4 App (with Angular CLI)", [Online] Available: https://github.com/avatsaev/angular4-docker-example, [Accessed: Apr. 12, 2018].
+
+    The starting point of the client side of the Quiz Tool.
+
+\bibitem{36} mongo, "mongo official docker repository", [Online] Available: https://hub.docker.com/\_/mongo/, [Accessed: Apr. 12, 2018].
+
+    The official docker hub repository of MongoDB. The image is used by the Quiz Tool in both production and development.
+
+\bibitem{37} What Is AWS Elastic Beanstalk, "AWS docs", [Online] Available: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html, [Accessed: Apr. 13, 2018].
+
+    The Quiz Tool is deployed to AWS Elastic Beanstalk production environment.
+
+\bibitem{38} Multicontainer Docker Environments, "AWS docs", [Online] Available: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create\_deploy\_docker\_ecs.html, [Accessed: Apr. 13, 2018].
+
+    The Multicontainer AWS Elastic Beanstalk is what actually orchestrates Docker containers in production.
+
+\bibitem{39} Amazon EC2, "EC2 homepage", [Online] Available: https://aws.amazon.com/ec2/, [Accessed: Apr. 13, 2018].
+
+    Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the
+    cloud. It is designed to make web-scale cloud computing easier for developers. The Quiz Tool's production environment
+    is hosted on an EC2 instance.
+
+\bibitem{40} Amazon ECS, "ECS homepage", [Online] Available: https://aws.amazon.com/ecs/, [Accessed: Apr. 13, 2018].
+
+    Amazon Elastic Container Service stores Docker images of the Quiz Tool tagged and ready for deployment into production.
+
+\bibitem{41} How to setup Elastic Beanstalk Deployment, "circleci forum", [Online] Available: https://discuss.circleci.com/t/how-to-setup-elastic-beanstalk-deployment/6154/4, [Accessed: Apr. 13, 2018].
+
+    The forum post shows an example of an AWS deployment script which was adapted for Quiz Tool deployment.
+
+\bibitem{42} Settings to deploy to AWS Elastic Beanstalk on CircleCi (EB Cli 3) , "gist", [Online] Available: https://gist.github.com/RobertoSchneiders/9e0e73e836a80d53a21e, [Accessed: Apr. 13, 2018].
+
+    The gist post shows an example of an AWS deployment script which was adapted for Quiz Tool deployment.
+
+\bibitem{43} Materialize CSS, "Materialize homepage", [Online] Available: http://materializecss.com/, [Accessed: Apr. 14, 2018].
+
+    The CSS framework used in the development of the Quiz Tool.
+
+\bibitem{44} JSON Web Token, "JWT standard", [Online] Available: https://tools.ietf.org/html/rfc7519, [Accessed: Apr. 14, 2018].
+
+  JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties. Quiz Tool
+  uses JWT tokens during authorisation.
+
+\bibitem{45} passport.js, "passport.js homepage", [Online] Available: http://www.passportjs.org/, [Accessed: Apr. 14, 2018].
+
+  Passport is an authentication middleware for Node.js used during Quiz Tool authentication.
+
+\bibitem{46} passport-google-oauth, "passport-google-oauth github page", [Online] Available: https://github.com/jaredhanson/passport-google-oauth, [Accessed: Apr. 14, 2018].
+
+  Passport middleware Google authentication strategy used in Quiz Tool.
+
+\bibitem{47} OAuth2, "OAuth 2.0 Authorization Framework", [Online] Available: https://tools.ietf.org/html/rfc6749, [Accessed: Apr. 14, 2018].
+
+  The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to a resource stored on a
+  different server. Quiz Tool uses it to authenticate lecturers using their Google credentials.
+
+\bibitem{48} mongoose, "mongoose homepage", [Online] Available: http://mongoosejs.com/, [Accessed: Apr. 14, 2018].
+
+    Mongoose provides a schema-based solution to model data in applications using MongoDB. It has been using in the Quiz Tool.
+
+\bibitem{49} Binary JSON, "BSON homepage", [Online] Available: http://bsonspec.org/, [Accessed: Apr. 15, 2018].
+
+    A binary-encoded serialization of JSON-like documents. Quiz Tool uses BSON as datatype of files persisted in MongoDB.
+
+\bibitem{50} GridFS, "mongo docs", [Online] Available: https://docs.mongodb.com/manual/core/gridfs/, [Accessed: Apr. 15, 2018].
+
+    A convention for storing large files in a MongoDB database. It was one of the alternatives of storing binary data in Quiz Tool's database.
+
+\bibitem{51} ng2-file-upload, "ng2-file-upload homepage", [Online] Available: https://valor-software.com/ng2-file-upload/, [Accessed: Apr. 15, 2018].
+
+    Library simplifying file upload from Angular applications. Quiz Tool's front end is written in Angular.
+
+\bibitem{52} pdf-extract, "pdf-extract github repository", [Online] Available: https://github.com/nisaacson/pdf-extract, [Accessed: Apr. 15, 2018].
+
+    Node PDF is a set of tools that takes in PDF files and converts them to usable formats for data processing, used by the Quiz Tool.
+
+\bibitem{53} scissors, "scissors github repository", [Online] Available: https://github.com/tcr/scissors, [Accessed: Apr. 15, 2018].
+
+    PDF manipulation in Node.js, based on PDFTK. This library has been initially used to extract PNG images from PDF slides.
+
+\bibitem{54} The Base16, Base32, and Base64 Data Encodings, "Base64 standard", [Online] Available: https://tools.ietf.org/html/rfc4648, [Accessed: Apr. 15, 2018].
+
+    Base64 is a binary-to-text encoding scheme used in the Quiz Tool to broadcast image slides to all the students.
+
+\bibitem{55} PDFtk Server, "PDFtk homepage", [Online] Available: https://www.pdflabs.com/tools/pdftk-server/, [Accessed: Apr. 15, 2018].
+
+    PDFtk is a command line utility for working with PDF files. It is used by the Quiz Tool internally when PNG images are extracted
+    from PDF presentations uploaded by lecturers.
+
+\bibitem{56} node-pdf2img, "node-pdf2img GitHub repository", [Online] Available: https://github.com/fitraditya/node-pdf2img, [Accessed: Apr. 15, 2018].
+
+    A NodeJS module for converting pdf into image files in the Quiz Tool.
+
+\bibitem{57} jsPDF, "jsPDF GitHub repository", [Online] Available: https://github.com/MrRio/jsPDF, [Accessed: Apr. 16, 2018].
+
+    Client-side JavaScript PDF generator, used for report generation in the Quiz Tool.
+
+\bibitem{58} jsonschema, "jsonschema GitHub repository", [Online] Available: https://github.com/tdegrunt/jsonschema, [Accessed: Apr. 17, 2018].
+
+    JSON Schema validator is used to make sure JSON send together with certain routes to the back end of the Quiz Tool is valid.
+
+\bibitem{59} mocha, "mocha homepage", [Online] Available: https://mochajs.org/, [Accessed: Apr. 17, 2018].
+
+    Mocha is a test framefork for Node.js, it is used in back end unit testing of the Quiz Tool.
+
+\bibitem{60} chai, "chai homepage", [Online] Available: http://www.chaijs.com/, [Accessed: Apr. 17, 2018].
+
+    Chai is an assertion library used in the back end unit testing of the Quiz Tool.
+
+\bibitem{61} chai-http, "chai-http GitHub repository", [Online] Available: https://github.com/chaijs/chai-http, [Accessed: Apr. 17, 2018].
+
+    Chai-http is an integration testing library allowing creation of tests which can call endpoints exposed by the Node.js
+    applications. Used in Quiz Tool testing.
+
+\bibitem{62} S. Zaza, "Test a Node RESTful API with Mocha and Chai", [Online] Available: https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai, [Accessed: Apr. 17, 2018].
+
+    Tutorial explaining how to incorporate automated testing in a Node.js project. The tutorial was the basis of the
+    server side unit tests of the Quiz Tool.
+
+\bibitem{63} Karma, "Karma GitHub repository", [Online] Available: https://karma-runner.github.io/2.0/index.html, [Accessed: Apr. 18, 2018].
+
+    Karma is the test runner which comes with Angular, and has been used for the front end unit tests of the Quiz Tool.
+
+\bibitem{64} Jasmine, "Jasmine GitHub repository", [Online] Available: https://jasmine.github.io/, [Accessed: Apr. 18, 2018].
+
+    Jasmine is a testing framework for JavaScript. It comes with Angular and is used for front end unit testing of the Quiz Tool.
+
+\bibitem{65} PhantomJS, "PhantomJS homepage", [Online] Available: http://phantomjs.org/, [Accessed: Apr. 18, 2018].
+
+  PhantomJS headless web browser is spin up by Karma during front end unit tests of the tool.
+
+\bibitem{66} Selenium, "Selenium homepage", [Online] Available: https://www.seleniumhq.org/, [Accessed: Apr. 18, 2018].
+
+  Selenium is a tool which automates browsers. It has been used to drive browser interactions during integration/end-to-end tests of the tool.
+
+\bibitem{67} Selenium-Grid, "Selenium homepage", [Online] Available: https://www.seleniumhq.org/docs/07\_selenium\_grid.jsp, [Accessed: Apr. 18, 2018].
+
+  Selenium-Grid can be used to run selenium tests on multiple web browers in parallel. Used during Quiz Tool integration testing.
+
+\bibitem{68} Getting Started with Docker Compose, "docker-selenium GutHub repository", [Online] Available: https://github.com/SeleniumHQ/docker-selenium/wiki/Getting-Started-with-Docker-Compose, [Accessed: Apr. 18, 2018].
+
+  A step-by-step introduction to using the official Selenium Docker images using a basic hub/node configuration and docker-compose. The tutorial
+  has been used to understand how to use the selenium grid with Docker during Quiz Tool integration testing.
+
+\bibitem{69} selenium-webdriver, "Selenium GutHub repository", [Online] Available: https://github.com/SeleniumHQ/selenium/tree/master/javascript/node/selenium-webdriver, [Accessed: Apr. 18, 2018].
+
+  The selenium-driver can be used to use Selenium to automate web browser automation. The JavaScript implementation
+  has been added to the tester container running integration tests of the Quiz Tool.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,303 @@
+\chapter{Third-Party Code and Libraries}
+%
+% If you have made use of any third party code or software libraries, i.e. any code
+% that you have not designed and written yourself, then you must include this appendix.
+%
+% As has been said in lectures, it is acceptable and likely that you will make use of
+%  third-party code and software libraries. If third party code or libraries are used,
+%   your work will build on that to produce notable new work. The key requirement is that we
+%   understand what is your original work and what work is based on that of other people.
+%
+% Therefore, you need to clearly state what you have used and where the original material can be
+% found. Also, if you have made any changes to the original versions, you must explain what you have changed.
+%
+% As an example, you might include a definition such as:
+%
+% Apache POI library - The project has been used to read and write Microsoft Excel files (XLS) as
+%  part of the interaction with the client's existing system for processing data. Version 3.10-FINAL
+%   was used. The library is open source and it is available from the Apache Software Foundation
+% \cite{apache_poi}. The library is released using the Apache License
+% \cite{apache_license}. This library was used without modification.
+
+% server package.json
+\subparagraph{body-parser v1.18.2}
+MIT licensed Node.js middleware for parsing bodies of incoming HTTP requests. Used as part of the
+\texttt{server\_node} container. [Online] Available: https://github.com/expressjs/body-parser, [Accessed: Apr. 20, 2018].
+
+\subparagraph{express v4.15.2}
+MIT licensed Node.js web development framework used to develop the back end of the Quiz Tool.
+[Online] Available: https://github.com/expressjs/body-parser, [Accessed: Apr. 20, 2018].
+
+\subparagraph{jsonschema v1.2.2}
+MIT licensed JSON Schema validator is used to make sure JSON send together with certain requests to the
+back end of the Quiz Tool is valid. [Online] Available: https://github.com/tdegrunt/jsonschema, [Accessed: Apr. 20, 2018].
+
+\subparagraph{mongoose v5.0.7}
+MIT licensed schema-based solution to model data in applications using MongoDB.
+[Online] Available: http://mongoosejs.com/, [Accessed: Apr. 20, 2018].
+
+\subparagraph{multer v1.3.0}
+MIT licensed Node.js middleware for handling form-data used during file uploads in
+the Quiz Tool. [Online] Available: https://github.com/expressjs/multer, [Accessed: Apr. 20, 2018].
+
+\subparagraph{passport v0.4.0}
+MIT licensed authentication Node.js middleware used during Quiz Tool authentication.
+[Online] Available: http://www.passportjs.org/, [Accessed: Apr. 20, 2018].
+
+\subparagraph{passport-google-oauth v1.0.0}
+MIT licensed passport middleware Google authentication strategy used in Quiz Tool.
+[Online] Available: https://github.com/jaredhanson/passport-google-oauth, [Accessed: Apr. 20, 2018].
+
+\subparagraph{pdf-extract v1.0.11}
+Node.js PDF manipulation library utilising command line utilities to extract text from PDF
+presentations in the Quiz Tool. [Online] Available: https://github.com/nisaacson/pdf-extract, [Accessed: Apr. 20, 2018].
+
+\subparagraph{pdf2img v0.5.0}
+MIT licensed Node.js module for PDF to image conversion. Used to extract PNG images from slides uploaded
+to the Quiz Tool. [Online] Available: https://github.com/fitraditya/node-pdf2img, [Accessed: Apr. 20, 2018].
+
+\subparagraph{request-promise v4.2.2}
+ISC licensed simplified HTTP request client with Promise support. Used during Google authentication in Quiz Tool.
+[Online] Available: https://github.com/request/request-promise, [Accessed: Apr. 20, 2018].
+
+\subparagraph{request v2.83.0}
+Apache 2 licensed simplified Node.js HTTP request client used to make requests from the Quiz Tool.
+[Online] Available: https://github.com/request/request, [Accessed: Apr. 20, 2018].
+
+\subparagraph{socket.io v2.0.4}
+MIT licensed socket.io engine used for bidirectional event-based communication between Quiz Tool's
+back end, and clients. [Online] Available: https://github.com/socketio/socket.io/, [Accessed: Apr. 20, 2018].
+
+\subparagraph{mocha v5.0.4}
+MIT licensed test framework for Node.js, it is used in back end unit testing of the Quiz Tool.
+ [Online] Available: https://mochajs.org/, [Accessed: Apr. 20, 2018].
+
+\subparagraph{chai v4.1.2}
+MIT licensed assertion library used in the back end unit testing of the Quiz Tool.
+ [Online] Available: http://www.chaijs.com/, [Accessed: Apr. 20, 2018].
+
+\subparagraph{chai-http v3.0.0}
+An integration testing library allowing creation of tests which can call endpoints
+exposed by the Node.js applications.  [Online] Available: https://github.com/chaijs/chai-http, [Accessed: Apr. 20, 2018].
+
+\subparagraph{selenium-webdriver v4.0.0-alpha.1}
+The selenium-driver can be used to use Selenium to automate web browser automation. The
+JavaScript implementation has been added to the tester container running integration tests of
+the Quiz Tool. [Online] Available: https://github.com/SeleniumHQ/selenium/tree/master/javascript/node/selenium-webdriver, [Accessed: Apr. 20, 2018].
+
+% server Dockerfile
+\subparagraph{ghostscript}
+One of the pdf-extract dependencies which is installed on the back end container, used for
+extraction of text from PDF documents. [Online] Available:
+http://git.ghostscript.com/ghostpdl.git/, [Accessed: Apr. 20, 2018].
+
+\subparagraph{poppler-utils}
+One of the pdf-extract dependencies which is installed on the back end container, for
+getting information of PDF documents, convert them to other formats or manimulating them.
+[Online] Available: https://packages.debian.org/sid/poppler-utils, [Accessed: Apr. 20, 2018].
+
+\subparagraph{pdftk}
+One of the pdf-extract dependencies which is installed on the back end container. PDFtk is
+a command-line tool for working with PDFs. It is licensed under GPLv2.
+[Online] Available: https://www.pdflabs.com/tools/pdftk-server/, [Accessed: Apr. 20, 2018].
+
+\subparagraph{graphicsmagick}
+MIT licensed node-pdf2img dependency, used for extraction of PNG images from PDF slides in the Quiz Tool.
+[Online] Available: http://www.graphicsmagick.org/, [Accessed: Apr. 20, 2018].
+
+% client package.json
+\subparagraph{angular v4.3.5}
+Angular is a TypeScript-based front end development framework supported by Google, used to
+develop the front end of the Quiz Tool.
+[Online] Available: https://angular.io/, [Accessed: Apr. 20, 2018].
+
+\subparagraph{chart.js v2.7.2}
+MIT licensed graph plotting library written in JavaScript, used for displaying the answers
+students submit during quizzes.
+[Online] Available: https://www.chartjs.org/, [Accessed: Apr. 20, 2018].
+
+\subparagraph{file-saver v1.3.8}
+MIT licensed library used for saving files on the client side.
+[Online] Available: https://github.com/eligrey/FileSaver.js/, [Accessed: Apr. 20, 2018].
+
+\subparagraph{core-js v2.5.0}
+MIT licensed JavaScript standard library, automatically installed when a new Angular project
+is installed. [Online] Available: https://github.com/zloirock/core-js, [Accessed: Apr. 20, 2018].
+
+\subparagraph{font-awesome v4.7.0}
+MIT licensed set of fonts used during the development of the Quiz Tool.
+[Online] Available: https://github.com/FortAwesome/Font-Awesome, [Accessed: Apr. 20, 2018].
+
+\subparagraph{intl v1.2.5}
+MIT licensed compatibility implementation of the ECMAScript Internationalization API (ECMA-402) for JavaScript
+installed as part of the Angular part of the tool. [Online] Available: https://github.com/andyearnshaw/Intl.js, [Accessed: Apr. 20, 2018].
+
+\subparagraph{jspdf v1.3.5}
+MIT licensed, client side JavaScript PDF generator used to generate PDF reports in the Quiz Tool.
+[Online] Available: https://github.com/MrRio/jsPDF, [Accessed: Apr. 20, 2018].
+
+\subparagraph{jspdf-autotable v2.3.2}
+MIT licensed jdpdf plugin, used in Quiz Tool to generate tables in PDF reports.
+[Online] Available: https://github.com/simonbengtsson/jsPDF-AutoTable, [Accessed: Apr. 20, 2018].
+
+\subparagraph{mdi v2.1.19}
+SIL OPEN FONT LICENSE Version 1.1 licensed distribution of the material desgin icons used in Quiz Tool.
+[Online] Available: https://github.com/Templarian/MaterialDesign-Webfont, [Accessed: Apr. 20, 2018].
+
+\subparagraph{ng2-charts v1.6.0}
+MIT licensed chart.js wrapper for Angular, used to render audience responses as they come in during
+broadcasts. [Online] Available: https://github.com/valor-software/ng2-charts, [Accessed: Apr. 20, 2018].
+
+\subparagraph{ng2-file-upload v1.3.0}
+MIT licensed Angular component used in Quiz Tool to handle file uploads on the client side.
+[Online] Available: https://github.com/valor-software/ng2-charts, [Accessed: Apr. 20, 2018].
+
+\subparagraph{ng2-materialize v1.8.0}
+Apache v2 licensed Angular materializecss wrapper. Quiz Tool uses material components to achieve
+a modern look and feel.
+[Online] Available: https://github.com/sherweb/ng2-materialize, [Accessed: Apr. 20, 2018].
+
+\subparagraph{ngx-cookie-service v1.0.10}
+MIT licensed Angular service allowing easy access to cookies. Used in the Quiz Tool for
+setting session cookies for authentication purposes.
+[Online] Available: https://github.com/7leads/ngx-cookie-service, [Accessed: Apr. 20, 2018].
+
+\subparagraph{rxjs v5.4.3}
+Apache v2 licensed reactive programming library for JavaScript, used with the Angular HTTP
+client to consume routes exposed by the back end of the tool.
+[Online] Available: https://github.com/ReactiveX/rxjs, [Accessed: Apr. 20, 2018].
+
+\subparagraph{socket.io-client v2.0.4}
+MIT licensed socket.io client used to intercept slides in real time in Quiz Tool.
+[Online] Available: https://github.com/socketio/socket.io-client, [Accessed: Apr. 20, 2018].
+
+\subparagraph{zone.js v0.8.16}
+MIT licensed Zones wrapper which comes with Angular applications.
+[Online] Available: https://github.com/angular/zone.js, [Accessed: Apr. 20, 2018].
+
+\subparagraph{codelyzer v3.1.2}
+MIT licensed set of tslint rules for static code analysis of Angular TypeScript projects.
+Used with the Atom text editor during the development of the Quiz Tool.
+[Online] Available: https://github.com/mgechev/codelyzer, [Accessed: Apr. 20, 2018].
+
+\subparagraph{jasmine-core v2.5.2}
+MIT licensed JavaScript testing framework used during client side unit testing of the Quiz Tool.
+[Online] Available: https://github.com/jasmine/jasmine, [Accessed: Apr. 20, 2018].
+
+\subparagraph{jasmine-spec-reporter v3.2.0}
+Apache v2 licensed real time console spec reporter for Jasmine testing framework, which comes
+with Angular applications.
+[Online] Available: https://github.com/bcaudan/jasmine-spec-reporter, [Accessed: Apr. 20, 2018].
+
+\subparagraph{karma v1.4.1}
+MIT licensed test runner for JavaScript used for Angular unit tests.
+[Online] Available: https://github.com/karma-runner/karma, [Accessed: Apr. 20, 2018].
+
+\subparagraph{karma-cli v1.0.1}
+MIT licensed karma command line interface.
+[Online] Available: https://github.com/karma-runner/karma-cli, [Accessed: Apr. 20, 2018].
+
+\subparagraph{karma-coverage-istanbul-reporter v0.2.0}
+MIT licensed karma test coverage reporter which has been installed together with karma but is
+not actually used by the Quiz Tool.
+[Online] Available: https://github.com/mattlewis92/karma-coverage-istanbul-reporter, [Accessed: Apr. 20, 2018].
+
+\subparagraph{karma-jasmine v1.1.0}
+MIT licensed karma plugin allowing it to work with the jasmine testing framework during front end unit tests of
+the Quiz Tool.
+[Online] Available: https://github.com/karma-runner/karma-jasmine, [Accessed: Apr. 20, 2018].
+
+\subparagraph{karma-jasmine-html-reporter v0.2.2}
+MIT licesed karma-jasmine reporter that dynamically shows tests results in a html format.
+Used during local unit testing of the front end of the Quiz Tool.
+[Online] Available: https://www.npmjs.com/package/karma-jasmine-html-reporter, [Accessed: Apr. 20, 2018].
+
+\subparagraph{karma-phantomjs-launcher v1.0.4}
+MIT licensed karma plugin which causes client side unit tests to be executed in a headless PhantomJS
+web browser. [Online] Available: https://github.com/karma-runner/karma-phantomjs-launcher, [Accessed: Apr. 20, 2018].
+
+\subparagraph{protractor v5.1.0}
+MIT licensed end-to-end test framework which comes with Angular applications. Protractor is not
+actually used for testing of the Quiz Tool, as end-to-end tests run using the selenium-webdriver directly.
+[Online] Available: https://github.com/angular/protractor, [Accessed: Apr. 20, 2018].
+
+\subparagraph{ts-node v3.3.0}
+MIT licensed Node.js TypeScript executor, included as a development dependency of Angular projects.
+[Online] Available: https://github.com/TypeStrong/ts-node, [Accessed: Apr. 20, 2018].
+
+\subparagraph{tslint v5.6.0}
+Apache v2 licensed static code analyser for the TypeScript programming language. Used during
+the development of the Quiz Tool to check code's quality.
+[Online] Available: https://github.com/palantir/tslint, [Accessed: Apr. 20, 2018].
+
+\subparagraph{typescript v2.4.2}
+Apache v2 licensed superset of JavaScript. The front end of the Quiz Tool is written in
+TypeScript.
+[Online] Available: https://github.com/Microsoft/TypeScript, [Accessed: Apr. 20, 2018].
+
+% tutorials
+\subparagraph{Building Chat Application using MEAN Stack (Angular 4) and Socket.io}
+Step by step tutorial of building a simple chat application using MEAN stack and Socket.io. It helped me
+to understand how to use MEAN with Socket.io together, and the initial structure of the application
+was inspired by it.
+[Online] Available: https://www.djamware.com/post/58e0d15280aca75cdc948e4e/building-chat-applicationusing-mean-stack-angular-4-and-socketio,
+[Accessed: Apr. 11, 2018].
+
+\subparagraph{Docker Compose | Containerizing MEAN Stack Application | DevOps Tutorial | Edureka}
+A YouTube tutorial explaining how to containerise a MEAN stack web application. The \texttt{docker-compose.yml}
+file has been based on the one showed in the video. [Online] Available: https://www.youtube.com/watch?v=WZa7GsqyS3w,
+[Accessed: Apr. 20, 2018].
+
+\subparagraph{Dockerized Angular 4 App (with Angular CLI)}
+MIT licensed GitHub repository showing a starter Angular application, containerised with nginx
+using Docker. The structure of \texttt{client} container is based on a fork of the repository.
+[Online] Available: https://github.com/avatsaev/angular4-docker-example, [Accessed: Apr. 20, 2018].
+
+\subparagraph{Multicontainer Docker Environments}
+An official AWS tutorial showing how to deploy an application to the Multicontainer Elasticbeanstalk Docker
+Environment. [Online] Available: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create\_deploy\_docker\_ecs.html, [Accessed: Apr. 20, 2018].
+
+\subparagraph{Test a Node RESTful API with Mocha and Chai}
+A tutorial showing how to tests Node.js applications with Mocha and Chai. The structure of the server side
+unit tests has been inspired by the tutorial. [Online] Available: https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai,
+[Accessed: Apr. 20, 2018].
+
+\subparagraph{MEAN with Angular 2/5 - User Registration and Login Example \& Tutorial}
+The authentication of the Quiz Tool has been inspired by this tutorial. Especially the Angular
+JWT interceptor used in the application to append authentication tokens to each HTTP requests is based on the
+code presented in the tutorial. [Online] Available: http://jasonwatmore.com/post/2017/02/22/mean-with-angular-2-user-registration-and-login-example-tutorial,
+[Accessed: Apr. 20, 2018].
+
+\subparagraph{6 16 integrating with google oauth with passport js in a MEAN app undergrad webdev summer 1 2017}
+A YouTube tutorial explaining how to configure google authentication with the passport Node.js
+authentication middleware, in a MEAN stack application. The Google Sign-In implemented in Quiz Tool
+has been based on this tutorial. [Online] Available: https://www.youtube.com/watch?v=rc6zYV4jShQ,
+[Accessed: Apr. 20, 2018].
+
+\subparagraph{How to setup Elastic Beanstalk Deployment?}
+A topic in the official Circle CI discussion forum describing how to setup Circle CI to automatically
+deploy to the Elastic Beanstalk environment hosted on AWS. [Online] Available: https://discuss.circleci.com/t/how-to-setup-elastic-beanstalk-deployment/6154/4,
+[Accessed: Apr. 20, 2018].
+
+\subparagraph{Getting Started with Docker Compose}
+A step-by-step introduction to using the official Selenium Docker images using docker-compose. The tutorial
+was used when integration selenium tests were added to test the application.
+[Online] Available: https://github.com/SeleniumHQ/docker-selenium/wiki/Getting-Started-with-Docker-Compose,
+[Accessed: Apr. 20, 2018].
+
+\subparagraph{Authorization type support}
+A GitHub issue showing how to append an authorisation bearer token to the files uploader's requests.
+[Online] Available: https://github.com/valor-software/ng2-file-upload/issues/317,
+[Accessed: Apr. 20, 2018].
+
+
+
+
+
+
+
+
+
+
+
+%

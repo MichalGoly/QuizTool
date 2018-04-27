@@ -1,0 +1,1128 @@
+%\addcontentsline{toc}{chapter}{Development Process}
+\chapter{Design \& Implementation}
+
+The structure of this chapter follows the agile methodology used to develop the
+Quiz Tool. Each section contains information about a sprint, allowing the reader
+to gain more understanding of how the design and the tool itself evolved over time.
+For the complete, final design see \autoref{chap:finaldesign} of this report.
+
+\section{Sprint 1 - Hello Quiz Tool}
+\subsection{Sprint Planning}
+The first sprint of the Quiz Tool focused on setting up the DevOps of the project,
+and deployment of a "hello world" version of the tool consisting of the front end,
+back end and nginx\cite{34} running together using docker-compose. It was also important
+to investigate how to best structure the application to include both the front and the
+back end of the application in a single GitHub repository. The following subsections
+cover the most important aspects of the sprint, and the entire list of estimated
+stories can be found in the \autoref{chap:spintstories} of this report.
+
+\subsection{Application Structure}
+\label{subsection:appstructure}
+The main goal of using docker-compose, was to have the whole application running in
+the same manner locally on the developer's machine, during testing on Circle CI, and
+in the production environment. This meant the application had to be containerised
+using Docker, and containers had to be able to communicate with each other appropriately.
+This was even more difficult considering Socket.io had to be incorporated, to allow
+real time broadcast of lecture slides to students in the future. I have decided to
+create a prototype of a very basic chat application, containerised using Docker and
+orchestrated using docker-compose. The prototype had to be written in the MEAN stack,
+and use Socket.io to prove it was possible to make all technologies work together.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../../design/app_structure.jpg}
+    \caption{The proof of concept application structure}
+    \label{fig:appstrucure}
+\end{figure}
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small]
+  version: '2.0'
+  services:
+    client:
+      build: client
+      ports:
+        - "80:80"
+      links:
+        - server_node
+    server_node:
+      build: server
+      links:
+        - database
+    database:
+      image: mongo
+      ports:
+        - "27017:27017"
+  \end{lstlisting}
+  \caption{The docker-compose.yml file describing the tool's structure}
+\end{figure}
+
+\newpage
+\subsubsection{Front End Container}
+\label{section:frontendcontainer}
+The front end container consisted of Angular 4 and nginx reverse proxy. The structure
+has been based on the \textit{Dockerized Angular 4 App (with Angular CLI)} repository\cite{35}.
+The Socket.io client dependency has been added to allow sending messages to the back end
+using sockets. The initial \texttt{Dockerfile} included in the \autoref{chap:codesamples} of this report
+as the \autoref{sample:clientdocker} uses the multi-stage build added in Docker 17.05. The
+Angular app is compiled to JavaScript and HTML files during the initial stage of the build,
+and then these files are copied to the nginx public folder to be served to clients.
+This results in a lean, production ready image.
+
+\subsubsection{Back End Container}
+The back end container included in the \autoref{chap:codesamples} of this report
+as the \autoref{sample:serverdocker} consisted of a Node.js runtime, the Express framework and the Socket.io
+engine capable of pushing messages to clients using Sockets. The \texttt{Dockerfile} illustrates
+the very basic Node container.
+
+\subsubsection{Database Container}
+Finally, the MongoDB Docker image has been pulled automatically from the official mongo
+Docker Hub registry\cite{36}.
+
+\subsection{Continuous Integration}
+\label{subsection:ci}
+Circle CI has been integrated with the GitHub repository containing the source code of the
+Quiz Tool. Every time a pull request was made, Circle CI would be notified. It would then
+assign a virtual machine build agent from a pool, and spin up a clean build environment.
+It would then checkout the code and run the steps specified in the build config file, before
+reporting if the build was successful back to GitHub.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{circleci.jpg}
+    \caption{Continuous Integration and Deployment}
+    \label{fig:ci}
+\end{figure}
+
+The \texttt{.circleci/config.yml} file included in the \autoref{chap:codesamples} of this report
+as the \autoref{sample:circleci}, describes the initial build steps of the Quiz Tool.
+Code is checked out from the version control, all the dependencies necessary to perform following
+steps are installed, the project is then built and started using docker-compose, before the
+\texttt{curl localhost} command checks if the application is up and running. Finally, if
+the current branch being built is \texttt{master}, the \texttt{deploy.sh} bash script runs, which
+deploys the application to production.
+
+\subsection{Production Environment}
+\label{subsection:productionenv}
+The production environment of the tool is hosted on the AWS cloud. The AWS Elastic Beanstalk
+has been chosen specifically, as applications in
+various programming languages can be deployed with ease, without having to worry about
+the infrastructure running these applications\cite{37}. The Multicontainer Docker AWS Elastic
+Beanstalk\cite{38} environment, creates a single Amazon EC2\cite{39}
+instance and uses ECS (Amazon Elastic Container Service)\cite{40} to coordinate container deployments to
+multicontainer Docker environments. The similarity with docker-compose, means the Quiz Tool
+would behave similarly on developer's machine, in testing and in production.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{elasticbeanstalk.jpg}
+    \caption{Quiz Tool Production Environment}
+    \label{fig:ebs}
+\end{figure}
+
+\texttt{docker-compose.yml} files define how docker-compose should run Docker containers together.
+\texttt{Dockerrun.aws.json} is the equivalent configuration file to specify relationships between Docker
+containers running in the Multicontainer Elastic Beanstalk environment. The format of the config file
+included in the \autoref{chap:codesamples} of this report
+as the \autoref{sample:dockerrunaws} is very
+similar to the docker-compose configuration files. The major
+difference is that the AWS Elastic Beanstalk does not build Docker images itself, and images have
+to be pulled dynamically from Docker registries. Docker registries are simply servers used for storage and
+distribution of Docker images.
+
+\subsubsection{Circle CI and AWS Integration}
+The build agent automatically deploys the tool to production when the \texttt{master}
+branch is being built. The bash script included in the \autoref{chap:codesamples} of this report
+as the \autoref{sample:deploy} performs the actual deployment, and the
+approach is based on the examples\cite{41}\cite{42}.
+The \texttt{\$AWS\_ACCESS\_KEY\_ID} and the \texttt{\$AWS\_SECRET\_ACCESS\_KEY} environment
+variables have been added to the build configuration using the Circle CI web panel.
+The integration has been achieved by creating an AWS profile config file and installing
+the \texttt{awsebcli} Elastic Beanstalk command line utility as one of the build steps.
+Both \texttt{client} and \texttt{server\_node} containers are then tagged and pushed
+to the private Docker image registry provided by Amazon Elastic Container Service, before
+the \texttt{eb deploy prod-env} command actually triggers the production deployment.
+Both front and back end containers are then pulled from the private registry specified
+in the \texttt{Dockerrun.aws.json} file, while the mongo image is pulled directly from
+the official mongo Docker hub.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{deployment.jpg}
+    \caption{Production Deployment Visualised}
+    \label{fig:deploymentprocess}
+\end{figure}
+
+\subsection{Story Boards}
+Including the customer
+early in the development and design process allows teams to stay on track and readjust
+their design if necessary. The story boards below have been produced to gain feedback
+from the client, and ease the front end development in future iterations.
+
+\autoref{fig:storylecturer} shows how the lecturer would login into the tool using
+Google Single Sign On. He could then upload his lecture slides using an action
+button in the bottom right corner of the screen, be able to edit his slides and
+mark certain slides as quizzes. A list of cards would be presented showing all
+lectures belonging to the lecturer and he could broadcast them to his audience.
+Subsequently, he could navigate through the slides and slides with embedded quizzes would
+split the screen in half to show a bar chart with answers as they come in. Finally,
+lecture would end once he clicks the end button.
+
+\autoref{fig:storystudent} on the other hand, shows how students could interact with
+the tool. Students could join an ongoing lecture using a session key provided by the
+lecturer. They could then participate in the lecture by watching the slides, and
+submitting answers to quizzes as they come in. The correct answer could be presented
+back to them in a form of a bar chart.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../../design/story_board_lecturer.jpg}
+    \caption{Story Board Lecturer Interaction}
+    \label{fig:storylecturer}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../../design/story_board_student.jpg}
+    \caption{Story Board Student Interaction}
+    \label{fig:storystudent}
+\end{figure}
+
+\newpage
+\subsection{Sprint Retrospective}
+The first sprint proved it was possible to deploy a MEAN stack, containerised application
+to production using Circle CI. Crucial DevOps has been successfully put in place, and the
+initial feedback has been gathered from the client thanks to the low fidelity prototypes.
+The full sprint retrospective document produced can be found in the \autoref{chap:spintretrospectives} of this report.
+\autoref{fig:burn1} shows how 14 issues worth 16 story points have been implemented over the course of the sprint.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{burn1.jpg}
+    \caption{Burndown Chart Sprint 1}
+    \label{fig:burn1}
+\end{figure}
+
+\newpage
+\section{Sprint 2 - Bare Bone Application}
+\subsection{Sprint Planning}
+This sprint focused on converting the proof of concept chat application created in the previous
+week into a basic Quiz Tool. Simple login page for both students and lecturers
+would be developed based on the paper prototypes from the previous sprint, and Google Single Sign
+On would be added. Once logged in, lecturers could upload their PDF lecture slides and broadcast
+them to all students, as session generation was not implemented yet. The entire list of estimated stories
+can be found in the \autoref{chap:spintstories} of this report.
+
+\newpage
+\subsection{Login Page and Authorisation}
+\label{sub:loginauth}
+% - JWT tokens
+% - JWT interceptor
+% - Google single sign on
+% - session cookies
+The login page has been created based on the low fidelity prototypes, and allowed
+lecturers to log into the tool, and students to join ongoing lectures with a session key.
+The Materialize\cite{43} CSS framework has been added to achieve a modern user interface.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{student_login.jpg}
+    \caption{Student Login Page}
+    \label{fig:studentlogin}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lecturer_login.jpg}
+    \caption{Lecturer Login Page}
+    \label{fig:lecturerlogin}
+\end{figure}
+
+Angular has a concept of guards, which allow specified routes to be only accessible to
+authorised users. The code extracted from the \texttt{client/src/app/app.routing.ts} below
+shows how the desired behaviour has been achieved. All undefined routes redirect to the \texttt{/}
+which has a \texttt{canActivate: [AuthGuard]} protection. The guard checks if the current user has a
+valid session cookie with a JWT (JSON Web Token)\cite{44} present as described in the subsection below, before allowing
+the user to navigate to his dashboard.
+
+\begin{figure}[h!]
+    \begin{lstlisting}[basicstyle=\small]
+    const routes: Routes = [
+      { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'login', component: LoginComponent },
+      { path: 'lecture/:code', component: LectureComponent },
+      { path: '**', redirectTo: '' }
+    ];
+    \end{lstlisting}
+    \caption{Angular Routing With Guards}
+    \label{fig:auth}
+\end{figure}
+
+\subsubsection{Google Single Sign On and JWT Tokens}
+\label{subsection:google}
+Once the lecturer clicks on the Google Sign-In button, he is redirected to Google
+and asked to provide his Google credentials, and authorise the Quiz Tool to get
+basic information about him. The passport.js\cite{45} Node.js middleware, together
+with the Google passport strategy\cite{46} have been added to handle the OAuth2\cite{47} authorisation.
+Once the lecturer authorises Quiz Tool to get the basic information about him, Google calls the
+\texttt{/auth/google/callback} callback defined in the \texttt{server/index.js}. The callback
+handler located in the \texttt{server/helpers/passport.helper.js} takes the access token, user's
+Google display name and his public Google ID, and stores them in the database by creating a new
+lecturer entry in MongoDB. Finally, a session cookie is sent back to the lecturer's client
+containing the access token.
+
+As mentioned before, the \texttt{AuthGuard} on the Angular side makes sure user is logged in, before
+rendering his dashboard. The guard uses the \texttt{client/src/app/services/auth.service.ts} to make
+sure the session cookie exists. Each HTTP call Angular makes to the back end is intercepted by
+the \texttt{client/src/app/utils/jwt.interceptor.ts} which checks if user has the token, and if so,
+an extra authorisation header is added containing the token in the format \texttt{Authorization: Bearer fancyJSONToken123}.
+Finally, all routes on the back end are protected with the \texttt{server/helper/auth.helper.js}, which
+checks if the token provided exists in the database, is valid and has not expired, by checking with Google if it was issued
+against the Quiz Tool.
+
+\subsection{Persistence Layer}
+MongoDB is a document storage, enabling persistence of JSON-like documents with extra metadata
+including internal object ids. Working with JSON objects is very easy in JavaScript applications,
+and because MongoDB has a wider support than traditional database engines in the Node.js
+community, MongoDB has been chosen over a relational database.
+Mongoose\cite{48} is a popular MongoDB object modelling library which has
+been integrated with the server side of the Quiz Tool. It removes the need to write boilerplate code and
+allows developers to focus on getting things done quickly. Schemas describing objects have been created
+and can be found in the \texttt{server/models} directory. They allow mongoose to validate data before
+it is allowed to be persisted in the database. Even though mongo is not a relational database, an
+entity relationship diagram depicted in the \autoref{fig:initialERD} has been created to make the design more concrete.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{initialERD.jpg}
+    \caption{Initial Entity Relationship Diagram}
+    \label{fig:initialERD}
+\end{figure}
+
+\subsection{Lecture Upload}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{dashboard.jpg}
+    \caption{Dashboard View}
+    \label{fig:dashboard}
+\end{figure}
+
+Once lecturer logs into the system he is presented with a dashboard view visible in the \autoref{fig:dashboard}.
+The action button in the bottom right corner of the screen, allows PDF lecture slides to be uploaded.
+The tool does not work with other presentation file formats for simplicity reasons. This could however
+be extended in the future. Binary files can be stored in three major ways in MongoDB:
+
+\begin{enumerate}
+  \item Using the Mongoose BSON (Binary JSON)\cite{49} data type and setting it as type of a property of the document.
+    This limits the file size to 16 MB.
+  \item Using GridFS\cite{50} which relies on the client to have a driver capable of splitting the data into 255 KB
+    chunks, and then streaming them into the database. This allows a binary file of any size to be persisted
+    in MongoDB.
+  \item Storing a file on an external storage, and persisting the reference to the file in the database.
+\end{enumerate}
+
+The BSON approach has been chosen for the Quiz Tool, as it significantly simplified the implementation and it is
+unlikely PDF presentations over 16 MB would be commonly used. Again, this is something that could be changed
+in the future if the lifespan of the tool extended beyond the final project submission.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fileupload.jpg}
+    \caption{Initial File Upload}
+    \label{fig:initialfileupload}
+\end{figure}
+
+The initial implementation of the file upload, took the PDF file, stored it directly as BSON in the
+\texttt{Lecture} schema object and split the lecture into slides storing them in MongoDB using
+the \texttt{Slide} schema object. Once the file has been uploaded using the ng2-file-upload\cite{51},
+and persisted in the database, it has been stored temporarily on disk. Text would be extracted from
+each slide using the pdf-extract\cite{52} library, which would be instructed to leave single paged
+PDFs for each slide on disk. These PDFs would be then converted to PNG(Portable Network Graphics) images using the scissors\cite{53}
+library. Finally, slides' text and images would be grouped together and stored in MongoDB, before the
+temporary files would be cleaned from disk.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{dashboard_upload.jpg}
+    \caption{Lecture Uploaded View}
+    \label{fig:dashboarduploaded}
+\end{figure}
+
+\subsection{Lecture Broadcast}
+\label{subsection:lecturebroadcast}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{broadcast.jpg}
+    \caption{Initial Broadcast View}
+    \label{fig:broadcast}
+\end{figure}
+Lectures could be broadcasted using the \textit{BROADCAST} action button located on the bottom
+of each lecture card in the dashboard. \autoref{fig:broadcast} depicts the lecturer's view,
+once the lecture starts. The initial implementation added in this sprint, did not have the
+concept of a session yet, therefore slides were sent to all students who used any session key
+to log into the tool.
+
+Once the lecture was started, lecturer's client would pull all slides from the back end and emit the very
+first one to all the students. Socket.io would be used to emit a simple event \textit{slide-change} containing
+a JSON message in the following format: \texttt{\{"img": "base64img"\}}. PNG representations of each slide
+were stored in the BSON format internally, but they were sent to clients using the Base64 binary-to-text format\cite{54}.
+Students' clients would be then easily able to render such images using HTML \texttt{<img>} tags. Finally,
+once the lecture was over, a \texttt{null} image would be sent to everyone and students' clients would
+handle it by ending the lecture. The flow has been depicted in the \autoref{fig:sockets}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{sockets.jpg}
+    \caption{Initial Slide Broadcast Flow}
+    \label{fig:sockets}
+\end{figure}
+
+\newpage
+\subsection{Sprint Retrospective}
+This was a very important sprint as it shaped the overall structure of the tool. The basis
+of the Quiz Tool have been designed and implemented on both the front and the back end.
+Schemas have been introduced to handle persistence, file uploads were implemented and
+lecture slides could be emitted to all students using sockets in real time. The sprint
+took two weeks, instead of one, as it was overfilled with too many issues.
+The full sprint retrospective document produced can be found in the \autoref{chap:spintretrospectives} of this report.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{burn2.jpg}
+    \caption{Burndown Chart Sprint 2}
+    \label{fig:burn1}
+\end{figure}
+
+\section{Sprint 3 - Add Quizzes}
+\subsection{Sprint Planning}
+This iteration focused on the ability to create quizzes, embed them into slides and
+broadcast only to people who had the appropriate session key. The entire list of estimated stories
+can be found in the \autoref{chap:spintstories} of this report.
+
+\subsection{Session Keys}
+Every time lecturer started a new broadcast, a random session code would be generated.
+It would consist of eight alphanumeric characters, and the random generator would
+be seeded with the current time, to decrease the probability of generating two identical
+keys for two sessions running at the same time. The \textit{slide-change} Socket.io event
+described in the previous sprint, has been extended to carry the appropriate session key
+with each broadcast.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small]
+  {
+    "img": "base64encodedImage",
+    "sessionCode": "ABCD1234",
+    "isQuiz": "false"
+  }
+  \end{lstlisting}
+  \caption{The JSON Message Broadcasted on Slide Change}
+\end{figure}
+
+Students' clients are not uniquely identified by the Quiz Tool, therefore slides would
+be broadcasted to all clients participating in the broadcast. Each client would
+then know whether they have to update their \texttt{<img>} tag, by checking
+if the session key entered by the student matches the key bundled with the image slide
+arrived.
+
+\subsection{Embedding Quizzes}
+Each \texttt{Slide} in the system consisted of a PNG image and text extracted
+from the PDF presentation uploaded by a lecturer. It also had a boolean flag
+\texttt{isQuiz} specifying if given slide was supposed to be rendered as a quiz
+or not. An edit panel visible below has been added, to allow lecturers to specify
+which slides should be treated as quizzes.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{editinitial.jpg}
+    \caption{Initial Edit Page}
+    \label{fig:editinitial}
+\end{figure}
+
+\newpage
+\autoref{fig:editinitial} shows two radio buttons for each slide of a lecture.
+These radio buttons could be used to mark certain slides as quizzes, by toggling
+the boolean flag underneath. Text extracted from each slide would decide if a given
+slide could become a quiz. If slide was not eligible to become a quiz, the radio button
+to make it one would be greyed out. The initial implementation of the eligibility
+algorithm checked if given slide contained at least two strings "A)" and "B)".
+This was enough to make a slide eligible to be marked as a single choice quiz, and to be rendered as one,
+as described in the next subsection.
+
+\subsection{Quiz Rendering}
+\autoref{fig:quizlecturer} shows the split screen view for a lecturer when a slide marked as a quiz was rendered
+during a lecture broadcast. The left side shows the currently broadcasted slide, whereas the right
+side shows a bar chart capable of displaying students' answers as they come in. Lecturer can
+click the \textit{RETRY} button to wipe students' answers for current question and
+ask again. Once he is happy with the results, he can select the correct answer which will
+be shown to all people in the session, and then render the following slide, or even
+the previous one if necessary. Students' answers were only stored in memory at this point
+for the duration of the session.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{quiz_lecturer.jpg}
+    \caption{Quiz Rendering Lecturer}
+    \label{fig:quizlecturer}
+\end{figure}
+
+\autoref{fig:quizstudent} on the other hand, shows the view rendered on students'
+clients. They would be able to select one of the options and submit their answers
+only once. The "A", "B", "C", "D", "E" buttons were generated automatically based
+on the text of the slide. Students submitting their answers would emit an \textit{answer-received}
+Socket.io event, bundled with a message in the format \texttt{\{"sessionCode": "ABCD1234", "option": "B"\}},
+which would be then received by lecturer's client and rendered appropriately.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{quiz_student.jpg}
+    \caption{Quiz Rendering Student}
+    \label{fig:quizstudent}
+\end{figure}
+
+\subsection{Sprint Retrospective}
+Following this iteration, Quiz Tool was able to handle quiz embedding which was a major
+step towards the final implementation. Slides were no longer sent to everyone,
+and multiple lectures could run at the same time.
+The full sprint retrospective document produced can be found in the
+\autoref{chap:spintretrospectives} of this report.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{burn3.jpg}
+    \caption{Burndown Chart Sprint 3}
+    \label{fig:burn3}
+\end{figure}
+
+\newpage
+\section{Sprint 4 - Fancy Quizzes and Defect Fixing}
+\subsection{Sprint Planning}
+This sprint focused on addressing a critical bug in the production environment
+concerning the PDF to PNG conversion. Extra types of quizzes would also be added
+to complement the single choice ones available at the moment. The entire list of estimated stories
+can be found in the \autoref{chap:spintstories} of this report.
+
+\subsection{Production Environment Bug}
+The presentation file upload and splitting of slides into PNG images persisted
+together with text implemented in sprint 2, worked as expected in both development and testing environments.
+The production environment on the other hand, would randomly crash and the underlying cause had
+to be investigated before any other work could progress. The process of splitting the
+PDF presentations uploaded relied on splitting the initial file into separate, single
+paged PDF files, extracting their text, converting them to PNG images, before grouping
+together and persisting in the database. The final part of asynchronously trying
+to convert single paged PDF files into PNG files, failed with an IO exception, where
+the underlying PDFtk\cite{55} command line utility could not find a PDF file, even though it was
+there.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{split1.jpg}
+    \caption{Initial Slide Extraction}
+    \label{fig:split1}
+\end{figure}
+
+\newpage
+My initial thought was that the problem was due to a race condition, where asynchronous
+code was trying to get access to the file system. This would mean the code worked as expected
+on my much more powerful laptop only by luck. Making the algorithm to process
+files synchronously, did fix the problem for smaller PDF presentations, however attempting
+to upload a larger test PDF crashed the production environment in the same manner.
+Finally, the algorithm has been changed to no longer use single paged PDFs, and convert them
+one by one to PNGs. The scissors library has been removed, and the node-pdf2img\cite{56} used
+instead to take the whole PDF presentation, and extract all the PNG files from it using a
+single PDFtk call. The algorithm could stay asynchronous, and the file system access has been almost halved.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{split2.jpg}
+    \caption{Final Slide Extraction}
+    \label{fig:split2}
+\end{figure}
+
+\newpage
+\subsection{Extra Types of Quizzes}
+The \texttt{isQuiz} boolean flag was no longer appropriate if extra types of quizzes were
+to be supported. Every slide could be made into a true/false quiz, and quizzes eligible
+to become single choice, could also be marked as multi choice. Changing the slide eligibility
+algorithm was the first step towards having support for all three quizzes. The initial version
+checked if slide's text contained at least "A)" and "B)". The improved version would make a
+slide eligible to become a quiz if one of the following was true:
+
+\begin{itemize}
+  \item "A)" and "B)" was found in the slide's text
+  \item "A." and "B." was found in the slide's text
+  \item At least two bullet characters were found
+\end{itemize}
+
+The \texttt{isQuiz} flag of the \texttt{Slide} schema object has been changed to a \texttt{quizType}
+of type \texttt{string}. It could take the value of \texttt{null}, \texttt{"truefalse"}, \texttt{"single"}
+and \texttt{"multi"}. Furthermore, the JSON message bundled with the \texttt{slide-change} Socket.io
+event was changed to:
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small]
+  {
+    "img": "base64encodedImage",
+    "text": "textOfTheSlide"
+    "quizType": "truefalse"
+    "sessionCode": "ABCD1234"
+  }
+  \end{lstlisting}
+  \caption{The Final JSON Message Broadcasted on Slide Change}
+\end{figure}
+
+This enabled the student's client to know how to render the quiz appropriately. For example if
+the current slide was marked as a multi choice, the client would use the text of the slide,
+extract the answers buttons e.g. "A", "B" and "C", and let student submit their answer.
+The answer could no longer be a single option. It was therefore changed to an array of options.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small]
+  {
+    "sessionCode": "ABCD1234",
+    "options": ["A", "C"]
+  }
+  \end{lstlisting}
+  \caption{The Final JSON Message Emitted when Student Submitted his Answer}
+\end{figure}
+
+\subsection{Sprint Retrospective}
+Following this sprint, the Quiz Tool was almost complete. The persistence and report
+generation was still missing, but the core functionality including the ability
+to add various quizzes into slides, and broadcast them to students was finished.
+The full sprint retrospective document produced can be found in the
+\autoref{chap:spintretrospectives} of this report.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{burn4.jpg}
+    \caption{Burndown Chart Sprint 4}
+    \label{fig:burn4}
+\end{figure}
+
+\section{Sprint 5 - Persistence, Report Generation and Testing}
+\subsection{Sprint Planning}
+The final sprint focused on the persistence of students' answers in the database, and
+generation of PDF reports based on these answers. User friendly error handler has
+also been added, and the application has been polished before the Quiz Tool implementation
+was over. As always, the entire list of estimated stories
+can be found in the \autoref{chap:spintstories} of this report.
+
+\subsection{Database Container Persistence}
+Docker containers do not persist data by design. Every time the \texttt{database}
+container has been brought up and down, by both docker-compose and the
+Multicontainer Elastic Beanstalk environment, any data stored in the MongoDB
+would be lost. This behaviour is perfect for running tests, where the starting
+environment is expected to be the same between tests. It was however unacceptable
+for the production environment.
+
+The \texttt{Dockerrun.aws.json} file included in the \autoref{chap:codesamples} of this report
+as the \autoref{sample:dockerrunawsfinal}, shows the final configuration of the production
+environment running on AWS. The volume mount called "mongo" has been added, which maps the
+\texttt{/data/db} directory in the \texttt{database} container onto the \texttt{/var/app/database}
+directory on the underlying EC2 instance running the container cluster. This causes the database
+to persist its data even when the application is re-deployed. The only time the data could
+be lost, is when the EC2 instance is destroyed, when for example more RAM has been requested
+for the environment.
+
+\subsection{Lecture Answers Persistence}
+The final top level requirement \textbf{FR-6} identified by the client before the
+development had started, was the ability to export lecture sessions results in some format
+for future analysis. Regardless of the final format, session answers given by students
+during lectures had to be persisted in some fashion.
+
+Every time a new lecture broadcast is
+started, an empty \texttt{liveAnswers} object has been instantiated in memory on the lecturer's
+client. This object would be responsible for the storage of answers for the given slide
+being broadcasted at the moment. It was therefore reinstantiated to \texttt{\{\}} every time
+lecturer emitted a new slide. Once students' answers started to come in, the object would be treated
+like a dictionary. \autoref{fig:liveAnswers} depicts a possible state of the \texttt{liveAnswers}
+object once a few answers came in.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small]
+  {
+    "A": 3,
+    "C": 1,
+    "D": 19,
+    "correct": [
+      "D"
+    ]
+  }
+  \end{lstlisting}
+  \caption{The liveAnswers Object}
+  \label{fig:liveAnswers}
+\end{figure}
+
+The \texttt{correct} answers array would be added to the object, if the lecturer decided to
+display the correct answer to all the students. \texttt{liveAnswers} objects for each
+slide containing a quiz would be added to a hash map of type \texttt{Map<string, Object>}, where
+the key would be the \texttt{\_id} of a given \texttt{Slide} schema object. A potential
+final state of the \texttt{answers} hash map is visualised in the \autoref{fig:answers}.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small]
+  answers: {
+    slideId123: {
+        "A": 3,
+        "C": 1,
+        "D": 19,
+        "correct": [
+          "D"
+        ]
+      },
+    slideId42424: {
+      "true": 20,
+      "false": 1
+    }
+  }
+  \end{lstlisting}
+  \caption{The liveAnswers Object}
+  \label{fig:answers}
+\end{figure}
+
+\newpage
+Finally, a new schema object \texttt{Session} has been added to the database models,
+to enable persistence of answers in the database. \autoref{fig:finalERD} shows the
+updated ERD of the system.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{finalERD.jpg}
+    \caption{Final Entity Relationship Diagram}
+    \label{fig:finalERD}
+\end{figure}
+
+\subsection{Report Generation}
+As mentioned in the subsection above, having the ability to export students' answers
+for future analysis was one of the initial functional requirements. Export of
+the information in JSON format was considered for a while, before realising PDF reports would
+make more sense, as this data was ultimately supposed to be consumed by humans.
+An extra view shown in \autoref{fig:sessionsview} has been added to allow PDF report generation.
+Lecturers would be presented with a list of all sessions they run for the particular
+lecture in the system. Finally, the jsPDF\cite{57} library has been added, which allowed
+lecturers to export PDF reports for each session. An example PDF generated by the
+tool can be found in \autoref{chap:pdfreports} of this document.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{sessions.jpg}
+    \caption{Session View}
+    \label{fig:sessionsview}
+\end{figure}
+
+\newpage
+\subsection{Sprint Retrospective}
+The final sprint brought the implementation of final requirements of the Quiz Tool.
+Persistence has been addressed, the ability to generate PDF reports added, and
+the overall look and feel of the tool has been polished. The sprint took two weeks,
+as opposed to one, as some issues proved more challenging than initially anticipated.
+The full sprint retrospective document produced can be found in the
+\autoref{chap:spintretrospectives} of this report.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{burn5.jpg}
+    \caption{Burndown Chart Sprint 5}
+    \label{fig:burn5}
+\end{figure}
+
+\chapter{Final Design}
+\label{chap:finaldesign}
+This chapter follows on the discussion of the individual sprints and summarises
+the final design of the tool.
+
+\section{Application Architecture}
+\subsection{Technology Overview}
+Quiz Tool is a MEAN stack application developed using JavaScript based technologies. \textbf{M}ongoDB has been used
+as the persistence layer, \textbf{E}xpress.js has been used to develop the back end of the
+application, \textbf{A}ngular 4 to develop the front end, and the back end is running on
+a \textbf{N}ode.js runtime. Quiz Tool consists of three subsystems, each containerised
+using Docker. Docker image definitions of both the back and the front end components
+have been defined using Dockerfiles, the database container on the other hand is
+built using the official MongoDB image from the Docker Hub registry. Quiz Tool is
+a multi-container Docker application, and containers are configured to run together
+using docker-compose both in the development and testing environments. The Multicontainer
+Elastic Beanstalk orchestrates containers to run together in the production environment
+hosted on AWS.
+
+\newpage
+\subsection{Application Structure}
+\autoref{fig:finalappstrucure} shows the overall structure of the multi-container
+tool. The structure is formally defined in both the \texttt{docker-compose.yml} and
+the \texttt{Dockerrun.aws.json} files located in the root directory of the project.
+The front end container \texttt{client} consists of an nginx reverse proxy routing
+the traffic of the application, and the front end compiled using Angular. The
+back end container \texttt{server\_node} contains the Express.js server side logic,
+accompanied with the Socket.io engine which uses the the WebSocket protocol to enable
+the application to work in real time. Finally, the \texttt{database} container contains
+the MongoDB database.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../../design/app_structure.jpg}
+    \caption{Final Application Structure}
+    \label{fig:finalappstrucure}
+\end{figure}
+
+\section{Back End Container}
+\subsection{Docker Container}
+The \texttt{server/} directory contains the back end code of the tool. The \texttt{Dockerfile}
+included in the \autoref{chap:codesamples} of this report as the \autoref{sample:finalserverdocker},
+describes the steps performed to build the \texttt{server\_node} container. The image is
+based on the official \texttt{node:carbon} Docker image, dependencies are installed and
+the container is started with \texttt{npm start}, after the port 3000 has been exposed.
+
+\subsection{Back End Overview}
+Express.js is an unopinionated web development framework, meaning the structure of the application
+has to be decided by the developer. The \texttt{index.js} file is the starting point of the
+application. The summary of the routes handled by four controllers located in the \texttt{server/controllers/}
+directory is listed in \autoref{tab:routes}. An example of a controller implementation has
+been included in the \autoref{chap:codesamples} of this report as the \autoref{sample:controller}.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Request Method} & \textbf{Route} & \textbf{Purpose} \\ \hline
+GET   & \texttt{/lecturers/logged-in} & Returns the currently logged in lecturer \\ \hline
+
+GET   & \texttt{/lectures}            & Returns a list of lectures of current lecturer \\ \hline
+GET   & \texttt{/lectures/:\_id} & Returns the lecture by id \\ \hline
+GET   & \texttt{/lectures/:\_id/file} & Returns original presentation file \\ \hline
+DELETE   & \texttt{/lectures/:\_id} & Removes lecture by id \\ \hline
+POST   & \texttt{/lectures} & Uploads a new lecture \\ \hline
+
+GET   & \texttt{/slides/:lecture\_id} & Returns slides for lecture by its id \\ \hline
+PUT   & \texttt{/slides} & Updates slides in bulk \\ \hline
+
+GET   & \texttt{/sessions/:\_id} & Returns sessions for lecture by its id \\ \hline
+POST   & \texttt{/sessions} & Creates a new session \\ \hline
+
+\end{tabular}
+\caption{Back End Routes}
+\label{tab:routes}
+\end{table}
+
+Directory structure of the tool is self-explanatory:
+\begin{itemize}
+  \item \texttt{db/} contains database access code
+  \item \texttt{helpers/} contains utility functions concerning authentication and the Socket.io handler
+  \item \texttt{models/} contains mongoose schema objects describing valid models which can be persisted in the database.
+  \item \texttt{schemas/} contains JSON validator schemas
+  \item \texttt{test/} contains server side unit tests
+\end{itemize}
+
+\subsection{Authentication and Validation Middleware}
+Lecturers can login into the tool using their Google credentials. The authentication
+flow has been described in the \autoref{subsection:google} of this report. Each route
+listed in \autoref{tab:routes} is protected by the authentication middleware defined
+in the \texttt{helpers/auth.helper.js} file. At a very high level, the middleware
+checks if the HTTP request contains an authorisation header containing a Google access
+token unique to each lecturer in the system, before authenticating and authorising them
+to access a given resource. Please refer to the implementation for more details.
+
+Furthermore, routes \textbf{PUT} \texttt{/slides} and \textbf{POST} \texttt{/sessions} expect
+a JSON document to be submitted with each request. The validity of the JSON provided is
+checked using the JSON schema validation provided by the jsonschema\cite{58} JavaScript module.
+
+\subsection{Socket.io Engine}
+The Socket.io engine running in the \texttt{server\_node} container, is used to allow slides to be broadcasted in real time to students
+participating in a lecture. Students can also submit their answers using the
+Socket.io client running on their machines, and lecturer can emit events indicating
+slide changes during a presentation. Lecture broadcast has been described in the \autoref{subsection:lecturebroadcast}
+of this report, and table \autoref{tab:socket} lists Socket.io events managed by the tool.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Event} & \textbf{Purpose} \\ \hline
+\texttt{slide-update} & Emitted by a lecturer when lecture slide is changed \\ \hline
+\texttt{answer-sent} & Emitted by a student when quiz answer submitted \\ \hline
+\texttt{correct-answer} & Emitted by a lecturer when correct answer shown \\ \hline
+\texttt{current-slide-request} & Emitted by a student to request current slide on joining a lecture \\ \hline
+\end{tabular}
+\caption{Socket.io Events Summary}
+\label{tab:socket}
+\end{table}
+
+\section{Front End Container}
+\subsection{Docker Container}
+The \texttt{client/} directory contains the front end code of the tool. The \texttt{Dockerfile}
+included in the \autoref{chap:codesamples} of this report as the \autoref{sample:clientdocker},
+has not changed since the first sprint. The container steps have been explained
+in the \autoref{section:frontendcontainer} of this report.
+
+\subsection{Front End Overview}
+\subsubsection{Nginx Reverse Proxy}
+The nginx reverse proxy routes traffic within the application. The \texttt{client/nginx/default.conf}
+file contains the web server's configuration. There are two notable aspects of the file, included
+in the \autoref{chap:codesamples} of this report as \autoref{sample:nginx}.
+
+\begin{enumerate}
+  \item All HTTP traffic going through the \texttt{/express} route is navigated to the \texttt{server\_node}
+    container
+  \item All Socket.io traffic is also rerouted to the \texttt{server\_node} container
+\end{enumerate}
+
+\subsubsection{Angular Code}
+Angular 4 has been used to develop the front end. It focuses on development of reusable
+components, consisting of enhanced HTML and logic written in TypeScript. Code ready for
+production is compiled down to HTML, CSS and JavaScript, which can be then served by
+the nginx web server to all the clients. Components can
+be embedded in each other, and the example could be the \texttt{NavbarComponent} which has
+been used across the application.
+
+The structure of the \texttt{client/src/app} directory is straightforward to follow:
+\begin{itemize}
+  \item \texttt{components/} contains all the components in the application
+  \item \texttt{guards/} contains the authentication guard preventing unauthenticated people
+    from accessing certain components, as discussed in the \autoref{sub:loginauth} of this report
+  \item \texttt{models/} contains the models which mimic the mongoose schema objects on the server side
+  \item \texttt{services/} contains services which consume endpoints exposed by the \texttt{server\_node},
+    and offline services containing utility methods
+  \item \texttt{utils/} contains the JWT interceptor discussed in the \autoref{sub:loginauth} of this report
+\end{itemize}
+
+\section{Database Container}
+The database container is pulled directly from the official MongoDB Docker Hub registry.
+The \texttt{database} container uses a volume mount in production to persist the data
+between deployments.
+
+\subsection{Entity Relationship Diagram}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{finalERD.jpg}
+    \caption{Final Entity Relationship Diagram}
+\end{figure}
+
+\section{Environments}
+Development and testing environments have been described in the \autoref{subsection:appstructure} of this report.
+Production environment on the other hand, has been described in the \autoref{subsection:productionenv} of this report.
+
+\section{Build}
+\subsection{Version Control}
+Version control has been described in the \autoref{subsection:versioncontrol} of this report.
+
+\subsection{Continuous Integration}
+CI has been described in the \autoref{subsection:ci} of this report. The final Circle CI config
+file has been included in the \autoref{chap:codesamples} of this report as \autoref{sample:circlecifinal}.
+
+\chapter{Testing}
+% Detailed descriptions of every test case are definitely not what is required here.
+% What is important is to show that you adopted a sensible strategy that was, in principle,
+% capable of testing the system adequately even if you did not have the time to test the system fully.
+%
+% Provide information in the body of your report and the appendix to explain the testing that
+% has been performed. How does this testing address the requirements and design for the project?
+%
+% How comprehensive is the testing within the constraints of the project?  Are you testing the normal working behaviour?
+% Are you testing the exceptional behaviour, e.g. error conditions? Are you testing security issues if they are relevant for your project?
+%
+% Have you tested your system on ``real users''? For example, if your system is supposed
+% to solve a problem for a business, then it would be appropriate to present your approach
+% to involve the users in the testing process and to record the results that you obtained.
+% Depending on the level of detail, it is likely that you would put any detailed results in an appendix.
+%
+% The following sections indicate some areas you might include. Other sections may be more appropriate to your project.
+\section{Testing Strategy}
+% - automation
+% - incremently adding tests
+% - edge cases
+% - running tests as part of the build
+% - user acceptance testing
+A combination of white box and black box testing strategies have been incorporated
+into Quiz Tool testing, in order to test the system reasonably in depth
+given the amount of time available. Test automation is essential when software is developed
+using an agile methodology. The application has been developed using single person adjusted
+SCRUM as described in the \autoref{subsection:scrum} of this report. Certain tests have been
+added incrementally over the sprints, while others have been added towards the end of the
+project development. Automated tests have been incorporated into the Circle CI build,
+which decreased the likelihood of regression defects being introduced with new features implementations.
+The Circle CI build agent would checkout the code, and run all the tests before allowing
+new pull requests being merged into the production branch. Tests made sure the
+top level functional requirements listed in \autoref{subsection:toplevel} were met.
+It was important to test both the expected behaviour, and the edge cases to make the
+tool less likely to fail in the production environment. Finally, acceptance testing
+has been performed by showing progress to the client on weekly basis, and running a
+real life lecture with the end users, once the first version of the
+tool has been implemented.
+
+\section{Server Side Unit Tests}
+The \texttt{server\_node} container has been tested using mocha\cite{59}, chai\cite{60} and chai-http\cite{61}
+libraries following the tutorial \textit{Test a Node RESTful API with Mocha and Chai}\cite{62}.
+Mocha is a JavaScript test framework running the test cases, chai is an assertion framework allowing to check if
+variables have expected values, and chai-http can be used to call endpoints exposed by Node.js
+applications. The automated tests added to test the back end of the application, could arguably
+also be called integration tests, as endpoints are called and responses examined to assess if
+the Quiz Tool works as expected. However the state of the database is also examined directly
+during some tests, therefore all tests are referred to as server side unit tests in this report.
+
+Server side tests are located in the \texttt{server/test} directory, and are started with the
+\texttt{mocha --recursive 'test/**/*.js' --timeout 60000 --exit} command located in the \texttt{server/package.json}
+file. The \texttt{docker-compose.test.yml}, located in the root directory of the project, is used to define
+how containers should be linked together for server side testing. The major difference of this file, compared
+to the \texttt{docker-compose.yml}, is that an extra \texttt{NODE\_ENV} environment variable is set
+in the \texttt{server\_node} container to make sure the application is aware it is being tested.
+For example a special test database is created for testing. The entrypoint of the Docker container
+is also overridden to \texttt{npm test} to start the mocha tests.
+
+Server side tests cover the major requirements of the tool, and also make sure the common errors
+are handled appropriately by the application. Authorisation has been tested, or actually attempts
+to call endpoints without an appropriate authorisation header, or a header containing a malformed
+JWT token. Other tests relying on the user being authenticated, use a special \texttt{AUTH\_DISABLED}
+environment variable to use a mocked lecturer called Bob for testing. Database is also
+cleaned before a new set of tests runs. Lecture creation is tested by uploading a test PDF
+presentation as part of the tests. Tests also make sure slides are created as expected, slides
+can be marked as quizzes, lectures be removed, sessions associated with lectures and reports
+generated. Finally, one of the good things about the mocha tests combined
+with the chai assertion library, is that they are incredibly easy to read even for non technical
+people.
+
+\begin{figure}[h!]
+  \begin{lstlisting}[basicstyle=\small, breaklines=true]
+  it('should return 401 for a fake JWT token', (done) => {
+      chai.request(app).get('/lecturers/logged-in')
+        .set('Authorization', 'Bearer verySecureJwtToken123').end((err, res) => {
+          res.should.have.status(401);
+          done();
+        });
+    });
+  \end{lstlisting}
+  \caption{Server Side Test Example}
+  \label{sample:servertest}
+\end{figure}
+
+\section{Client Side Unit Tests}
+The client side of the application has been tested using testing dependencies which come
+pre-installed with every Angular application. Karma\cite{63} testing framework, and
+Jasmine\cite{64} to actually define the test cases. Each Angular component consists of a HTML
+template, a stylesheet file, a file describing the logic of a component written in TypeScript,
+and finally a \texttt{*.component.spec.ts} file including tests of the component. Each Angular
+Service file also has an associated test file. Angular applications can be tested by running
+the \texttt{npm test} command. The \texttt{client} container's production \texttt{Dockerfile}, shown
+in the \autoref{sample:clientdocker} of this report, uses the multi stage Docker build. Angular is compiled down to
+a distribution folder which is exposed via nginx to all the clients. This means \texttt{npm},
+and other test dependencies are no longer present in the container, therefore a special \texttt{Dockerfile.test}
+file, included in the \autoref{chap:codesamples} of this report as \autoref{sample:clientdockertest},
+has been added to address this problem. The major difference is the lack of nginx, and the entrypoint
+changed to \texttt{npm test}. Every time tests are run, a headless PhantomJS\cite{65} web browser
+is started to make sure code works as expected.
+
+Client side tests focus on making sure the offline, helper methods and services work as intended.
+Tests developed are true unit tests, as they make sure code works well in isolation. Services
+are tested, as long as they do not make HTTP calls to the back end. In order to produce such
+tests, the back end would have had to be mocked for testing purposes, and selenium\cite{66} tests described
+in the next subsection make sure HTTP services work as expected instead. Code responsible for
+options extraction from slides' text have been tested, and every Components' internally
+used methods have been tested. Finally, the UI of the application is not tested, as selenium
+tests cover UI requirements as well.
+
+\section{Selenium Integration Tests}
+% - extra container
+% - selenium hub
+% - 2 headless browsers
+% - massive docker-compose file for integration
+% - what's being tested
+% - pros and cons
+% - build slowed down considerably
+% - tests difficult to write
+Selenium can be used to automate browsers interaction. Selenium integration tests,
+which could also be thought of as end-to-end tests, have been added to test
+the behaviour of the entire system. These tests focused on making sure these parts
+of the systems which has not been tested with other approaches, would be tested
+using selenium. Specifically user interface and client - server communication
+has been tested.
+
+Quiz Tool is a multi container Docker application. It was therefore crucial to test
+the application in an environment as close to the production as possible.
+Selenium-grid\cite{67} can be used to run tests against multiple web browsers in
+parallel. A special \texttt{docker-compose.integration.yml} file, included in the
+\autoref{chap:codesamples} of this report as \autoref{sample:dockercomposeintegration},
+has been added, following the tutorial\cite{68}, to define the selenium testing
+environment visualised in \autoref{fig:seleniumtesting}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{selenium.jpg}
+    \caption{Selenium Testing Environment Visualised}
+    \label{fig:seleniumtesting}
+\end{figure}
+
+An extra \texttt{tester} Node.js container has been added, to drive the integration
+tests using the selenium-webdriver\cite{69}. The \texttt{tester/} directory contains
+the source code of the container, which has been specifically designed to run
+selenium tests. Test suites run using mocha, and the chai assertion library has been
+used to make sure variables have expected values.
+
+There are five test files
+located in the \texttt{tester/test\_integration/} directory. Most groups of
+tests start by starting two, headless web browsers (firefox and chrome), by
+connecting to the selenium-hub. The selenium-webdriver is then used to
+find elements by CSS selectors, click on them, and wait for the Quiz
+Tool to render expected views. Common functionality, like logging into the
+system as a lecturer, has been moved to the \texttt{tester/common} directory,
+and avoids having to write redundant code. Google prevents people from using
+browser automation tools to interact with their websites. Therefore the Google
+Single Sign On has been disabled during selenium testing.
+
+\newpage
+Logging in as both students and lecturers have been tested, file uploads,
+file removal, editing lectures, running sessions, generating session
+reports, and other likely interactions with each web view have been tested.
+The most notable test, located in the file \texttt{4\_broadcast-test.js}, logs
+in as a lecturer, uploads a file, marks some slides as quizzes, spins up
+three extra web browsers to log into the tool as students, runs the session
+and lets students submit their answers before ending the broadcast. Admittedly, the test
+is so large it gets to the point where if it fails, it does not really offer
+much help in finding where the failure actually occurred, as the whole application
+is tested in a single test. It is however very useful to limit regressions
+as the test runs with each pull request on Circle CI. It also increases
+the productivity, as all the steps which were automated, used to be performed
+manually to make sure nothing was broken with a new feature implementation.
+Selenium tests also take a considerate amount of time to finish, and increased
+the average build time from 8 to 15 minutes.
+
+\section{User Tests}
+\subsection{Client Feedback}
+It was important to stay on track and adjust the design based on the customer feedback
+throughout the development of the Quiz Tool. The supervisor of the project, who was
+also one of the end users of the tool has been involved in the creation of the tool on
+weekly basis. During the initial weeks of the development, low fidelity, paper prototypes
+would drive the conversation about the potential improvements to the user interface, and
+the overall behaviour of the tool. Working software has been delivered each week to
+show the progress, and to ask for feedback. This process could be thought of as a form
+of weekly user acceptance testing.
+
+\subsection{End Users Evaluation}
+% - running a session with real life users
+% - questionare answers and report generated at the end found in 2 appendixes
+% - Continuous Client Feedback
+% - This section will include a discussion of a live session with students.
+Quiz Tool has been used to successfully run a real lecture, with real students once the
+development of the tool had finished. The overall performance of the tool has
+also been tested, as this was the first time the tool has been used by
+approximately 20 users at once. Lecture started by explaining to students,
+participation was voluntary, and their anonymous answers would be used to
+generate a session report using the tool report generation functionality.
+The one hour lecture ended with a voluntary user evaluation, where students
+were asked to provide their feedback on their experience of using the tool,
+and their thoughts on how it compared to Qwizdom.
+
+The session report generated
+using the tool can be found in the \autoref{chap:pdfreports} of this report, the anonymous
+user survey results on the other hand, in the \autoref{chap:usersurvey}.
+Students were overall pleased with the Quiz Tool and liked the user interface created.
+A significant majority preferred it to Qwizdom, although 14.3\% people surveyed
+mentioned displaying of correct answers on their machines was not clear.
+It also became apparent that once the lecturer starts a broadcast, a full screen
+mode should be added, to take the advantage of the entire screen while showing
+lecture slides using a projector. Currently, the navigation buttons and the navbar
+make the actual slide smaller, and therefore likely illegible for people sitting
+far back in a lecture hall. Having a full screen mode would also prevent
+students from being able to see how others are answering in real time,
+and not thinking about the correct answer on their own. Finally, the tool
+proved to be noticeably faster than Qwizdom.
+
+% You should concentrate on the more important aspects of the design. It is essential that an overview is presented before going into detail. As well as describing the design adopted it must also explain what other designs were considered and why they were rejected.% dsa

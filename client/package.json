@@ -1,7 +1,7 @@
 {
   "name": "quizclient",
-  "version": "0.0.1",
-  "license": "MIT",
+  "version": "1.0.0",
+  "license": "GPLv2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
