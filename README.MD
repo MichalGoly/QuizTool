@@ -29,7 +29,7 @@ GOOGLE_CALLBACK_URL=<GOOGLE_CALLBACK_URL>
 ### Integrating Google Sign-In (valid as of 29/06/2018)
 1. Go to [https://console.developers.google.com/apis/dashboard](https://console.developers.google.com/apis/dashboard) and create a new project
 2. Go to [https://developers.google.com/identity/sign-in/web/sign-in](https://developers.google.com/identity/sign-in/web/sign-in) and click
-the **CONFIGUTE A PROJECT** button
+the **CONFIGURE A PROJECT** button
 3. Select the previously created project and hit **NEXT**
 4. Select the *Web browser* from the drop down list
 5. Type in `http://localhost` and click **CREATE**
